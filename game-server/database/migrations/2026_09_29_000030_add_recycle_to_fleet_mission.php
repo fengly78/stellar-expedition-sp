@@ -141,6 +141,12 @@ return new class extends Migration
     private function dropIndexes(string $table): void
     {
         $driver = DB::connection()->getDriverName();
+        if ($driver === 'mysql') {
+            // MariaDB keeps foreign-key constraint names at schema scope when a
+            // table is renamed. Remove the old constraint before recreating the
+            // table, otherwise the new fleet_tasks constraint collides with it.
+            DB::statement("ALTER TABLE `{$table}` DROP FOREIGN KEY `fleet_tasks_command_id_foreign`");
+        }
         foreach (['uq_task_id', 'uq_task_phase', 'idx_fleet_due'] as $index) {
             if ($driver === 'mysql') {
                 DB::statement("DROP INDEX IF EXISTS `{$index}` ON `{$table}`");
