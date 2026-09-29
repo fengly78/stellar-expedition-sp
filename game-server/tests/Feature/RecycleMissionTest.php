@@ -95,7 +95,7 @@ class RecycleMissionTest extends TestCase
     private function dispatchRecycle(int $planetId, int $ownerId, string $target, array $ships, int $rulesetId): string
     {
         $cmd = new CommandEnvelope(
-            commandId: '33333333-3333-4333-8333-3333333333' . substr(sha1($target . $planetId . $ownerId), 0, 3),
+            commandId: '33333333-3333-4333-8333-' . substr(sha1($target . '-' . $planetId . '-' . $ownerId), 0, 12),
             actorKind: 'player', actorId: $ownerId, ownerId: $ownerId,
             type: 'FLEET_DISPATCH',
             payload: ['planet_id' => $planetId, 'mission' => 'recycle',
