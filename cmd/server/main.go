@@ -31,7 +31,7 @@ func main() {
 	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
 	slog.SetDefault(logger)
 
-	engine := tick.NewEngine(tick.NewStubStore())
+	engine := tick.NewEngine(&tick.StubStore{})
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	engine.Start(ctx)

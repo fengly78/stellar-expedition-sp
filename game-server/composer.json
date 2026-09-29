@@ -27,7 +27,7 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php -r \"foreach (['storage/framework/views','storage/framework/cache/data','storage/framework/sessions','bootstrap/cache'] as $d) { if (!is_dir($d)) { @mkdir($d, 0775, true); } }\"",
+            "@php scripts/ensure_directories.php",
             "@php artisan package:discover --ansi"
         ],
         "test": "phpunit",
