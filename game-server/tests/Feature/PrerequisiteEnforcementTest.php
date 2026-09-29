@@ -101,7 +101,7 @@ class PrerequisiteEnforcementTest extends TestCase
     private function research(int $ownerId, int $planetId, int $rulesetId): array
     {
         $cmd = new \App\Domain\Command\CommandEnvelope(
-            commandId: '44444444-4444-4444-8444-44444444444' . substr(sha1($planetId . $ownerId), 0, 3),
+            commandId: '44444444-4444-4444-8444-' . substr(sha1($planetId . '-' . $ownerId), 0, 12),
             actorKind: 'player', actorId: $ownerId, ownerId: $ownerId,
             type: 'RESEARCH_START', payload: ['planet_id' => $planetId, 'tech' => 'ENERGY'],
         );
