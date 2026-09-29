@@ -148,7 +148,7 @@ class PrerequisiteEnforcementTest extends TestCase
         $mBefore = (float) $p->inv_m;
 
         $cmd = new \App\Domain\Command\CommandEnvelope(
-            commandId: '55555555-5555-4555-8555-55555555555' . substr(sha1((string) $p->id), 0, 3),
+            commandId: '55555555-5555-4555-8555-' . substr(sha1('ship-' . $p->id), 0, 12),
             actorKind: 'player', actorId: 1, ownerId: 1,
             type: 'SHIP_ORDER',
             payload: ['planet_id' => (int) $p->id, 'ship' => 'HEAVY', 'amount' => 1, 'batch_no' => 'b1'],
@@ -192,7 +192,7 @@ class PrerequisiteEnforcementTest extends TestCase
         $this->civ(1, ['ENERGY' => 1]);   // 已掌握前置科技
 
         $cmd = new \App\Domain\Command\CommandEnvelope(
-            commandId: '66666666-6666-4666-8666-66666666666' . substr(sha1((string) $p->id), 0, 3),
+            commandId: '66666666-6666-4666-8666-' . substr(sha1('build-' . $p->id), 0, 12),
             actorKind: 'player', actorId: 1, ownerId: 1,
             type: 'RESEARCH_START', payload: ['planet_id' => (int) $p->id, 'tech' => 'IMPULSE'],
         );
@@ -208,7 +208,7 @@ class PrerequisiteEnforcementTest extends TestCase
         $this->civ(1);
 
         $cmd = new \App\Domain\Command\CommandEnvelope(
-            commandId: '77777777-7777-4777-8777-77777777777' . substr(sha1((string) $p->id), 0, 3),
+            commandId: '77777777-7777-4777-8777-' . substr(sha1('research-' . $p->id), 0, 12),
             actorKind: 'player', actorId: 1, ownerId: 1,
             type: 'SHIP_ORDER',
             payload: ['planet_id' => (int) $p->id, 'ship' => 'HEAVY', 'amount' => 1, 'batch_no' => 'b2'],
