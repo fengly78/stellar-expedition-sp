@@ -1,0 +1,26 @@
+{
+  "run_id": "ddl-validate-20260922T184331Z",
+  "file": "E:\\Ogame\\doc\\db-schema-draft.sql",
+  "method": "A 静态结构检查 + B sqlite3 方言降级执行（非 MariaDB 语义验证，正式验证待 E0-c 工具链）",
+  "tables_found": [
+    "ai_strategy_states",
+    "battle_snapshots",
+    "build_tasks",
+    "civilizations",
+    "debris_fields",
+    "fleet_tasks",
+    "game_commands",
+    "game_outbox",
+    "game_rulesets",
+    "governor_authorizations",
+    "intel_snapshots",
+    "planets",
+    "research_tasks",
+    "resource_transactions",
+    "ship_orders"
+  ],
+  "table_count": 15,
+  "fk_count": 10,
+  "problems": [],
+  "ok": true
+}

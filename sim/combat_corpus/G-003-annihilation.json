@@ -1,0 +1,67 @@
+{
+  "case": "G-003-annihilation",
+  "description": "单方全灭提前结束",
+  "seed": 1003,
+  "input": {
+    "attacker_fleets": [
+      {
+        "fleet_mission_id": 1,
+        "owner_id": 7,
+        "units": {
+          "2": {
+            "spec": {
+              "unit_id": 2,
+              "attack": 150,
+              "shield": 25,
+              "hull": 1200,
+              "rapidfire": {}
+            },
+            "amount": 30
+          }
+        }
+      }
+    ],
+    "defender_fleets": [
+      {
+        "fleet_mission_id": 2,
+        "owner_id": 9,
+        "units": {
+          "1": {
+            "spec": {
+              "unit_id": 1,
+              "attack": 50,
+              "shield": 10,
+              "hull": 400,
+              "rapidfire": {}
+            },
+            "amount": 5
+          }
+        }
+      }
+    ]
+  },
+  "expected": {
+    "rounds": [
+      {
+        "attacker_ships": {
+          "2": 30
+        },
+        "defender_ships": {},
+        "hits_attacker": 30,
+        "hits_defender": 5,
+        "full_strength_attacker": 4500.0,
+        "full_strength_defender": 250.0,
+        "absorbed_damage_attacker": 125.0,
+        "absorbed_damage_defender": 50.0
+      }
+    ],
+    "attacker_losses": {},
+    "defender_losses": {
+      "1": 5
+    },
+    "attacker_survivors": {
+      "2": 30
+    },
+    "defender_survivors": {}
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "source": "sim/engine.py settle_to 语义（sim/gen_s1_golden.py 生成）",
+  "rule": "PHP ProductionService.settle 必须逐向量逐点一致（容差 1e-4）；conservation 必须全 true",
+  "vectors": [
+    {
+      "name": "v1_idle_zero_levels",
+      "initial": {
+        "inventory": {
+          "M": 500,
+          "C": 500,
+          "D": 0
+        },
+        "levels": {}
+      },
+      "steps": [
+        {
+          "settle_seconds": 3600
+        }
+      ],
+      "expected_trace": [
+        {
+          "t": 3600.0,
+          "inv": {
+            "M": 500.0,
+            "C": 500.0,
+            "D": 0.0
+          }
+        }
+      ],
+      "conservation": true
+    },
+    {
+      "name": "v2_normal_1h",
+      "initial": {
+        "inventory": {
+          "M": 0,
+          "C": 0,
+          "D": 0
+        },
+        "levels": {
+          "METAL_MINE": 5,
+          "CRYSTAL_MINE": 4,
+          "DEUT_SYNTH": 3,
+          "SOLAR": 12
+        }
+      },
+      "steps": [
+        {
+          "settle_seconds": 3600
+        }
+      ],
+      "expected_trace": [
+        {
+          "t": 3600.0,
+          "inv": {
+            "M": 236.0279,
+            "C": 112.3942,
+            "D": 36.3
+          }
+        }
+      ],
+      "conservation": true
+    },
+    {
+      "name": "v3_energy_deficit",
+      "initial": {
+        "inventory": {
+          "M": 100,
+          "C": 100,
+          "D": 100
+        },
+        "levels": {
+          "METAL_MINE": 15,
+          "CRYSTAL_MINE": 14,
+          "DEUT_SYNTH": 12,
+          "SOLAR": 4
+        }
+      },
+      "steps": [
+        {
+          "settle_seconds": 1800
+        }
+      ],
+      "expected_trace": [
+        {
+          "t": 1800.0,
+          "inv": {
+            "M": 193.4289,
+            "C": 151.905,
+            "D": 114.5451
+          }
+        }
+      ],
+      "conservation": true
+    },
+    {
+      "name": "v4_storage_cap",
+      "initial": {
+        "inventory": {
+          "M": 0,
+          "C": 0,
+          "D": 0
+        },
+        "levels": {
+          "METAL_MINE": 10,
+          "CRYSTAL_MINE": 8,
+          "DEUT_SYNTH": 6,
+          "SOLAR": 20
+        }
+      },
+      "steps": [
+        {
+          "settle_seconds": 604800
+        }
+      ],
+      "expected_trace": [
+        {
+          "t": 604800.0,
+          "inv": {
+            "M": 10000.0,
+            "C": 10000.0,
+            "D": 10000.0
+          }
+        }
+      ],
+      "conservation": true
+    },
+    {
+      "name": "v5_segmented_upgrade",
+      "initial": {
+        "inventory": {
+          "M": 0,
+          "C": 0,
+          "D": 0
+        },
+        "levels": {
+          "METAL_MINE": 5,
+          "CRYSTAL_MINE": 4,
+          "DEUT_SYNTH": 3,
+          "SOLAR": 12
+        }
+      },
+      "steps": [
+        {
+          "settle_seconds": 3600
+        },
+        {
+          "set_levels": {
+            "METAL_MINE": 6
+          }
+        },
+        {
+          "settle_seconds": 3600
+        }
+      ],
+      "expected_trace": [
+        {
+          "t": 3600.0,
+          "inv": {
+            "M": 236.0279,
+            "C": 112.3942,
+            "D": 36.3
+          }
+        },
+        {
+          "t": 7200.0,
+          "inv": {
+            "M": 553.2494,
+            "C": 224.7885,
+            "D": 72.6
+          }
+        }
+      ],
+      "conservation": true
+    },
+    {
+      "name": "v6_two_upgrades",
+      "initial": {
+        "inventory": {
+          "M": 0,
+          "C": 0,
+          "D": 0
+        },
+        "levels": {
+          "METAL_MINE": 10,
+          "CRYSTAL_MINE": 9,
+          "DEUT_SYNTH": 8,
+          "SOLAR": 6
+        }
+      },
+      "steps": [
+        {
+          "settle_seconds": 1800
+        },
+        {
+          "set_levels": {
+            "SOLAR": 10
+          }
+        },
+        {
+          "settle_seconds": 1800
+        },
+        {
+          "set_levels": {
+            "METAL_MINE": 11
+          }
+        },
+        {
+          "settle_seconds": 3600
+        }
+      ],
+      "expected_trace": [
+        {
+          "t": 1800.0,
+          "inv": {
+            "M": 151.6633,
+            "C": 81.2482,
+            "D": 28.4208
+          }
+        },
+        {
+          "t": 3600.0,
+          "inv": {
+            "M": 521.7469,
+            "C": 279.5073,
+            "D": 97.7722
+          }
+        },
+        {
+          "t": 7200.0,
+          "inv": {
+            "M": 1370.2221,
+            "C": 648.4523,
+            "D": 226.8298
+          }
+        }
+      ],
+      "conservation": true
+    }
+  ]
+}

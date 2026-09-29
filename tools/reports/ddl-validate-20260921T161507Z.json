@@ -1,0 +1,25 @@
+{
+  "run_id": "ddl-validate-20260921T161507Z",
+  "file": "E:\\Ogame\\doc\\db-schema-draft.sql",
+  "method": "A 静态结构检查 + B sqlite3 方言降级执行（非 MariaDB 语义验证，正式验证待 E0-c 工具链）",
+  "tables_found": [],
+  "table_count": 0,
+  "fk_count": 0,
+  "problems": [
+    "无法解析 CREATE TABLE 语句: CREATE TABLE game_rulesets (\n    id              BIGINT UNSI…",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE game_commands (\n    id              BIGINT UNSI…",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE game_outbox (\n    id              BIGINT UNSIGN…",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE resource_transactions (\n    id              BIG…",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE battle_snapshots (\n    id              BIGINT U…",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE planets (\n    id              BIGINT UNSIGNED A…",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE civilizations (\n    id              BIGINT UNSI…",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE fleet_tasks (                              \n   …",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE build_tasks (\n    id              BIGINT UNSIGN…",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE research_tasks (\n    id              BIGINT UNS…",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE ship_orders (\n    id              BIGINT UNSIGN…",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE ai_strategy_states (\n    id              BIGINT…",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE intel_snapshots (                          \n   …",
+    "无法解析 CREATE TABLE 语句: CREATE TABLE governor_authorizations (                  \n   …"
+  ],
+  "ok": false
+}

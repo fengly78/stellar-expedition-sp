@@ -1,0 +1,1255 @@
+{
+ "source_report": "sim04-skeleton-20260923T145519Z.json",
+ "payload": {
+  "core_version": "Core Rules 1.0",
+  "ruleset": "Balance Data RC1",
+  "init_manifest": {
+   "levels": {
+    "METAL_MINE": 14,
+    "CRYSTAL_MINE": 13,
+    "DEUT_SYNTH": 13,
+    "SOLAR": 15,
+    "M_STORAGE": 2,
+    "C_STORAGE": 4,
+    "D_STORAGE": 4,
+    "FUSION": 0,
+    "LAB": 0,
+    "SHIPYARD": 0
+   },
+   "inventory": {
+    "M": 36000.0,
+    "C": 93128.0,
+    "D": 63224.0
+   },
+   "source": "sim02 deep Day14"
+  },
+  "gate_evidence": false,
+  "state_machine_selftest": true,
+  "state_machine_note": "RECOVERY 迁移逻辑由合成场景自检验证；矩阵内未应急出现（袭击损失占持续生产比例过低），正式轮需更强反击环境或更低恢复阈值",
+  "gate_note": "骨架：轻战货舱 TBD=0，载货由 10 艘小运编队承担（5000 舱/艘，RC1 Candidate）；燃料记 0；战利品在途航时近似合并；造舰即时交付；环境 2/4 档（低活跃/军事反击，反击环境防御方按初始舰队 V 10%/日重建）、情报 2/3 档、30 天、5 种子。不作 K-A01~03 证据。",
+  "runs": [
+   {
+    "personality": "cautious",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 0,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3275390.0,
+    "ships_built_v": 2891000.0,
+    "combat_loss_v": 301000.0,
+    "loot_v": 1021237.0,
+    "attacks": 89,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 15.2,
+     "RAIDING": 14.8
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 1,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3718757.0,
+    "ships_built_v": 3216000.0,
+    "combat_loss_v": 256000.0,
+    "loot_v": 1513185.0,
+    "attacks": 90,
+    "distinct_targets": 7,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "RAIDING": 15.0
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 2,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3826269.0,
+    "ships_built_v": 3297000.0,
+    "combat_loss_v": 247000.0,
+    "loot_v": 1581245.0,
+    "attacks": 89,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 15.2,
+     "RAIDING": 14.8
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 3,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3674320.0,
+    "ships_built_v": 3191000.0,
+    "combat_loss_v": 271000.0,
+    "loot_v": 1419922.0,
+    "attacks": 88,
+    "distinct_targets": 10,
+    "state_days": {
+     "SCOUTING": 14.8,
+     "GROWTH": 0.5,
+     "RAIDING": 14.7
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 4,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3530863.0,
+    "ships_built_v": 3078000.0,
+    "combat_loss_v": 293000.0,
+    "loot_v": 1299329.0,
+    "attacks": 85,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 14.5,
+     "GROWTH": 1.3,
+     "RAIDING": 14.2
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 0,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3104700.0,
+    "ships_built_v": 2883000.0,
+    "combat_loss_v": 453000.0,
+    "loot_v": 965447.0,
+    "attacks": 89,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 15.2,
+     "RAIDING": 14.8
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 1,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3417762.0,
+    "ships_built_v": 3066000.0,
+    "combat_loss_v": 371000.0,
+    "loot_v": 1281398.0,
+    "attacks": 89,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 15.2,
+     "RAIDING": 14.8
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 2,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3726651.0,
+    "ships_built_v": 3241000.0,
+    "combat_loss_v": 306000.0,
+    "loot_v": 1529810.0,
+    "attacks": 89,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 15.2,
+     "RAIDING": 14.8
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 3,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3448596.0,
+    "ships_built_v": 3083000.0,
+    "combat_loss_v": 343000.0,
+    "loot_v": 1240293.0,
+    "attacks": 89,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 15.2,
+     "RAIDING": 14.8
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 4,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3555999.0,
+    "ships_built_v": 3177000.0,
+    "combat_loss_v": 382000.0,
+    "loot_v": 1400757.0,
+    "attacks": 86,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 14.7,
+     "GROWTH": 1.0,
+     "RAIDING": 14.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 0,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3210915.0,
+    "ships_built_v": 2885000.0,
+    "combat_loss_v": 340000.0,
+    "loot_v": 1021016.0,
+    "attacks": 90,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "RAIDING": 15.0
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 1,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3471553.0,
+    "ships_built_v": 3016000.0,
+    "combat_loss_v": 281000.0,
+    "loot_v": 1282256.0,
+    "attacks": 90,
+    "distinct_targets": 7,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "RAIDING": 15.0
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 2,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3588447.0,
+    "ships_built_v": 3147000.0,
+    "combat_loss_v": 317000.0,
+    "loot_v": 1410824.0,
+    "attacks": 89,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 15.2,
+     "RAIDING": 14.8
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 3,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3629030.0,
+    "ships_built_v": 3235000.0,
+    "combat_loss_v": 375000.0,
+    "loot_v": 1525293.0,
+    "attacks": 89,
+    "distinct_targets": 10,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "GROWTH": 0.2,
+     "RAIDING": 14.8
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 4,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3470530.0,
+    "ships_built_v": 3071000.0,
+    "combat_loss_v": 361000.0,
+    "loot_v": 1306659.0,
+    "attacks": 86,
+    "distinct_targets": 10,
+    "state_days": {
+     "SCOUTING": 14.7,
+     "GROWTH": 1.0,
+     "RAIDING": 14.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 0,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2892420.0,
+    "ships_built_v": 2894000.0,
+    "combat_loss_v": 654000.0,
+    "loot_v": 935067.0,
+    "attacks": 88,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 15.3,
+     "RAIDING": 14.7
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 1,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3450250.0,
+    "ships_built_v": 2959000.0,
+    "combat_loss_v": 204000.0,
+    "loot_v": 1116398.0,
+    "attacks": 89,
+    "distinct_targets": 5,
+    "state_days": {
+     "SCOUTING": 15.2,
+     "RAIDING": 14.8
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 2,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3371927.0,
+    "ships_built_v": 3022000.0,
+    "combat_loss_v": 377000.0,
+    "loot_v": 1245284.0,
+    "attacks": 90,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "RAIDING": 15.0
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 3,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3457515.0,
+    "ships_built_v": 3134000.0,
+    "combat_loss_v": 409000.0,
+    "loot_v": 1355293.0,
+    "attacks": 89,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 15.2,
+     "RAIDING": 14.8
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 4,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3426336.0,
+    "ships_built_v": 3146000.0,
+    "combat_loss_v": 476000.0,
+    "loot_v": 1361258.0,
+    "attacks": 87,
+    "distinct_targets": 10,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "GROWTH": 0.5,
+     "RAIDING": 14.5
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 0,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3120315.0,
+    "ships_built_v": 2797000.0,
+    "combat_loss_v": 327000.0,
+    "loot_v": 889729.0,
+    "attacks": 89,
+    "distinct_targets": 7,
+    "state_days": {
+     "SCOUTING": 15.2,
+     "RAIDING": 14.8
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 1,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3354541.0,
+    "ships_built_v": 2990000.0,
+    "combat_loss_v": 340000.0,
+    "loot_v": 1162256.0,
+    "attacks": 90,
+    "distinct_targets": 7,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "RAIDING": 15.0
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 2,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3359986.0,
+    "ships_built_v": 3102000.0,
+    "combat_loss_v": 487000.0,
+    "loot_v": 1334883.0,
+    "attacks": 90,
+    "distinct_targets": 8,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "RAIDING": 15.0
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 3,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3261284.0,
+    "ships_built_v": 3008000.0,
+    "combat_loss_v": 438000.0,
+    "loot_v": 1141045.0,
+    "attacks": 90,
+    "distinct_targets": 9,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "RAIDING": 15.0
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "good",
+    "environment": "low_activity",
+    "seed": 4,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3315093.0,
+    "ships_built_v": 3052000.0,
+    "combat_loss_v": 462000.0,
+    "loot_v": 1176179.0,
+    "attacks": 87,
+    "distinct_targets": 10,
+    "state_days": {
+     "SCOUTING": 14.7,
+     "GROWTH": 0.8,
+     "RAIDING": 14.5
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 0,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2973629.0,
+    "ships_built_v": 2881000.0,
+    "combat_loss_v": 561000.0,
+    "loot_v": 880931.0,
+    "attacks": 90,
+    "distinct_targets": 7,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "RAIDING": 15.0
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 1,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3323555.0,
+    "ships_built_v": 2884000.0,
+    "combat_loss_v": 244000.0,
+    "loot_v": 1067256.0,
+    "attacks": 90,
+    "distinct_targets": 5,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "RAIDING": 15.0
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 2,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3275843.0,
+    "ships_built_v": 2965000.0,
+    "combat_loss_v": 395000.0,
+    "loot_v": 1139483.0,
+    "attacks": 89,
+    "distinct_targets": 8,
+    "state_days": {
+     "SCOUTING": 15.2,
+     "RAIDING": 14.8
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 3,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3010984.0,
+    "ships_built_v": 3067000.0,
+    "combat_loss_v": 762000.0,
+    "loot_v": 1171045.0,
+    "attacks": 89,
+    "distinct_targets": 8,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "RAIDING": 14.8,
+     "RECOVERY": 0.2
+    },
+    "recovery_days": 0.2,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "poor",
+    "environment": "low_activity",
+    "seed": 4,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3204900.0,
+    "ships_built_v": 3069000.0,
+    "combat_loss_v": 599000.0,
+    "loot_v": 1248831.0,
+    "attacks": 87,
+    "distinct_targets": 10,
+    "state_days": {
+     "SCOUTING": 15.0,
+     "GROWTH": 0.5,
+     "RAIDING": 14.5
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 0,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 1,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 2,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 3,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 4,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 0,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2994785.0,
+    "ships_built_v": 2485000.0,
+    "combat_loss_v": 110000.0,
+    "loot_v": 489739.0,
+    "attacks": 20,
+    "distinct_targets": 1,
+    "state_days": {
+     "SCOUTING": 4.8,
+     "GROWTH": 21.8,
+     "RAIDING": 3.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 1,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 2,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 3,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "cautious",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 4,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 0,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2863484.0,
+    "ships_built_v": 2391000.0,
+    "combat_loss_v": 116000.0,
+    "loot_v": 336619.0,
+    "attacks": 18,
+    "distinct_targets": 1,
+    "state_days": {
+     "SCOUTING": 4.5,
+     "GROWTH": 22.5,
+     "RAIDING": 3.0
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 1,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 2,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 3,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 4,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 0,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2994785.0,
+    "ships_built_v": 2485000.0,
+    "combat_loss_v": 110000.0,
+    "loot_v": 489739.0,
+    "attacks": 20,
+    "distinct_targets": 1,
+    "state_days": {
+     "SCOUTING": 4.8,
+     "GROWTH": 21.8,
+     "RAIDING": 3.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 1,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 2,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2941036.0,
+    "ships_built_v": 2522000.0,
+    "combat_loss_v": 187000.0,
+    "loot_v": 513529.0,
+    "attacks": 37,
+    "distinct_targets": 1,
+    "state_days": {
+     "SCOUTING": 7.8,
+     "GROWTH": 16.0,
+     "RAIDING": 6.2
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 3,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2898368.0,
+    "ships_built_v": 2385000.0,
+    "combat_loss_v": 110000.0,
+    "loot_v": 400000.0,
+    "attacks": 8,
+    "distinct_targets": 1,
+    "state_days": {
+     "SCOUTING": 2.8,
+     "GROWTH": 25.8,
+     "RAIDING": 1.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "balanced",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 4,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2965815.0,
+    "ships_built_v": 2516000.0,
+    "combat_loss_v": 181000.0,
+    "loot_v": 530902.0,
+    "attacks": 18,
+    "distinct_targets": 1,
+    "state_days": {
+     "SCOUTING": 4.5,
+     "GROWTH": 22.5,
+     "RAIDING": 3.0
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 0,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2801518.0,
+    "ships_built_v": 2410000.0,
+    "combat_loss_v": 205000.0,
+    "loot_v": 386282.0,
+    "attacks": 19,
+    "distinct_targets": 2,
+    "state_days": {
+     "SCOUTING": 4.7,
+     "GROWTH": 22.2,
+     "RAIDING": 3.2
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 1,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 2,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 3,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2898368.0,
+    "ships_built_v": 2385000.0,
+    "combat_loss_v": 110000.0,
+    "loot_v": 400000.0,
+    "attacks": 8,
+    "distinct_targets": 1,
+    "state_days": {
+     "SCOUTING": 2.8,
+     "GROWTH": 25.8,
+     "RAIDING": 1.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "good",
+    "environment": "military_response",
+    "seed": 4,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2661819.0,
+    "ships_built_v": 2135000.0,
+    "combat_loss_v": 0.0,
+    "loot_v": 0.0,
+    "attacks": 0,
+    "distinct_targets": 0,
+    "state_days": {
+     "SCOUTING": 1.7,
+     "GROWTH": 28.3
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 0,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2911878.0,
+    "ships_built_v": 2735000.0,
+    "combat_loss_v": 510000.0,
+    "loot_v": 883700.0,
+    "attacks": 21,
+    "distinct_targets": 3,
+    "state_days": {
+     "SCOUTING": 4.8,
+     "GROWTH": 21.7,
+     "RAIDING": 3.5
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 1,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3244377.0,
+    "ships_built_v": 2760000.0,
+    "combat_loss_v": 215000.0,
+    "loot_v": 908359.0,
+    "attacks": 19,
+    "distinct_targets": 2,
+    "state_days": {
+     "SCOUTING": 4.7,
+     "GROWTH": 22.2,
+     "RAIDING": 3.2
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 2,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 3409296.0,
+    "ships_built_v": 2966000.0,
+    "combat_loss_v": 366000.0,
+    "loot_v": 1243788.0,
+    "attacks": 40,
+    "distinct_targets": 2,
+    "state_days": {
+     "SCOUTING": 8.0,
+     "GROWTH": 15.3,
+     "RAIDING": 6.7
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 3,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2972406.0,
+    "ships_built_v": 2541000.0,
+    "combat_loss_v": 181000.0,
+    "loot_v": 540481.0,
+    "attacks": 27,
+    "distinct_targets": 1,
+    "state_days": {
+     "SCOUTING": 6.2,
+     "GROWTH": 19.3,
+     "RAIDING": 4.5
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   },
+   {
+    "personality": "aggressive",
+    "intel": "poor",
+    "environment": "military_response",
+    "seed": 4,
+    "start_inventory_v": 411928.0,
+    "end_asset_v": 2965815.0,
+    "ships_built_v": 2516000.0,
+    "combat_loss_v": 181000.0,
+    "loot_v": 530902.0,
+    "attacks": 18,
+    "distinct_targets": 1,
+    "state_days": {
+     "SCOUTING": 4.5,
+     "GROWTH": 22.5,
+     "RAIDING": 3.0
+    },
+    "recovery_days": 0,
+    "system_injection_v": 0.0,
+    "survived": true
+   }
+  ]
+ }
+}

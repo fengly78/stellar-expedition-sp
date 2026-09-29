@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "ruleset_version": "Balance Data RC1 branch: colony-cost-options",
+    "base_ruleset": "balance_rc1.json",
+    "status": "Experimental",
+    "created_at": "2026-09-21",
+    "notes": "V1.3 §05.10：实验性假设另存配置分支，不得混入 RC1 正式结果。供 SIM-01/02 比较 OPEN-01 殖民舰成本。"
+  },
+  "branches": [
+    {"id": "A", "name": "原始基线", "SHIP.COLONY": {"M": 10000, "C": 20000, "D": 10000}, "RESOURCE.D.PRODUCTION.p": 10},
+    {"id": "B", "name": "当前中心（RC1 主配置采用）", "SHIP.COLONY": {"M": 10000, "C": 17500, "D": 5000}, "RESOURCE.D.PRODUCTION.p": 10},
+    {"id": "C", "name": "低成本对照", "SHIP.COLONY": {"M": 10000, "C": 15000, "D": 4000}, "RESOURCE.D.PRODUCTION.p": 10},
+    {"id": "D", "name": "产量对照", "SHIP.COLONY": {"M": 10000, "C": 20000, "D": 10000}, "RESOURCE.D.PRODUCTION.p": 15}
+  ]
+}

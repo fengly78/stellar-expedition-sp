@@ -1,0 +1,41 @@
+{
+  "case": "G-005-empty-defender",
+  "description": "空防御舰队 → 零回合",
+  "seed": 1005,
+  "input": {
+    "attacker_fleets": [
+      {
+        "fleet_mission_id": 1,
+        "owner_id": 7,
+        "units": {
+          "1": {
+            "spec": {
+              "unit_id": 1,
+              "attack": 50,
+              "shield": 10,
+              "hull": 400,
+              "rapidfire": {}
+            },
+            "amount": 10
+          }
+        }
+      }
+    ],
+    "defender_fleets": [
+      {
+        "fleet_mission_id": 2,
+        "owner_id": 9,
+        "units": {}
+      }
+    ]
+  },
+  "expected": {
+    "rounds": [],
+    "attacker_losses": {},
+    "defender_losses": {},
+    "attacker_survivors": {
+      "1": 10
+    },
+    "defender_survivors": {}
+  }
+}

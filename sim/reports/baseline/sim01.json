@@ -1,0 +1,1845 @@
+{
+ "source_report": "sim01-matrix-20260923T145404Z.json",
+ "payload": {
+  "core_version": "Core Rules 1.0",
+  "ruleset": "Balance Data RC1",
+  "time_model": {
+   "source": "sim01_time_assumptions.json",
+   "status": "EXPERIMENTAL — F-08 原式未校准，此解释仅为模拟试验"
+  },
+  "gate_evidence": false,
+  "gate_note": "实验时间假设下的机制回归。K-E 阈值判定仅作参考展示，不构成 Gate 通过证据（§06.2）。",
+  "reference_thresholds": {
+   "K-E05": {
+    "Normal": 0.05,
+    "Casual": 0.1
+   },
+   "K-E07": {
+    "Normal": 0.25
+   }
+  },
+  "comparisons": {
+   "K-E10_governor_advantage_F09": {
+    "value": -0.0021,
+    "reference_gate": "理想 0~5%；可接受 ≤10%；10~15% 警告；>15% 失败（§05.9，此处仅机制展示）"
+   },
+   "asset_ratio_vs_normal": {
+    "Active": 1.063,
+    "Casual": 0.258,
+    "Governor": 0.998
+   }
+  },
+  "fusion_trial": {
+   "solar_only": {
+    "behavior": "Normal",
+    "time_series": [
+     {
+      "hour": 0.0,
+      "inventory": {
+       "M": 500.0,
+       "C": 500.0,
+       "D": 0.0
+      },
+      "levels": {
+       "METAL_MINE": 0,
+       "CRYSTAL_MINE": 0,
+       "DEUT_SYNTH": 0,
+       "SOLAR": 0,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1.0
+     },
+     {
+      "hour": 6.0,
+      "inventory": {
+       "M": 72.5,
+       "C": 354.1,
+       "D": 10.6
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 1,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 1,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.532
+     },
+     {
+      "hour": 12.0,
+      "inventory": {
+       "M": 181.0,
+       "C": 412.2,
+       "D": 38.2
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 2,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 1,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.424
+     },
+     {
+      "hour": 24.0,
+      "inventory": {
+       "M": 818.7,
+       "C": 867.6,
+       "D": 149.9
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 2,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 2,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.932
+     },
+     {
+      "hour": 48.0,
+      "inventory": {
+       "M": 1909.5,
+       "C": 2058.6,
+       "D": 827.9
+      },
+      "levels": {
+       "METAL_MINE": 4,
+       "CRYSTAL_MINE": 4,
+       "DEUT_SYNTH": 3,
+       "SOLAR": 4,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.827
+     },
+     {
+      "hour": 72.0,
+      "inventory": {
+       "M": 3160.9,
+       "C": 4069.3,
+       "D": 2198.6
+      },
+      "levels": {
+       "METAL_MINE": 6,
+       "CRYSTAL_MINE": 6,
+       "DEUT_SYNTH": 5,
+       "SOLAR": 6,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.797
+     },
+     {
+      "hour": 96.0,
+      "inventory": {
+       "M": 7148.4,
+       "C": 7856.6,
+       "D": 4374.9
+      },
+      "levels": {
+       "METAL_MINE": 7,
+       "CRYSTAL_MINE": 7,
+       "DEUT_SYNTH": 6,
+       "SOLAR": 8,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.992
+     },
+     {
+      "hour": 120.0,
+      "inventory": {
+       "M": 7493.8,
+       "C": 10000.0,
+       "D": 7414.4
+      },
+      "levels": {
+       "METAL_MINE": 9,
+       "CRYSTAL_MINE": 8,
+       "DEUT_SYNTH": 8,
+       "SOLAR": 9,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.828
+     },
+     {
+      "hour": 144.0,
+      "inventory": {
+       "M": 10000.0,
+       "C": 15939.2,
+       "D": 10000.0
+      },
+      "levels": {
+       "METAL_MINE": 9,
+       "CRYSTAL_MINE": 9,
+       "DEUT_SYNTH": 8,
+       "SOLAR": 11,
+       "M_STORAGE": 0,
+       "C_STORAGE": 1,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     },
+     {
+      "hour": 168.0,
+      "inventory": {
+       "M": 10000.0,
+       "C": 20000.0,
+       "D": 14160.0
+      },
+      "levels": {
+       "METAL_MINE": 10,
+       "CRYSTAL_MINE": 10,
+       "DEUT_SYNTH": 9,
+       "SOLAR": 12,
+       "M_STORAGE": 0,
+       "C_STORAGE": 1,
+       "D_STORAGE": 1,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     }
+    ],
+    "milestones_hours": {
+     "METAL_MINE_L1": 0.01,
+     "CRYSTAL_MINE_L1": 0.03,
+     "DEUT_SYNTH_L1": 0.08,
+     "SOLAR_L1": 4.02,
+     "METAL_MINE_L2": 4.04,
+     "CRYSTAL_MINE_L2": 8.02,
+     "SOLAR_L2": 12.03,
+     "DEUT_SYNTH_L2": 24.08,
+     "METAL_MINE_L3": 24.12,
+     "SOLAR_L3": 24.16,
+     "SOLAR_L4": 28.07,
+     "CRYSTAL_MINE_L3": 28.1,
+     "DEUT_SYNTH_L3": 32.13,
+     "METAL_MINE_L4": 36.05,
+     "CRYSTAL_MINE_L4": 36.1,
+     "DEUT_SYNTH_L4": 48.19,
+     "SOLAR_L5": 48.29,
+     "METAL_MINE_L5": 48.36,
+     "SOLAR_L6": 52.15,
+     "CRYSTAL_MINE_L5": 52.24,
+     "DEUT_SYNTH_L5": 56.28,
+     "METAL_MINE_L6": 60.1,
+     "CRYSTAL_MINE_L6": 60.25,
+     "SOLAR_L7": 72.23,
+     "DEUT_SYNTH_L6": 72.66,
+     "METAL_MINE_L7": 72.81,
+     "SOLAR_L8": 80.34,
+     "CRYSTAL_MINE_L7": 80.58,
+     "DEUT_SYNTH_L7": 96.64,
+     "SOLAR_L9": 97.15,
+     "METAL_MINE_L8": 97.39,
+     "CRYSTAL_MINE_L8": 100.38,
+     "DEUT_SYNTH_L8": 104.96,
+     "METAL_MINE_L9": 108.35,
+     "SOLAR_L10": 120.77,
+     "CRYSTAL_MINE_L9": 121.37,
+     "C_STORAGE_L1": 121.66,
+     "SOLAR_L11": 129.15,
+     "DEUT_SYNTH_L9": 145.44,
+     "METAL_MINE_L10": 145.97,
+     "D_STORAGE_L1": 146.39,
+     "SOLAR_L12": 153.73,
+     "CRYSTAL_MINE_L10": 156.96
+    },
+    "metrics": {
+     "K-E05_worst_cap_loss_ratio": 0.0948,
+     "K-E06_energy_low_time_ratio": 0.3812,
+     "K-E07_forced_idle_ratio": 0.1724,
+     "asset_value_v": 188005.8
+    },
+    "totals": {
+     "produced": {
+      "M": 66859.8,
+      "C": 41383.5,
+      "D": 15642.9
+     },
+     "consumed": {
+      "M": 62345.0,
+      "C": 23799.0,
+      "D": 0.0
+     },
+     "cap_loss": {
+      "M": 3664.6,
+      "C": 968.3,
+      "D": 1482.8
+     }
+    },
+    "conservation": {
+     "ok": true,
+     "detail": {
+      "M": {
+       "inventory+transit": 1350.231,
+       "expected": 1350.231,
+       "diff": 1.141415850725025e-10
+      },
+      "C": {
+       "inventory+transit": 17116.154,
+       "expected": 17116.154,
+       "diff": 2.1827872842550278e-11
+      },
+      "D": {
+       "inventory+transit": 14160.087,
+       "expected": 14160.087,
+       "diff": 3.637978807091713e-12
+      }
+     }
+    },
+    "events": 87
+   },
+   "solar_plus_fusion": {
+    "behavior": "Normal",
+    "time_series": [
+     {
+      "hour": 0.0,
+      "inventory": {
+       "M": 500.0,
+       "C": 500.0,
+       "D": 0.0
+      },
+      "levels": {
+       "METAL_MINE": 0,
+       "CRYSTAL_MINE": 0,
+       "DEUT_SYNTH": 0,
+       "SOLAR": 0,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1.0
+     },
+     {
+      "hour": 6.0,
+      "inventory": {
+       "M": 72.5,
+       "C": 354.1,
+       "D": 10.6
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 1,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 1,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.532
+     },
+     {
+      "hour": 12.0,
+      "inventory": {
+       "M": 181.0,
+       "C": 412.2,
+       "D": 38.2
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 2,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 1,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.424
+     },
+     {
+      "hour": 24.0,
+      "inventory": {
+       "M": 780.9,
+       "C": 852.1,
+       "D": 0.3
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 2,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 1,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 1,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.932
+     },
+     {
+      "hour": 48.0,
+      "inventory": {
+       "M": 2033.7,
+       "C": 2066.5,
+       "D": 194.4
+      },
+      "levels": {
+       "METAL_MINE": 4,
+       "CRYSTAL_MINE": 4,
+       "DEUT_SYNTH": 3,
+       "SOLAR": 3,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 2,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.981
+     },
+     {
+      "hour": 72.0,
+      "inventory": {
+       "M": 3940.6,
+       "C": 4532.8,
+       "D": 451.6
+      },
+      "levels": {
+       "METAL_MINE": 6,
+       "CRYSTAL_MINE": 6,
+       "DEUT_SYNTH": 5,
+       "SOLAR": 4,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 4,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.995
+     },
+     {
+      "hour": 96.0,
+      "inventory": {
+       "M": 6557.9,
+       "C": 7893.0,
+       "D": 1112.0
+      },
+      "levels": {
+       "METAL_MINE": 8,
+       "CRYSTAL_MINE": 7,
+       "DEUT_SYNTH": 7,
+       "SOLAR": 6,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 5,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     },
+     {
+      "hour": 120.0,
+      "inventory": {
+       "M": 10000.0,
+       "C": 10000.0,
+       "D": 2074.8
+      },
+      "levels": {
+       "METAL_MINE": 9,
+       "CRYSTAL_MINE": 9,
+       "DEUT_SYNTH": 8,
+       "SOLAR": 7,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 6,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     },
+     {
+      "hour": 144.0,
+      "inventory": {
+       "M": 10000.0,
+       "C": 16320.9,
+       "D": 3071.5
+      },
+      "levels": {
+       "METAL_MINE": 10,
+       "CRYSTAL_MINE": 10,
+       "DEUT_SYNTH": 9,
+       "SOLAR": 8,
+       "M_STORAGE": 0,
+       "C_STORAGE": 1,
+       "D_STORAGE": 0,
+       "FUSION": 7,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     },
+     {
+      "hour": 168.0,
+      "inventory": {
+       "M": 10000.0,
+       "C": 22223.5,
+       "D": 4219.9
+      },
+      "levels": {
+       "METAL_MINE": 11,
+       "CRYSTAL_MINE": 11,
+       "DEUT_SYNTH": 10,
+       "SOLAR": 8,
+       "M_STORAGE": 0,
+       "C_STORAGE": 2,
+       "D_STORAGE": 0,
+       "FUSION": 8,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.996
+     }
+    ],
+    "milestones_hours": {
+     "METAL_MINE_L1": 0.01,
+     "CRYSTAL_MINE_L1": 0.03,
+     "DEUT_SYNTH_L1": 0.08,
+     "SOLAR_L1": 4.02,
+     "METAL_MINE_L2": 4.04,
+     "CRYSTAL_MINE_L2": 8.02,
+     "FUSION_L1": 12.05,
+     "SOLAR_L2": 24.03,
+     "DEUT_SYNTH_L2": 24.11,
+     "METAL_MINE_L3": 24.15,
+     "FUSION_L2": 32.08,
+     "SOLAR_L3": 32.13,
+     "CRYSTAL_MINE_L3": 32.16,
+     "DEUT_SYNTH_L3": 36.13,
+     "METAL_MINE_L4": 36.17,
+     "CRYSTAL_MINE_L4": 36.23,
+     "FUSION_L3": 48.12,
+     "SOLAR_L4": 48.19,
+     "DEUT_SYNTH_L4": 48.38,
+     "METAL_MINE_L5": 52.07,
+     "CRYSTAL_MINE_L5": 52.16,
+     "DEUT_SYNTH_L5": 56.28,
+     "METAL_MINE_L6": 56.39,
+     "CRYSTAL_MINE_L6": 60.15,
+     "FUSION_L4": 60.33,
+     "SOLAR_L5": 72.1,
+     "DEUT_SYNTH_L6": 72.53,
+     "METAL_MINE_L7": 72.69,
+     "FUSION_L5": 76.28,
+     "SOLAR_L6": 76.43,
+     "CRYSTAL_MINE_L7": 76.67,
+     "DEUT_SYNTH_L7": 84.64,
+     "METAL_MINE_L8": 84.88,
+     "CRYSTAL_MINE_L8": 96.38,
+     "DEUT_SYNTH_L8": 97.34,
+     "METAL_MINE_L9": 97.69,
+     "FUSION_L6": 100.42,
+     "SOLAR_L7": 100.65,
+     "CRYSTAL_MINE_L9": 104.6,
+     "DEUT_SYNTH_L9": 121.44,
+     "METAL_MINE_L10": 121.97,
+     "C_STORAGE_L1": 122.26,
+     "FUSION_L7": 124.63,
+     "SOLAR_L8": 124.97,
+     "CRYSTAL_MINE_L10": 128.96,
+     "DEUT_SYNTH_L10": 146.16,
+     "METAL_MINE_L11": 148.79,
+     "CRYSTAL_MINE_L11": 157.54,
+     "FUSION_L8": 158.48,
+     "C_STORAGE_L2": 158.95
+    },
+    "metrics": {
+     "K-E05_worst_cap_loss_ratio": 0.0808,
+     "K-E06_energy_low_time_ratio": 0.1349,
+     "K-E07_forced_idle_ratio": 0.1724,
+     "asset_value_v": 182658.6
+    },
+    "totals": {
+     "produced": {
+      "M": 79367.5,
+      "C": 48958.1,
+      "D": 5710.0
+     },
+     "consumed": {
+      "M": 64455.0,
+      "C": 23813.0,
+      "D": 1490.1
+     },
+     "cap_loss": {
+      "M": 6412.2,
+      "C": 3421.4,
+      "D": 0.0
+     }
+    },
+    "conservation": {
+     "ok": true,
+     "detail": {
+      "M": {
+       "inventory+transit": 9000.283,
+       "expected": 9000.283,
+       "diff": 1.4551915228366852e-11
+      },
+      "C": {
+       "inventory+transit": 22223.716,
+       "expected": 22223.716,
+       "diff": 7.275957614183426e-12
+      },
+      "D": {
+       "inventory+transit": 4219.892,
+       "expected": 4219.892,
+       "diff": 2.7284841053187847e-12
+      }
+     }
+    },
+    "events": 101
+   }
+  },
+  "runs": [
+   {
+    "behavior": "Normal",
+    "time_series": [
+     {
+      "hour": 0.0,
+      "inventory": {
+       "M": 500.0,
+       "C": 500.0,
+       "D": 0.0
+      },
+      "levels": {
+       "METAL_MINE": 0,
+       "CRYSTAL_MINE": 0,
+       "DEUT_SYNTH": 0,
+       "SOLAR": 0,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1.0
+     },
+     {
+      "hour": 6.0,
+      "inventory": {
+       "M": 72.5,
+       "C": 354.1,
+       "D": 10.6
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 1,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 1,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.532
+     },
+     {
+      "hour": 12.0,
+      "inventory": {
+       "M": 181.0,
+       "C": 412.2,
+       "D": 38.2
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 2,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 1,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.424
+     },
+     {
+      "hour": 24.0,
+      "inventory": {
+       "M": 818.7,
+       "C": 867.6,
+       "D": 149.9
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 2,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 2,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.932
+     },
+     {
+      "hour": 48.0,
+      "inventory": {
+       "M": 1909.5,
+       "C": 2058.6,
+       "D": 827.9
+      },
+      "levels": {
+       "METAL_MINE": 4,
+       "CRYSTAL_MINE": 4,
+       "DEUT_SYNTH": 3,
+       "SOLAR": 4,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.827
+     },
+     {
+      "hour": 72.0,
+      "inventory": {
+       "M": 3160.9,
+       "C": 4069.3,
+       "D": 2198.6
+      },
+      "levels": {
+       "METAL_MINE": 6,
+       "CRYSTAL_MINE": 6,
+       "DEUT_SYNTH": 5,
+       "SOLAR": 6,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.797
+     },
+     {
+      "hour": 96.0,
+      "inventory": {
+       "M": 7148.4,
+       "C": 7856.6,
+       "D": 4374.9
+      },
+      "levels": {
+       "METAL_MINE": 7,
+       "CRYSTAL_MINE": 7,
+       "DEUT_SYNTH": 6,
+       "SOLAR": 8,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.992
+     },
+     {
+      "hour": 120.0,
+      "inventory": {
+       "M": 7493.8,
+       "C": 10000.0,
+       "D": 7414.4
+      },
+      "levels": {
+       "METAL_MINE": 9,
+       "CRYSTAL_MINE": 8,
+       "DEUT_SYNTH": 8,
+       "SOLAR": 9,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.828
+     },
+     {
+      "hour": 144.0,
+      "inventory": {
+       "M": 10000.0,
+       "C": 15939.2,
+       "D": 10000.0
+      },
+      "levels": {
+       "METAL_MINE": 9,
+       "CRYSTAL_MINE": 9,
+       "DEUT_SYNTH": 8,
+       "SOLAR": 11,
+       "M_STORAGE": 0,
+       "C_STORAGE": 1,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     },
+     {
+      "hour": 168.0,
+      "inventory": {
+       "M": 10000.0,
+       "C": 20000.0,
+       "D": 14160.0
+      },
+      "levels": {
+       "METAL_MINE": 10,
+       "CRYSTAL_MINE": 10,
+       "DEUT_SYNTH": 9,
+       "SOLAR": 12,
+       "M_STORAGE": 0,
+       "C_STORAGE": 1,
+       "D_STORAGE": 1,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     }
+    ],
+    "milestones_hours": {
+     "METAL_MINE_L1": 0.01,
+     "CRYSTAL_MINE_L1": 0.03,
+     "DEUT_SYNTH_L1": 0.08,
+     "SOLAR_L1": 4.02,
+     "METAL_MINE_L2": 4.04,
+     "CRYSTAL_MINE_L2": 8.02,
+     "SOLAR_L2": 12.03,
+     "DEUT_SYNTH_L2": 24.08,
+     "METAL_MINE_L3": 24.12,
+     "SOLAR_L3": 24.16,
+     "SOLAR_L4": 28.07,
+     "CRYSTAL_MINE_L3": 28.1,
+     "DEUT_SYNTH_L3": 32.13,
+     "METAL_MINE_L4": 36.05,
+     "CRYSTAL_MINE_L4": 36.1,
+     "DEUT_SYNTH_L4": 48.19,
+     "SOLAR_L5": 48.29,
+     "METAL_MINE_L5": 48.36,
+     "SOLAR_L6": 52.15,
+     "CRYSTAL_MINE_L5": 52.24,
+     "DEUT_SYNTH_L5": 56.28,
+     "METAL_MINE_L6": 60.1,
+     "CRYSTAL_MINE_L6": 60.25,
+     "SOLAR_L7": 72.23,
+     "DEUT_SYNTH_L6": 72.66,
+     "METAL_MINE_L7": 72.81,
+     "SOLAR_L8": 80.34,
+     "CRYSTAL_MINE_L7": 80.58,
+     "DEUT_SYNTH_L7": 96.64,
+     "SOLAR_L9": 97.15,
+     "METAL_MINE_L8": 97.39,
+     "CRYSTAL_MINE_L8": 100.38,
+     "DEUT_SYNTH_L8": 104.96,
+     "METAL_MINE_L9": 108.35,
+     "SOLAR_L10": 120.77,
+     "CRYSTAL_MINE_L9": 121.37,
+     "C_STORAGE_L1": 121.66,
+     "SOLAR_L11": 129.15,
+     "DEUT_SYNTH_L9": 145.44,
+     "METAL_MINE_L10": 145.97,
+     "D_STORAGE_L1": 146.39,
+     "SOLAR_L12": 153.73,
+     "CRYSTAL_MINE_L10": 156.96
+    },
+    "metrics": {
+     "K-E05_worst_cap_loss_ratio": 0.0948,
+     "K-E06_energy_low_time_ratio": 0.3812,
+     "K-E07_forced_idle_ratio": 0.1724,
+     "asset_value_v": 188005.8
+    },
+    "totals": {
+     "produced": {
+      "M": 66859.8,
+      "C": 41383.5,
+      "D": 15642.9
+     },
+     "consumed": {
+      "M": 62345.0,
+      "C": 23799.0,
+      "D": 0.0
+     },
+     "cap_loss": {
+      "M": 3664.6,
+      "C": 968.3,
+      "D": 1482.8
+     }
+    },
+    "conservation": {
+     "ok": true,
+     "detail": {
+      "M": {
+       "inventory+transit": 1350.231,
+       "expected": 1350.231,
+       "diff": 1.141415850725025e-10
+      },
+      "C": {
+       "inventory+transit": 17116.154,
+       "expected": 17116.154,
+       "diff": 2.1827872842550278e-11
+      },
+      "D": {
+       "inventory+transit": 14160.087,
+       "expected": 14160.087,
+       "diff": 3.637978807091713e-12
+      }
+     }
+    },
+    "events": 87
+   },
+   {
+    "behavior": "Active",
+    "time_series": [
+     {
+      "hour": 0.0,
+      "inventory": {
+       "M": 500.0,
+       "C": 500.0,
+       "D": 0.0
+      },
+      "levels": {
+       "METAL_MINE": 0,
+       "CRYSTAL_MINE": 0,
+       "DEUT_SYNTH": 0,
+       "SOLAR": 0,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1.0
+     },
+     {
+      "hour": 6.0,
+      "inventory": {
+       "M": 144.0,
+       "C": 375.4,
+       "D": 21.2
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 1,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 1,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.532
+     },
+     {
+      "hour": 12.0,
+      "inventory": {
+       "M": 260.6,
+       "C": 495.6,
+       "D": 66.8
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 2,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 2,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.932
+     },
+     {
+      "hour": 24.0,
+      "inventory": {
+       "M": 529.2,
+       "C": 786.9,
+       "D": 242.1
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 2,
+       "DEUT_SYNTH": 2,
+       "SOLAR": 2,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.714
+     },
+     {
+      "hour": 48.0,
+      "inventory": {
+       "M": 2033.4,
+       "C": 2298.1,
+       "D": 972.4
+      },
+      "levels": {
+       "METAL_MINE": 4,
+       "CRYSTAL_MINE": 4,
+       "DEUT_SYNTH": 3,
+       "SOLAR": 5,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     },
+     {
+      "hour": 72.0,
+      "inventory": {
+       "M": 3607.8,
+       "C": 4713.9,
+       "D": 2493.1
+      },
+      "levels": {
+       "METAL_MINE": 6,
+       "CRYSTAL_MINE": 6,
+       "DEUT_SYNTH": 5,
+       "SOLAR": 7,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     },
+     {
+      "hour": 96.0,
+      "inventory": {
+       "M": 5358.0,
+       "C": 7717.3,
+       "D": 4827.7
+      },
+      "levels": {
+       "METAL_MINE": 8,
+       "CRYSTAL_MINE": 7,
+       "DEUT_SYNTH": 7,
+       "SOLAR": 8,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.837
+     },
+     {
+      "hour": 120.0,
+      "inventory": {
+       "M": 7473.9,
+       "C": 10000.0,
+       "D": 8279.8
+      },
+      "levels": {
+       "METAL_MINE": 9,
+       "CRYSTAL_MINE": 8,
+       "DEUT_SYNTH": 8,
+       "SOLAR": 10,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     },
+     {
+      "hour": 144.0,
+      "inventory": {
+       "M": 8374.0,
+       "C": 13796.8,
+       "D": 12551.2
+      },
+      "levels": {
+       "METAL_MINE": 9,
+       "CRYSTAL_MINE": 9,
+       "DEUT_SYNTH": 9,
+       "SOLAR": 11,
+       "M_STORAGE": 0,
+       "C_STORAGE": 1,
+       "D_STORAGE": 1,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     },
+     {
+      "hour": 168.0,
+      "inventory": {
+       "M": 10000.0,
+       "C": 20000.0,
+       "D": 17225.7
+      },
+      "levels": {
+       "METAL_MINE": 10,
+       "CRYSTAL_MINE": 10,
+       "DEUT_SYNTH": 10,
+       "SOLAR": 11,
+       "M_STORAGE": 0,
+       "C_STORAGE": 1,
+       "D_STORAGE": 1,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.864
+     }
+    ],
+    "milestones_hours": {
+     "METAL_MINE_L1": 0.01,
+     "CRYSTAL_MINE_L1": 0.03,
+     "DEUT_SYNTH_L1": 0.08,
+     "SOLAR_L1": 2.02,
+     "METAL_MINE_L2": 2.04,
+     "CRYSTAL_MINE_L2": 6.02,
+     "SOLAR_L2": 8.03,
+     "DEUT_SYNTH_L2": 14.08,
+     "METAL_MINE_L3": 24.03,
+     "SOLAR_L3": 24.08,
+     "CRYSTAL_MINE_L3": 24.11,
+     "SOLAR_L4": 26.07,
+     "DEUT_SYNTH_L3": 32.13,
+     "METAL_MINE_L4": 32.17,
+     "CRYSTAL_MINE_L4": 34.06,
+     "SOLAR_L5": 36.1,
+     "DEUT_SYNTH_L4": 48.19,
+     "METAL_MINE_L5": 48.26,
+     "CRYSTAL_MINE_L5": 48.35,
+     "SOLAR_L6": 50.15,
+     "DEUT_SYNTH_L5": 54.28,
+     "METAL_MINE_L6": 56.1,
+     "CRYSTAL_MINE_L6": 58.15,
+     "SOLAR_L7": 62.23,
+     "DEUT_SYNTH_L6": 72.43,
+     "METAL_MINE_L7": 72.58,
+     "CRYSTAL_MINE_L7": 72.82,
+     "SOLAR_L8": 76.34,
+     "DEUT_SYNTH_L7": 82.64,
+     "METAL_MINE_L8": 84.24,
+     "SOLAR_L9": 96.51,
+     "CRYSTAL_MINE_L8": 96.89,
+     "DEUT_SYNTH_L8": 100.96,
+     "SOLAR_L10": 106.77,
+     "METAL_MINE_L9": 110.35,
+     "CRYSTAL_MINE_L9": 120.6,
+     "DEUT_SYNTH_L9": 122.04,
+     "C_STORAGE_L1": 124.29,
+     "D_STORAGE_L1": 124.71,
+     "SOLAR_L11": 133.15,
+     "METAL_MINE_L10": 144.53,
+     "CRYSTAL_MINE_L10": 145.49,
+     "DEUT_SYNTH_L10": 154.16
+    },
+    "metrics": {
+     "K-E05_worst_cap_loss_ratio": 0.0487,
+     "K-E06_energy_low_time_ratio": 0.4667,
+     "K-E07_forced_idle_ratio": 0.4386,
+     "asset_value_v": 199942.7
+    },
+    "totals": {
+     "produced": {
+      "M": 67335.2,
+      "C": 42788.4,
+      "D": 17225.7
+     },
+     "consumed": {
+      "M": 62345.0,
+      "C": 23799.0,
+      "D": 0.0
+     },
+     "cap_loss": {
+      "M": 1978.0,
+      "C": 2084.3,
+      "D": 0.0
+     }
+    },
+    "conservation": {
+     "ok": true,
+     "detail": {
+      "M": {
+       "inventory+transit": 3512.2,
+       "expected": 3512.2,
+       "diff": 2.7284841053187847e-12
+      },
+      "C": {
+       "inventory+transit": 17405.133,
+       "expected": 17405.133,
+       "diff": 2.546585164964199e-11
+      },
+      "D": {
+       "inventory+transit": 17225.745,
+       "expected": 17225.745,
+       "diff": 0.0
+      }
+     }
+    },
+    "events": 87
+   },
+   {
+    "behavior": "Casual",
+    "time_series": [
+     {
+      "hour": 0.0,
+      "inventory": {
+       "M": 500.0,
+       "C": 500.0,
+       "D": 0.0
+      },
+      "levels": {
+       "METAL_MINE": 0,
+       "CRYSTAL_MINE": 0,
+       "DEUT_SYNTH": 0,
+       "SOLAR": 0,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1.0
+     },
+     {
+      "hour": 6.0,
+      "inventory": {
+       "M": 167.0,
+       "C": 386.0,
+       "D": 0.0
+      },
+      "levels": {
+       "METAL_MINE": 1,
+       "CRYSTAL_MINE": 1,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 0,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.0
+     },
+     {
+      "hour": 12.0,
+      "inventory": {
+       "M": 167.0,
+       "C": 386.0,
+       "D": 0.0
+      },
+      "levels": {
+       "METAL_MINE": 1,
+       "CRYSTAL_MINE": 1,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 0,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.0
+     },
+     {
+      "hour": 24.0,
+      "inventory": {
+       "M": 167.0,
+       "C": 386.0,
+       "D": 0.0
+      },
+      "levels": {
+       "METAL_MINE": 1,
+       "CRYSTAL_MINE": 1,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 0,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.0
+     },
+     {
+      "hour": 48.0,
+      "inventory": {
+       "M": 572.9,
+       "C": 503.1,
+       "D": 85.0
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 1,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 1,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.532
+     },
+     {
+      "hour": 72.0,
+      "inventory": {
+       "M": 1197.3,
+       "C": 1074.0,
+       "D": 461.1
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 2,
+       "DEUT_SYNTH": 2,
+       "SOLAR": 2,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.714
+     },
+     {
+      "hour": 96.0,
+      "inventory": {
+       "M": 2704.0,
+       "C": 2198.1,
+       "D": 889.3
+      },
+      "levels": {
+       "METAL_MINE": 3,
+       "CRYSTAL_MINE": 3,
+       "DEUT_SYNTH": 2,
+       "SOLAR": 3,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.859
+     },
+     {
+      "hour": 120.0,
+      "inventory": {
+       "M": 5468.7,
+       "C": 3546.5,
+       "D": 1692.3
+      },
+      "levels": {
+       "METAL_MINE": 4,
+       "CRYSTAL_MINE": 3,
+       "DEUT_SYNTH": 3,
+       "SOLAR": 4,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.924
+     },
+     {
+      "hour": 144.0,
+      "inventory": {
+       "M": 8027.5,
+       "C": 5358.4,
+       "D": 2791.5
+      },
+      "levels": {
+       "METAL_MINE": 4,
+       "CRYSTAL_MINE": 4,
+       "DEUT_SYNTH": 4,
+       "SOLAR": 5,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.982
+     },
+     {
+      "hour": 168.0,
+      "inventory": {
+       "M": 11791.0,
+       "C": 7751.3,
+       "D": 4069.0
+      },
+      "levels": {
+       "METAL_MINE": 5,
+       "CRYSTAL_MINE": 4,
+       "DEUT_SYNTH": 4,
+       "SOLAR": 6,
+       "M_STORAGE": 1,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     }
+    ],
+    "milestones_hours": {
+     "METAL_MINE_L1": 0.01,
+     "CRYSTAL_MINE_L1": 0.03,
+     "DEUT_SYNTH_L1": 0.08,
+     "SOLAR_L1": 32.02,
+     "METAL_MINE_L2": 32.04,
+     "CRYSTAL_MINE_L2": 48.02,
+     "SOLAR_L2": 48.05,
+     "DEUT_SYNTH_L2": 48.14,
+     "SOLAR_L3": 80.05,
+     "METAL_MINE_L3": 80.08,
+     "CRYSTAL_MINE_L3": 80.11,
+     "SOLAR_L4": 96.07,
+     "DEUT_SYNTH_L3": 96.19,
+     "METAL_MINE_L4": 96.24,
+     "SOLAR_L5": 128.1,
+     "CRYSTAL_MINE_L4": 128.16,
+     "DEUT_SYNTH_L4": 128.35,
+     "M_STORAGE_L1": 144.17,
+     "SOLAR_L6": 144.32,
+     "METAL_MINE_L5": 144.39
+    },
+    "metrics": {
+     "K-E05_worst_cap_loss_ratio": 0.0,
+     "K-E06_energy_low_time_ratio": 0.5708,
+     "K-E07_forced_idle_ratio": 0.0,
+     "asset_value_v": 48446.6
+    },
+    "totals": {
+     "produced": {
+      "M": 16919.1,
+      "C": 8910.3,
+      "D": 4069.0
+     },
+     "consumed": {
+      "M": 5628.0,
+      "C": 1659.0,
+      "D": 0.0
+     },
+     "cap_loss": {
+      "M": 0.0,
+      "C": 0.0,
+      "D": 0.0
+     }
+    },
+    "conservation": {
+     "ok": true,
+     "detail": {
+      "M": {
+       "inventory+transit": 11791.06,
+       "expected": 11791.06,
+       "diff": 7.275957614183426e-12
+      },
+      "C": {
+       "inventory+transit": 7751.291,
+       "expected": 7751.291,
+       "diff": 4.547473508864641e-12
+      },
+      "D": {
+       "inventory+transit": 4068.975,
+       "expected": 4068.975,
+       "diff": 0.0
+      }
+     }
+    },
+    "events": 40
+   },
+   {
+    "behavior": "Governor",
+    "time_series": [
+     {
+      "hour": 0.0,
+      "inventory": {
+       "M": 500.0,
+       "C": 500.0,
+       "D": 0.0
+      },
+      "levels": {
+       "METAL_MINE": 0,
+       "CRYSTAL_MINE": 0,
+       "DEUT_SYNTH": 0,
+       "SOLAR": 0,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1.0
+     },
+     {
+      "hour": 6.0,
+      "inventory": {
+       "M": 121.1,
+       "C": 373.3,
+       "D": 29.3
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 2,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 1,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.424
+     },
+     {
+      "hour": 12.0,
+      "inventory": {
+       "M": 314.6,
+       "C": 532.6,
+       "D": 74.9
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 2,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 2,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.932
+     },
+     {
+      "hour": 24.0,
+      "inventory": {
+       "M": 1066.3,
+       "C": 1033.8,
+       "D": 186.7
+      },
+      "levels": {
+       "METAL_MINE": 2,
+       "CRYSTAL_MINE": 2,
+       "DEUT_SYNTH": 1,
+       "SOLAR": 2,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.932
+     },
+     {
+      "hour": 48.0,
+      "inventory": {
+       "M": 2138.2,
+       "C": 2197.1,
+       "D": 858.4
+      },
+      "levels": {
+       "METAL_MINE": 4,
+       "CRYSTAL_MINE": 4,
+       "DEUT_SYNTH": 3,
+       "SOLAR": 4,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.827
+     },
+     {
+      "hour": 72.0,
+      "inventory": {
+       "M": 3321.3,
+       "C": 4314.0,
+       "D": 2213.8
+      },
+      "levels": {
+       "METAL_MINE": 6,
+       "CRYSTAL_MINE": 6,
+       "DEUT_SYNTH": 5,
+       "SOLAR": 6,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.797
+     },
+     {
+      "hour": 96.0,
+      "inventory": {
+       "M": 7207.4,
+       "C": 8274.8,
+       "D": 4366.5
+      },
+      "levels": {
+       "METAL_MINE": 7,
+       "CRYSTAL_MINE": 7,
+       "DEUT_SYNTH": 6,
+       "SOLAR": 8,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.992
+     },
+     {
+      "hour": 120.0,
+      "inventory": {
+       "M": 7536.5,
+       "C": 10000.0,
+       "D": 7388.9
+      },
+      "levels": {
+       "METAL_MINE": 9,
+       "CRYSTAL_MINE": 8,
+       "DEUT_SYNTH": 8,
+       "SOLAR": 9,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.828
+     },
+     {
+      "hour": 144.0,
+      "inventory": {
+       "M": 10000.0,
+       "C": 14916.0,
+       "D": 10000.0
+      },
+      "levels": {
+       "METAL_MINE": 9,
+       "CRYSTAL_MINE": 9,
+       "DEUT_SYNTH": 9,
+       "SOLAR": 10,
+       "M_STORAGE": 0,
+       "C_STORAGE": 1,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 0.873
+     },
+     {
+      "hour": 168.0,
+      "inventory": {
+       "M": 10000.0,
+       "C": 19901.0,
+       "D": 14095.0
+      },
+      "levels": {
+       "METAL_MINE": 10,
+       "CRYSTAL_MINE": 10,
+       "DEUT_SYNTH": 9,
+       "SOLAR": 12,
+       "M_STORAGE": 0,
+       "C_STORAGE": 1,
+       "D_STORAGE": 1,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      },
+      "energy_satisfaction": 1
+     }
+    ],
+    "milestones_hours": {
+     "METAL_MINE_L1": 0.01,
+     "CRYSTAL_MINE_L1": 0.03,
+     "DEUT_SYNTH_L1": 0.08,
+     "SOLAR_L1": 0.1,
+     "METAL_MINE_L2": 0.13,
+     "CRYSTAL_MINE_L2": 4.02,
+     "SOLAR_L2": 8.03,
+     "DEUT_SYNTH_L2": 24.08,
+     "METAL_MINE_L3": 24.12,
+     "SOLAR_L3": 24.16,
+     "CRYSTAL_MINE_L3": 24.2,
+     "DEUT_SYNTH_L3": 28.13,
+     "SOLAR_L4": 32.07,
+     "METAL_MINE_L4": 32.11,
+     "CRYSTAL_MINE_L4": 36.06,
+     "DEUT_SYNTH_L4": 48.19,
+     "SOLAR_L5": 48.29,
+     "METAL_MINE_L5": 48.36,
+     "CRYSTAL_MINE_L5": 48.45,
+     "SOLAR_L6": 52.15,
+     "DEUT_SYNTH_L5": 56.28,
+     "METAL_MINE_L6": 60.1,
+     "CRYSTAL_MINE_L6": 60.25,
+     "SOLAR_L7": 72.23,
+     "DEUT_SYNTH_L6": 72.66,
+     "METAL_MINE_L7": 72.81,
+     "CRYSTAL_MINE_L7": 76.24,
+     "SOLAR_L8": 80.34,
+     "DEUT_SYNTH_L7": 96.64,
+     "METAL_MINE_L8": 96.88,
+     "SOLAR_L9": 97.39,
+     "CRYSTAL_MINE_L8": 97.77,
+     "DEUT_SYNTH_L8": 104.96,
+     "METAL_MINE_L9": 108.35,
+     "SOLAR_L10": 120.77,
+     "CRYSTAL_MINE_L9": 121.37,
+     "C_STORAGE_L1": 121.66,
+     "DEUT_SYNTH_L9": 129.44,
+     "SOLAR_L11": 145.15,
+     "METAL_MINE_L10": 145.68,
+     "D_STORAGE_L1": 146.1,
+     "CRYSTAL_MINE_L10": 147.06,
+     "SOLAR_L12": 157.73
+    },
+    "metrics": {
+     "K-E05_worst_cap_loss_ratio": 0.1023,
+     "K-E06_energy_low_time_ratio": 0.4995,
+     "K-E07_forced_idle_ratio": 0.2414,
+     "asset_value_v": 187612.7
+    },
+    "totals": {
+     "produced": {
+      "M": 65085.9,
+      "C": 41791.1,
+      "D": 15702.0
+     },
+     "consumed": {
+      "M": 62345.0,
+      "C": 23799.0,
+      "D": 0.0
+     },
+     "cap_loss": {
+      "M": 1890.7,
+      "C": 1474.9,
+      "D": 1607.0
+     }
+    },
+    "conservation": {
+     "ok": true,
+     "detail": {
+      "M": {
+       "inventory+transit": 1350.231,
+       "expected": 1350.231,
+       "diff": 2.4101609596982598e-11
+      },
+      "C": {
+       "inventory+transit": 17017.168,
+       "expected": 17017.168,
+       "diff": 5.820766091346741e-11
+      },
+      "D": {
+       "inventory+transit": 14095.03,
+       "expected": 14095.03,
+       "diff": 7.275957614183426e-12
+      }
+     }
+    },
+    "events": 87
+   }
+  ]
+ }
+}

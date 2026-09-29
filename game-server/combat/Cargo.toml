@@ -1,0 +1,18 @@
+[package]
+name = "ogame-battle"
+version = "0.1.0"
+edition = "2021"
+description = "新OGame Rust Classic 战斗模块（doc/rust-combat-ffi-spec.md；canonical=web/src/game/battle.ts，参照=sim/combat.py 已逐位等价验证）"
+license = "proprietary"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# preserve_order：JSON 对象键保序（IndexMap 后端）——种子派生与单位展开顺序依赖插入序，
+# 与 TS/Python 的 dict 语义逐位一致，不得换成 BTreeMap。
+serde_json = { version = "1", features = ["preserve_order"] }
+
+[profile.release]
+opt-level = 3
+panic = "abort"   # panic 绝不跨 FFI 边界（规格 §7）；abort 只是双保险，正常路径全部 catch_unwind

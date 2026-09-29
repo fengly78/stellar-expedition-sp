@@ -1,0 +1,462 @@
+{
+ "source_report": "sim02-skeleton-20260923T145405Z.json",
+ "payload": {
+  "core_version": "Core Rules 1.0",
+  "ruleset": "Balance Data RC1",
+  "assumptions": {
+   "sim01": "sim01_time_assumptions.json",
+   "sim02": "sim02_assumptions.json"
+  },
+  "gate_evidence": false,
+  "gate_note": "科研/造船/航时/燃料/前置树均为实验假设（GAP-02）。机制验证用，不作 K-E08~K-E13 证据。",
+  "runs": [
+   {
+    "strategy": "deep",
+    "snapshots": [
+     {
+      "day": 7.0,
+      "planets": 1,
+      "inventory_total": {
+       "M": 17006.0,
+       "C": 25314.0,
+       "D": 16225.0
+      },
+      "techs": {
+       "ENERGY": 0,
+       "IMPULSE": 0,
+       "ESPIONAGE": 0,
+       "ASTRO": 0,
+       "COMPUTER": 0
+      },
+      "home_levels": {
+       "METAL_MINE": 11,
+       "CRYSTAL_MINE": 10,
+       "DEUT_SYNTH": 9,
+       "SOLAR": 12,
+       "M_STORAGE": 1,
+       "C_STORAGE": 2,
+       "D_STORAGE": 1,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      }
+     },
+     {
+      "day": 14.0,
+      "planets": 1,
+      "inventory_total": {
+       "M": 36000.0,
+       "C": 93128.0,
+       "D": 63224.0
+      },
+      "techs": {
+       "ENERGY": 0,
+       "IMPULSE": 0,
+       "ESPIONAGE": 0,
+       "ASTRO": 0,
+       "COMPUTER": 0
+      },
+      "home_levels": {
+       "METAL_MINE": 14,
+       "CRYSTAL_MINE": 13,
+       "DEUT_SYNTH": 13,
+       "SOLAR": 15,
+       "M_STORAGE": 2,
+       "C_STORAGE": 4,
+       "D_STORAGE": 4,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      }
+     },
+     {
+      "day": 21.0,
+      "planets": 1,
+      "inventory_total": {
+       "M": 54888.0,
+       "C": 180899.0,
+       "D": 137204.0
+      },
+      "techs": {
+       "ENERGY": 0,
+       "IMPULSE": 0,
+       "ESPIONAGE": 0,
+       "ASTRO": 0,
+       "COMPUTER": 0
+      },
+      "home_levels": {
+       "METAL_MINE": 15,
+       "CRYSTAL_MINE": 16,
+       "DEUT_SYNTH": 14,
+       "SOLAR": 17,
+       "M_STORAGE": 4,
+       "C_STORAGE": 6,
+       "D_STORAGE": 5,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      }
+     },
+     {
+      "day": 30.0,
+      "planets": 1,
+      "inventory_total": {
+       "M": 62960.0,
+       "C": 333992.0,
+       "D": 255728.0
+      },
+      "techs": {
+       "ENERGY": 0,
+       "IMPULSE": 0,
+       "ESPIONAGE": 0,
+       "ASTRO": 0,
+       "COMPUTER": 0
+      },
+      "home_levels": {
+       "METAL_MINE": 16,
+       "CRYSTAL_MINE": 17,
+       "DEUT_SYNTH": 16,
+       "SOLAR": 18,
+       "M_STORAGE": 5,
+       "C_STORAGE": 7,
+       "D_STORAGE": 7,
+       "FUSION": 0,
+       "LAB": 0,
+       "SHIPYARD": 0
+      }
+     }
+    ],
+    "first_colony_day": null,
+    "final": {
+     "planets": 1,
+     "asset_value_v": 3409694.0,
+     "inventory_v": 1498129.0,
+     "building_invested_v": 1911565.0,
+     "research_invested_v": 0.0,
+     "colony_ships_consumed_v": 0.0,
+     "fuel_consumed_v": 0.0,
+     "colony_cap": 0
+    },
+    "conservation": {
+     "ok": true,
+     "detail": {
+      "M": {
+       "inventory+transit": 62960.934,
+       "expected": 62960.934,
+       "diff": 2.546585164964199e-09
+      },
+      "C": {
+       "inventory+transit": 333992.27,
+       "expected": 333992.27,
+       "diff": 7.741618901491165e-09
+      },
+      "D": {
+       "inventory+transit": 255727.762,
+       "expected": 255727.762,
+       "diff": 0.0
+      }
+     }
+    },
+    "events": 86
+   },
+   {
+    "strategy": "expansion",
+    "snapshots": [
+     {
+      "day": 7.0,
+      "planets": 1,
+      "inventory_total": {
+       "M": 10000.0,
+       "C": 8012.0,
+       "D": 9976.0
+      },
+      "techs": {
+       "ENERGY": 1,
+       "IMPULSE": 1,
+       "ESPIONAGE": 2,
+       "ASTRO": 0,
+       "COMPUTER": 0
+      },
+      "home_levels": {
+       "METAL_MINE": 10,
+       "CRYSTAL_MINE": 9,
+       "DEUT_SYNTH": 9,
+       "SOLAR": 10,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 3,
+       "SHIPYARD": 0
+      }
+     },
+     {
+      "day": 14.0,
+      "planets": 2,
+      "inventory_total": {
+       "M": 40569.0,
+       "C": 16153.0,
+       "D": 32997.0
+      },
+      "techs": {
+       "ENERGY": 1,
+       "IMPULSE": 1,
+       "ESPIONAGE": 2,
+       "ASTRO": 2,
+       "COMPUTER": 0
+      },
+      "home_levels": {
+       "METAL_MINE": 13,
+       "CRYSTAL_MINE": 12,
+       "DEUT_SYNTH": 12,
+       "SOLAR": 14,
+       "M_STORAGE": 2,
+       "C_STORAGE": 1,
+       "D_STORAGE": 2,
+       "FUSION": 0,
+       "LAB": 3,
+       "SHIPYARD": 4
+      }
+     },
+     {
+      "day": 21.0,
+      "planets": 3,
+      "inventory_total": {
+       "M": 47298.0,
+       "C": 61735.0,
+       "D": 105940.0
+      },
+      "techs": {
+       "ENERGY": 1,
+       "IMPULSE": 1,
+       "ESPIONAGE": 2,
+       "ASTRO": 3,
+       "COMPUTER": 0
+      },
+      "home_levels": {
+       "METAL_MINE": 15,
+       "CRYSTAL_MINE": 15,
+       "DEUT_SYNTH": 13,
+       "SOLAR": 16,
+       "M_STORAGE": 2,
+       "C_STORAGE": 2,
+       "D_STORAGE": 4,
+       "FUSION": 0,
+       "LAB": 3,
+       "SHIPYARD": 4
+      }
+     },
+     {
+      "day": 30.0,
+      "planets": 3,
+      "inventory_total": {
+       "M": 97975.0,
+       "C": 133600.0,
+       "D": 224134.0
+      },
+      "techs": {
+       "ENERGY": 1,
+       "IMPULSE": 1,
+       "ESPIONAGE": 2,
+       "ASTRO": 3,
+       "COMPUTER": 0
+      },
+      "home_levels": {
+       "METAL_MINE": 15,
+       "CRYSTAL_MINE": 15,
+       "DEUT_SYNTH": 13,
+       "SOLAR": 16,
+       "M_STORAGE": 2,
+       "C_STORAGE": 2,
+       "D_STORAGE": 4,
+       "FUSION": 0,
+       "LAB": 3,
+       "SHIPYARD": 4
+      }
+     }
+    ],
+    "first_colony_day": 13.42,
+    "final": {
+     "planets": 3,
+     "asset_value_v": 2722870.0,
+     "inventory_v": 1011305.0,
+     "building_invested_v": 1452465.0,
+     "research_invested_v": 241100.0,
+     "colony_ships_consumed_v": 120000.0,
+     "fuel_consumed_v": 6900.0,
+     "colony_cap": 3
+    },
+    "conservation": {
+     "ok": true,
+     "detail": {
+      "M": {
+       "inventory+transit": 80459.236,
+       "expected": 80459.236,
+       "diff": 1.6589183360338211e-09
+      },
+      "C": {
+       "inventory+transit": 129221.306,
+       "expected": 129221.306,
+       "diff": 2.750311978161335e-09
+      },
+      "D": {
+       "inventory+transit": 224134.447,
+       "expected": 224134.447,
+       "diff": 1.6880221664905548e-09
+      }
+     }
+    },
+    "events": 239
+   },
+   {
+    "strategy": "balanced",
+    "snapshots": [
+     {
+      "day": 7.0,
+      "planets": 1,
+      "inventory_total": {
+       "M": 10000.0,
+       "C": 8012.0,
+       "D": 9976.0
+      },
+      "techs": {
+       "ENERGY": 1,
+       "IMPULSE": 1,
+       "ESPIONAGE": 2,
+       "ASTRO": 0,
+       "COMPUTER": 0
+      },
+      "home_levels": {
+       "METAL_MINE": 10,
+       "CRYSTAL_MINE": 9,
+       "DEUT_SYNTH": 9,
+       "SOLAR": 10,
+       "M_STORAGE": 0,
+       "C_STORAGE": 0,
+       "D_STORAGE": 0,
+       "FUSION": 0,
+       "LAB": 3,
+       "SHIPYARD": 0
+      }
+     },
+     {
+      "day": 14.0,
+      "planets": 2,
+      "inventory_total": {
+       "M": 41834.0,
+       "C": 23911.0,
+       "D": 41506.0
+      },
+      "techs": {
+       "ENERGY": 1,
+       "IMPULSE": 1,
+       "ESPIONAGE": 2,
+       "ASTRO": 1,
+       "COMPUTER": 0
+      },
+      "home_levels": {
+       "METAL_MINE": 13,
+       "CRYSTAL_MINE": 13,
+       "DEUT_SYNTH": 11,
+       "SOLAR": 14,
+       "M_STORAGE": 2,
+       "C_STORAGE": 1,
+       "D_STORAGE": 3,
+       "FUSION": 0,
+       "LAB": 3,
+       "SHIPYARD": 4
+      }
+     },
+     {
+      "day": 21.0,
+      "planets": 2,
+      "inventory_total": {
+       "M": 96570.0,
+       "C": 124275.0,
+       "D": 142679.0
+      },
+      "techs": {
+       "ENERGY": 1,
+       "IMPULSE": 1,
+       "ESPIONAGE": 2,
+       "ASTRO": 1,
+       "COMPUTER": 0
+      },
+      "home_levels": {
+       "METAL_MINE": 15,
+       "CRYSTAL_MINE": 15,
+       "DEUT_SYNTH": 13,
+       "SOLAR": 16,
+       "M_STORAGE": 3,
+       "C_STORAGE": 4,
+       "D_STORAGE": 5,
+       "FUSION": 0,
+       "LAB": 3,
+       "SHIPYARD": 4
+      }
+     },
+     {
+      "day": 30.0,
+      "planets": 2,
+      "inventory_total": {
+       "M": 123200.0,
+       "C": 318074.0,
+       "D": 289833.0
+      },
+      "techs": {
+       "ENERGY": 1,
+       "IMPULSE": 1,
+       "ESPIONAGE": 2,
+       "ASTRO": 1,
+       "COMPUTER": 0
+      },
+      "home_levels": {
+       "METAL_MINE": 15,
+       "CRYSTAL_MINE": 15,
+       "DEUT_SYNTH": 14,
+       "SOLAR": 17,
+       "M_STORAGE": 3,
+       "C_STORAGE": 5,
+       "D_STORAGE": 5,
+       "FUSION": 0,
+       "LAB": 3,
+       "SHIPYARD": 4
+      }
+     }
+    ],
+    "first_colony_day": 12.33,
+    "final": {
+     "planets": 2,
+     "asset_value_v": 3536129.0,
+     "inventory_v": 1628848.0,
+     "building_invested_v": 1840181.0,
+     "research_invested_v": 49100.0,
+     "colony_ships_consumed_v": 60000.0,
+     "fuel_consumed_v": 3900.0,
+     "colony_cap": 2
+    },
+    "conservation": {
+     "ok": true,
+     "detail": {
+      "M": {
+       "inventory+transit": 123200.0,
+       "expected": 123200.0,
+       "diff": 4.43833414465189e-09
+      },
+      "C": {
+       "inventory+transit": 318074.7,
+       "expected": 318074.7,
+       "diff": 2.2118911147117615e-09
+      },
+      "D": {
+       "inventory+transit": 289832.845,
+       "expected": 289832.845,
+       "diff": 1.4551915228366852e-09
+      }
+     }
+    },
+    "events": 185
+   }
+  ]
+ }
+}

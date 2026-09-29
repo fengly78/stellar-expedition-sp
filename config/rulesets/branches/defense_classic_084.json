@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "name": "defense_classic_084",
+    "description": "CR-20260923-005 候选（SOURCE-02）：防御设施对象族——经典 0.84 造价/属性权威值，参战=第二防守舰队，修复 70%±10（确定性种子），防御残骸率 0（经典 did=0）。",
+    "base_ruleset": "balance_rc1",
+    "status": "Candidate",
+    "created_at": "2026-09-23",
+    "source": "upstream-ogamespec game/core/techs.php:262-271（造价）、316-324（UnitParam）、330-356（无速射）；battle.php:32-94（修复）"
+  },
+  "parameters": [
+    {"key": "DEFENSE.ROCKET", "value": {"M": 2000, "C": 0, "D": 0, "A": 80, "S": 20, "H": 200, "unit_id": 401, "rapidfire": {}}, "unit": "单价/属性", "type": "object", "status": "Candidate", "source": "经典 GID_D_RL"},
+    {"key": "DEFENSE.LIGHT_LASER", "value": {"M": 1500, "C": 500, "D": 0, "A": 100, "S": 25, "H": 200, "unit_id": 402, "rapidfire": {}}, "unit": "单价/属性", "type": "object", "status": "Candidate", "source": "经典 GID_D_LL"},
+    {"key": "DEFENSE.HEAVY_LASER", "value": {"M": 6000, "C": 2000, "D": 0, "A": 250, "S": 100, "H": 800, "unit_id": 403, "rapidfire": {}}, "unit": "单价/属性", "type": "object", "status": "Candidate", "source": "经典 GID_D_HL"},
+    {"key": "DEFENSE.GAUSS", "value": {"M": 20000, "C": 15000, "D": 2000, "A": 1100, "S": 200, "H": 3500, "unit_id": 404, "rapidfire": {}}, "unit": "单价/属性", "type": "object", "status": "Candidate", "source": "经典 GID_D_GAUSS"},
+    {"key": "DEFENSE.ION", "value": {"M": 2000, "C": 6000, "D": 0, "A": 150, "S": 500, "H": 800, "unit_id": 405, "rapidfire": {}}, "unit": "单价/属性", "type": "object", "status": "Candidate", "source": "经典 GID_D_ION"},
+    {"key": "DEFENSE.PLASMA", "value": {"M": 50000, "C": 50000, "D": 30000, "A": 3000, "S": 300, "H": 10000, "unit_id": 406, "rapidfire": {}}, "unit": "单价/属性", "type": "object", "status": "Candidate", "source": "经典 GID_D_PLASMA"},
+    {"key": "DEFENSE.SMALL_DOME", "value": {"M": 10000, "C": 10000, "D": 0, "A": 1, "S": 2000, "H": 2000, "unit_id": 407, "rapidfire": {}, "max": 1}, "unit": "单价/属性", "type": "object", "status": "Candidate", "source": "经典 GID_D_SDOME（每星限 1）"},
+    {"key": "DEFENSE.LARGE_DOME", "value": {"M": 50000, "C": 50000, "D": 0, "A": 1, "S": 10000, "H": 10000, "unit_id": 408, "rapidfire": {}, "max": 1}, "unit": "单价/属性", "type": "object", "status": "Candidate", "source": "经典 GID_D_LDOME（每星限 1）"},
+    {"key": "REQUIRES.DEFENSE.ROCKET", "value": {}, "unit": "前置", "type": "object", "status": "Candidate", "source": "经典无前置"},
+    {"key": "REQUIRES.DEFENSE.LIGHT_LASER", "value": {}, "unit": "前置", "type": "object", "status": "Candidate", "source": "经典无前置"},
+    {"key": "REQUIRES.DEFENSE.HEAVY_LASER", "value": {}, "unit": "前置", "type": "object", "status": "Candidate", "source": "经典无前置"},
+    {"key": "REQUIRES.DEFENSE.GAUSS", "value": {}, "unit": "前置", "type": "object", "status": "Candidate", "source": "经典前置（实验室依赖）MVP 简化为空，后续 CR 收紧"},
+    {"key": "REQUIRES.DEFENSE.ION", "value": {}, "unit": "前置", "type": "object", "status": "Candidate", "source": "MVP 简化为空"},
+    {"key": "REQUIRES.DEFENSE.PLASMA", "value": {}, "unit": "前置", "type": "object", "status": "Candidate", "source": "MVP 简化为空"},
+    {"key": "REQUIRES.DEFENSE.SMALL_DOME", "value": {}, "unit": "前置", "type": "object", "status": "Candidate", "source": "MVP 简化为空"},
+    {"key": "REQUIRES.DEFENSE.LARGE_DOME", "value": {}, "unit": "前置", "type": "object", "status": "Candidate", "source": "MVP 简化为空"},
+    {"key": "COMBAT.DEFENSE_DEBRIS_RATE", "value": 0, "unit": "比例", "type": "number", "status": "Candidate", "source": "经典 did=0（install.php:468-469）"},
+    {"key": "COMBAT.DEFENSE_REPAIR", "value": {"base": 70, "delta": 10}, "unit": "百分比", "type": "object", "status": "Candidate", "source": "经典 battle.php:32-94（70%±10）"}
+  ]
+}

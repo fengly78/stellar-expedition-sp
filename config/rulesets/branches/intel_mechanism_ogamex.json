@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "name": "intel_mechanism_ogamex",
+    "description": "CR-20260923-004 A/B 候选值：SHIP unit_id 上游标识 + 反侦察/揭示机制参数（OGameX 0.14.0 同构）。批准前供测试与机制验证使用，不进入 RC1。",
+    "base_ruleset": "balance_rc1",
+    "status": "Candidate",
+    "created_at": "2026-09-23",
+    "source": "doc/governance/CR-20260923-004-ogamex-mechanism-completion.md"
+  },
+  "parameters": [
+    {"key": "SHIP.SMALL_CARGO.unit_id", "value": 202, "unit": "标识", "type": "integer", "status": "Candidate", "source": "上游 CivilShipObjects.php"},
+    {"key": "SHIP.LIGHT.unit_id", "value": 204, "unit": "标识", "type": "integer", "status": "Candidate", "source": "上游 MilitaryShipObjects.php"},
+    {"key": "SHIP.HEAVY.unit_id", "value": 205, "unit": "标识", "type": "integer", "status": "Candidate", "source": "上游 MilitaryShipObjects.php"},
+    {"key": "SHIP.COLONY.unit_id", "value": 208, "unit": "标识", "type": "integer", "status": "Candidate", "source": "上游 CivilShipObjects.php"},
+    {"key": "SHIP.SCOUT.unit_id", "value": 210, "unit": "标识", "type": "integer", "status": "Candidate", "source": "上游 CivilShipObjects.php"},
+    {"key": "INTEL.COUNTER_ESP", "value": {"divisor": 4, "level_offset": 1}, "unit": "参数组", "type": "object", "status": "Candidate", "source": "上游 CounterEspionageService.php:24-53"},
+    {"key": "INTEL.REVEAL", "value": {"gap_exponent": 2, "fields": {"ships": {"probes": 2, "level": 1}, "defense": {"probes": 3, "level": 2}, "buildings": {"probes": 5, "level": 3}, "research": {"probes": 7, "level": 4}}}, "unit": "参数组", "type": "object", "status": "Candidate", "source": "上游 EspionageMission.php:457-510；差异：剩余探针按存活封顶"}
+  ]
+}

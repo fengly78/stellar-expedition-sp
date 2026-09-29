@@ -1,0 +1,260 @@
+{
+ "source_report": "sim03-skeleton-20260923T145405Z.json",
+ "payload": {
+  "core_version": "Core Rules 1.0",
+  "ruleset": "Balance Data RC1",
+  "assumptions": "sim03_assumptions.json",
+  "engine_equivalence": "sim/combat.py 与 web/src/game/battle.ts 同输入同输出（种子 42 等比对，140 单位 6 回合一致）",
+  "gate_evidence": false,
+  "gate_note": "科技口径实验、燃料记 0、rapidfire 空缺、种子数 200（正式 1000~10000）。不作 K-C01~03 证据。",
+  "groups": [
+   {
+    "group": "G1-mirror-LF",
+    "attacker_comp": {
+     "LIGHT": 80
+    },
+    "defender_comp": {
+     "LIGHT": 80
+    },
+    "attacker_tech": 0,
+    "defender_tech": 0,
+    "attacker_budget_v": 400000,
+    "defender_budget_v": 400000,
+    "budget_margin_v": 0,
+    "seeds": 200,
+    "attacker_win_rate": 0.0,
+    "attacker_loss_v": {
+     "mean": 294450,
+     "p10": 250000.0,
+     "p50": 295000.0,
+     "p90": 335000.0
+    },
+    "defender_loss_v": {
+     "mean": 303825,
+     "p10": 264500.0,
+     "p50": 305000.0,
+     "p90": 345500.0
+    },
+    "exchange_ratio": {
+     "mean": 1.056,
+     "p50": 1.017,
+     "zero_loss_runs": 0,
+     "note": "攻方零损失种子单列，不入交换比（06.4 防除零）"
+    },
+    "loot_v_mean": null,
+    "debris_v_mean": 72918.0,
+    "net_profit_v": {
+     "mean": -294450.0,
+     "p10": -335000.0,
+     "fuel_note": "燃料 TBD 记 0"
+    }
+   },
+   {
+    "group": "G2-LF-vs-HF",
+    "attacker_comp": {
+     "LIGHT": 80
+    },
+    "defender_comp": {
+     "HEAVY": 28
+    },
+    "attacker_tech": 0,
+    "defender_tech": 0,
+    "attacker_budget_v": 400000,
+    "defender_budget_v": 392000,
+    "budget_margin_v": 8000,
+    "seeds": 200,
+    "attacker_win_rate": 0.01,
+    "attacker_loss_v": {
+     "mean": 305200,
+     "p10": 269500.0,
+     "p50": 305000.0,
+     "p90": 345000.0
+    },
+    "defender_loss_v": {
+     "mean": 284690,
+     "p10": 210000.0,
+     "p50": 287000.0,
+     "p90": 350000.0
+    },
+    "exchange_ratio": {
+     "mean": 0.957,
+     "p50": 0.933,
+     "zero_loss_runs": 0,
+     "note": "攻方零损失种子单列，不入交换比（06.4 防除零）"
+    },
+    "loot_v_mean": null,
+    "debris_v_mean": 61005.0,
+    "net_profit_v": {
+     "mean": -305200.0,
+     "p10": -345000.0,
+     "fuel_note": "燃料 TBD 记 0"
+    }
+   },
+   {
+    "group": "G3-HF-vs-LF",
+    "attacker_comp": {
+     "HEAVY": 28
+    },
+    "defender_comp": {
+     "LIGHT": 80
+    },
+    "attacker_tech": 0,
+    "defender_tech": 0,
+    "attacker_budget_v": 392000,
+    "defender_budget_v": 400000,
+    "budget_margin_v": 8000,
+    "seeds": 200,
+    "attacker_win_rate": 0.0,
+    "attacker_loss_v": {
+     "mean": 282240,
+     "p10": 210000.0,
+     "p50": 280000.0,
+     "p90": 337400.0
+    },
+    "defender_loss_v": {
+     "mean": 306975,
+     "p10": 270000.0,
+     "p50": 305000.0,
+     "p90": 345000.0
+    },
+    "exchange_ratio": {
+     "mean": 1.154,
+     "p50": 1.054,
+     "zero_loss_runs": 0,
+     "note": "攻方零损失种子单列，不入交换比（06.4 防除零）"
+    },
+    "loot_v_mean": null,
+    "debris_v_mean": 73674.0,
+    "net_profit_v": {
+     "mean": -282240.0,
+     "p10": -337400.0,
+     "fuel_note": "燃料 TBD 记 0"
+    }
+   },
+   {
+    "group": "G4-LF+6tech-vs-HF",
+    "attacker_comp": {
+     "LIGHT": 80
+    },
+    "defender_comp": {
+     "HEAVY": 28
+    },
+    "attacker_tech": 6,
+    "defender_tech": 0,
+    "attacker_budget_v": 400000,
+    "defender_budget_v": 392000,
+    "budget_margin_v": 8000,
+    "seeds": 200,
+    "attacker_win_rate": 1.0,
+    "attacker_loss_v": {
+     "mean": 91625,
+     "p10": 70000.0,
+     "p50": 90000.0,
+     "p90": 115000.0
+    },
+    "defender_loss_v": {
+     "mean": 392000,
+     "p10": 392000.0,
+     "p50": 392000.0,
+     "p90": 392000.0
+    },
+    "exchange_ratio": {
+     "mean": 4.441,
+     "p50": 4.356,
+     "zero_loss_runs": 0,
+     "note": "攻方零损失种子单列，不入交换比（06.4 防除零）"
+    },
+    "loot_v_mean": null,
+    "debris_v_mean": 84000.0,
+    "net_profit_v": {
+     "mean": -91625.0,
+     "p10": -115000.0,
+     "fuel_note": "燃料 TBD 记 0"
+    }
+   },
+   {
+    "group": "G5-HF+6tech-vs-LF",
+    "attacker_comp": {
+     "HEAVY": 28
+    },
+    "defender_comp": {
+     "LIGHT": 80
+    },
+    "attacker_tech": 6,
+    "defender_tech": 0,
+    "attacker_budget_v": 392000,
+    "defender_budget_v": 400000,
+    "budget_margin_v": 8000,
+    "seeds": 200,
+    "attacker_win_rate": 0.265,
+    "attacker_loss_v": {
+     "mean": 54880,
+     "p10": 28000.0,
+     "p50": 56000.0,
+     "p90": 84000.0
+    },
+    "defender_loss_v": {
+     "mean": 390825,
+     "p10": 380000.0,
+     "p50": 395000.0,
+     "p90": 400000.0
+    },
+    "exchange_ratio": {
+     "mean": 9.065,
+     "p50": 7.009,
+     "zero_loss_runs": 2,
+     "note": "攻方零损失种子单列，不入交换比（06.4 防除零）"
+    },
+    "loot_v_mean": null,
+    "debris_v_mean": 93798.0,
+    "net_profit_v": {
+     "mean": -54880.0,
+     "p10": -84000.0,
+     "fuel_note": "燃料 TBD 记 0"
+    }
+   },
+   {
+    "group": "G6-raid-smoke",
+    "attacker_comp": {
+     "LIGHT": 80,
+     "SMALL_CARGO": 5
+    },
+    "defender_comp": {
+     "HEAVY": 30
+    },
+    "attacker_tech": 0,
+    "defender_tech": 0,
+    "attacker_budget_v": 430000,
+    "defender_budget_v": 420000,
+    "budget_margin_v": 10000,
+    "seeds": 200,
+    "attacker_win_rate": 0.0,
+    "attacker_loss_v": {
+     "mean": 341090,
+     "p10": 302900.0,
+     "p50": 344500.0,
+     "p90": 375300.0
+    },
+    "defender_loss_v": {
+     "mean": 248920,
+     "p10": 182000.0,
+     "p50": 252000.0,
+     "p90": 309400.0
+    },
+    "exchange_ratio": {
+     "mean": 0.745,
+     "p50": 0.707,
+     "zero_loss_runs": 0,
+     "note": "攻方零损失种子单列，不入交换比（06.4 防除零）"
+    },
+    "loot_v_mean": 9090.0,
+    "debris_v_mean": 53340.0,
+    "net_profit_v": {
+     "mean": -332000.0,
+     "p10": -372740.0,
+     "fuel_note": "燃料 TBD 记 0"
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,1557 @@
+{
+  "meta": {
+    "ruleset_version": "Balance Data RC1",
+    "core_version": "Core Rules 1.0",
+    "baseline_document": "新OGame_游戏设计与工程基线_V1.3.docx",
+    "status": "Frozen",
+    "created_at": "2026-09-21",
+    "effective_at": "2026-09-23",
+    "deprecated_at": null,
+    "hash": "994424c07ac226cd5222b6f0062410ceacc46b61465a0c720d12b5ddda9c2ef5",
+    "notes": "RC1 批准冻结（2026-09-23 所有者批准 CR-002/003/004/005+经典机制组，执行记录 tools/cr_batch_apply_20260923.py）。value=null 表示 TBD 的规则不再适用——本版零 TBD。hash 按 config_validate 输出回填。 2026-09-28：F-08 由 Frozen 降级为 Candidate（线上为常量节奏公式，详见 tools/verify_f08_vs_impl.py）；本次变更前 hash=d8f1d02d8f8815021cff0d8d1c5dc47e28093dcabc2dc43850bab52373513ef9。"
+  },
+  "formulas": [
+    {
+      "id": "F-01",
+      "name": "升级成本",
+      "expression": "C_r(L) = ceil(C_r,1 * g^(L-1)), L>=1",
+      "status": "Candidate",
+      "source": "V1.3 §05.2"
+    },
+    {
+      "id": "F-02",
+      "name": "矿场基础产量",
+      "expression": "P_r(0)=0; P_r(L)=p_r*L*a_r^(L-1), L>=1",
+      "status": "Candidate",
+      "source": "V1.3 §05.2"
+    },
+    {
+      "id": "F-03",
+      "name": "实际产量",
+      "expression": "P_actual = P_r(L)*e*B_r; e=min(1,E_supply/E_need); E_need=0 时 e=1",
+      "status": "Candidate",
+      "source": "V1.3 §05.2"
+    },
+    {
+      "id": "F-04",
+      "name": "仓容",
+      "expression": "S(L)=S0+S1*(g^L-1)/(g-1), L>=0",
+      "status": "Candidate",
+      "source": "V1.3 §05.2"
+    },
+    {
+      "id": "F-05",
+      "name": "内部资源估值",
+      "expression": "V(M,C,D)=M+2C+3D；仅分析/AI 决策，非交易汇率",
+      "status": "Candidate",
+      "source": "V1.3 §05.2"
+    },
+    {
+      "id": "F-06",
+      "name": "殖民容量与任务槽",
+      "expression": "Pmax=1+ceil(A/2)；Fmax=2+ComputerLevel",
+      "status": "Candidate",
+      "source": "V1.3 §05.2"
+    },
+    {
+      "id": "F-07",
+      "name": "军事科技线性增益",
+      "expression": "X = X0*(1+k*L)；中心 k=0.05，测试 0.04/0.05/0.06",
+      "status": "Candidate",
+      "source": "V1.3 §05.2"
+    },
+    {
+      "id": "F-08",
+      "name": "建筑时间原式",
+      "expression": "T=max(T_min, ceil(3600*(M+C)/(2500*(1+R)*2^N*speed)))（上游同构式，仅线下推演用）",
+      "status": "Candidate",
+      "source": "V1.3 §05.2；CR-003 E 批准；f08 校准 universe_speed=1。2026-09-28 降级 Frozen->Candidate：线上实际实现是 baseTime*factor^L/SPEED/(1+R)（objects.ts buildingTime），不由造价推导、无 2^N 加速（id 34 纳米工厂未实现）、无 T_min 下限。本式仅供 rules/formulas.py 线下推演与 SIM 对照，不等于线上行为；线上常量节奏是 v1.0.0 已发布的设计，改动会破坏存量存档与全部平衡。裁决记录见 doc/governance/SOURCE-02-codecross-check-2026-09-28.md，可用 python tools/verify_f08_vs_impl.py 复核。"
+    },
+    {
+      "id": "F-09",
+      "name": "总督优势",
+      "expression": "G=V_governor/V_normal-1；V_normal=0 标不可计算",
+      "status": "Candidate",
+      "source": "V1.3 §05.2"
+    },
+    {
+      "id": "F-10",
+      "name": "单次袭击净收益",
+      "expression": "Profit=V_loot+V_actual_recovered_debris-V_destroyed_ships-V_fuel；MVP 回收项为零",
+      "status": "Candidate",
+      "source": "V1.3 §05.2"
+    }
+  ],
+  "parameters": [
+    {
+      "key": "RESOURCE.M.PRODUCTION",
+      "value": {
+        "p": 30,
+        "a": 1.12
+      },
+      "unit": "资源/小时",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3",
+      "formula": "F-02"
+    },
+    {
+      "key": "RESOURCE.C.PRODUCTION",
+      "value": {
+        "p": 20,
+        "a": 1.12
+      },
+      "unit": "资源/小时",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3",
+      "formula": "F-02"
+    },
+    {
+      "key": "RESOURCE.D.PRODUCTION",
+      "value": {
+        "p": 10,
+        "a": 1.1,
+        "test_range": [
+          10,
+          12,
+          15
+        ]
+      },
+      "unit": "资源/小时",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3",
+      "formula": "F-02"
+    },
+    {
+      "key": "VALUE.RESOURCE",
+      "value": {
+        "M": 1,
+        "C": 2,
+        "D": 3
+      },
+      "unit": "V",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3",
+      "formula": "F-05"
+    },
+    {
+      "key": "WORLD.YIELD",
+      "value": {
+        "Poor": 0.85,
+        "Normal": 1.0,
+        "Rich": 1.2,
+        "max_candidate": 1.25
+      },
+      "unit": "倍率",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3"
+    },
+    {
+      "key": "WORLD.ORBITS",
+      "value": 15,
+      "unit": "轨道/星系",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3",
+      "notes": "可殖民比例 TBD"
+    },
+    {
+      "key": "ENERGY.SOLAR",
+      "value": {
+        "base": 25,
+        "factor": 1.1,
+        "zero_at_L0": true
+      },
+      "unit": "能源",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3"
+    },
+    {
+      "key": "ENERGY.M_DEMAND",
+      "value": {
+        "base": 10,
+        "factor": 1.1
+      },
+      "unit": "能源",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3"
+    },
+    {
+      "key": "ENERGY.C_DEMAND",
+      "value": {
+        "base": 10,
+        "factor": 1.1
+      },
+      "unit": "能源",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3"
+    },
+    {
+      "key": "ENERGY.D_DEMAND",
+      "value": {
+        "base": 15,
+        "factor": 1.1
+      },
+      "unit": "能源",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3"
+    },
+    {
+      "key": "STORAGE.CURVE",
+      "value": {
+        "S0": 10000,
+        "S1": 10000,
+        "g": 1.6
+      },
+      "unit": "资源",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3",
+      "formula": "F-04"
+    },
+    {
+      "key": "PROTECTION.INITIAL",
+      "value": 72,
+      "unit": "小时",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3",
+      "notes": "另须成长里程碑与主动风险行为条件（GAP-03）"
+    },
+    {
+      "key": "QUEUE.BUILD.PENDING",
+      "value": 3,
+      "unit": "个",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.3",
+      "notes": "实际执行槽固定为 1"
+    },
+    {
+      "key": "BUILD.METAL_MINE",
+      "value": {
+        "M": 60,
+        "C": 15,
+        "D": 0,
+        "g": 1.5
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.4",
+      "formula": "F-01"
+    },
+    {
+      "key": "BUILD.CRYSTAL_MINE",
+      "value": {
+        "M": 48,
+        "C": 24,
+        "D": 0,
+        "g": 1.6
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.4",
+      "formula": "F-01"
+    },
+    {
+      "key": "BUILD.DEUT_SYNTH",
+      "value": {
+        "M": 225,
+        "C": 75,
+        "D": 0,
+        "g": 1.5
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.4",
+      "formula": "F-01"
+    },
+    {
+      "key": "BUILD.SOLAR",
+      "value": {
+        "M": 75,
+        "C": 30,
+        "D": 0,
+        "g": 1.5
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.4",
+      "formula": "F-01"
+    },
+    {
+      "key": "BUILD.FUSION",
+      "value": {
+        "M": 150,
+        "C": 60,
+        "D": 30,
+        "g": 1.5
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "V1.3 §05.4；CR-002 B；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）",
+      "notes": "成本、倍率、氘消耗与能源公式均缺"
+    },
+    {
+      "key": "BUILD.M_STORAGE",
+      "value": {
+        "M": 1000,
+        "C": 0,
+        "D": 0,
+        "g": 1.6
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "V1.3 §05.4；CR-002 A；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）",
+      "notes": "仓容公式已有（F-04），成本缺失"
+    },
+    {
+      "key": "BUILD.C_STORAGE",
+      "value": {
+        "M": 1000,
+        "C": 500,
+        "D": 0,
+        "g": 1.6
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "V1.3 §05.4；CR-002 A；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "BUILD.D_STORAGE",
+      "value": {
+        "M": 1000,
+        "C": 1000,
+        "D": 0,
+        "g": 1.6
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "V1.3 §05.4；CR-002 A；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "BUILD.ROBOTICS",
+      "value": {
+        "M": 400,
+        "C": 120,
+        "D": 200,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.4",
+      "formula": "F-01"
+    },
+    {
+      "key": "BUILD.SHIPYARD",
+      "value": {
+        "M": 400,
+        "C": 200,
+        "D": 100,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.4",
+      "formula": "F-01"
+    },
+    {
+      "key": "BUILD.LAB",
+      "value": {
+        "M": 200,
+        "C": 400,
+        "D": 200,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.4",
+      "formula": "F-01"
+    },
+    {
+      "key": "BUILD.NANITE",
+      "value": {
+        "M": 1000000,
+        "C": 500000,
+        "D": 100000,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.4",
+      "notes": "后期内容，不成为首殖门槛"
+    },
+    {
+      "key": "TECH.ENERGY",
+      "value": {
+        "M": 0,
+        "C": 800,
+        "D": 400,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.5",
+      "notes": "完整效果 TBD"
+    },
+    {
+      "key": "TECH.COMBUSTION",
+      "value": {
+        "M": 400,
+        "C": 0,
+        "D": 600,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.5",
+      "notes": "舰种与速度映射 TBD"
+    },
+    {
+      "key": "TECH.IMPULSE",
+      "value": {
+        "M": 1000,
+        "C": 2000,
+        "D": 300,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.5",
+      "notes": "舰种与速度映射 TBD"
+    },
+    {
+      "key": "TECH.COMPUTER",
+      "value": {
+        "M": 0,
+        "C": 400,
+        "D": 600,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.5",
+      "notes": "任务槽 2+等级（F-06）"
+    },
+    {
+      "key": "TECH.ESPIONAGE",
+      "value": {
+        "M": 200,
+        "C": 1000,
+        "D": 200,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.5",
+      "notes": "情报揭示规则 TBD（GAP-06）"
+    },
+    {
+      "key": "TECH.ASTRO",
+      "value": {
+        "M": 4000,
+        "C": 8000,
+        "D": 4000,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.5",
+      "formula": "F-06",
+      "notes": "A=1/3/5/7/9 对应总行星 2/3/4/5/6；早期倍率重点验证"
+    },
+    {
+      "key": "TECH.WEAPONS",
+      "value": {
+        "M": 800,
+        "C": 200,
+        "D": 0,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "V1.3 §05.5；CR-002 C；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）",
+      "formula": "F-07",
+      "notes": "成本倍率 TBD"
+    },
+    {
+      "key": "TECH.SHIELD",
+      "value": {
+        "M": 200,
+        "C": 600,
+        "D": 0,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "V1.3 §05.5；CR-002 C；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）",
+      "formula": "F-07",
+      "notes": "成本倍率 TBD"
+    },
+    {
+      "key": "TECH.ARMOUR",
+      "value": {
+        "M": 1000,
+        "C": 0,
+        "D": 0,
+        "g": 2.0
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "V1.3 §05.5；CR-002 C；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）",
+      "formula": "F-07",
+      "notes": "成本倍率 TBD"
+    },
+    {
+      "key": "SHIP.SCOUT",
+      "value": {
+        "M": 1000,
+        "C": 1500,
+        "D": 0,
+        "cargo": 100,
+        "A": 1,
+        "S": 1,
+        "H": 100,
+        "speed": 100000000,
+        "fuel": 1,
+        "build_time": 3600,
+        "unit_id": 210,
+        "engine": {
+          "drive": "COMBUSTION",
+          "bonus": 0.1
+        }
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "V1.3 §05.6；CR-003 B/CR-004 A/经典机制；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）",
+      "notes": "速度/燃料/制造时间 TBD，待 SOURCE-01"
+    },
+    {
+      "key": "SHIP.SMALL_CARGO",
+      "value": {
+        "M": 2000,
+        "C": 2000,
+        "D": 0,
+        "cargo": 5000,
+        "cargo_test_range": [
+          5000,
+          7500,
+          10000
+        ],
+        "A": 5,
+        "S": 10,
+        "H": 500,
+        "speed": 5000,
+        "fuel": 10,
+        "build_time": 5760,
+        "unit_id": 202,
+        "engine": {
+          "drive": "COMBUSTION",
+          "bonus": 0.1,
+          "switch": {
+            "tech": "IMPULSE",
+            "level": 5,
+            "base_mul": 2,
+            "fuel_mul": 2,
+            "bonus": 0.2
+          }
+        }
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "V1.3 §05.6；CR-003 B/CR-004 A/经典机制(小运脉冲换挡)；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "SHIP.LIGHT",
+      "value": {
+        "M": 3000,
+        "C": 1000,
+        "D": 0,
+        "cargo": 50,
+        "A": 50,
+        "S": 10,
+        "H": 400,
+        "speed": 12500,
+        "fuel": 20,
+        "build_time": 5760,
+        "unit_id": 204,
+        "engine": {
+          "drive": "COMBUSTION",
+          "bonus": 0.1
+        }
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "V1.3 §05.6；CR-003 B/CR-004 A/经典机制；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）",
+      "notes": "货舱 TBD"
+    },
+    {
+      "key": "SHIP.HEAVY",
+      "value": {
+        "M": 6000,
+        "C": 4000,
+        "D": 0,
+        "cargo": 100,
+        "A": 150,
+        "S": 25,
+        "H": 1200,
+        "speed": 10000,
+        "fuel": 75,
+        "build_time": 14400,
+        "unit_id": 205,
+        "rapidfire": {
+          "202": 3
+        },
+        "engine": {
+          "drive": "IMPULSE",
+          "bonus": 0.2
+        }
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "V1.3 §05.6；CR-003 A·B·C/CR-004 A/经典机制；rapidfire 键=目标 unit_id(202 小运)；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）",
+      "notes": "货舱 TBD"
+    },
+    {
+      "key": "SHIP.COLONY",
+      "value": {
+        "M": 10000,
+        "C": 17500,
+        "D": 5000,
+        "cargo": 7500,
+        "cargo_test_range": [
+          7500,
+          10000,
+          15000
+        ],
+        "A": 50,
+        "S": 100,
+        "H": 3000,
+        "speed": 2500,
+        "fuel": 1000,
+        "build_time": 43200,
+        "unit_id": 208,
+        "engine": {
+          "drive": "IMPULSE",
+          "bonus": 0.2
+        }
+      },
+      "unit": "M/C/D",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "V1.3 §05.6；CR-003 A(50/100/3000)·B/CR-004 A/经典机制；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）",
+      "notes": "战斗属性 TBD；成本采用方案B中心值，A/C/D 对照见分支配置"
+    },
+    {
+      "key": "COMBAT.LOOT_RATE",
+      "value": 0.5,
+      "unit": "比例",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "status": "Candidate",
+      "source": "V1.3 §05.7",
+      "notes": "测试 25/50/75%，且受货舱限制"
+    },
+    {
+      "key": "COMBAT.DEBRIS_RATE",
+      "value": 0.3,
+      "unit": "比例",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "status": "Candidate",
+      "source": "V1.3 §05.7",
+      "notes": "测试 20/30/40%，只含合格 M/C 成本；氘不成残骸"
+    },
+    {
+      "key": "COMBAT.TECH_GAIN",
+      "value": 0.05,
+      "unit": "每级",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "status": "Candidate",
+      "source": "V1.3 §05.7",
+      "formula": "F-07",
+      "notes": "测试 4/5/6%，线性叠加"
+    },
+    {
+      "key": "REFUND.BUILD_STARTED",
+      "value": 0.5,
+      "unit": "比例",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "status": "Candidate",
+      "source": "V1.3 §05.7",
+      "notes": "以实际已付为基数"
+    },
+    {
+      "key": "REFUND.RESEARCH_STARTED",
+      "value": 0.5,
+      "unit": "比例",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "status": "Candidate",
+      "source": "V1.3 §05.7"
+    },
+    {
+      "key": "REFUND.SHIP_UNDELIVERED",
+      "value": 0.5,
+      "unit": "比例",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "status": "Candidate",
+      "source": "V1.3 §05.7",
+      "notes": "仅未交付部分实际成本"
+    },
+    {
+      "key": "REFUND.NOT_STARTED",
+      "value": 1.0,
+      "unit": "比例",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "status": "Candidate",
+      "source": "V1.3 §05.7",
+      "notes": "释放 100% 已有预留；未扣款时退款额为零"
+    },
+    {
+      "key": "REFUND.COMPLETED",
+      "value": 0.0,
+      "unit": "比例",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "status": "Candidate",
+      "source": "V1.3 §05.7"
+    },
+    {
+      "key": "AI.PERSONALITY",
+      "value": {
+        "Risk": 65,
+        "Expansion": 25,
+        "Trade": 20,
+        "Aggression": 70,
+        "conservative": {
+          "Risk": 40,
+          "Aggression": 55
+        },
+        "aggressive": {
+          "Risk": 85,
+          "Aggression": 90
+        }
+      },
+      "unit": "权重",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.8"
+    },
+    {
+      "key": "AI.BUDGET",
+      "value": {
+        "economy": 25,
+        "fleet": 35,
+        "research": 10,
+        "logistics_recovery": 15,
+        "reserve": 15
+      },
+      "unit": "%",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.8",
+      "notes": "策略权重，不分立钱包"
+    },
+    {
+      "key": "AI.RAID_MARGIN",
+      "value": 0.1,
+      "unit": "比例",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "status": "Candidate",
+      "source": "V1.3 §05.8",
+      "notes": "测试 0/10/25%；分母任务投入待定义（GAP-09）"
+    },
+    {
+      "key": "AI.LOSS_7D",
+      "value": 0.3,
+      "unit": "比例",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "status": "Candidate",
+      "source": "V1.3 §05.8",
+      "notes": "测试 20/30/40% 当前军事资产；零分母待定"
+    },
+    {
+      "key": "AI.INITIAL_STAGE",
+      "value": "SIM-02 Normal Day10-14",
+      "unit": "模板",
+      "type": "string",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.8",
+      "notes": "依赖 SIM-02 结果"
+    },
+    {
+      "key": "AI.TARGET_POOL",
+      "value": {
+        "min": 20,
+        "max": 50
+      },
+      "unit": "个",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.8"
+    },
+    {
+      "key": "AI.TICK",
+      "value": {
+        "economy_sec": 600,
+        "fleet_sec": 1800,
+        "strategy_sec": 7200
+      },
+      "unit": "秒",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.8",
+      "notes": "调度偏移避免同时触发"
+    },
+    {
+      "key": "AI.RAID_LOSS_BUDGET",
+      "value": {
+        "min": 0.05,
+        "max": 0.15
+      },
+      "unit": "比例",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.8",
+      "notes": "占军事可出动资产"
+    },
+    {
+      "key": "GOV.LOGISTICS.EXAMPLE",
+      "value": {
+        "low_water": 50000,
+        "target": 100000,
+        "source_min_reserve": 50000
+      },
+      "unit": "资源",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Candidate",
+      "source": "V1.3 §05.8",
+      "notes": "仅金属测试策略，玩家可设"
+    },
+    {
+      "key": "INTEL.COUNTER_ESP",
+      "value": {
+        "divisor": 4,
+        "level_offset": 1
+      },
+      "unit": "参数组",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-004 B；上游 CounterEspionageService 同构；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "INTEL.REVEAL",
+      "value": {
+        "gap_exponent": 2,
+        "fields": {
+          "ships": {
+            "probes": 2,
+            "level": 1
+          },
+          "defense": {
+            "probes": 3,
+            "level": 2
+          },
+          "buildings": {
+            "probes": 5,
+            "level": 3
+          },
+          "research": {
+            "probes": 7,
+            "level": 4
+          }
+        }
+      },
+      "unit": "参数组",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-004 B；上游 EspionageMission 同构；剩余探针按存活封顶(我方更保守口径)；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "COMBAT.LOOT_SPLIT",
+      "value": "classic_thirds",
+      "unit": "模式",
+      "type": "string",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "经典机制组；上游 battle.php:108-150 同构；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "COMBAT.DEFENSE_REPAIR",
+      "value": {
+        "base": 70,
+        "delta": 10
+      },
+      "unit": "百分比",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；上游 battle.php:32-94；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "COMBAT.DEFENSE_DEBRIS_RATE",
+      "value": 0,
+      "unit": "比例",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "status": "Frozen",
+      "source": "CR-005；经典 did=0；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "ENERGY.FUSION",
+      "value": {
+        "base": 30,
+        "factor": 1.12
+      },
+      "unit": "能源/小时",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-002 B；产出 30L×1.12^(L-1)；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "ENERGY.FUSION_DEMAND",
+      "value": {
+        "base": 10,
+        "factor": 1.12
+      },
+      "unit": "重氢/小时",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-002 B；氘耗 10L×1.12^(L-1)，氘尽停转；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "RESOURCE.D.TEMPERATURE",
+      "value": {
+        "base": 1.28,
+        "per_degree": -0.002,
+        "offset": 40
+      },
+      "unit": "系数",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "经典机制组；1.28-0.002×(最低温+40)；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "RESOURCE.BASE_PRODUCTION",
+      "value": {
+        "M": 20,
+        "C": 10
+      },
+      "unit": "每小时",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "经典机制组；自然基础产量；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "BUILD.TIME",
+      "value": {
+        "model": "upstream",
+        "constant": 2500,
+        "universe_speed": 1,
+        "t_min_seconds": 30,
+        "robotics_level_R": 0,
+        "nanite_level_N": 0
+      },
+      "unit": "参数组",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-003 E；F-08 校准(sim/reports f08-calibrate)；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "RESEARCH.TIME",
+      "value": {
+        "model": "upstream",
+        "constant": 1000,
+        "lab_factor": 0,
+        "universe_speed": 1,
+        "t_min_seconds": 30
+      },
+      "unit": "参数组",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-003 E；上游研究系数 1000；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "SHIP.TIME",
+      "value": {
+        "model": "upstream",
+        "constant": 2500,
+        "shipyard_level_S": 0,
+        "nanite_level_N": 0,
+        "universe_speed": 1,
+        "t_min_seconds": 30
+      },
+      "unit": "参数组",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-003 E；F-08 校准；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "FLEET.FORMULA",
+      "value": {
+        "universe_speed": 1,
+        "distance": {
+          "same_system": 5,
+          "per_orbit": 5,
+          "orbit_base": 1000,
+          "per_system": 95,
+          "system_base": 2700,
+          "per_galaxy": 20000
+        },
+        "duration": {
+          "constant": 35000,
+          "base_overhead_s": 10,
+          "speed_factor_divisor": 10
+        },
+        "fuel": {
+          "divisor": 35000,
+          "speed_term_base": 10,
+          "minimum": 1
+        }
+      },
+      "unit": "参数组",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "SOURCE-01 §1.1-1.3 上游式；sv=每舰速度值语义(2026-09-23 实证)；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "DEFENSE.ROCKET",
+      "value": {
+        "M": 2000,
+        "C": 0,
+        "D": 0,
+        "A": 80,
+        "S": 20,
+        "H": 200,
+        "unit_id": 401,
+        "rapidfire": {}
+      },
+      "unit": "单价/属性",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；经典 0.84 techs.php 权威值；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.DEFENSE.ROCKET",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；MVP 最小空表（经典实验室依赖留后续 CR 收紧）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "DEFENSE.LIGHT_LASER",
+      "value": {
+        "M": 1500,
+        "C": 500,
+        "D": 0,
+        "A": 100,
+        "S": 25,
+        "H": 200,
+        "unit_id": 402,
+        "rapidfire": {}
+      },
+      "unit": "单价/属性",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；经典 0.84 techs.php 权威值；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.DEFENSE.LIGHT_LASER",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；MVP 最小空表（经典实验室依赖留后续 CR 收紧）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "DEFENSE.HEAVY_LASER",
+      "value": {
+        "M": 6000,
+        "C": 2000,
+        "D": 0,
+        "A": 250,
+        "S": 100,
+        "H": 800,
+        "unit_id": 403,
+        "rapidfire": {}
+      },
+      "unit": "单价/属性",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；经典 0.84 techs.php 权威值；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.DEFENSE.HEAVY_LASER",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；MVP 最小空表（经典实验室依赖留后续 CR 收紧）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "DEFENSE.GAUSS",
+      "value": {
+        "M": 20000,
+        "C": 15000,
+        "D": 2000,
+        "A": 1100,
+        "S": 200,
+        "H": 3500,
+        "unit_id": 404,
+        "rapidfire": {}
+      },
+      "unit": "单价/属性",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；经典 0.84 techs.php 权威值；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.DEFENSE.GAUSS",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；MVP 最小空表（经典实验室依赖留后续 CR 收紧）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "DEFENSE.ION",
+      "value": {
+        "M": 2000,
+        "C": 6000,
+        "D": 0,
+        "A": 150,
+        "S": 500,
+        "H": 800,
+        "unit_id": 405,
+        "rapidfire": {}
+      },
+      "unit": "单价/属性",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；经典 0.84 techs.php 权威值；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.DEFENSE.ION",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；MVP 最小空表（经典实验室依赖留后续 CR 收紧）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "DEFENSE.PLASMA",
+      "value": {
+        "M": 50000,
+        "C": 50000,
+        "D": 30000,
+        "A": 3000,
+        "S": 300,
+        "H": 10000,
+        "unit_id": 406,
+        "rapidfire": {}
+      },
+      "unit": "单价/属性",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；经典 0.84 techs.php 权威值；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.DEFENSE.PLASMA",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；MVP 最小空表（经典实验室依赖留后续 CR 收紧）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "DEFENSE.SMALL_DOME",
+      "value": {
+        "M": 10000,
+        "C": 10000,
+        "D": 0,
+        "A": 1,
+        "S": 2000,
+        "H": 2000,
+        "unit_id": 407,
+        "rapidfire": {},
+        "max": 1
+      },
+      "unit": "单价/属性",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；经典 0.84 techs.php 权威值；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.DEFENSE.SMALL_DOME",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；MVP 最小空表（经典实验室依赖留后续 CR 收紧）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "DEFENSE.LARGE_DOME",
+      "value": {
+        "M": 50000,
+        "C": 50000,
+        "D": 0,
+        "A": 1,
+        "S": 10000,
+        "H": 10000,
+        "unit_id": 408,
+        "rapidfire": {},
+        "max": 1
+      },
+      "unit": "单价/属性",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；经典 0.84 techs.php 权威值；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.DEFENSE.LARGE_DOME",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "CR-005；MVP 最小空表（经典实验室依赖留后续 CR 收紧）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.TECH.ENERGY",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（前置收紧留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.TECH.COMBUSTION",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（前置收紧留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.TECH.IMPULSE",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（前置收紧留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.TECH.COMPUTER",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（前置收紧留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.TECH.ASTRO",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（前置收紧留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.TECH.ESPIONAGE",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（前置收紧留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.TECH.WEAPONS",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（前置收紧留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.TECH.SHIELD",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（前置收紧留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.TECH.ARMOUR",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（前置收紧留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.SHIP.SCOUT",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（SOURCE-01 §2 前置树留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.SHIP.SMALL_CARGO",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（SOURCE-01 §2 前置树留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.SHIP.LIGHT",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（SOURCE-01 §2 前置树留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.SHIP.HEAVY",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（SOURCE-01 §2 前置树留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    },
+    {
+      "key": "REQUIRES.SHIP.COLONY",
+      "value": {},
+      "unit": "前置",
+      "type": "object",
+      "minimum": null,
+      "maximum": null,
+      "status": "Frozen",
+      "source": "MVP 最小空表（SOURCE-01 §2 前置树留后续 CR）；所有者批准 2026-09-23（CR 批量，见 tools/cr_batch_apply_20260923.py）"
+    }
+  ]
+}

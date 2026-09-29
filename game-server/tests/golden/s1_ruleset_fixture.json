@@ -1,0 +1,53 @@
+{
+  "RESOURCE": {
+    "M": {
+      "PRODUCTION": {
+        "p": 30,
+        "a": 1.12
+      }
+    },
+    "C": {
+      "PRODUCTION": {
+        "p": 20,
+        "a": 1.12
+      }
+    },
+    "D": {
+      "PRODUCTION": {
+        "p": 10,
+        "a": 1.1,
+        "test_range": [
+          10,
+          12,
+          15
+        ]
+      }
+    }
+  },
+  "ENERGY": {
+    "SOLAR": {
+      "base": 25,
+      "factor": 1.1,
+      "zero_at_L0": true
+    },
+    "M_DEMAND": {
+      "base": 10,
+      "factor": 1.1
+    },
+    "C_DEMAND": {
+      "base": 10,
+      "factor": 1.1
+    },
+    "D_DEMAND": {
+      "base": 15,
+      "factor": 1.1
+    }
+  },
+  "STORAGE": {
+    "CURVE": {
+      "S0": 10000,
+      "S1": 10000,
+      "g": 1.6
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "config": "NG-A0",
+  "checks": [
+    {
+      "check": "候选目录数量",
+      "status": "PASS",
+      "detail": {
+        "buildings": 14,
+        "technologies": 8,
+        "ships": 7
+      }
+    },
+    {
+      "check": "科技建筑前置无环与 ID 可达",
+      "status": "PASS",
+      "detail": "22 个建筑与科技 ID 可达；等级所需时间和资源未作完整排程"
+    },
+    {
+      "check": "初始能源与产率",
+      "status": "PASS",
+      "detail": {
+        "energy_load": 66,
+        "energy_supply": 100,
+        "hourly_resources": [
+          1000,
+          500,
+          200
+        ]
+      }
+    },
+    {
+      "check": "掠夺例算与三重上限",
+      "status": "PASS",
+      "detail": {
+        "daily_cap": 6240,
+        "example_loot": [
+          1000,
+          250,
+          0
+        ]
+      }
+    },
+    {
+      "check": "恢复份额与整数取整守恒",
+      "status": "PASS",
+      "detail": {
+        "replacement_gap": [
+          198,
+          99,
+          33
+        ],
+        "integer_cost_cases": 10000
+      }
+    },
+    {
+      "check": "施工退款随进度递减",
+      "status": "PASS",
+      "detail": {
+        "cancel_example": 600,
+        "cases": 505
+      }
+    },
+    {
+      "check": "市场例算与财政上限",
+      "status": "PASS",
+      "detail": {
+        "regional_example_margin": 312,
+        "seven_day_issuance_limit": 145000,
+        "scope": "固定同站报价；未枚举动态跨商人循环"
+      }
+    }
+  ],
+  "passed": 7,
+  "limits": [
+    "仅局部规则与候选配置检查，不是实际游戏运行测试",
+    "未执行完整 72 小时或 7／30／90 日模拟",
+    "未执行多人并发与真人试玩"
+  ],
+  "source_sha256": "7b96a5357328f8a0924406c387d6d5744e551508a31756bc993ca3be9c323074"
+}

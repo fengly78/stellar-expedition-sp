@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "ruleset_version": "SIM-01 time assumptions (experimental branch)",
+    "base_ruleset": "balance_rc1.json",
+    "status": "Experimental",
+    "created_at": "2026-09-21",
+    "notes": "V1.3 §05.10：实验性假设另存配置分支，不得混入 RC1 正式结果。F-08 建筑时间单位为 Blocked；以下时间假设仅用于跑通 SIM 机制，输出不得作为任何 Gate 证据。§06.4：不能为跑通模拟任意填常数并据此宣称通过——本分支的存在即对此纪律的执行。"
+  },
+  "time_model": {
+    "build_time_formula": "T = max(T_min, 60 * (M + 1.5*C + 3*D) / (100 * (1+R) * 2^N))",
+    "unit": "seconds",
+    "unit_status": "EXPERIMENTAL — F-08 原式未校准，此解释仅为模拟试验",
+    "T_min_seconds": 30,
+    "robotics_level_R": 0,
+    "nanite_level_N": 0,
+    "research_time_formula": null,
+    "ship_time_formula": null,
+    "flight_time_formula": null
+  },
+  "sim01_input": {
+    "source": "V1.3 §06.2",
+    "home_planet": {"inventory": {"M": 500, "C": 500, "D": 0}, "levels_zero": true, "queues_empty": true, "environment_multiplier": 1.0},
+    "window_hours": 168,
+    "record_hours": [0, 6, 12, 24, 48, 72, 96, 120, 144, 168],
+    "behaviors": {
+      "Normal": {"check_interval_hours": 4, "sleep_hours_per_day": 8},
+      "Casual": {"checks_per_day": 1.5},
+      "Active": {"check_interval_hours": 1.5, "daytime_only": true}
+    },
+    "upgrade_priority": ["BUILD.SOLAR_IF_DEFICIT", "BUILD.METAL_MINE", "BUILD.CRYSTAL_MINE", "BUILD.DEUT_SYNTH"]
+  },
+  "experimental_buildings": {
+    "_note": "CR-20260921-002 提案 A/B 候选值，Experimental 状态；仅用于本分支试验，未批准前不得写入 RC1 主配置",
+    "BUILD.M_STORAGE": {"M": 1000, "C": 0, "D": 0, "g": 1.60},
+    "BUILD.C_STORAGE": {"M": 1000, "C": 500, "D": 0, "g": 1.60},
+    "BUILD.D_STORAGE": {"M": 1000, "C": 1000, "D": 0, "g": 1.60},
+    "BUILD.FUSION": {"M": 150, "C": 60, "D": 30, "g": 1.50}
+  },
+  "fusion_model": {
+    "_note": "提案 B：产出 30L×1.12^(L−1) 能源，氘耗 10L×1.12^(L−1)，恒 3:1；氘耗尽时聚变停转",
+    "energy_output": {"base": 30, "factor": 1.12},
+    "deuterium_demand": {"base": 10, "factor": 1.12}
+  },
+  "gate_evidence_flag": false
+}

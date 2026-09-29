@@ -1,0 +1,119 @@
+{
+ "source_report": "f08-calibrate-20260923T145519Z.json",
+ "payload": {
+  "purpose": "CR-20260921-003 提案 E 前置：F-08 上游同构式 universe_speed 校准",
+  "gate_evidence": false,
+  "gate_note": "实验枝校准扫描（§11.1/§05.10）。推荐档位仅作 CR 证据附件，不构成 RC1 结论。",
+  "formula": "seconds = max(T_min, ceil(3600*(M+C)/(2500*(1+R)*2^N*universe_speed)))",
+  "pre_registered_criteria": {
+   "C1": "METAL_MINE_L1 完成 ≤ 4.0h",
+   "C2": "168h 资产 V 与基线比 ∈ [0.5, 2.0]",
+   "C3": "K-E05/06/07 相对基线增量 ≤ +0.02",
+   "C4": "守恒对账 ok（硬门槛）",
+   "recommendation_rule": "满足 C1–C3 的最低速度档"
+  },
+  "baseline_experimental_model": {
+   "metal_mine_L1_h": 0.01,
+   "asset_v": 188005.8,
+   "K-E05": 0.0948,
+   "K-E06": 0.3812,
+   "K-E07": 0.1724,
+   "conservation_ok": true,
+   "events": 87
+  },
+  "scan": [
+   {
+    "speed": 1,
+    "metal_mine_L1_h": 0.03,
+    "asset_v": 186029.7,
+    "K-E05": 0.1097,
+    "K-E06": 0.3648,
+    "K-E07": 0.1034,
+    "conservation_ok": true,
+    "events": 87,
+    "asset_ratio": 0.989,
+    "pass": true,
+    "fails": []
+   },
+   {
+    "speed": 2,
+    "metal_mine_L1_h": 0.01,
+    "asset_v": 187932.2,
+    "K-E05": 0.0959,
+    "K-E06": 0.381,
+    "K-E07": 0.1724,
+    "conservation_ok": true,
+    "events": 87,
+    "asset_ratio": 1.0,
+    "pass": true,
+    "fails": []
+   },
+   {
+    "speed": 4,
+    "metal_mine_L1_h": 0.01,
+    "asset_v": 192517.0,
+    "K-E05": 0.0571,
+    "K-E06": 0.3579,
+    "K-E07": 0.1034,
+    "conservation_ok": true,
+    "events": 87,
+    "asset_ratio": 1.024,
+    "pass": true,
+    "fails": []
+   },
+   {
+    "speed": 6,
+    "metal_mine_L1_h": 0.01,
+    "asset_v": 192595.5,
+    "K-E05": 0.0588,
+    "K-E06": 0.3577,
+    "K-E07": 0.1034,
+    "conservation_ok": true,
+    "events": 87,
+    "asset_ratio": 1.024,
+    "pass": true,
+    "fails": []
+   },
+   {
+    "speed": 8,
+    "metal_mine_L1_h": 0.01,
+    "asset_v": 192540.3,
+    "K-E05": 0.0527,
+    "K-E06": 0.3582,
+    "K-E07": 0.1034,
+    "conservation_ok": true,
+    "events": 87,
+    "asset_ratio": 1.024,
+    "pass": true,
+    "fails": []
+   },
+   {
+    "speed": 10,
+    "metal_mine_L1_h": 0.01,
+    "asset_v": 192563.4,
+    "K-E05": 0.0532,
+    "K-E06": 0.358,
+    "K-E07": 0.1034,
+    "conservation_ok": true,
+    "events": 87,
+    "asset_ratio": 1.024,
+    "pass": true,
+    "fails": []
+   },
+   {
+    "speed": 20,
+    "metal_mine_L1_h": 0.01,
+    "asset_v": 192609.4,
+    "K-E05": 0.0542,
+    "K-E06": 0.3576,
+    "K-E07": 0.1034,
+    "conservation_ok": true,
+    "events": 87,
+    "asset_ratio": 1.024,
+    "pass": true,
+    "fails": []
+   }
+  ],
+  "recommended_universe_speed": 1
+ }
+}

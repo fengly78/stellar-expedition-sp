@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "ruleset_version": "SIM-02 multi-planet assumptions (experimental branch)",
+    "base_ruleset": "balance_rc1.json + sim01_time_assumptions.json",
+    "status": "Experimental",
+    "created_at": "2026-09-21",
+    "notes": "V1.3 §05.10 实验分支纪律。科研/造船/航行时间、燃料、殖民载货均为实验假设（05.10 列出全部航行参数 TBD），输出不得作为 K-E08~K-E13 Gate 证据。前置树为骨架假设：ASTRO 需任一行星 LAB>=3，ENERGY/IMPULSE/ESPIONAGE 需 LAB>=1，殖民舰需行星 SHIPYARD>=4 且文明 ASTRO>=1（对应 §06.2 候选殖民路径的骨架化）。"
+  },
+  "time_model": {
+    "research_time_formula": "T = 60 * V(M,C,D) / (100 * (1+lab_level))",
+    "ship_time_formula": "T = 60 * V(M,C,D) / (100 * (1+shipyard_level))",
+    "unit": "seconds",
+    "unit_status": "EXPERIMENTAL",
+    "T_min_seconds": 30
+  },
+  "flight": {
+    "one_way_seconds": 14400,
+    "fuel_colonize_D": 500,
+    "fuel_transport_D": 100,
+    "colony_cargo": {"M": 4000, "C": 3000, "D": 500},
+    "note": "航时/燃料全部 TBD（GAP-02），此处为占位实验值"
+  },
+  "sim02_input": {
+    "source": "V1.3 §06.3",
+    "window_days": 30,
+    "record_days": [7, 14, 21, 30],
+    "start": "SIM-01 简化起点：主星 500M/500C/0D（§06.3 正式版须接续 SIM-01 真实状态，骨架暂用相同初始点）",
+    "strategies": ["deep", "expansion", "balanced"]
+  },
+  "gate_evidence_flag": false
+}

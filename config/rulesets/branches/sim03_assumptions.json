@@ -1,0 +1,32 @@
+{
+  "branch": "sim03_assumptions",
+  "status": "experimental",
+  "gate_evidence": false,
+  "note": "SIM-03 战斗矩阵骨架的实验假设。全部不作 K-C01~03 冻结证据。舰船 A/S/H 与成本引用 RC1 Candidate 值；此处只登记 RC1 缺失的口径与矩阵参数。",
+  "unit_ids": {"LIGHT": 1, "HEAVY": 2, "SMALL_CARGO": 3, "SCOUT": 4},
+  "tech_convention": {
+    "formula": "stat_effective = stat_base × (1 + COMBAT.TECH_GAIN × level)，WEAPONS→A、SHIELD→S、ARMOUR→H",
+    "source": "实验口径；RC1 COMBAT.TECH_GAIN=0.05（Candidate），科技成本 g 仍 TBD",
+    "experimental": true
+  },
+  "rapidfire": {"note": "RC1 未登记任何 rapidfire 参数，矩阵全部按无续射处理（GAP 待 SOURCE-01 核验）", "map": {}},
+  "loot": {
+    "rate": 0.5,
+    "source": "RC1 COMBAT.LOOT_RATE（Candidate）；交叉测试档 25/50/75% 属正式运行",
+    "cargo_note": "LIGHT/HEAVY 货舱 RC1 为 null（TBD），掠夺冒烟组货舱只计 SMALL_CARGO=5000（Candidate）",
+    "inventory_composition": {"M": 0.5, "C": 0.3, "D": 0.2}
+  },
+  "debris": {"rate": 0.3, "source": "RC1 COMBAT.DEBRIS_RATE（Candidate）；正式交叉档 20/30/40%", "recovery": 0, "recovery_note": "MVP 残骸回收为零（06.4）"},
+  "matrix": {
+    "budget_v": 400000,
+    "budget_note": "等预算组按 RC1 实际成本（V=M+2C+3D：轻战 5000V、重战 14000V，与基线 06.4 示例 100轻战=500000V/35重战=490000V 同口径）归一化：预算 400000V → 80 轻战=400000V vs 28 重战=392000V，余量 8000V 单列。勘误：本字段早前版本误写「100轻战=400000V/40重战=400000V」（漏算晶体×2 估值权重），sim03.py 实际始终按正确口径运行",
+    "seeds_skeleton": 200,
+    "seeds_formal": "1000~10000（06.4），骨架轮先 200",
+    "fuel": "航时/燃料 TBD，骨架轮燃料成本记 0 并在报告中显式标注"
+  },
+  "sim02_linkage": {
+    "budget_derivation": "舰队预算V = SIM-02 指定策略该日全文明库存V（100%转军上界，实验口径；正式轮应由 Balance 登记军事预算比例候选）",
+    "implemented_in": "sim/sim23.py",
+    "first_run": "sim23-linkage-20260921T145750Z.json：deep-D14=411928V、deep-D30=1498128V、expansion-D14=171866V、expansion-D30=1037577V"
+  }
+}

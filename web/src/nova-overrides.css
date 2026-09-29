@@ -1,0 +1,1151 @@
+/* Final NOVA visual layer. It intentionally overrides the legacy dashboard shell. */
+.nova-shell { background: #010712; }
+
+.nova-header {
+  min-height: 4.25rem;
+  border-bottom: 1px solid rgba(45, 211, 255, .55) !important;
+  background: linear-gradient(180deg, rgba(2, 18, 35, .99), rgba(1, 10, 24, .98));
+  box-shadow: inset 0 -1px 0 rgba(89, 225, 255, .12), 0 10px 35px rgba(0, 0, 0, .4);
+}
+
+.nova-resource-dock { min-height: 4.25rem; padding-block: .35rem !important; }
+.nova-brand { min-width: 15rem; }
+.nova-brand strong { font-size: 1rem; letter-spacing: .12em; }
+.nova-resource-grid { flex-wrap: nowrap !important; overflow: hidden; }
+.nova-resource-cell {
+  min-width: 10.7rem;
+  height: 3.45rem;
+  display: grid !important;
+  grid-template-columns: 1.6rem 1fr auto;
+  grid-template-rows: 1fr 1fr;
+  gap: 0 .45rem !important;
+  padding: .38rem .65rem !important;
+  border-color: rgba(48, 203, 246, .27) !important;
+  background: linear-gradient(180deg, rgba(5, 30, 50, .92), rgba(1, 13, 29, .92));
+}
+.nova-resource-cell > span:first-child { grid-row: 1 / 3; align-self: center; color: #68eaff; font-size: 1.15rem; }
+.nova-resource-name { display: grid; align-self: end; color: #b9eaf5; font-size: .65rem; line-height: 1; }
+.nova-resource-name small { margin-top: .16rem; color: #4ebbd5; font-family: var(--font-mono); font-size: .46rem; }
+.nova-resource-value { align-self: end; color: #effdff !important; font-size: .9rem; font-weight: 700; }
+.nova-resource-cell > .text-ok, .nova-resource-cell > .chip { grid-column: 3; grid-row: 2; align-self: start; }
+
+.nova-content { padding: 0 !important; background: #010712; }
+.nova-content::before { display: none; }
+.nova-page { margin: 0 !important; max-width: none !important; }
+
+/* 页面标题条（2026-09-28）
+ *
+ * 此前这里是 `.nova-page > .page-title { display: none }`——页面标题被全局隐藏，
+ * 而 12 个页面里只有 Buildings / Research / Shipyard 三页自带 nova-workspace-title，
+ * 其余 9 页（Overview / Fleet / Galaxy / Reports / Codex / Campaign /
+ * Achievements / Officers / Highscore）因此完全没有页面标题：用户在模块间切换时
+ * 失去空间锚点，分不清自己在哪。设计稿里每页左上角那组「中文主标 + 英文副标 +
+ * 一句定位语」正是承担这个职责的。
+ *
+ * 现在改为保留标题并按设计稿规格呈现：中文主标 + 等宽英文副标 + 中文定位语，
+ * 左侧压一条青蓝光带作为页签名标记（与底部导航的选中态同一套语言）。
+ * 三页已有 workspace-title 的不受影响——它们的内容不匹配下面的选择器。
+ */
+.nova-page > .page-title {
+  position: relative;
+  display: grid !important;
+  gap: .18rem;
+  margin: 0 0 .7rem;
+  padding: .1rem 0 .55rem 1.05rem;
+  text-align: left;
+}
+.nova-page > .page-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .12rem;
+  bottom: .5rem;
+  width: 3px;
+  background: linear-gradient(180deg, #6feeff, rgba(111, 238, 255, 0));
+  box-shadow: 0 0 12px rgba(63, 214, 255, .7);
+}
+.nova-page > .page-title {
+  color: #eafcff;
+  font-size: 1.32rem;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: .06em;
+  text-shadow: 0 0 16px rgba(31, 207, 255, .42);
+}
+.nova-page > .page-title::after {
+  content: attr(data-en);
+  color: #58dfff;
+  font: .5rem var(--font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.nova-page > .page-title:empty::after,
+.nova-page > .page-title:not([data-en])::after { content: none; }
+.nova-page-head { display: grid; gap: .1rem; margin: 0 0 .7rem; }
+.nova-page-sub {
+  margin: 0 0 0 1.05rem;
+  color: #6fbed6;
+  font-size: .72rem;
+  line-height: 1.4;
+}
+.nova-content .panel {
+  border-radius: 0 !important;
+  border-color: rgba(43, 196, 236, .42) !important;
+  background: linear-gradient(145deg, rgba(2, 23, 41, .96), rgba(1, 11, 24, .94)) !important;
+  clip-path: polygon(.55rem 0, 100% 0, 100% calc(100% - .55rem), calc(100% - .55rem) 100%, 0 100%, 0 .55rem);
+}
+.nova-content .rounded-lg,
+.nova-content .rounded-xl,
+.nova-content .rounded-md { border-radius: 2px !important; }
+
+.nova-bottom-nav {
+  height: 4.15rem;
+  border-top: 1px solid rgba(49, 207, 246, .65) !important;
+  background: linear-gradient(180deg, rgba(3, 26, 45, .98), rgba(1, 10, 21, 1));
+}
+.nova-bottom-nav > div { height: 100%; max-width: none !important; }
+.nova-bottom-nav .mobile-bottom-nav { height: 100%; justify-content: center !important; padding: 0 14vw !important; gap: 0 !important; }
+.nova-bottom-nav .nav-tab {
+  flex: 1 1 0;
+  max-width: 13.5rem;
+  min-height: 100%;
+  justify-content: center;
+  color: #8fb9c8;
+  font-size: .7rem !important;
+  letter-spacing: .06em;
+}
+.nova-bottom-nav .nav-tab > span:first-child { color: #80ddf3; font-size: 1.25rem; }
+.nova-bottom-nav .nav-tab[data-active] {
+  background: linear-gradient(180deg, rgba(14, 158, 211, .56), rgba(1, 66, 105, .92));
+  color: white;
+}
+
+.nova-base-switcher {
+  position: fixed;
+  z-index: 46;
+  left: 1rem;
+  bottom: 4.65rem;
+  width: 13rem;
+  color: #dff9ff;
+}
+.nova-base-switcher__current {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .45rem .65rem;
+  border: 1px solid rgba(47, 208, 249, .62);
+  background: rgba(2, 20, 36, .94);
+  clip-path: polygon(.55rem 0, 100% 0, 100% calc(100% - .55rem), calc(100% - .55rem) 100%, 0 100%, 0 .55rem);
+}
+.nova-base-switcher__current > span:last-child, .nova-base-switcher__list button > span:last-child { display: grid; min-width: 0; }
+.nova-base-switcher small { color: #62bdd3; font-family: var(--font-mono); font-size: .52rem; }
+.nova-base-orb { color: #66eaff; font-size: 1.4rem; filter: drop-shadow(0 0 8px #19cbff); }
+.nova-base-switcher__list {
+  display: none;
+  max-height: 15rem;
+  overflow-y: auto;
+  border: 1px solid rgba(47, 208, 249, .4);
+  border-bottom: 0;
+  background: rgba(1, 12, 26, .97);
+}
+.nova-base-switcher:hover .nova-base-switcher__list,
+.nova-base-switcher:focus-within .nova-base-switcher__list { display: grid; }
+.nova-base-switcher:hover .nova-base-switcher__current,
+.nova-base-switcher:focus-within .nova-base-switcher__current { display: none; }
+.nova-base-switcher__list button { display: flex; gap: .5rem; padding: .55rem; color: #9fceda; text-align: left; }
+.nova-base-switcher__list button:hover, .nova-base-switcher__list button[data-active] { background: rgba(9, 102, 143, .42); color: white; }
+
+/* Research workspace follows the approved NOVA PC composition. */
+.nova-research-page { height: calc(100dvh - 8.4rem); min-height: 44rem; overflow: hidden; background: #010812; }
+.nova-research-workspace {
+  position: relative;
+  display: grid;
+  height: 100%;
+  grid-template-columns: minmax(15rem, 25%) minmax(28rem, 1fr) minmax(16rem, 25%);
+  grid-template-rows: minmax(0, 1fr) 15.2rem;
+  gap: .65rem;
+  padding: 7rem .75rem .75rem;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(1, 8, 18, .04), rgba(1, 8, 18, .35)), url('/nova/research-scene-v1.png') center top / cover no-repeat;
+}
+.nova-research-workspace::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(1, 8, 18, .76), transparent 27%, transparent 73%, rgba(1, 8, 18, .78)); }
+.nova-workspace-title { position: absolute; z-index: 3; top: .7rem; left: 1.3rem; display: grid; color: #e9fbff; text-shadow: 0 0 14px rgba(31, 207, 255, .48); }
+.nova-workspace-title h2 { margin: 0; font-size: 1.7rem; line-height: 1.05; letter-spacing: .08em; }
+.nova-workspace-title > b { margin-top: .2rem; color: #58dfff; font: .78rem var(--font-mono); letter-spacing: .08em; }
+.nova-workspace-title > span { margin-top: .35rem; font-size: .78rem; }
+.nova-workspace-title > small { color: #58afc7; font: .5rem var(--font-mono); letter-spacing: .06em; }
+.nova-workspace-panel { position: relative; z-index: 2; min-width: 0; min-height: 0; overflow: hidden; border: 1px solid rgba(44, 205, 246, .58); background: linear-gradient(145deg, rgba(2, 24, 42, .96), rgba(1, 12, 25, .91)); box-shadow: inset 0 0 24px rgba(0, 135, 190, .1), 0 12px 28px rgba(0, 0, 0, .32); backdrop-filter: blur(7px); clip-path: polygon(.65rem 0, 100% 0, 100% calc(100% - .65rem), calc(100% - .65rem) 100%, 0 100%, 0 .65rem); }
+.nova-workspace-panel__title { display: flex; align-items: baseline; gap: .45rem; min-height: 2.55rem; padding: .7rem .8rem .5rem; border-bottom: 1px solid rgba(45, 185, 227, .27); }
+.nova-workspace-panel__title b { color: #e7fbff; font-size: .92rem; letter-spacing: .06em; }
+.nova-workspace-panel__title small { color: #55bfd9; font: .52rem var(--font-mono); }
+.nova-workspace-panel__title > span { margin-left: auto; color: #5aeaff; font: .56rem var(--font-mono); }
+.nova-workspace-panel__title > button { margin-left: auto; padding: .18rem .42rem; border: 1px solid rgba(59, 210, 246, .4); color: #65ddf8; font-size: .58rem; }
+.nova-research-categories { grid-column: 1; grid-row: 1; }
+.nova-research-queue { grid-column: 1; grid-row: 2; }
+.nova-research-tree { grid-column: 2; grid-row: 1; }
+.nova-research-preview { grid-column: 2; grid-row: 2; }
+.nova-research-selected { grid-column: 3; grid-row: 1 / 3; overflow-y: auto; }
+.nova-research-category-list { display: grid; gap: .42rem; padding: .65rem; }
+.nova-research-category-list button { display: grid; min-height: 4.1rem; grid-template-columns: 2.4rem 1fr auto; align-items: center; gap: .55rem; padding: .45rem .6rem; border: 1px solid rgba(50, 178, 219, .27); background: rgba(0, 13, 28, .66); color: #a8d7e3; text-align: left; }
+.nova-research-category-list button > span { color: #63eaff; font-size: 1.55rem; text-align: center; filter: drop-shadow(0 0 7px rgba(42, 215, 255, .65)); }
+.nova-research-category-list button > b { display: grid; color: #dff9ff; font-size: .74rem; }
+.nova-research-category-list button small { color: #58bad3; font: .51rem var(--font-mono); }
+.nova-research-category-list button em { color: #68dff7; font: normal .6rem var(--font-mono); }
+.nova-research-category-list button[data-active] { border-color: #4be3ff; background: linear-gradient(90deg, rgba(9, 131, 180, .55), rgba(2, 34, 55, .75)); box-shadow: inset 0 0 18px rgba(42, 210, 255, .22), 0 0 12px rgba(18, 185, 233, .2); }
+.nova-research-queue-list { display: grid; gap: .4rem; padding: .55rem; }
+.nova-research-queue-empty, .nova-research-queue-item { display: grid; min-height: 4.1rem; grid-template-columns: 2.3rem 1fr auto; align-items: center; gap: .45rem; padding: .4rem; border: 1px solid rgba(45, 185, 227, .24); background: rgba(0, 13, 27, .68); }
+.nova-research-queue-empty > strong, .nova-research-queue-item > strong { color: #8ecde0; font: 1rem var(--font-mono); }
+.nova-research-queue-empty > span, .nova-research-queue-item > span { display: grid; }
+.nova-research-queue-empty span { color: #648d99; font-size: .64rem; }
+.nova-research-queue-empty small, .nova-research-queue-item small { color: #58abc0; font: .49rem var(--font-mono); }
+.nova-research-queue-item b { overflow: hidden; color: #e2faff; font-size: .68rem; text-overflow: ellipsis; white-space: nowrap; }
+/* 进度槽：空槽也渲染 0% 的 <i><u>，使两个窗口高度一致（2026-09-28）。
+   空槽轨道用更淡的蓝并加虚线感，视觉上「有槽但未开工」，与在研槽一眼可分。 */
+.nova-research-queue-item i,
+.nova-research-queue-empty i { height: .25rem; margin-top: .2rem; overflow: hidden; background: #061827; }
+.nova-research-queue-item u { display: block; height: 100%; background: linear-gradient(90deg, #0788cb, #48efff); }
+.nova-research-queue-empty b { overflow: hidden; color: #648d99; font-size: .68rem; text-overflow: ellipsis; white-space: nowrap; }
+.nova-research-queue-empty u { display: block; height: 100%; background: rgba(72, 239, 255, .18); }
+.nova-research-queue-empty i { border: 1px dashed rgba(72, 239, 255, .22); }
+.nova-research-queue-item button { color: #ff9279; font-size: 1rem; }
+.nova-lab-status { display: flex; justify-content: space-between; gap: .5rem; margin: 0 .55rem; padding: .45rem .55rem; border: 1px solid rgba(44, 182, 224, .22); background: rgba(2, 19, 34, .65); color: #83c4d4; font-size: .58rem; }
+.nova-lab-status span { display: grid; }
+.nova-lab-status small { color: #4e9caf; font: .43rem var(--font-mono); }
+.nova-lab-status b { color: #dff8ff; }
+.nova-research-tree { display: flex; flex-direction: column; }
+.nova-research-tree__field { position: relative; flex: 1; min-height: 0; overflow: hidden; background: linear-gradient(180deg, rgba(1, 8, 18, .06), rgba(1, 8, 18, .28)), url('/nova/research-scene-v1.png') center / cover no-repeat; }
+.nova-research-tree__field::before { content: ''; position: absolute; inset: 0; opacity: .28; background-image: linear-gradient(to right, rgba(55, 204, 244, .14) 1px, transparent 1px), linear-gradient(to bottom, rgba(55, 204, 244, .14) 1px, transparent 1px); background-size: 36px 36px; }
+.nova-research-tree__field::after { content: ''; position: absolute; z-index: 1; inset: 20% 16%; background: radial-gradient(circle at 50% 50%, rgba(54, 224, 255, .48), transparent 5%), conic-gradient(from 0deg at 50% 50%, transparent 0 5%, rgba(53, 217, 255, .45) 5.3% 5.6%, transparent 6% 18%, rgba(53, 217, 255, .42) 18.3% 18.6%, transparent 19% 31%, rgba(53, 217, 255, .4) 31.3% 31.6%, transparent 32% 44%, rgba(53, 217, 255, .42) 44.3% 44.6%, transparent 45% 57%, rgba(53, 217, 255, .4) 57.3% 57.6%, transparent 58% 70%, rgba(53, 217, 255, .42) 70.3% 70.6%, transparent 71% 83%, rgba(53, 217, 255, .4) 83.3% 83.6%, transparent 84%); opacity: .55; pointer-events: none; }
+.nova-research-planet { position: absolute; z-index: 2; top: 50%; left: 50%; display: grid; width: 7rem; height: 7rem; place-content: center; transform: translate(-50%, -50%); border: 1px solid #6be9ff; border-radius: 50%; background: radial-gradient(circle, rgba(66, 218, 255, .42), rgba(3, 29, 52, .88) 58%, rgba(1, 11, 24, .95)); color: #eafcff; text-align: center; box-shadow: inset 0 0 25px rgba(61, 215, 255, .32), 0 0 28px rgba(24, 197, 245, .38); }
+.nova-research-planet span { font-size: .72rem; font-weight: 700; }
+.nova-research-planet small { color: #5ac3dc; font: .43rem var(--font-mono); }
+.nova-tech-node { position: absolute; z-index: 3; display: grid; width: 8rem; min-height: 3.4rem; grid-template-columns: 2rem 1fr; grid-template-rows: 1fr 1fr; align-items: center; padding: .35rem .45rem; border: 1px solid rgba(54, 203, 243, .5); background: linear-gradient(145deg, rgba(4, 45, 70, .93), rgba(1, 17, 31, .94)); color: #dff9ff; text-align: left; box-shadow: 0 0 12px rgba(15, 176, 224, .16); clip-path: polygon(.42rem 0, 100% 0, calc(100% - .42rem) 100%, 0 100%, 0 .42rem); }
+.nova-tech-node > span { grid-row: 1 / 3; color: #62e7ff; font-size: 1.35rem; text-align: center; filter: drop-shadow(0 0 6px #1fcfff); }
+.nova-tech-node b { overflow: hidden; font-size: .64rem; text-overflow: ellipsis; white-space: nowrap; }
+.nova-tech-node small { color: #54aec3; font: .48rem var(--font-mono); }
+.nova-tech-node[data-active] { border-color: #78f1ff; background: linear-gradient(145deg, rgba(8, 127, 174, .94), rgba(1, 41, 69, .96)); box-shadow: inset 0 0 18px rgba(72, 224, 255, .3), 0 0 21px rgba(36, 202, 247, .46); }
+.nova-tech-node[data-locked] { border-color: rgba(102, 125, 137, .35); filter: saturate(.45); opacity: .72; }
+.nova-tech-node--1 { top: 7%; left: 8%; } .nova-tech-node--2 { top: 7%; left: calc(50% - 4rem); } .nova-tech-node--3 { top: 7%; right: 8%; }
+.nova-tech-node--4 { top: 40%; left: 4%; } .nova-tech-node--5 { top: 40%; right: 4%; }
+.nova-tech-node--6 { bottom: 7%; left: 4%; } .nova-tech-node--7 { bottom: 7%; left: 25%; } .nova-tech-node--8 { bottom: 7%; left: calc(50% - 4rem); } .nova-tech-node--9 { right: 25%; bottom: 7%; } .nova-tech-node--10 { right: 4%; bottom: 7%; }
+.nova-research-compare { display: grid; height: calc(100% - 2.55rem); grid-template-columns: 1fr 2.5rem 1fr; align-items: stretch; gap: .5rem; padding: .55rem; }
+.nova-research-compare > div { display: grid; grid-template-columns: 1fr auto; align-content: start; padding: .55rem; border: 1px solid rgba(44, 184, 225, .23); background: rgba(0, 13, 27, .65); }
+.nova-research-compare > div > small { color: #66bad0; font-size: .54rem; }
+.nova-research-compare strong { color: #5ef2ff; font: .72rem var(--font-mono); }
+.nova-research-compare b { grid-column: 1 / 3; margin-top: .35rem; color: #e9fbff; font-size: .8rem; }
+.nova-research-compare p { grid-column: 1 / 3; margin-top: .35rem; color: #7fb8c7; font-size: .58rem; }
+.nova-research-compare > span { align-self: center; color: #4fe6ff; font-size: 1.7rem; text-align: center; text-shadow: 0 0 10px #23cdec; }
+.nova-selected-tech { display: grid; grid-template-columns: 5rem 1fr; align-items: center; gap: .65rem; margin: .7rem; }
+.nova-selected-tech > span { display: grid; width: 5rem; height: 5rem; place-items: center; border: 1px solid rgba(73, 219, 255, .48); background: radial-gradient(circle, rgba(24, 186, 233, .38), rgba(1, 16, 31, .94) 68%); color: #65eaff; font-size: 2.7rem; text-shadow: 0 0 12px #22ccef; }
+.nova-selected-tech > div { display: grid; }
+.nova-selected-tech b { color: #ecfcff; font-size: 1rem; }
+.nova-selected-tech small { color: #5dc4dd; font: .58rem var(--font-mono); }
+.nova-research-effect, .nova-research-requires, .nova-research-cost { margin: .65rem .7rem 0; border-top: 1px solid rgba(47, 185, 225, .25); }
+.nova-research-effect > b, .nova-research-requires > b, .nova-research-cost > b { display: flex; align-items: baseline; gap: .4rem; padding: .55rem 0 .3rem; color: #e4faff; font-size: .74rem; }
+.nova-research-effect > b small, .nova-research-requires > b small, .nova-research-cost > b small { color: #54abc1; font: .46rem var(--font-mono); }
+.nova-research-effect > div, .nova-research-requires > div { display: flex; justify-content: space-between; gap: .5rem; padding: .42rem .15rem; border-bottom: 1px solid rgba(44, 173, 211, .17); color: #8fc9d7; font-size: .62rem; }
+.nova-research-effect em, .nova-research-requires em { color: #61e8ff; font-style: normal; }
+.nova-research-requires em[data-ready] { color: #42f0ad; }
+.nova-research-cost > div { display: grid; grid-template-columns: repeat(3, 1fr); gap: .25rem; }
+.nova-research-cost > div span { display: grid; padding: .42rem .2rem; border: 1px solid rgba(43, 179, 220, .23); color: #8ac8d6; font-size: .56rem; text-align: center; }
+.nova-research-cost em { color: white; font: normal .65rem var(--font-mono); }
+.nova-research-cost p { display: flex; justify-content: space-between; margin-top: .38rem; padding: .42rem; background: rgba(0, 13, 27, .68); color: #80bece; font-size: .6rem; }
+.nova-research-cost strong { color: white; font-family: var(--font-mono); }
+.nova-research-action { display: grid; width: calc(100% - 1.4rem); min-height: 3.6rem; place-content: center; margin: .65rem .7rem 0; border: 1px solid #3cdefa; background: linear-gradient(180deg, rgba(11, 169, 222, .5), rgba(0, 78, 132, .8)); color: white; font-size: 1rem; font-weight: 800; box-shadow: inset 0 0 22px rgba(91, 233, 255, .3), 0 0 13px rgba(0, 196, 255, .28); }
+.nova-research-action small { color: #89ecff; font-size: .52rem; }
+.nova-research-action:disabled { filter: grayscale(.7); opacity: .45; }
+.nova-research-action.is-running { border-color: #ff9a76; background: linear-gradient(180deg, rgba(149, 62, 36, .72), rgba(76, 24, 15, .85)); }
+.nova-research-lock { margin: .45rem .7rem; color: #ff9678; font-size: .58rem; text-align: center; }
+.nova-workspace-alert { position: fixed; z-index: 70; top: 4.8rem; left: 50%; max-width: 34rem; transform: translateX(-50%); }
+
+/* Manufacturing and defense share one three-thread orbital workspace. */
+.nova-manufacturing-page { height: calc(100dvh - 8.4rem); min-height: 44rem; overflow: hidden; background: #010812; }
+.nova-manufacturing-workspace { position: relative; display: grid; height: 100%; grid-template-columns: minmax(15rem, 24%) minmax(28rem, 1fr) minmax(16rem, 25%); grid-template-rows: minmax(0, 1fr) 8rem; gap: .65rem; padding: 7rem .75rem .75rem; overflow: hidden; background: linear-gradient(180deg, rgba(1, 8, 18, .02), rgba(1, 8, 18, .28)), url('/nova/shipyard-scene-v1.png') center top / cover no-repeat; }
+.nova-manufacturing-workspace::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(1, 8, 18, .74), transparent 27%, transparent 73%, rgba(1, 8, 18, .78)); }
+.nova-manufacturing-threads { position: relative; z-index: 2; display: grid; min-height: 0; grid-column: 1; grid-row: 1; grid-template-rows: repeat(3, 1fr); gap: .55rem; }
+.nova-thread-card { display: flex; flex-direction: column; }
+.nova-thread-card .nova-workspace-panel__title { min-height: 2.2rem; padding-block: .5rem .35rem; }
+.nova-thread-card .nova-workspace-panel__title > span { padding: .14rem .32rem; border: 1px solid rgba(48, 225, 169, .38); background: rgba(6, 111, 78, .32); color: #46f0b0; }
+.nova-thread-empty { display: grid; flex: 1; grid-template-columns: 2.6rem 1fr; align-items: center; gap: .65rem; padding: .7rem; }
+.nova-thread-empty > strong { display: grid; width: 2.3rem; height: 2.3rem; place-items: center; border: 1px solid rgba(54, 202, 241, .4); color: #5bddf8; font: 1rem var(--font-mono); }
+.nova-thread-empty > span { display: grid; color: #789fab; font-size: .66rem; }
+.nova-thread-empty small { color: #4f8796; font: .47rem var(--font-mono); }
+.nova-thread-product { display: grid; grid-template-columns: 5rem 1fr; align-items: center; gap: .55rem; padding: .55rem; }
+.nova-thread-product__thumb { width: 5rem; height: 3.3rem; border: 1px solid rgba(49, 197, 237, .34); background: url('/nova/shipyard-scene-v1.png') center / 380% auto no-repeat; }
+.nova-thread-product > div { display: grid; min-width: 0; }
+.nova-thread-product b { overflow: hidden; color: #e8fbff; font-size: .72rem; text-overflow: ellipsis; white-space: nowrap; }
+.nova-thread-product small { color: #66b6c9; font: .52rem var(--font-mono); }
+.nova-thread-product i { height: .3rem; margin-top: .3rem; overflow: hidden; background: #061827; }
+.nova-thread-product u { display: block; height: 100%; background: linear-gradient(90deg, #0789cc, #4aedff); }
+.nova-thread-cancel { align-self: flex-end; margin: auto .55rem .45rem; padding: .18rem .4rem; border: 1px solid rgba(255, 116, 84, .33); color: #ff957b; font-size: .55rem; }
+.nova-blueprint-workspace { z-index: 2; display: flex; min-height: 0; grid-column: 2; grid-row: 1; flex-direction: column; }
+.nova-blueprint-field { position: relative; flex: 1; min-height: 0; overflow: hidden; background: linear-gradient(180deg, rgba(1, 8, 18, .04), rgba(1, 8, 18, .24)), url('/nova/shipyard-scene-v1.png') center / cover no-repeat; }
+.nova-blueprint-field::before { content: ''; position: absolute; inset: 0; opacity: .25; background-image: linear-gradient(to right, rgba(55, 204, 244, .14) 1px, transparent 1px), linear-gradient(to bottom, rgba(55, 204, 244, .14) 1px, transparent 1px); background-size: 38px 38px; }
+.nova-blueprint-field::after { content: ''; position: absolute; z-index: 1; top: 50%; left: 50%; width: 58%; height: 1px; transform: translate(-50%, -50%); background: linear-gradient(90deg, #3be1ff, rgba(60, 225, 255, .24) 43%, rgba(60, 225, 255, .24) 57%, #3be1ff); box-shadow: 0 -8rem 0 rgba(53, 208, 247, .42), 0 8rem 0 rgba(53, 208, 247, .42); }
+.nova-blueprint-core { position: absolute; z-index: 3; top: 50%; left: 50%; display: grid; width: 13rem; height: 8rem; place-content: center; transform: translate(-50%, -50%); border: 1px solid #5be8ff; background: radial-gradient(ellipse, rgba(20, 169, 219, .4), rgba(1, 19, 35, .92) 66%); color: #eafcff; text-align: center; box-shadow: inset 0 0 24px rgba(50, 211, 250, .2), 0 0 25px rgba(28, 199, 245, .3); clip-path: polygon(.8rem 0, calc(100% - .8rem) 0, 100% .8rem, 100% calc(100% - .8rem), calc(100% - .8rem) 100%, .8rem 100%, 0 calc(100% - .8rem), 0 .8rem); }
+.nova-blueprint-core > span { color: #63eaff; font-size: 2.3rem; text-shadow: 0 0 12px #25cdeb; }
+.nova-blueprint-core b { font-size: .8rem; }
+.nova-blueprint-core small { color: #58bcd4; font: .48rem var(--font-mono); }
+.nova-blueprint-component { position: absolute; z-index: 3; display: grid; width: 9.2rem; min-height: 4.1rem; grid-template-columns: 2.5rem 1fr; grid-template-rows: 1fr 1fr; align-items: center; padding: .4rem; border: 1px solid rgba(55, 203, 243, .47); background: rgba(1, 22, 39, .93); color: #dffaff; }
+.nova-blueprint-component > span { grid-row: 1 / 3; color: #62e8ff; font-size: 1.5rem; text-align: center; }
+.nova-blueprint-component b { font-size: .65rem; }
+.nova-blueprint-component small { color: #50aabd; font: .45rem var(--font-mono); }
+.nova-blueprint-component--hull { top: 16%; left: 7%; } .nova-blueprint-component--engine { bottom: 16%; left: 7%; } .nova-blueprint-component--weapon { top: 16%; right: 7%; } .nova-blueprint-component--shield { right: 7%; bottom: 16%; }
+.nova-production-status { display: flex; justify-content: center; gap: 1.3rem; padding: .55rem; border-top: 1px solid rgba(44, 183, 224, .24); background: rgba(0, 13, 27, .78); color: #8cc8d5; font-size: .58rem; }
+.nova-production-status span { display: flex; align-items: center; gap: .35rem; }
+.nova-production-status i { width: .48rem; height: .48rem; border-radius: 50%; }
+.nova-production-status .is-ready { background: #3cf2ad; box-shadow: 0 0 8px #3cf2ad; }
+.nova-production-status .is-missing { background: #ff6f62; box-shadow: 0 0 8px #ff6f62; }
+.nova-blueprint-detail { z-index: 2; grid-column: 3; grid-row: 1; overflow-y: auto; }
+.nova-selected-blueprint { display: grid; grid-template-columns: 5.4rem 1fr; align-items: center; gap: .65rem; margin: .7rem; }
+.nova-selected-blueprint > span { display: grid; width: 5.4rem; height: 4.4rem; place-items: center; border: 1px solid rgba(64, 215, 251, .4); background: radial-gradient(ellipse, rgba(21, 185, 232, .38), rgba(1, 16, 31, .94)); color: #6feeff; font-size: 2.5rem; text-shadow: 0 0 12px #25cdec; }
+.nova-selected-blueprint > div { display: grid; }
+.nova-selected-blueprint b { color: #effdff; font-size: 1rem; }
+.nova-selected-blueprint small { color: #58bad1; font: .52rem var(--font-mono); }
+.nova-blueprint-stats { display: grid; grid-template-columns: 1fr 1fr; margin: 0 .7rem; border-top: 1px solid rgba(45, 181, 220, .25); }
+.nova-blueprint-stats div { display: flex; justify-content: space-between; gap: .5rem; padding: .4rem .25rem; border-bottom: 1px solid rgba(44, 171, 210, .16); color: #8ac5d4; font-size: .58rem; }
+.nova-blueprint-stats b { color: #e4faff; font-family: var(--font-mono); }
+.nova-blueprint-cost, .nova-blueprint-requires { margin: .55rem .7rem 0; }
+.nova-blueprint-cost > b, .nova-blueprint-requires > b { display: flex; align-items: baseline; gap: .4rem; color: #e4faff; font-size: .72rem; }
+.nova-blueprint-cost > b small, .nova-blueprint-requires > b small { color: #54abc1; font: .44rem var(--font-mono); }
+.nova-blueprint-cost > div { display: grid; grid-template-columns: repeat(3, 1fr); gap: .24rem; margin-top: .38rem; }
+.nova-blueprint-cost span { display: grid; padding: .4rem .18rem; border: 1px solid rgba(43, 179, 220, .23); color: #8ac8d6; font-size: .54rem; text-align: center; }
+.nova-blueprint-cost em { color: white; font: normal .64rem var(--font-mono); }
+.nova-blueprint-requires div { display: flex; justify-content: space-between; padding: .35rem .15rem; border-bottom: 1px solid rgba(44, 173, 211, .17); color: #8fc9d7; font-size: .57rem; }
+.nova-blueprint-requires em { color: #ff9475; font: normal .57rem var(--font-mono); }
+.nova-blueprint-requires em[data-ready] { color: #42f0ad; }
+.nova-build-controls { display: grid; grid-template-columns: 2.4rem 1fr 2.4rem; gap: .28rem; margin: .6rem .7rem 0; }
+.nova-build-controls button, .nova-build-controls input { min-height: 2.25rem; border: 1px solid rgba(59, 205, 241, .38); background: rgba(2, 25, 43, .9); color: #dffaff; text-align: center; }
+.nova-build-action { display: grid; width: calc(100% - 1.4rem); min-height: 3.7rem; place-content: center; margin: .5rem .7rem 0; border: 1px solid #3cdefa; background: linear-gradient(180deg, rgba(11, 169, 222, .5), rgba(0, 78, 132, .8)); color: white; font-size: 1rem; font-weight: 800; box-shadow: inset 0 0 22px rgba(91, 233, 255, .3), 0 0 13px rgba(0, 196, 255, .28); }
+.nova-build-action small { color: #89ecff; font-size: .5rem; }
+.nova-build-action:disabled { filter: grayscale(.7); opacity: .45; }
+.nova-scrap-action { display: block; margin: .45rem auto; color: #ff9679; font-size: .58rem; }
+.nova-blueprint-catalog { position: relative; z-index: 2; display: grid; min-width: 0; grid-column: 1 / -1; grid-row: 2; grid-template-columns: 13rem 1fr; padding-left: 13rem; border: 1px solid rgba(45, 199, 240, .45); background: rgba(1, 14, 28, .95); }
+.nova-blueprint-tabs { display: grid; grid-template-columns: 1fr 1fr; border-right: 1px solid rgba(41, 175, 215, .25); }
+.nova-blueprint-tabs button { color: #78b7c7; font-size: .72rem; }
+.nova-blueprint-tabs button[data-active] { background: linear-gradient(180deg, rgba(10, 145, 194, .5), rgba(0, 57, 91, .7)); color: white; box-shadow: inset 0 -2px 0 #4be8ff; }
+.nova-blueprint-list { display: flex; min-width: 0; overflow-x: auto; scrollbar-color: #148db6 #041321; }
+.nova-blueprint-list button { display: grid; flex: 1 0 7.2rem; grid-template-columns: 2.5rem 1fr; grid-template-rows: 1fr 1fr; align-items: center; min-width: 7.2rem; padding: .4rem; border-right: 1px solid rgba(40, 170, 211, .22); color: #8bbbc8; text-align: left; }
+.nova-blueprint-list button > span { grid-row: 1 / 3; color: #62e7ff; font-size: 1.5rem; text-align: center; }
+.nova-blueprint-list button b { overflow: hidden; font-size: .65rem; text-overflow: ellipsis; white-space: nowrap; }
+.nova-blueprint-list button small { color: #58adc2; font: .51rem var(--font-mono); }
+.nova-blueprint-list button[data-active] { background: linear-gradient(180deg, rgba(10, 150, 199, .44), rgba(0, 57, 91, .74)); color: white; box-shadow: inset 0 0 18px rgba(47, 220, 255, .24); }
+
+/* Construction module rebuild — three-column workspace aligned to
+   nova-construction-pc-v2-unified.png: categories + queue (left),
+   scene + construction preview (center), selected building (right). */
+.nova-construction-page {
+  height: calc(100dvh - 8.4rem);
+  min-height: 42rem;
+  overflow: hidden;
+  background: #010812;
+}
+.nova-construction-page > .alert-bad {
+  position: fixed;
+  z-index: 60;
+  top: 4.8rem;
+  left: 50%;
+  max-width: 36rem;
+  transform: translateX(-50%);
+  box-shadow: 0 0 26px rgba(255, 83, 54, .28);
+}
+.nova-content .nova-construction-stage {
+  position: relative;
+  display: grid !important;
+  height: 100%;
+  min-height: 0 !important;
+  grid-template-columns: minmax(14.5rem, 21vw) minmax(24rem, 1fr) minmax(15.5rem, 23vw) !important;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 14.5rem);
+  gap: .65rem !important;
+  margin: 0 !important;
+  padding: 6.9rem .75rem .75rem !important;
+  border: 0 !important;
+  background: #010812 !important;
+}
+.nova-construction-side {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  grid-column: 1;
+  grid-row: 1 / 3;
+  min-width: 0;
+  min-height: 0;
+}
+.nova-content .nova-construction-stage__scene {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  min-height: 0 !important;
+  overflow: hidden;
+  border: 1px solid rgba(68, 213, 255, .2) !important;
+  background: linear-gradient(180deg, rgba(1, 9, 20, .03), rgba(1, 9, 20, .2)), url('/nova/construction-scene-v1.png') center / cover no-repeat !important;
+  box-shadow: inset 0 0 70px rgba(0, 5, 15, .35);
+}
+.nova-construction-stage__scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(1, 9, 20, .24), transparent 20%, transparent 80%, rgba(1, 9, 20, .24));
+}
+.nova-city-grid { position: absolute; inset: 0; opacity: .25; background-image: linear-gradient(to right, rgba(55, 204, 244, .14) 1px, transparent 1px), linear-gradient(to bottom, rgba(55, 204, 244, .14) 1px, transparent 1px); background-size: 36px 36px; }
+.nova-city-label { position: absolute; bottom: .6rem; left: .85rem; z-index: 3; display: grid; color: #bfe9f5; font-size: .62rem; }
+.nova-city-label .mono { color: #54c9e6; font-size: .48rem; letter-spacing: .08em; }
+.nova-construction-preview {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  min-height: 0;
+}
+.nova-construction-stage__selected {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  overflow-y: auto;
+  scrollbar-color: #148db6 #041321;
+}
+.nova-construction-queue { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
+.nova-construction-queue .nova-workspace-panel__title > span { margin-left: auto; padding: .14rem .4rem; border: 1px solid rgba(90, 128, 148, .4); background: rgba(10, 32, 48, .5); color: #7fa9ba; font: .54rem var(--font-mono); }
+.nova-construction-queue .nova-workspace-panel__title > span[data-running] { border-color: rgba(255, 191, 87, .45); background: rgba(96, 64, 6, .35); color: #ffcf7a; }
+
+/* Building categories (left, top) */
+.nova-construction-cats { flex: 0 0 auto; }
+.nova-construction-cats__list { display: grid; gap: .35rem; padding: .55rem; }
+.nova-construction-cats__list > button { display: grid; grid-template-columns: 2.2rem 1fr auto auto; align-items: center; gap: .5rem; min-height: 3.2rem; padding: .4rem .55rem; border: 1px solid rgba(50, 178, 219, .27); background: rgba(0, 13, 28, .66); color: #a8d7e3; text-align: left; }
+.nova-construction-cats__list > button > span:first-child { display: grid; place-items: center; color: #63eaff; font-size: 1.35rem; filter: drop-shadow(0 0 7px rgba(42, 215, 255, .65)); }
+.nova-construction-cats__list .nova-icon { width: 1.5rem; height: 1.5rem; }
+.nova-construction-cats__list > button > span:nth-child(2) { display: grid; min-width: 0; color: #dff9ff; font-size: .72rem; }
+.nova-construction-cats__list > button small { color: #58bad3; font: .48rem var(--font-mono); }
+.nova-construction-cats__list > button em { color: #68dff7; font: normal .58rem var(--font-mono); }
+.nova-construction-cats__list > button::after { content: '›'; color: #4fc9e8; font-size: .95rem; }
+.nova-construction-cats__list > button[data-active] { border-color: #4be3ff; background: linear-gradient(90deg, rgba(9, 131, 180, .55), rgba(2, 34, 55, .75)); box-shadow: inset 0 0 18px rgba(42, 210, 255, .22), 0 0 12px rgba(18, 185, 233, .2); }
+.nova-construction-cats__items { display: grid; grid-template-columns: 1fr 1fr; gap: .32rem; padding: 0 .55rem .55rem; }
+.nova-construction-cats__items > button { display: grid; grid-template-columns: 2rem 1fr; grid-template-rows: auto auto; align-items: center; gap: .05rem .4rem; padding: .32rem .38rem; border: 1px solid rgba(50, 178, 219, .24); background: rgba(0, 13, 28, .6); color: #9fcfdd; text-align: left; }
+.nova-construction-cats__items .nova-atlas-thumb { grid-row: 1 / 3; width: 2rem; height: 2rem; border: 1px solid rgba(48, 190, 232, .3); background-color: rgba(2, 20, 36, .8); }
+.nova-construction-cats__items b { overflow: hidden; color: #e2faff; font-size: .6rem; text-overflow: ellipsis; white-space: nowrap; }
+.nova-construction-cats__items small { overflow: hidden; color: #57aec6; font: .48rem var(--font-mono); text-overflow: ellipsis; white-space: nowrap; }
+.nova-construction-cats__items > button[data-active] { border-color: #4be3ff; background: linear-gradient(90deg, rgba(9, 131, 180, .5), rgba(2, 34, 55, .75)); }
+
+/* Build queue (left, bottom) */
+.nova-construction-queue__list { flex: 1; min-height: 0; display: grid; align-content: start; gap: .45rem; padding: .55rem; overflow-y: auto; scrollbar-color: #148db6 #041321; }
+.nova-construction-queue__item { display: grid; grid-template-columns: 3.3rem 1fr auto; gap: .18rem .5rem; padding: .45rem; border: 1px solid rgba(45, 186, 229, .26); background: rgba(1, 15, 29, .68); }
+.nova-construction-queue__item[data-empty] { grid-template-columns: 1.7rem 1fr; align-items: center; min-height: 3rem; border-style: dashed; background: rgba(1, 13, 25, .5); }
+.nova-construction-queue__item[data-empty] strong { display: grid; width: 1.55rem; height: 1.55rem; place-items: center; border: 1px solid rgba(65, 214, 252, .35); color: #4d7f92; font: .7rem var(--font-mono); }
+.nova-construction-queue__item[data-empty] span b { display: block; color: #5d8fa0; font-size: .64rem; }
+.nova-construction-queue__item[data-empty] span small { color: #3f6a79; font: .46rem var(--font-mono); }
+.nova-construction-queue__thumb { width: 3.3rem; height: 3.3rem; border: 1px solid rgba(48, 200, 240, .35); background-color: rgba(2, 20, 36, .8); }
+.nova-construction-queue__main { display: grid; min-width: 0; }
+.nova-construction-queue__main b { overflow: hidden; color: #def9ff; font-size: .72rem; text-overflow: ellipsis; white-space: nowrap; }
+.nova-construction-queue__main small { color: #6fbfd3; font: .52rem var(--font-mono); }
+.nova-construction-queue__main i { height: .26rem; margin-top: .22rem; overflow: hidden; background: #061827; }
+.nova-construction-queue__main u { display: block; height: 100%; background: linear-gradient(90deg, #0287cc, #45efff); box-shadow: 0 0 8px #20d9ff; }
+.nova-construction-queue__item[data-paused] { border-color: rgba(255, 191, 87, .45); }
+.nova-construction-queue__item[data-paused] u { background: linear-gradient(90deg, #8a6a1d, #ffd257); box-shadow: 0 0 8px #d8a940; }
+.nova-construction-queue__cost { display: flex; flex-wrap: wrap; gap: .28rem; margin-top: .24rem; }
+.nova-construction-queue__cost span { display: inline-flex; align-items: center; gap: .22rem; padding: .1rem .3rem; border: 1px solid rgba(45, 180, 220, .22); color: #8fd0e2; font: .5rem var(--font-mono); }
+.nova-construction-queue__cost span .nova-icon { width: .72rem; height: .72rem; }
+.nova-construction-queue__cost span[data-short] { border-color: rgba(255, 110, 80, .55); color: #ff9a82; }
+.nova-construction-queue__pct { align-self: start; color: #5ee9ff; font: .64rem var(--font-mono); }
+.nova-construction-queue__item[data-paused] .nova-construction-queue__pct { color: #ffcf7a; }
+.nova-construction-queue__actions { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(4, 1fr); gap: .28rem; }
+.nova-construction-queue__actions button { min-height: 1.65rem; padding: .12rem .2rem; border: 1px solid rgba(59, 205, 241, .32); background: rgba(2, 25, 43, .85); color: #a9e2f2; font-size: .56rem; }
+.nova-construction-queue__actions button:hover { border-color: #4be3ff; color: #fff; }
+.nova-construction-queue__actions button[data-danger] { border-color: rgba(255, 116, 84, .4); color: #ff957b; }
+.nova-construction-queue__actions button:disabled { opacity: .35; }
+
+/* Scene callouts */
+.nova-building-hotspots button {
+  position: absolute;
+  z-index: 4;
+  left: 18%;
+  top: 21%;
+  display: grid;
+  justify-items: center;
+  color: #daf9ff;
+  filter: drop-shadow(0 3px 5px #000);
+}
+.nova-building-hotspots button:nth-child(2) { left: 68%; top: 22%; }
+.nova-building-hotspots button:nth-child(3) { left: 29%; top: 45%; }
+.nova-building-hotspots button:nth-child(4) { left: 67%; top: 48%; }
+.nova-building-hotspots button:nth-child(5) { left: 48%; top: 33%; }
+.nova-building-hotspots button:nth-child(6) { left: 20%; top: 70%; }
+.nova-building-hotspots button:nth-child(7) { left: 74%; top: 70%; }
+.nova-building-hotspots button:nth-child(8) { left: 42%; top: 78%; }
+.nova-building-hotspots button:nth-child(9) { left: 7%; top: 45%; }
+.nova-building-hotspots button:nth-child(10) { left: 86%; top: 42%; }
+.nova-building-hotspots button:nth-child(11) { left: 34%; top: 12%; }
+.nova-building-hotspots button:nth-child(12) { left: 58%; top: 58%; }
+.nova-building-hotspots button span { display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid #40dafa; border-radius: 50%; background: rgba(1, 26, 45, .88); color: #69f0ff; font: .55rem var(--font-mono); box-shadow: inset 0 0 12px rgba(26, 209, 255, .35), 0 0 15px rgba(0, 199, 255, .35); }
+.nova-building-hotspots button span em { font-style: normal; white-space: nowrap; }
+.nova-building-hotspots button b { margin-top: .18rem; padding: .18rem .35rem; border: 1px solid rgba(62, 203, 240, .38); background: rgba(1, 22, 39, .88); font-size: .62rem; white-space: nowrap; }
+.nova-building-hotspots button[data-active] span { background: #0b7399; color: white; transform: scale(1.16); box-shadow: 0 0 22px #1bd8ff; }
+.nova-hotspot-asset { display: grid; }
+
+/* Construction preview (center, bottom): BEFORE ⟶ AFTER */
+.nova-construction-compare { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 2.4rem 1fr; gap: .45rem; padding: .55rem; overflow-y: auto; scrollbar-color: #148db6 #041321; }
+.nova-construction-compare > div { display: grid; align-content: start; gap: .28rem; min-width: 0; padding: .45rem; border: 1px solid rgba(44, 184, 225, .23); background: rgba(0, 13, 27, .65); }
+.nova-construction-compare > div[data-after] { border-color: rgba(72, 225, 169, .4); background: rgba(0, 24, 24, .6); }
+.nova-construction-compare > div > small { display: flex; align-items: baseline; gap: .4rem; color: #66bad0; font-size: .56rem; }
+.nova-construction-compare > div > small b { color: #5ef2ff; font: .58rem var(--font-mono); }
+.nova-construction-compare > div[data-after] > small b { color: #52f0b0; }
+.nova-construction-compare__thumb { height: 3.4rem; border: 1px solid rgba(48, 200, 240, .3); background-color: rgba(2, 22, 40, .75); }
+.nova-construction-compare > div > div { display: flex; justify-content: space-between; gap: .4rem; padding: .3rem .1rem; border-bottom: 1px solid rgba(44, 173, 211, .15); color: #8fc9d7; font-size: .58rem; }
+.nova-construction-compare > div > div > span { display: grid; min-width: 0; }
+.nova-construction-compare > div > div > span small { color: #4e9cb0; font: .42rem var(--font-mono); }
+.nova-construction-compare strong { display: flex; align-items: baseline; gap: .3rem; color: #e9fbff; font: .6rem var(--font-mono); white-space: nowrap; }
+.nova-construction-compare strong em { color: #52f0b0; font: normal .54rem var(--font-mono); font-style: normal; }
+.nova-construction-compare strong em[data-down] { color: #ff9a82; }
+.nova-construction-compare > span { align-self: center; color: #4fe6ff; font-size: 1.5rem; text-align: center; text-shadow: 0 0 10px #23cdec; }
+.nova-construction-compare p { margin: 0; color: #7fb8c7; font-size: .56rem; line-height: 1.5; }
+.nova-construction-preview__note { display: flex; align-items: flex-start; gap: .4rem; margin: 0; padding: .5rem .6rem; border-top: 1px solid rgba(44, 183, 224, .22); background: rgba(0, 13, 27, .6); color: #7fbdd0; font-size: .56rem; line-height: 1.5; }
+.nova-construction-preview__note .nova-icon { flex: 0 0 auto; margin-top: .05rem; color: #52f0b0; }
+
+/* Selected building (right) */
+.nova-construction-hero { display: grid; grid-template-columns: 5rem 1fr; gap: .6rem; margin: .7rem; }
+.nova-construction-hero .nova-atlas-thumb { width: 5rem; height: 5rem; border: 1px solid rgba(64, 215, 251, .45); background-color: rgba(2, 22, 40, .8); box-shadow: inset 0 0 18px rgba(20, 190, 241, .18); }
+.nova-construction-hero > div { display: grid; align-content: start; gap: .22rem; min-width: 0; }
+.nova-construction-hero b { color: #effdff; font-size: .95rem; }
+.nova-construction-hero small { color: #58bad1; font: .5rem var(--font-mono); }
+.nova-construction-hero p { margin: 0; color: #7fbdd0; font-size: .56rem; line-height: 1.5; }
+.nova-construction-meta { margin: 0 .7rem; border-top: 1px solid rgba(47, 185, 225, .25); }
+.nova-construction-meta > div { display: flex; justify-content: space-between; align-items: center; gap: .5rem; padding: .42rem .15rem; border-bottom: 1px solid rgba(44, 171, 210, .16); color: #8ac5d4; font-size: .6rem; }
+.nova-construction-meta span small { margin-left: .3rem; color: #4e9caf; font: .44rem var(--font-mono); }
+.nova-construction-meta b { color: #e4faff; font-family: var(--font-mono); }
+.nova-construction-meta b i { color: #52f0b0; font-style: normal; }
+.nova-construction-meta b em { padding: 0 .2rem; color: #58b6cf; font-style: normal; }
+.nova-construction-block { margin: .55rem .7rem 0; }
+.nova-construction-block > b { display: flex; align-items: baseline; gap: .4rem; padding-bottom: .3rem; color: #e4faff; font-size: .72rem; }
+.nova-construction-block > b small { color: #54abc1; font: .46rem var(--font-mono); }
+.nova-construction-block > div { display: flex; justify-content: space-between; gap: .5rem; padding: .4rem .15rem; border-top: 1px solid rgba(44, 173, 211, .17); color: #8fc9d7; font-size: .6rem; }
+.nova-construction-block > div > span { display: flex; align-items: center; gap: .4rem; min-width: 0; }
+.nova-construction-block > div > span .nova-icon { flex: 0 0 auto; width: 1.05rem; height: 1.05rem; color: #5fe0f8; }
+.nova-construction-block > div > span small { display: block; color: #4e9caf; font: .42rem var(--font-mono); }
+.nova-construction-block em { color: #52f0b0; font: normal .58rem var(--font-mono); font-style: normal; white-space: nowrap; }
+.nova-construction-block em[data-unmet] { color: #ff9a82; }
+.nova-construction-cost { margin: .55rem .7rem 0; }
+.nova-construction-cost > b { display: flex; align-items: baseline; gap: .4rem; padding-bottom: .3rem; color: #e4faff; font-size: .72rem; }
+.nova-construction-cost > b small { color: #54abc1; font: .44rem var(--font-mono); }
+.nova-construction-cost > div { display: grid; grid-template-columns: 1fr 1fr; gap: .28rem; }
+.nova-construction-cost span { display: grid; grid-template-columns: 1.1rem 1fr; grid-template-rows: auto auto; align-items: center; gap: .05rem .3rem; padding: .38rem .4rem; border: 1px solid rgba(43, 180, 223, .25); color: #8fd8e9; font-size: .56rem; }
+.nova-construction-cost span .nova-icon { grid-row: 1 / 3; width: 1.1rem; height: 1.1rem; }
+.nova-construction-cost em { overflow: hidden; color: #f3fdff; font: normal .6rem var(--font-mono); font-style: normal; text-overflow: ellipsis; white-space: nowrap; }
+.nova-construction-cost span[data-short] { border-color: rgba(255, 110, 80, .55); }
+.nova-construction-cost span[data-short] em { color: #ff9a82; }
+.nova-construction-stage__selected .nova-requirement-warning { margin: .55rem .7rem 0; }
+.nova-construction-action { display: grid; min-height: 3.6rem; place-content: center; justify-items: center; margin: .6rem .7rem .75rem; border: 1px solid #3cdefa; background: linear-gradient(180deg, rgba(11, 169, 222, .5), rgba(0, 78, 132, .8)); color: white; font-size: .95rem; font-weight: 800; box-shadow: inset 0 0 22px rgba(91, 233, 255, .3), 0 0 13px rgba(0, 196, 255, .28); }
+.nova-construction-action .nova-icon { width: 1.3rem; height: 1.3rem; color: #bdf3ff; }
+.nova-construction-action small { color: #89ecff; font-size: .5rem; }
+.nova-construction-action:disabled { filter: grayscale(.7); opacity: .45; }
+
+/* The four other main modules now open as full scene workspaces instead of card pages. */
+.nova-shipyard-stage,
+.nova-research-stage,
+.nova-fleet-stage,
+.nova-report-stage {
+  min-height: calc(100dvh - 8.4rem) !important;
+  margin: 0 !important;
+  padding: 1rem !important;
+  gap: .8rem !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: #010812 !important;
+  background-position: center !important;
+  background-size: cover !important;
+}
+.nova-shipyard-stage { background-image: linear-gradient(90deg, rgba(1, 10, 23, .9), rgba(1, 10, 23, .08) 28%, rgba(1, 10, 23, .08) 72%, rgba(1, 10, 23, .9)), url('/nova/shipyard-scene-v1.png') !important; }
+.nova-research-stage { background-image: linear-gradient(90deg, rgba(1, 10, 23, .9), rgba(1, 10, 23, .08) 28%, rgba(1, 10, 23, .08) 72%, rgba(1, 10, 23, .9)), url('/nova/research-scene-v1.png') !important; }
+.nova-fleet-stage { background-image: linear-gradient(90deg, rgba(1, 10, 23, .92), rgba(1, 10, 23, .15) 30%, rgba(1, 10, 23, .15) 70%, rgba(1, 10, 23, .92)), url('/nova/galaxy-scene-v1.png') !important; }
+.nova-report-stage { background-image: linear-gradient(90deg, rgba(1, 10, 23, .94), rgba(1, 10, 23, .2) 32%, rgba(1, 10, 23, .2) 68%, rgba(1, 10, 23, .94)), url('/nova/galaxy-scene-v1.png') !important; }
+
+.nova-shipyard-stage__queue,
+.nova-shipyard-stage__detail,
+.nova-research-stage__intro,
+.nova-research-stage__selected,
+.nova-fleet-stage__status,
+.nova-fleet-stage__selected,
+.nova-report-stage__filters,
+.nova-report-stage__selected {
+  align-self: start;
+  min-height: 17rem;
+  padding: .85rem !important;
+  border: 1px solid rgba(44, 205, 246, .62);
+  background: linear-gradient(145deg, rgba(2, 24, 42, .95), rgba(1, 12, 25, .9));
+  backdrop-filter: blur(7px);
+  clip-path: polygon(.65rem 0, 100% 0, 100% calc(100% - .65rem), calc(100% - .65rem) 100%, 0 100%, 0 .65rem);
+}
+.nova-shipyard-stage__scene,
+.nova-research-stage__network,
+.nova-fleet-stage__map,
+.nova-report-stage__timeline {
+  min-height: calc(100dvh - 10.5rem) !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+@media (max-width: 900px) {
+  .nova-resource-cell { min-width: 8.5rem; }
+  .nova-resource-name { display: none; }
+  .nova-resource-cell { grid-template-columns: 1.35rem 1fr; }
+  .nova-bottom-nav .mobile-bottom-nav { padding-inline: 0 !important; }
+  .nova-base-switcher { left: .45rem; bottom: 4.4rem; width: 11rem; }
+}
+
+@media (max-width: 720px) {
+  /* 手机版资源栏：独占一行 + 可横向滚动，修掉"只见金属不见晶体/燃料"的裁切 */
+  .nova-resource-grid { flex: 1 1 100%; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+  .nova-resource-cell { min-width: 6.9rem; height: 3rem; padding-inline: .5rem !important; }
+  .nova-resource-cell > span:first-child .nova-icon { width: 1.2rem; height: 1.2rem; }
+  .nova-resource-value { font-size: .78rem; }
+  .nova-resource-cell > .text-ok, .nova-resource-cell > .chip { font-size: .56rem; }
+  /* 科技树底行节点在矮视口被裁：加高 */
+  .nova-research-tree, .nova-research-tree__field { min-height: 34rem; }
+  .nova-construction-page { height: auto; min-height: 0; overflow: visible; }
+  .nova-construction-stage { display: flex !important; height: auto; flex-direction: column; padding-top: 5.9rem !important; }
+  .nova-construction-stage__scene { order: -1; min-height: 23rem !important; }
+  .nova-construction-side, .nova-construction-stage__selected { min-height: auto; }
+  .nova-construction-compare { grid-template-columns: 1fr; }
+  .nova-construction-compare > span { display: none; }
+  .nova-research-page, .nova-manufacturing-page { height: auto; min-height: 0; overflow: visible; }
+  .nova-research-workspace, .nova-manufacturing-workspace { display: flex; height: auto; flex-direction: column; padding: 6.5rem .55rem 5rem; overflow: visible; }
+  .nova-research-tree, .nova-blueprint-workspace { order: -2; min-height: 28rem; }
+  .nova-research-categories, .nova-research-queue, .nova-research-preview, .nova-research-selected { min-height: auto; }
+  .nova-manufacturing-threads { display: flex; min-height: auto; flex-direction: column; }
+  .nova-thread-card { min-height: 9rem; }
+  .nova-blueprint-detail { min-height: auto; }
+  .nova-blueprint-catalog { order: -1; display: block; min-height: 7rem; padding-left: 0; }
+  .nova-blueprint-tabs { min-height: 2.6rem; }
+  .nova-blueprint-list { min-height: 4.6rem; }
+}
+.nova-icon {
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+  flex: 0 0 auto;
+  overflow: visible;
+  vertical-align: -0.2em;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+.nova-icon--logo { width: 2.35rem; height: 2.35rem; stroke-width: 1.35; }
+.nova-icon--metal { color: #a9c7d8; }
+.nova-icon--crystal { color: #5fe8ff; }
+.nova-icon--fuel { color: #ff9f39; }
+.nova-icon--energy { color: #64dfff; }
+.nova-icon--alert { color: #ff795b; }
+.nova-brand__mark .nova-icon { width: 100%; height: 100%; }
+.nova-bottom-nav .nav-tab > .nova-icon,
+.mobile-more-panel button > .nova-icon { width: 1.45rem; height: 1.45rem; }
+.nova-resource-cell > span:first-child .nova-icon { width: 1.55rem; height: 1.55rem; }
+.nova-shield-icon .nova-icon { width: 2.5rem; height: 2.5rem; }
+.nova-base-orb .nova-icon { width: 1.55rem; height: 1.55rem; }
+.nova-research-category-list button > span .nova-icon,
+.nova-tech-node > span .nova-icon { width: 1.55rem; height: 1.55rem; }
+.nova-selected-tech > span .nova-icon { width: 2.8rem; height: 2.8rem; }
+.nova-blueprint-component > span .nova-icon { width: 1.7rem; height: 1.7rem; }
+.nova-blueprint-core > span .nova-icon { width: 4.8rem; height: 3rem; }
+.nova-selected-blueprint > span .nova-icon { width: 4.25rem; height: 3rem; }
+.nova-blueprint-list button > span .nova-icon { width: 1.5rem; height: 1.5rem; }
+.nova-selected-structure-preview > span .nova-icon { width: 2.2rem; height: 2.2rem; }
+.nova-upgrade-button > .nova-icon { width: 1.55rem; height: 1.55rem; }
+.nova-power-alert > .nova-icon { margin-right: .35rem; }
+.nova-command-status { grid-auto-flow: column; align-items: stretch; border: 1px solid rgba(56, 194, 235, .28); background: rgba(0, 14, 29, .72); clip-path: polygon(.45rem 0, 100% 0, 100% calc(100% - .45rem), calc(100% - .45rem) 100%, 0 100%, 0 .45rem); }
+.nova-command-status > span { display: grid; min-width: 4.5rem; place-content: center; padding: .28rem .65rem; border-left: 1px solid rgba(56, 194, 235, .2); color: #dffaff; text-align: center; }
+.nova-command-status > span:first-child { border-left: 0; }
+.nova-command-status small { color: #55b9d1; font: .48rem var(--font-mono); letter-spacing: .08em; }
+.nova-command-status b { font-size: .64rem; }
+.nova-command-status .nova-icon { margin: 0 auto .08rem; color: #65e8ff; }
+
+/* Full-screen galaxy command surface follows the approved NOVA atlas layout. */
+.nova-galaxy-page { height: calc(100dvh - 7.2rem); min-height: 44rem; padding: 0 !important; overflow: hidden; }
+.nova-galaxy-workspace { position: relative; display: grid; height: 100%; min-height: 44rem; grid-template-columns: 23rem minmax(32rem, 1fr) 24rem; grid-template-rows: 6.2rem minmax(0, 1fr); overflow: hidden; background: #020a14 url('/nova/galaxy-scene-v1.png') center / cover no-repeat; }
+.nova-galaxy-workspace::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(0, 7, 17, .82), transparent 28%, transparent 72%, rgba(0, 7, 17, .82)), linear-gradient(180deg, rgba(0, 8, 17, .08), rgba(0, 8, 17, .28)); }
+.nova-galaxy-title { position: relative; z-index: 4; grid-column: 1 / -1; padding: .8rem 1.3rem; border-bottom: 1px solid rgba(63, 210, 248, .24); background: linear-gradient(90deg, rgba(0, 12, 26, .92), rgba(0, 12, 26, .28) 55%, transparent); }
+.nova-galaxy-title h2 { color: #f1fdff; font-size: 2rem; font-weight: 850; line-height: 1; text-shadow: 0 0 12px rgba(102, 232, 255, .45); }
+.nova-galaxy-title > b { display: block; margin-top: .18rem; color: #49e5ff; font: .9rem var(--font-mono); letter-spacing: .08em; }
+.nova-galaxy-title > span { display: block; margin-top: .32rem; color: #bfeef7; font-size: .72rem; }
+.nova-galaxy-title > small { color: #60b8cc; font: .48rem var(--font-mono); letter-spacing: .04em; }
+.nova-galaxy-left, .nova-galaxy-right, .nova-galaxy-center { position: relative; z-index: 3; min-width: 0; min-height: 0; }
+.nova-galaxy-left { display: grid; align-content: start; gap: .55rem; padding: .5rem 0 .65rem .65rem; overflow-y: auto; }
+.nova-galaxy-right { margin: .5rem .65rem .65rem .55rem; overflow-y: auto; }
+.nova-galaxy-panel { border: 1px solid rgba(53, 202, 241, .5); background: linear-gradient(145deg, rgba(1, 24, 43, .94), rgba(0, 12, 25, .96)); box-shadow: inset 0 0 24px rgba(11, 123, 168, .08), 0 0 14px rgba(0, 0, 0, .35); clip-path: polygon(.65rem 0, 100% 0, 100% calc(100% - .65rem), calc(100% - .65rem) 100%, 0 100%, 0 .65rem); }
+.nova-galaxy-panel__title { display: flex; align-items: center; gap: .55rem; padding: .65rem .75rem; border-bottom: 1px solid rgba(55, 194, 233, .25); background: rgba(4, 39, 61, .62); color: #5de7ff; }
+.nova-galaxy-panel__title > .nova-icon { width: 1.45rem; height: 1.45rem; }
+.nova-galaxy-panel__title b { display: grid; color: #eaffff; font-size: .9rem; }
+.nova-galaxy-panel__title small { color: #55b6cc; font: .48rem var(--font-mono); letter-spacing: .05em; }
+.nova-galaxy-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; padding: .55rem; }
+.nova-galaxy-metrics > div { display: grid; min-height: 4.1rem; grid-template-columns: 2rem 1fr auto; align-items: center; gap: .35rem; padding: .45rem; border: 1px solid rgba(49, 174, 213, .24); background: rgba(1, 16, 30, .65); }
+.nova-galaxy-metrics .nova-icon { color: #65e8ff; font-size: 1.45rem; }
+.nova-galaxy-metrics span { display: grid; color: #cfedf4; font-size: .65rem; }
+.nova-galaxy-metrics small { color: #4da8bf; font: .43rem var(--font-mono); }
+.nova-galaxy-metrics b { color: #effeff; font: .9rem var(--font-mono); }
+.nova-galaxy-metrics > div[data-alert] .nova-icon, .nova-galaxy-metrics > div[data-alert] b { color: #ff876e; }
+.nova-galaxy-scan-meter { display: grid; grid-template-columns: 1fr auto; gap: .25rem; margin: 0 .55rem .55rem; padding: .5rem; border: 1px solid rgba(49, 174, 213, .2); color: #dff8ff; font-size: .63rem; }
+.nova-galaxy-scan-meter span { display: grid; }.nova-galaxy-scan-meter small { color: #4faac0; font: .43rem var(--font-mono); }.nova-galaxy-scan-meter b { color: #63e8ff; font-family: var(--font-mono); }
+.nova-galaxy-scan-meter i { grid-column: 1 / -1; height: .38rem; overflow: hidden; background: #041828; }.nova-galaxy-scan-meter u { display: block; height: 100%; background: linear-gradient(90deg, #0a9ccb, #61ecff); box-shadow: 0 0 9px #20cdf4; }
+.nova-galaxy-tier-list { display: grid; gap: .3rem; padding: .5rem; }
+.nova-galaxy-tier-list button { display: grid; grid-template-columns: 1.8rem 1fr auto; align-items: center; gap: .4rem; min-height: 2.8rem; padding: .35rem .5rem; border: 1px solid rgba(52, 181, 219, .22); background: rgba(1, 16, 30, .66); color: #79b9c8; text-align: left; }
+.nova-galaxy-tier-list button > .nova-icon { color: #57d9f4; }.nova-galaxy-tier-list span { display: grid; color: #d9f4fa; font-size: .66rem; }.nova-galaxy-tier-list small { color: #4da6bc; font: .44rem var(--font-mono); }.nova-galaxy-tier-list em { color: #ffb45d; font: normal .55rem var(--font-mono); }
+.nova-galaxy-tier-list button[data-active] { border-color: #57e4ff; background: linear-gradient(90deg, rgba(8, 125, 171, .52), rgba(2, 34, 55, .72)); box-shadow: inset 0 0 15px rgba(50, 217, 255, .18); }
+.nova-system-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: .22rem; padding: 0 .5rem .55rem; }
+.nova-system-grid button { min-height: 1.65rem; border: 1px solid rgba(54, 179, 215, .22); background: rgba(0, 13, 26, .76); color: #609bae; font: .5rem var(--font-mono); }.nova-system-grid button:hover { color: #dffbff; }.nova-system-grid button[data-active] { border-color: #5de8ff; background: #07638a; color: white; box-shadow: 0 0 8px rgba(43, 213, 251, .3); }
+.nova-scan-status > div:not(.nova-galaxy-panel__title) { display: flex; justify-content: space-between; padding: .4rem .65rem; border-bottom: 1px solid rgba(48, 164, 201, .13); color: #8bc6d3; font-size: .58rem; }.nova-scan-status > div b { color: #dffaff; }.nova-scan-status > button { display: flex; width: calc(100% - 1rem); align-items: center; justify-content: center; gap: .35rem; margin: .5rem; padding: .5rem; border: 1px solid #37d9f7; background: rgba(4, 102, 142, .5); color: #e7fdff; font-size: .62rem; }.nova-scan-status > button small { color: #78d4e6; }.nova-scan-status p { padding: .5rem .65rem; color: #689dad; font-size: .55rem; }
+.nova-galaxy-center { display: grid; grid-template-rows: 3rem minmax(0, 1fr) 3.6rem; margin: .5rem 0 .65rem .55rem; border: 1px solid rgba(48, 195, 234, .3); background: rgba(0, 10, 22, .22); overflow: hidden; }
+.nova-galaxy-center__header { display: flex; align-items: center; justify-content: space-between; padding: .45rem .7rem; border-bottom: 1px solid rgba(52, 186, 226, .22); background: rgba(0, 17, 32, .86); color: #dffaff; font-size: .7rem; }.nova-galaxy-center__header > span { display: grid; }.nova-galaxy-center__header small { color: #50abc0; font: .45rem var(--font-mono); }.nova-galaxy-center__header > div { display: flex; align-items: center; gap: .35rem; color: #74aebe; font-size: .5rem; }.nova-galaxy-center__header i { width: .42rem; height: .42rem; border-radius: 50%; background: #7190a0; box-shadow: 0 0 6px currentColor; }.nova-galaxy-center__header i.is-own { background: #39e7aa; }.nova-galaxy-center__header i.is-hostile { background: #ff785f; }
+.nova-galaxy-map { position: relative; min-height: 0; overflow: hidden; touch-action: none; cursor: grab; background: radial-gradient(circle at 50% 50%, rgba(255, 188, 71, .18), transparent 10%), linear-gradient(rgba(0, 10, 22, .12), rgba(0, 10, 22, .2)); }.nova-galaxy-map:active { cursor: grabbing; }
+.nova-galaxy-map__camera { position: absolute; inset: -5%; transform: translate(var(--galaxy-x), var(--galaxy-y)) scale(var(--galaxy-scale)); transform-origin: center; transition: transform 140ms ease-out; }
+.nova-galaxy-map__camera::before { content: ''; position: absolute; inset: 8%; border-radius: 50%; background: repeating-radial-gradient(ellipse at center, transparent 0 10%, rgba(69, 198, 235, .11) 10.1% 10.3%, transparent 10.4% 18%); transform: rotate(-8deg) scaleY(.72); }
+.nova-galaxy-orbit--mid { width: 64%; height: 54%; transform: translate(-50%, -50%) rotate(8deg); }
+.nova-galaxy-star { position: absolute; top: 50%; left: 50%; z-index: 2; display: grid; width: 6rem; height: 6rem; place-items: center; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, #fff 0 5%, #ffe099 8%, #ffb62e 24%, rgba(255, 150, 16, .4) 42%, transparent 67%); box-shadow: 0 0 40px rgba(255, 185, 57, .55); color: #fff5cd; }.nova-galaxy-star span { position: absolute; inset: 16%; border: 1px solid rgba(255, 225, 147, .65); border-radius: 50%; }.nova-galaxy-star b { margin-top: 7.5rem; font: .55rem var(--font-mono); }
+.nova-galaxy-planet { position: absolute; z-index: 4; display: grid; width: 6.8rem; justify-items: center; transform: translate(-50%, -50%); color: #b8dce5; text-align: center; }.nova-galaxy-planet:hover, .nova-galaxy-planet[data-active] { z-index: 6; color: white; }.nova-galaxy-planet[data-active] { transform: translate(-50%, -50%) scale(1.12); }
+.nova-galaxy-planet__shield { position: relative; display: grid; width: 3.2rem; height: 3.2rem; place-items: center; border: 1px solid rgba(82, 225, 255, .82); border-radius: 50%; background: radial-gradient(circle at 36% 32%, #75d9e8 0 8%, #1b6a93 28%, #063154 55%, #021526 70%); box-shadow: inset 0 0 10px #2fdcff, 0 0 15px rgba(31, 205, 246, .62); }.nova-galaxy-planet__shield::before { content: ''; position: absolute; inset: -4px; border: 1px solid rgba(70, 223, 255, .45); border-radius: 50%; background-image: linear-gradient(30deg, transparent 48%, rgba(105, 230, 255, .28) 49% 51%, transparent 52%), linear-gradient(-30deg, transparent 48%, rgba(105, 230, 255, .22) 49% 51%, transparent 52%); background-size: 12px 12px; }.nova-galaxy-planet__shield > i { position: relative; z-index: 2; font: normal .6rem var(--font-mono); }
+.nova-galaxy-planet > b { margin-top: .2rem; overflow: hidden; max-width: 100%; font-size: .57rem; text-overflow: ellipsis; white-space: nowrap; }.nova-galaxy-planet > small { color: #579eb1; font: .42rem var(--font-mono); }.nova-galaxy-planet > .nova-icon { position: absolute; top: -.25rem; right: 1rem; color: #9df5ff; }
+.nova-galaxy-debris { margin-top: .15rem; padding: .1rem .32rem; border: 1px solid rgba(255, 184, 77, .55); background: rgba(64, 42, 4, .72); color: #ffcf7a; font: .48rem var(--font-mono); font-style: normal; white-space: nowrap; box-shadow: 0 0 8px rgba(255, 176, 60, .25); }
+.nova-galaxy-planet--empty .nova-galaxy-planet__shield { border-style: dashed; background: radial-gradient(circle, rgba(42, 138, 171, .18), rgba(0, 14, 28, .8)); box-shadow: 0 0 8px rgba(31, 163, 202, .2); opacity: .55; }.nova-galaxy-planet--npc .nova-galaxy-planet__shield { border-color: #ff785f; background: radial-gradient(circle at 35% 30%, #ff9b6c, #771e1e 38%, #240b12 72%); box-shadow: inset 0 0 9px #ff795a, 0 0 17px rgba(255, 86, 57, .55); }.nova-galaxy-planet--own .nova-galaxy-planet__shield { border-color: #6cf1ff; }.nova-galaxy-planet--space .nova-galaxy-planet__shield { background: radial-gradient(circle, #26bcd7, #0c3158 45%, #020817 72%); }
+.nova-galaxy-controls { display: grid; grid-auto-flow: column; grid-auto-columns: max-content; align-items: stretch; justify-content: center; border-top: 1px solid rgba(53, 196, 234, .24); background: rgba(0, 16, 31, .9); }.nova-galaxy-controls > span, .nova-galaxy-controls button, .nova-galaxy-controls em { display: grid; min-width: 6rem; place-content: center; padding: .35rem .55rem; border-right: 1px solid rgba(50, 177, 215, .2); color: #bcebf4; font-size: .55rem; text-align: center; }.nova-galaxy-controls small { color: #4facbf; font: .42rem var(--font-mono); }.nova-galaxy-controls button .nova-icon { margin: auto; color: #62e8ff; }.nova-galaxy-controls em { color: #5fa7b9; font-style: normal; }.nova-galaxy-controls em b { color: #e8fdff; font-family: var(--font-mono); }
+.nova-galaxy-right { align-self: stretch; }.nova-target-portrait { margin: .7rem; padding: .55rem; border: 1px solid rgba(64, 207, 245, .3); background: rgba(0, 10, 22, .72); }.nova-target-portrait > span { position: relative; display: grid; width: 8.5rem; height: 8.5rem; place-items: center; margin: auto; border: 1px solid #5de9ff; border-radius: 50%; background: radial-gradient(circle at 38% 30%, #9ae4e9 0 5%, #277fa0 20%, #0a3b63 47%, #021426 70%); box-shadow: inset 0 0 18px #31d8fa, 0 0 21px rgba(35, 207, 246, .45); }.nova-target-portrait > span::before { content: ''; position: absolute; inset: -5px; border: 1px solid rgba(85, 232, 255, .58); border-radius: 50%; background-image: linear-gradient(30deg, transparent 48%, rgba(116, 237, 255, .25) 49% 51%, transparent 52%), linear-gradient(-30deg, transparent 48%, rgba(116, 237, 255, .2) 49% 51%, transparent 52%); background-size: 20px 20px; }.nova-target-portrait > span::after { content: ''; position: absolute; top: -1rem; width: 2rem; height: .5rem; border: 1px solid #63eaff; border-radius: 50%; box-shadow: 0 0 8px #2bd7ff; }.nova-target-portrait--npc > span { border-color: #ff725a; background: radial-gradient(circle at 38% 30%, #ff9a68, #7b1b22 35%, #250a13 70%); box-shadow: inset 0 0 18px #ff674c, 0 0 22px rgba(255, 76, 50, .45); }.nova-target-portrait--empty > span { filter: grayscale(.6); opacity: .5; }.nova-target-portrait--space > span { background: radial-gradient(circle, #28bed9, #102e58 45%, #020716 72%); }
+.nova-target-name { display: flex; align-items: center; gap: .6rem; margin: 0 .7rem; padding-bottom: .65rem; border-bottom: 1px solid rgba(50, 181, 219, .22); color: #61e8ff; }.nova-target-name > .nova-icon { width: 1.55rem; height: 1.55rem; }.nova-target-name span { display: grid; }.nova-target-name b { color: #f0fdff; font-size: 1rem; }.nova-target-name small { color: #58abc0; font: .47rem var(--font-mono); }
+.nova-target-coordinates { display: flex; align-items: center; justify-content: space-between; margin: .55rem .7rem 0; color: #77b7c6; font-size: .58rem; }.nova-target-coordinates span { display: grid; }.nova-target-coordinates small { color: #4b9bb0; font: .42rem var(--font-mono); }.nova-target-coordinates b { color: #e9fcff; font: .72rem var(--font-mono); }
+.nova-target-stats { margin: .55rem .7rem 0; border-top: 1px solid rgba(50, 180, 219, .18); }.nova-target-stats div { display: flex; justify-content: space-between; padding: .42rem .15rem; border-bottom: 1px solid rgba(50, 180, 219, .15); color: #7fbdcb; font-size: .58rem; }.nova-target-stats b { color: #e2faff; font-family: var(--font-mono); }
+.nova-target-intel { margin: .55rem .7rem 0; padding: .6rem; border: 1px solid rgba(47, 177, 216, .2); background: rgba(0, 12, 25, .65); }.nova-target-intel > b { display: flex; gap: .35rem; color: #dffaff; font-size: .66rem; }.nova-target-intel > b small { color: #4fa3b8; font: .42rem var(--font-mono); }.nova-target-intel p { margin-top: .4rem; color: #79adba; font-size: .55rem; line-height: 1.45; }
+.nova-target-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: .3rem; margin: .6rem .7rem .75rem; }.nova-target-actions button { display: grid; min-height: 3.7rem; place-content: center; justify-items: center; border: 1px solid rgba(55, 199, 237, .45); background: rgba(2, 45, 70, .8); color: #dffaff; font-size: .62rem; }.nova-target-actions button .nova-icon { color: #62e9ff; font-size: 1.3rem; }.nova-target-actions button small { color: #57aec3; font: .42rem var(--font-mono); }.nova-target-actions button.is-primary { border-color: #53e4ff; background: linear-gradient(180deg, rgba(11, 165, 216, .62), rgba(0, 79, 130, .86)); box-shadow: inset 0 0 16px rgba(87, 231, 255, .25), 0 0 11px rgba(25, 195, 238, .25); }.nova-target-actions button.is-danger { border-color: rgba(255, 109, 82, .55); color: #ff9a82; }.nova-target-actions button.is-danger .nova-icon { color: #ff795e; }
+
+@media (max-width: 1180px) {
+  .nova-galaxy-workspace { grid-template-columns: 18rem minmax(29rem, 1fr) 19rem; }
+  .nova-galaxy-page { overflow: auto; }
+  .nova-galaxy-title h2 { font-size: 1.55rem; }
+  .nova-galaxy-metrics { grid-template-columns: 1fr; }
+  .nova-target-portrait > span { width: 6rem; height: 6rem; }
+}
+@media (max-width: 820px) {
+  .nova-galaxy-page { height: auto; min-height: 0; overflow: visible; }
+  .nova-galaxy-workspace { display: flex; min-height: 0; flex-direction: column; overflow: visible; background-attachment: fixed; }
+  .nova-galaxy-title { min-height: 6rem; }
+  .nova-galaxy-left, .nova-galaxy-right, .nova-galaxy-center { margin: .45rem; padding: 0; overflow: visible; }
+  .nova-galaxy-left { order: 2; }.nova-galaxy-center { order: 1; min-height: 34rem; }.nova-galaxy-right { order: 3; }
+  .nova-galaxy-map { min-height: 27rem; }
+  .nova-galaxy-metrics { grid-template-columns: 1fr 1fr; }
+  .nova-galaxy-controls { overflow-x: auto; justify-content: start; }.nova-galaxy-controls > span { display: none; }
+  .nova-target-actions { grid-template-columns: 1fr; }
+}
+
+/* Fleet command keeps both idle and active missions inside the same NOVA workspace. */
+.nova-fleet-page { height: calc(100dvh - 7.2rem); min-height: 44rem; padding: 0 !important; overflow: hidden; }
+.nova-fleet-workspace { position: relative; display: grid; height: 100%; min-height: 44rem; grid-template-columns: 22rem minmax(32rem, 1fr) 23rem; grid-template-rows: 6.2rem minmax(0, 1fr) 5rem; gap: .55rem; padding: 0 .65rem .65rem; overflow: hidden; background: #020a14 url('/nova/galaxy-scene-v1.png') center / cover no-repeat; }
+.nova-fleet-workspace::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(0, 7, 17, .88), transparent 30%, transparent 70%, rgba(0, 7, 17, .88)), linear-gradient(180deg, rgba(0, 8, 17, .08), rgba(0, 8, 17, .38)); }
+.nova-fleet-title { position: relative; z-index: 4; grid-column: 1 / -1; margin: 0 -.65rem; padding: .8rem 1.3rem; border-bottom: 1px solid rgba(63, 210, 248, .24); background: linear-gradient(90deg, rgba(0, 12, 26, .94), rgba(0, 12, 26, .3) 55%, transparent); }
+.nova-fleet-title h2 { color: #f1fdff; font-size: 2rem; font-weight: 850; line-height: 1; text-shadow: 0 0 12px rgba(102, 232, 255, .45); }
+.nova-fleet-title > b { display: block; margin-top: .18rem; color: #49e5ff; font: .9rem var(--font-mono); letter-spacing: .08em; }
+.nova-fleet-title > span { display: block; margin-top: .32rem; color: #bfeef7; font-size: .72rem; }
+.nova-fleet-title > small { color: #60b8cc; font: .48rem var(--font-mono); letter-spacing: .04em; }
+.nova-fleet-left, .nova-fleet-map, .nova-fleet-right, .nova-fleet-readiness { position: relative; z-index: 3; min-width: 0; min-height: 0; }
+.nova-fleet-left { display: grid; align-content: start; gap: .55rem; overflow-y: auto; }
+.nova-fleet-panel { border: 1px solid rgba(53, 202, 241, .52); background: linear-gradient(145deg, rgba(1, 24, 43, .95), rgba(0, 12, 25, .96)); box-shadow: inset 0 0 24px rgba(11, 123, 168, .08), 0 0 14px rgba(0, 0, 0, .35); clip-path: polygon(.65rem 0, 100% 0, 100% calc(100% - .65rem), calc(100% - .65rem) 100%, 0 100%, 0 .65rem); }
+.nova-fleet-panel__title { display: flex; align-items: center; gap: .55rem; padding: .65rem .75rem; border-bottom: 1px solid rgba(55, 194, 233, .25); background: rgba(4, 39, 61, .66); color: #5de7ff; }
+.nova-fleet-panel__title > .nova-icon { width: 1.45rem; height: 1.45rem; }
+.nova-fleet-panel__title b { display: grid; color: #eaffff; font-size: .9rem; }
+.nova-fleet-panel__title small { color: #55b6cc; font: .48rem var(--font-mono); letter-spacing: .05em; }
+.nova-fleet-panel__title em { margin-left: auto; color: #52e8af; font: normal .58rem var(--font-mono); }
+.nova-fleet-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; padding: .55rem; }
+.nova-fleet-metrics > div { display: grid; min-height: 4rem; grid-template-columns: 1.8rem 1fr auto; align-items: center; gap: .35rem; padding: .42rem; border: 1px solid rgba(49, 174, 213, .24); background: rgba(1, 16, 30, .66); }
+.nova-fleet-metrics .nova-icon { color: #65e8ff; font-size: 1.35rem; }
+.nova-fleet-metrics span { display: grid; color: #cfedf4; font-size: .62rem; }
+.nova-fleet-metrics small { color: #4da8bf; font: .41rem var(--font-mono); }
+.nova-fleet-metrics b { color: #effeff; font: .76rem var(--font-mono); }
+.nova-fleet-metrics > div[data-alert] .nova-icon, .nova-fleet-metrics > div[data-alert] b { color: #ff8067; }
+.nova-mission-list { display: grid; gap: .35rem; padding: .55rem; }
+.nova-mission-list > button { display: grid; grid-template-columns: 2rem 1fr auto; align-items: center; gap: .45rem; min-height: 4.2rem; padding: .42rem; border: 1px solid rgba(51, 181, 219, .22); background: rgba(1, 15, 29, .7); color: #8cc5d1; text-align: left; }
+.nova-mission-list > button > strong { display: grid; width: 1.7rem; height: 1.7rem; place-items: center; border: 1px solid rgba(71, 217, 251, .45); color: #5de8ff; font: .62rem var(--font-mono); }
+.nova-mission-list > button > span { display: grid; min-width: 0; }
+.nova-mission-list > button b { color: #e3faff; font-size: .68rem; }
+.nova-mission-list > button small { color: #58a9bd; font: .45rem var(--font-mono); }
+.nova-mission-list > button i { height: .22rem; margin-top: .28rem; overflow: hidden; background: #041827; }
+.nova-mission-list > button i u { display: block; width: 68%; height: 100%; background: linear-gradient(90deg, #0a91c4, #63efff); box-shadow: 0 0 7px #25d7ff; }
+.nova-mission-list > button > em { display: grid; color: #dffaff; font: normal .58rem var(--font-mono); text-align: right; }
+.nova-mission-list > button[data-active] { border-color: #58e6ff; background: linear-gradient(90deg, rgba(8, 124, 169, .48), rgba(2, 34, 55, .72)); box-shadow: inset 0 0 14px rgba(48, 219, 255, .16); }
+.nova-mission-list > button[data-hostile] { border-color: rgba(255, 103, 78, .48); }.nova-mission-list > button[data-hostile] > strong { border-color: #ff765f; color: #ff8b72; }
+.nova-mission-empty { display: grid; min-height: 13rem; place-items: center; align-content: center; padding: 1rem; color: #65e8ff; text-align: center; }
+.nova-mission-empty > .nova-icon { width: 3.2rem; height: 3.2rem; margin-bottom: .55rem; opacity: .72; }
+.nova-mission-empty b { color: #e8fbff; font-size: .85rem; }.nova-mission-empty span { margin-top: .25rem; color: #78bccb; font-size: .65rem; }.nova-mission-empty small { max-width: 14rem; margin-top: .5rem; color: #527f8e; font-size: .55rem; line-height: 1.5; }
+.nova-fleet-map { display: grid; grid-template-rows: 3rem minmax(0, 1fr) 3.6rem; overflow: hidden; border: 1px solid rgba(48, 195, 234, .3); background: rgba(0, 10, 22, .24); }
+.nova-fleet-map__header { display: flex; align-items: center; justify-content: space-between; padding: .45rem .7rem; border-bottom: 1px solid rgba(52, 186, 226, .22); background: rgba(0, 17, 32, .86); color: #dffaff; font-size: .7rem; }
+.nova-fleet-map__header > span { display: grid; }.nova-fleet-map__header small { color: #50abc0; font: .45rem var(--font-mono); }.nova-fleet-map__header > div { display: flex; align-items: center; gap: .35rem; color: #74aebe; font-size: .5rem; }.nova-fleet-map__header i { width: .42rem; height: .42rem; border-radius: 50%; background: #51dcae; box-shadow: 0 0 6px currentColor; }.nova-fleet-map__header i.is-hostile { margin-left: .35rem; background: #ff785f; }
+.nova-fleet-orbit-field { position: relative; min-height: 0; overflow: hidden; background: radial-gradient(circle at 24% 52%, rgba(46, 181, 229, .16), transparent 14%), linear-gradient(180deg, rgba(0, 10, 22, .08), rgba(0, 10, 22, .25)); }
+.nova-fleet-orbit-field::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(61, 187, 221, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(61, 187, 221, .045) 1px, transparent 1px); background-size: 34px 34px; mask-image: radial-gradient(circle, black, transparent 78%); }
+.nova-fleet-orbit-ring { position: absolute; top: 51%; left: 24%; border: 1px solid rgba(61, 204, 241, .16); border-radius: 50%; transform: translate(-50%, -50%) rotate(-10deg); }.nova-fleet-orbit-ring--one { width: 22rem; height: 13rem; }.nova-fleet-orbit-ring--two { width: 31rem; height: 20rem; }
+.nova-fleet-orbit-planet { position: absolute; top: 51%; left: 24%; display: grid; z-index: 3; justify-items: center; transform: translate(-50%, -50%); color: #e9fdff; }.nova-fleet-orbit-planet > span { width: 8.5rem; height: 8.5rem; border: 1px solid #66e9ff; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #8fe0e8 0 4%, #236e92 22%, #083659 50%, #021426 72%); box-shadow: inset 0 0 22px #2ed5f7, 0 0 28px rgba(35, 204, 242, .42); }.nova-fleet-orbit-planet b { margin-top: .5rem; font-size: .72rem; }.nova-fleet-orbit-planet small { color: #57aabe; font: .48rem var(--font-mono); }
+.nova-fleet-route-line { position: absolute; top: 48%; left: 32%; width: 47%; height: 3px; transform: rotate(-8deg); transform-origin: left; background: linear-gradient(90deg, #35e8ff, rgba(53, 232, 255, .18)); box-shadow: 0 0 10px #26c8f0; }.nova-fleet-route-line::before { content: ''; position: absolute; inset: -7px 0; border-top: 1px dashed rgba(65, 221, 255, .34); }.nova-fleet-route-line i { position: absolute; right: 0; top: -4px; width: 10px; height: 10px; transform: rotate(45deg); border-top: 2px solid #67efff; border-right: 2px solid #67efff; }.nova-fleet-route-line.is-hostile { background: linear-gradient(90deg, #ff6c52, rgba(255, 91, 65, .16)); box-shadow: 0 0 10px #ff5c43; }
+.nova-fleet-vessel { position: absolute; z-index: 4; top: 41%; left: 54%; display: grid; justify-items: center; color: #5feaff; filter: drop-shadow(0 0 8px rgba(55, 220, 255, .6)); }.nova-fleet-vessel > .nova-icon { width: 4.5rem; height: 4.5rem; }.nova-fleet-vessel b { color: #eaffff; font-size: .7rem; }.nova-fleet-vessel small { color: #64c8dc; font: .5rem var(--font-mono); }.nova-fleet-vessel.is-hostile { color: #ff765c; }
+.nova-fleet-target { position: absolute; z-index: 3; top: 35%; right: 8%; display: grid; width: 8.5rem; height: 8.5rem; place-content: center; justify-items: center; border: 1px solid #5de8ff; border-radius: 50%; background: radial-gradient(circle, rgba(29, 151, 190, .35), rgba(1, 18, 35, .86) 67%); color: #62e9ff; box-shadow: inset 0 0 20px rgba(49, 213, 250, .35), 0 0 20px rgba(36, 196, 234, .25); }.nova-fleet-target > .nova-icon { width: 2.3rem; height: 2.3rem; }.nova-fleet-target b { margin-top: .3rem; color: #e9fdff; font-size: .68rem; }.nova-fleet-target small { color: #55aabe; font: .46rem var(--font-mono); }.nova-fleet-target.is-hostile { border-color: #ff765c; color: #ff7a61; box-shadow: inset 0 0 20px rgba(255, 84, 57, .24), 0 0 18px rgba(255, 75, 47, .24); }
+.nova-fleet-standby { position: absolute; top: 48%; right: 12%; display: grid; width: 14rem; justify-items: center; transform: translateY(-50%); color: #59dff8; text-align: center; }.nova-fleet-standby > .nova-icon { width: 5rem; height: 5rem; opacity: .6; animation: nova-fleet-pulse 2.6s ease-in-out infinite; }.nova-fleet-standby b { margin-top: .6rem; color: #dffaff; font-size: .82rem; }.nova-fleet-standby small { margin-top: .2rem; color: #508b9a; font: .48rem var(--font-mono); }
+@keyframes nova-fleet-pulse { 50% { opacity: 1; filter: drop-shadow(0 0 12px #25d7ff); } }
+.nova-fleet-map__footer { display: grid; grid-template-columns: repeat(3, 1fr) auto; align-items: stretch; border-top: 1px solid rgba(53, 196, 234, .24); background: rgba(0, 16, 31, .92); }.nova-fleet-map__footer span, .nova-fleet-map__footer em { display: grid; grid-template-columns: 1.3rem 1fr; align-items: center; gap: .35rem; padding: .42rem .55rem; border-right: 1px solid rgba(50, 177, 215, .2); color: #bcebf4; font-size: .55rem; }.nova-fleet-map__footer .nova-icon { grid-row: 1 / 3; color: #62e8ff; font-size: 1.1rem; }.nova-fleet-map__footer small { color: #4facbf; font: .42rem var(--font-mono); }.nova-fleet-map__footer em { display: flex; color: #5fa7b9; font-style: normal; }.nova-fleet-map__footer em b { color: #5ce9b2; font-family: var(--font-mono); }
+.nova-fleet-right { overflow-y: auto; }.nova-fleet-blueprint { margin: .7rem; padding: .55rem; border: 1px solid rgba(64, 207, 245, .3); background: rgba(0, 10, 22, .72); }.nova-fleet-blueprint > span { display: grid; width: 100%; height: 9rem; place-items: center; border: 1px solid rgba(62, 204, 240, .28); }.nova-fleet-blueprint > span > .nova-icon { width: 4rem; height: 4rem; color: #4fdff9; }
+.nova-fleet-selected-name { display: flex; align-items: center; gap: .6rem; margin: 0 .7rem; padding-bottom: .65rem; border-bottom: 1px solid rgba(50, 181, 219, .22); color: #61e8ff; }.nova-fleet-selected-name > .nova-icon { width: 1.55rem; height: 1.55rem; }.nova-fleet-selected-name span { display: grid; }.nova-fleet-selected-name b { color: #f0fdff; font-size: 1rem; }.nova-fleet-selected-name small { color: #58abc0; font: .47rem var(--font-mono); }
+.nova-fleet-selected-stats { margin: .55rem .7rem 0; border-top: 1px solid rgba(50, 180, 219, .18); }.nova-fleet-selected-stats div { display: flex; justify-content: space-between; padding: .42rem .15rem; border-bottom: 1px solid rgba(50, 180, 219, .15); color: #7fbdcb; font-size: .58rem; }.nova-fleet-selected-stats b { color: #e2faff; font-family: var(--font-mono); }
+.nova-fleet-composition, .nova-fleet-cargo { margin: .55rem .7rem 0; padding: .6rem; border: 1px solid rgba(47, 177, 216, .2); background: rgba(0, 12, 25, .65); }.nova-fleet-composition > b, .nova-fleet-cargo > b { display: flex; gap: .35rem; color: #dffaff; font-size: .66rem; }.nova-fleet-composition > b small, .nova-fleet-cargo > b small { color: #4fa3b8; font: .42rem var(--font-mono); }.nova-fleet-composition > div { display: flex; justify-content: space-between; margin-top: .35rem; color: #7db7c4; font-size: .56rem; }.nova-fleet-composition em { color: #e7fbff; font: normal .56rem var(--font-mono); }
+.nova-fleet-cargo > div { display: grid; grid-template-columns: repeat(3, 1fr); gap: .25rem; margin-top: .45rem; }.nova-fleet-cargo span { display: grid; justify-items: center; padding: .35rem .15rem; border: 1px solid rgba(47, 177, 216, .17); color: #82bfcb; font-size: .5rem; }.nova-fleet-cargo .nova-icon { font-size: 1rem; }.nova-fleet-cargo em { color: #e8fcff; font: normal .52rem var(--font-mono); }
+.nova-fleet-selected-empty { display: grid; min-height: 12rem; place-items: center; align-content: center; padding: 1rem; color: #5ee8b3; text-align: center; }.nova-fleet-selected-empty > .nova-icon { width: 3rem; height: 3rem; }.nova-fleet-selected-empty b { margin-top: .6rem; color: #e5fbff; font-size: .82rem; }.nova-fleet-selected-empty p { margin-top: .35rem; color: #689ba8; font-size: .56rem; }
+.nova-fleet-readiness { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(53, 199, 239, .42); background: rgba(0, 15, 29, .92); clip-path: polygon(.65rem 0, 100% 0, 100% calc(100% - .65rem), calc(100% - .65rem) 100%, 0 100%, 0 .65rem); }.nova-fleet-readiness > div { display: grid; grid-template-columns: 2.2rem 1fr auto; align-items: center; gap: .55rem; padding: .55rem .85rem; border-right: 1px solid rgba(53, 184, 222, .2); color: #61e6ff; }.nova-fleet-readiness > div:last-child { border-right: 0; }.nova-fleet-readiness .nova-icon { width: 1.65rem; height: 1.65rem; }.nova-fleet-readiness span { display: grid; color: #ddf8ff; font-size: .64rem; }.nova-fleet-readiness small { color: #4ea7bb; font: .42rem var(--font-mono); }.nova-fleet-readiness b { color: #5ceab1; font: .62rem var(--font-mono); }
+
+@media (max-width: 1180px) {
+  .nova-fleet-workspace { grid-template-columns: 18rem minmax(29rem, 1fr) 19rem; }
+  .nova-fleet-page { overflow: auto; }
+  .nova-fleet-title h2 { font-size: 1.55rem; }
+  .nova-fleet-metrics { grid-template-columns: 1fr; }
+  .nova-fleet-blueprint > span { height: 6.5rem; }
+}
+@media (max-width: 820px) {
+  .nova-fleet-page { height: auto; min-height: 0; overflow: visible; }
+  .nova-fleet-workspace { display: flex; min-height: 0; flex-direction: column; padding: 0 .45rem 5rem; overflow: visible; background-attachment: fixed; }
+  .nova-fleet-title { min-height: 6rem; margin-inline: -.45rem; }
+  .nova-fleet-map { order: 1; min-height: 34rem; }.nova-fleet-left { order: 2; overflow: visible; }.nova-fleet-right { order: 3; overflow: visible; }.nova-fleet-readiness { order: 4; grid-template-columns: 1fr 1fr; min-height: 8rem; }
+  .nova-fleet-orbit-planet { left: 23%; }.nova-fleet-target { right: 5%; }.nova-fleet-vessel { left: 50%; }
+}
+
+/* Intelligence archive uses the same command language as the planet, galaxy and fleet modules. */
+.nova-report-page { height: calc(100dvh - 7.2rem); min-height: 44rem; padding: 0 !important; overflow: hidden; }
+.nova-report-workspace { position: relative; display: grid; height: 100%; min-height: 44rem; grid-template-columns: 20.5rem minmax(34rem, 1fr) 22.5rem; grid-template-rows: 6.2rem minmax(0, 1fr) 5rem; gap: .55rem; padding: 0 .65rem .65rem; overflow: hidden; background: #020a14 url('/nova/galaxy-scene-v1.png') center / cover no-repeat; }
+.nova-report-workspace::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(0, 7, 17, .9), transparent 31%, transparent 69%, rgba(0, 7, 17, .9)), linear-gradient(180deg, rgba(0, 8, 17, .1), rgba(0, 8, 17, .44)); }
+.nova-report-title { position: relative; z-index: 4; grid-column: 1 / -1; margin: 0 -.65rem; padding: .8rem 1.3rem; border-bottom: 1px solid rgba(63, 210, 248, .24); background: linear-gradient(90deg, rgba(0, 12, 26, .94), rgba(0, 12, 26, .3) 55%, transparent); }
+.nova-report-title h2 { color: #f1fdff; font-size: 2rem; font-weight: 850; line-height: 1; text-shadow: 0 0 12px rgba(102, 232, 255, .45); }
+.nova-report-title > b { display: block; margin-top: .18rem; color: #49e5ff; font: .9rem var(--font-mono); letter-spacing: .08em; }
+.nova-report-title > span { display: block; margin-top: .32rem; color: #bfeef7; font-size: .72rem; }.nova-report-title > small { color: #60b8cc; font: .48rem var(--font-mono); letter-spacing: .04em; }
+.nova-report-left, .nova-report-center, .nova-report-right, .nova-report-status { position: relative; z-index: 3; min-width: 0; min-height: 0; }
+.nova-report-left { display: grid; align-content: start; gap: .55rem; overflow-y: auto; }
+.nova-report-panel { border: 1px solid rgba(53, 202, 241, .52); background: linear-gradient(145deg, rgba(1, 24, 43, .95), rgba(0, 12, 25, .96)); box-shadow: inset 0 0 24px rgba(11, 123, 168, .08), 0 0 14px rgba(0, 0, 0, .35); clip-path: polygon(.65rem 0, 100% 0, 100% calc(100% - .65rem), calc(100% - .65rem) 100%, 0 100%, 0 .65rem); }
+.nova-report-panel__title { display: flex; align-items: center; gap: .55rem; padding: .65rem .75rem; border-bottom: 1px solid rgba(55, 194, 233, .25); background: rgba(4, 39, 61, .66); color: #5de7ff; }
+.nova-report-panel__title > .nova-icon { width: 1.45rem; height: 1.45rem; }.nova-report-panel__title b { display: grid; color: #eaffff; font-size: .9rem; }.nova-report-panel__title small { color: #55b6cc; font: .48rem var(--font-mono); letter-spacing: .05em; }.nova-report-panel__title em { margin-left: auto; color: #52e8af; font: normal .58rem var(--font-mono); }
+.nova-report-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; padding: .55rem; }.nova-report-metrics > div { display: grid; min-height: 4rem; grid-template-columns: 1.8rem 1fr auto; align-items: center; gap: .35rem; padding: .42rem; border: 1px solid rgba(49, 174, 213, .24); background: rgba(1, 16, 30, .66); }.nova-report-metrics .nova-icon { color: #65e8ff; font-size: 1.3rem; }.nova-report-metrics span { display: grid; color: #cfedf4; font-size: .6rem; }.nova-report-metrics small { color: #4da8bf; font: .4rem var(--font-mono); }.nova-report-metrics b { color: #effeff; font: .76rem var(--font-mono); }.nova-report-metrics > div[data-alert] .nova-icon, .nova-report-metrics > div[data-alert] b { color: #ff8067; }
+.nova-report-filters > div:last-child { display: grid; gap: .3rem; padding: .5rem; }.nova-report-filters button { display: grid; grid-template-columns: 1.7rem 1fr auto; align-items: center; gap: .45rem; min-height: 2.7rem; padding: .35rem .5rem; border: 1px solid rgba(51, 181, 219, .2); background: rgba(1, 15, 29, .68); color: #69dff5; text-align: left; }.nova-report-filters button > span { display: grid; color: #d9f5fa; font-size: .63rem; }.nova-report-filters button small { color: #4da5b9; font: .42rem var(--font-mono); }.nova-report-filters button b { color: #7fc4d1; font: .62rem var(--font-mono); }.nova-report-filters button[data-active] { border-color: #58e5ff; background: linear-gradient(90deg, rgba(8, 125, 171, .48), rgba(2, 34, 55, .74)); box-shadow: inset 0 0 14px rgba(48, 219, 255, .16); }
+.nova-report-center { display: grid; grid-template-rows: 3rem minmax(14rem, 1fr) minmax(10rem, .7fr); overflow-y: auto; border: 1px solid rgba(48, 195, 234, .3); background: rgba(0, 10, 22, .28); }
+.nova-report-center__header { display: flex; align-items: center; justify-content: space-between; padding: .45rem .7rem; border-bottom: 1px solid rgba(52, 186, 226, .22); background: rgba(0, 17, 32, .88); color: #dffaff; font-size: .7rem; }.nova-report-center__header > span { display: grid; }.nova-report-center__header small { color: #50abc0; font: .45rem var(--font-mono); }.nova-report-center__header > div { display: flex; align-items: center; gap: .35rem; color: #74aebe; font-size: .5rem; }.nova-report-center__header i { width: .42rem; height: .42rem; border-radius: 50%; background: #51dcae; box-shadow: 0 0 6px currentColor; }.nova-report-center__header i.is-alert { margin-left: .35rem; background: #ff785f; }
+.nova-report-radar-field { position: relative; min-height: 0; overflow: hidden; border-bottom: 1px solid rgba(50, 183, 221, .2); background: radial-gradient(circle at 50% 50%, rgba(12, 138, 181, .17), transparent 50%); }
+.nova-report-radar-grid { position: absolute; top: 50%; left: 50%; width: min(29rem, 62%); aspect-ratio: 1; transform: translate(-50%, -50%); border: 1px solid rgba(74, 216, 249, .2); border-radius: 50%; background: repeating-radial-gradient(circle, transparent 0 18%, rgba(59, 202, 238, .15) 18.2% 18.6%, transparent 18.8% 36%); }.nova-report-radar-grid::before, .nova-report-radar-grid::after { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: rgba(59, 202, 238, .17); }.nova-report-radar-grid::after { transform: rotate(90deg); }.nova-report-radar-grid i { position: absolute; inset: 14%; border: 1px dashed rgba(65, 212, 246, .15); border-radius: 50%; }
+.nova-report-radar-sweep { position: absolute; top: 50%; left: 50%; width: min(14rem, 28%); height: min(14rem, 55%); transform-origin: left top; background: conic-gradient(from -90deg, rgba(64, 229, 255, .3), transparent 16%); animation: nova-intel-sweep 5s linear infinite; }
+@keyframes nova-intel-sweep { to { transform: rotate(360deg); } }
+.nova-report-radar-field > button { position: absolute; z-index: 3; top: var(--intel-y); left: var(--intel-x); display: grid; width: 3.25rem; height: 3.25rem; place-content: center; justify-items: center; transform: translate(-50%, -50%); border: 1px solid #5ce5ff; border-radius: 50%; background: rgba(2, 44, 68, .88); color: #60eaff; box-shadow: inset 0 0 12px rgba(51, 213, 250, .28), 0 0 12px rgba(39, 199, 237, .3); }.nova-report-radar-field > button span { margin-top: .12rem; color: #dffbff; font-size: .45rem; }.nova-report-radar-field > button[data-kind='missile'], .nova-report-radar-field > button[data-kind='battle'] { border-color: #ff7a60; color: #ff8068; }.nova-report-radar-field > button[data-active] { transform: translate(-50%, -50%) scale(1.18); box-shadow: inset 0 0 16px currentColor, 0 0 19px currentColor; }
+.nova-report-standby { position: absolute; z-index: 3; top: 50%; left: 50%; display: grid; justify-items: center; transform: translate(-50%, -50%); color: #5fe7ff; text-align: center; }.nova-report-standby > .nova-icon { width: 4.8rem; height: 4.8rem; opacity: .72; animation: nova-fleet-pulse 2.6s ease-in-out infinite; }.nova-report-standby b { margin-top: .55rem; color: #e5fbff; font-size: .8rem; }.nova-report-standby span { color: #79b6c4; font-size: .58rem; }.nova-report-standby small { margin-top: .2rem; color: #4d8593; font: .43rem var(--font-mono); }
+.nova-report-stream { display: grid; align-content: start; gap: .28rem; padding: .5rem; overflow-y: auto; background: rgba(0, 12, 25, .78); }.nova-report-stream > button { display: grid; grid-template-columns: 2.4rem 1fr auto; align-items: center; gap: .5rem; min-height: 3.3rem; padding: .35rem .48rem; border: 1px solid rgba(47, 173, 211, .18); background: rgba(1, 18, 33, .74); color: #69e3fa; text-align: left; }.nova-report-stream > button > span { display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid rgba(78, 219, 250, .3); }.nova-report-stream > button > div { display: grid; }.nova-report-stream > button b { color: #e4faff; font-size: .64rem; }.nova-report-stream > button small { color: #64a9b8; font-size: .48rem; }.nova-report-stream > button em { color: #75adba; font: normal .48rem var(--font-mono); }.nova-report-stream > button[data-active] { border-color: #55e5ff; background: linear-gradient(90deg, rgba(7, 113, 156, .42), rgba(1, 26, 43, .72)); }.nova-report-stream > button[data-alert] { color: #ff7a61; }.nova-report-stream__empty { display: grid; min-height: 7rem; place-items: center; align-content: center; gap: .45rem; color: #54d9f2; text-align: center; }.nova-report-stream__empty .nova-icon { width: 2.4rem; height: 2.4rem; }.nova-report-stream__empty span { color: #6e9ca8; font-size: .56rem; }
+.nova-report-replay { grid-column: 1; padding: .65rem; border-top: 1px solid rgba(62, 204, 239, .25); background: rgba(0, 11, 23, .96); }
+.nova-report-right { overflow-y: auto; }.nova-report-emblem-v2 { display: grid; width: 9rem; height: 9rem; place-items: center; margin: .8rem auto; border: 1px solid #5fe9ff; border-radius: 50%; background: radial-gradient(circle, rgba(26, 156, 196, .33), rgba(1, 17, 32, .86) 68%); color: #5ce8ff; box-shadow: inset 0 0 20px rgba(42, 210, 248, .32), 0 0 20px rgba(28, 192, 231, .25); }.nova-report-emblem-v2 .nova-icon { width: 4.4rem; height: 4.4rem; }.nova-report-emblem-v2.is-battle, .nova-report-emblem-v2.is-missile { border-color: #ff7a61; color: #ff8068; background: radial-gradient(circle, rgba(166, 45, 30, .3), rgba(27, 6, 13, .88) 68%); box-shadow: inset 0 0 20px rgba(255, 85, 58, .26), 0 0 18px rgba(255, 72, 47, .22); }
+.nova-report-selected-name { display: flex; align-items: center; gap: .6rem; margin: 0 .7rem; padding-bottom: .65rem; border-bottom: 1px solid rgba(50, 181, 219, .22); color: #61e8ff; }.nova-report-selected-name > .nova-icon { width: 1.55rem; height: 1.55rem; }.nova-report-selected-name span { display: grid; }.nova-report-selected-name b { color: #f0fdff; font-size: .9rem; }.nova-report-selected-name small { color: #58abc0; font: .45rem var(--font-mono); }
+.nova-report-selected-meta { margin: .55rem .7rem 0; border-top: 1px solid rgba(50, 180, 219, .18); }.nova-report-selected-meta div { display: flex; justify-content: space-between; gap: .5rem; padding: .42rem .15rem; border-bottom: 1px solid rgba(50, 180, 219, .15); color: #7fbdcb; font-size: .55rem; }.nova-report-selected-meta b { color: #e2faff; font: .53rem var(--font-mono); text-align: right; }
+.nova-report-detail { margin: .55rem .7rem 0; padding: .6rem; border: 1px solid rgba(47, 177, 216, .2); background: rgba(0, 12, 25, .65); }.nova-report-detail > b { display: flex; gap: .35rem; color: #dffaff; font-size: .66rem; }.nova-report-detail > b small { color: #4fa3b8; font: .42rem var(--font-mono); }.nova-report-detail > div { display: flex; justify-content: space-between; margin-top: .4rem; color: #7cb6c3; font-size: .56rem; }.nova-report-detail em { color: #e8fcff; font: normal .56rem var(--font-mono); }.nova-report-detail em[data-result='win'] { color: #5ee8ae; }.nova-report-detail em[data-result='loss'] { color: #ff8068; }.nova-report-detail p { margin-top: .45rem; color: #70a9b6; font-size: .53rem; line-height: 1.45; }
+.nova-report-replay-button { display: grid; width: calc(100% - 1.4rem); min-height: 3.8rem; place-content: center; justify-items: center; gap: .12rem; margin: .65rem .7rem .8rem; border: 1px solid #55e4ff; background: linear-gradient(180deg, rgba(10, 151, 204, .62), rgba(0, 72, 116, .86)); color: #e7fdff; font-size: .67rem; box-shadow: inset 0 0 16px rgba(87, 231, 255, .22), 0 0 11px rgba(25, 195, 238, .22); }.nova-report-replay-button .nova-icon { font-size: 1.3rem; }.nova-report-replay-button small { color: #65c1d5; font: .42rem var(--font-mono); }
+.nova-report-selected-empty { display: grid; min-height: 12rem; place-items: center; align-content: center; padding: 1rem; color: #5ee8b3; text-align: center; }.nova-report-selected-empty > .nova-icon { width: 3rem; height: 3rem; }.nova-report-selected-empty b { margin-top: .6rem; color: #e5fbff; font-size: .82rem; }.nova-report-selected-empty p { margin-top: .35rem; color: #689ba8; font-size: .56rem; }
+.nova-report-status { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(53, 199, 239, .42); background: rgba(0, 15, 29, .92); clip-path: polygon(.65rem 0, 100% 0, 100% calc(100% - .65rem), calc(100% - .65rem) 100%, 0 100%, 0 .65rem); }.nova-report-status > div { display: grid; grid-template-columns: 2.2rem 1fr auto; align-items: center; gap: .55rem; padding: .55rem .85rem; border-right: 1px solid rgba(53, 184, 222, .2); color: #61e6ff; }.nova-report-status > div:last-child { border-right: 0; }.nova-report-status .nova-icon { width: 1.65rem; height: 1.65rem; }.nova-report-status span { display: grid; color: #ddf8ff; font-size: .64rem; }.nova-report-status small { color: #4ea7bb; font: .42rem var(--font-mono); }.nova-report-status b { color: #5ceab1; font: .62rem var(--font-mono); }
+
+@media (max-width: 1180px) {
+  .nova-report-workspace { grid-template-columns: 17rem minmax(30rem, 1fr) 18rem; }
+  .nova-report-page { overflow: auto; }.nova-report-title h2 { font-size: 1.55rem; }.nova-report-metrics { grid-template-columns: 1fr; }.nova-report-emblem-v2 { width: 6.5rem; height: 6.5rem; }
+}
+@media (max-width: 820px) {
+  .nova-report-page { height: auto; min-height: 0; overflow: visible; }.nova-report-workspace { display: flex; min-height: 0; flex-direction: column; padding: 0 .45rem 5rem; overflow: visible; background-attachment: fixed; }.nova-report-title { min-height: 6rem; margin-inline: -.45rem; }.nova-report-center { order: 1; min-height: 40rem; }.nova-report-left { order: 2; overflow: visible; }.nova-report-right { order: 3; overflow: visible; }.nova-report-status { order: 4; grid-template-columns: 1fr 1fr; min-height: 8rem; }
+}
+
+/* Campaign is a single theater map instead of a scrolling stack of stage cards. */
+.nova-campaign-page { height: calc(100dvh - 7.2rem); min-height: 44rem; padding: 0 !important; overflow: hidden; }
+.nova-campaign-workspace { position: relative; display: grid; height: 100%; min-height: 44rem; grid-template-columns: 20.5rem minmax(34rem, 1fr) 23rem; grid-template-rows: 6.2rem minmax(0, 1fr) 5rem; gap: .55rem; padding: 0 .65rem .65rem; overflow: hidden; background: #020a14 url('/nova/galaxy-scene-v1.png') center / cover no-repeat; }
+.nova-campaign-workspace::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(0, 7, 17, .91), transparent 31%, transparent 69%, rgba(0, 7, 17, .91)), linear-gradient(180deg, rgba(0, 8, 17, .08), rgba(0, 8, 17, .43)); }
+.nova-campaign-title { position: relative; z-index: 4; grid-column: 1 / -1; margin: 0 -.65rem; padding: .8rem 1.3rem; border-bottom: 1px solid rgba(63, 210, 248, .24); background: linear-gradient(90deg, rgba(0, 12, 26, .94), rgba(0, 12, 26, .3) 55%, transparent); }
+.nova-campaign-title h2 { color: #f1fdff; font-size: 2rem; font-weight: 850; line-height: 1; text-shadow: 0 0 12px rgba(102, 232, 255, .45); }.nova-campaign-title > b { display: block; margin-top: .18rem; color: #49e5ff; font: .9rem var(--font-mono); letter-spacing: .08em; }.nova-campaign-title > span { display: block; margin-top: .32rem; color: #bfeef7; font-size: .72rem; }.nova-campaign-title > small { color: #60b8cc; font: .48rem var(--font-mono); letter-spacing: .04em; }
+.nova-campaign-left, .nova-campaign-map, .nova-campaign-right, .nova-campaign-status { position: relative; z-index: 3; min-width: 0; min-height: 0; }.nova-campaign-left { display: grid; align-content: start; gap: .55rem; overflow-y: auto; }
+.nova-campaign-panel { border: 1px solid rgba(53, 202, 241, .52); background: linear-gradient(145deg, rgba(1, 24, 43, .95), rgba(0, 12, 25, .96)); box-shadow: inset 0 0 24px rgba(11, 123, 168, .08), 0 0 14px rgba(0, 0, 0, .35); clip-path: polygon(.65rem 0, 100% 0, 100% calc(100% - .65rem), calc(100% - .65rem) 100%, 0 100%, 0 .65rem); }.nova-campaign-panel__title { display: flex; align-items: center; gap: .55rem; padding: .65rem .75rem; border-bottom: 1px solid rgba(55, 194, 233, .25); background: rgba(4, 39, 61, .66); color: #5de7ff; }.nova-campaign-panel__title > .nova-icon { width: 1.45rem; height: 1.45rem; }.nova-campaign-panel__title b { display: grid; color: #eaffff; font-size: .9rem; }.nova-campaign-panel__title small { color: #55b6cc; font: .48rem var(--font-mono); letter-spacing: .05em; }.nova-campaign-panel__title em { margin-left: auto; color: #52e8af; font: normal .58rem var(--font-mono); }
+.nova-campaign-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; padding: .55rem; }.nova-campaign-metrics > div { display: grid; min-height: 4rem; grid-template-columns: 1.8rem 1fr auto; align-items: center; gap: .35rem; padding: .42rem; border: 1px solid rgba(49, 174, 213, .24); background: rgba(1, 16, 30, .66); }.nova-campaign-metrics .nova-icon { color: #65e8ff; font-size: 1.3rem; }.nova-campaign-metrics span { display: grid; color: #cfedf4; font-size: .6rem; }.nova-campaign-metrics small { color: #4da8bf; font: .4rem var(--font-mono); }.nova-campaign-metrics b { color: #effeff; font: .72rem var(--font-mono); }
+.nova-campaign-progress { display: grid; grid-template-columns: 1fr auto; gap: .25rem; margin: 0 .55rem .55rem; padding: .5rem; border: 1px solid rgba(49, 174, 213, .2); color: #dff8ff; font-size: .63rem; }.nova-campaign-progress span { display: grid; }.nova-campaign-progress small { color: #4faac0; font: .43rem var(--font-mono); }.nova-campaign-progress b { color: #63e8ff; font-family: var(--font-mono); }.nova-campaign-progress i { grid-column: 1 / -1; height: .38rem; overflow: hidden; background: #041828; }.nova-campaign-progress u { display: block; height: 100%; background: linear-gradient(90deg, #0a9ccb, #61ecff); box-shadow: 0 0 9px #20cdf4; }
+.nova-campaign-mode-tabs { display: grid; gap: .35rem; padding: .5rem; }.nova-campaign-mode-tabs button { display: grid; grid-template-columns: 1.8rem 1fr auto; align-items: center; gap: .45rem; min-height: 3.2rem; padding: .4rem .5rem; border: 1px solid rgba(51, 181, 219, .22); background: rgba(1, 15, 29, .7); color: #65e1f8; text-align: left; }.nova-campaign-mode-tabs button > span { display: grid; color: #dff6fb; font-size: .65rem; }.nova-campaign-mode-tabs button small { color: #4da4b8; font: .43rem var(--font-mono); }.nova-campaign-mode-tabs button b { color: #89c7d3; font: .62rem var(--font-mono); }.nova-campaign-mode-tabs button[data-active] { border-color: #5be6ff; background: linear-gradient(90deg, rgba(8, 125, 171, .5), rgba(2, 34, 55, .74)); box-shadow: inset 0 0 14px rgba(48, 219, 255, .17); }.nova-campaign-mode-tabs button:last-child[data-active] { border-color: #ff805f; background: linear-gradient(90deg, rgba(133, 45, 32, .48), rgba(48, 17, 25, .76)); }
+.nova-campaign-rules { margin: 0 .5rem .55rem; padding: .55rem; border: 1px solid rgba(48, 174, 212, .18); background: rgba(0, 13, 26, .65); }.nova-campaign-rules > b { display: flex; gap: .3rem; color: #dffaff; font-size: .63rem; }.nova-campaign-rules > b small { color: #4fa4b8; font: .41rem var(--font-mono); }.nova-campaign-rules p { margin: .4rem 0; color: #75aab6; font-size: .53rem; line-height: 1.45; }.nova-campaign-rules > div { display: flex; align-items: center; gap: .35rem; padding: .2rem 0; color: #72b7c5; font-size: .53rem; }.nova-campaign-rules .nova-icon { color: #5ce7b1; }
+.nova-campaign-map { display: grid; grid-template-rows: 3rem minmax(0, 1fr) 3.6rem; overflow: hidden; border: 1px solid rgba(48, 195, 234, .3); background: rgba(0, 10, 22, .25); }.nova-campaign-map__header { display: flex; align-items: center; justify-content: space-between; padding: .45rem .7rem; border-bottom: 1px solid rgba(52, 186, 226, .22); background: rgba(0, 17, 32, .88); color: #dffaff; font-size: .7rem; }.nova-campaign-map__header > span { display: grid; }.nova-campaign-map__header small { color: #50abc0; font: .45rem var(--font-mono); }.nova-campaign-map__header > div { display: flex; align-items: center; gap: .35rem; color: #74aebe; font-size: .5rem; }.nova-campaign-map__header i { width: .42rem; height: .42rem; border-radius: 50%; background: #607d89; box-shadow: 0 0 6px currentColor; }.nova-campaign-map__header i.is-done { background: #4fe2a9; }.nova-campaign-map__header i.is-open { margin-left: .35rem; background: #55def8; }
+.nova-campaign-route-field { position: relative; min-height: 0; overflow: hidden; background: radial-gradient(circle at 50% 50%, rgba(23, 153, 198, .18), transparent 34%), linear-gradient(rgba(0, 10, 22, .08), rgba(0, 10, 22, .24)); }.nova-campaign-route-field::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(61, 187, 221, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(61, 187, 221, .045) 1px, transparent 1px); background-size: 36px 36px; mask-image: radial-gradient(circle, black, transparent 84%); }.nova-campaign-route-field.is-elite { background: radial-gradient(circle at 50% 50%, rgba(178, 48, 35, .16), transparent 34%), linear-gradient(rgba(0, 10, 22, .08), rgba(0, 10, 22, .24)); }
+.nova-campaign-route-path { position: absolute; inset: 16% 12%; border: 1px solid rgba(64, 207, 242, .15); clip-path: polygon(0 0, 29% 30%, 57% 0, 100% 30%, 100% 100%, 57% 70%, 29% 100%, 0 70%); box-shadow: inset 0 0 24px rgba(31, 189, 228, .08); }.nova-campaign-route-path::after { content: ''; position: absolute; inset: 17%; border: 1px dashed rgba(70, 218, 250, .22); border-radius: 50%; }
+.nova-campaign-command-core { position: absolute; z-index: 3; top: 50%; left: 50%; display: grid; width: 8rem; height: 8rem; place-content: center; justify-items: center; transform: translate(-50%, -50%); border: 1px solid #5ce8ff; border-radius: 50%; background: radial-gradient(circle, rgba(15, 133, 176, .5), rgba(1, 19, 36, .92) 69%); color: #63e9ff; box-shadow: inset 0 0 22px rgba(44, 210, 249, .32), 0 0 28px rgba(31, 193, 233, .28); }.nova-campaign-command-core .nova-icon { width: 2.7rem; height: 2.7rem; }.nova-campaign-command-core b { margin-top: .25rem; color: #eaffff; font: .62rem var(--font-mono); }.nova-campaign-command-core small { color: #4c9caf; font: .39rem var(--font-mono); }.nova-campaign-route-field.is-elite .nova-campaign-command-core { border-color: #ff795e; color: #ff7d63; background: radial-gradient(circle, rgba(141, 37, 30, .5), rgba(26, 7, 14, .92) 69%); box-shadow: inset 0 0 22px rgba(255, 89, 62, .28), 0 0 26px rgba(255, 70, 46, .24); }
+.nova-campaign-route-field > button { position: absolute; z-index: 4; top: var(--stage-y); left: var(--stage-x); display: grid; width: 7rem; justify-items: center; transform: translate(-50%, -50%); color: #7fb4bf; }.nova-campaign-route-field > button > span { display: grid; width: 3.3rem; height: 3.3rem; place-items: center; border: 1px solid #54dff8; border-radius: 50%; background: rgba(2, 41, 64, .9); color: #61e8ff; font: .64rem var(--font-mono); box-shadow: inset 0 0 12px rgba(47, 210, 246, .25), 0 0 10px rgba(30, 183, 220, .24); }.nova-campaign-route-field > button b { margin-top: .2rem; overflow: hidden; max-width: 100%; color: #dff8fd; font-size: .55rem; text-overflow: ellipsis; white-space: nowrap; }.nova-campaign-route-field > button small { color: #5798a8; font: .4rem var(--font-mono); }.nova-campaign-route-field > button[data-done] > span { border-color: #53e2a9; color: #59e7b0; background: rgba(5, 73, 63, .82); }.nova-campaign-route-field > button[data-locked] > span { border-color: rgba(104, 142, 153, .38); color: #557782; background: rgba(3, 20, 31, .85); }.nova-campaign-route-field > button[data-active] { z-index: 6; transform: translate(-50%, -50%) scale(1.13); }.nova-campaign-route-field > button[data-active] > span { border-color: #fff; box-shadow: inset 0 0 16px currentColor, 0 0 20px currentColor; }
+.nova-campaign-map__footer { display: grid; grid-template-columns: repeat(3, 1fr) auto; align-items: stretch; border-top: 1px solid rgba(53, 196, 234, .24); background: rgba(0, 16, 31, .92); }.nova-campaign-map__footer span, .nova-campaign-map__footer em { display: grid; grid-template-columns: 1.3rem 1fr; align-items: center; gap: .35rem; padding: .42rem .55rem; border-right: 1px solid rgba(50, 177, 215, .2); color: #bcebf4; font-size: .55rem; }.nova-campaign-map__footer .nova-icon { grid-row: 1 / 3; color: #62e8ff; font-size: 1.1rem; }.nova-campaign-map__footer small { color: #4facbf; font: .42rem var(--font-mono); }.nova-campaign-map__footer em { display: flex; color: #5fa7b9; font-style: normal; }.nova-campaign-map__footer em b { color: #e4fbff; font-family: var(--font-mono); }
+.nova-campaign-right { overflow-y: auto; }.nova-campaign-enemy-preview { margin: .7rem; padding: .5rem; border: 1px solid rgba(64, 207, 245, .3); background: rgba(0, 10, 22, .72); }.nova-campaign-enemy-preview > span { display: block; height: 8rem; border: 1px solid rgba(62, 204, 240, .24); }.nova-campaign-selected-name { display: flex; align-items: center; gap: .6rem; margin: 0 .7rem; padding-bottom: .65rem; border-bottom: 1px solid rgba(50, 181, 219, .22); color: #61e8ff; }.nova-campaign-selected-name > .nova-icon { width: 1.55rem; height: 1.55rem; }.nova-campaign-selected-name span { display: grid; }.nova-campaign-selected-name b { color: #f0fdff; font-size: .88rem; }.nova-campaign-selected-name small { color: #58abc0; font: .45rem var(--font-mono); }.nova-campaign-description { margin: .55rem .7rem 0; color: #78afbb; font-size: .56rem; line-height: 1.5; }
+.nova-campaign-enemy-list, .nova-campaign-rewards { margin: .55rem .7rem 0; padding: .6rem; border: 1px solid rgba(47, 177, 216, .2); background: rgba(0, 12, 25, .65); }.nova-campaign-enemy-list > b, .nova-campaign-rewards > b { display: flex; gap: .35rem; color: #dffaff; font-size: .66rem; }.nova-campaign-enemy-list > b small, .nova-campaign-rewards > b small { color: #4fa3b8; font: .42rem var(--font-mono); }.nova-campaign-enemy-list > div { display: flex; justify-content: space-between; margin-top: .35rem; color: #7db7c4; font-size: .55rem; }.nova-campaign-enemy-list > div[data-defense] { color: #c69c7f; }.nova-campaign-enemy-list em { color: #ff967d; font: normal .55rem var(--font-mono); }.nova-campaign-rewards > div { display: grid; grid-template-columns: repeat(3, 1fr); gap: .25rem; margin-top: .45rem; }.nova-campaign-rewards span { display: grid; justify-items: center; padding: .35rem .15rem; border: 1px solid rgba(47, 177, 216, .17); color: #82bfcb; font-size: .48rem; }.nova-campaign-rewards .nova-icon { font-size: 1rem; }.nova-campaign-rewards em { color: #e8fcff; font: normal .5rem var(--font-mono); }.nova-campaign-rewards p { margin-top: .4rem; color: #64dfac; font-size: .52rem; }
+.nova-campaign-deploy { display: grid; width: calc(100% - 1.4rem); min-height: 4rem; place-content: center; justify-items: center; gap: .1rem; margin: .65rem .7rem .8rem; border: 1px solid #55e4ff; background: linear-gradient(180deg, rgba(10, 151, 204, .65), rgba(0, 72, 116, .88)); color: #e7fdff; font-size: .68rem; box-shadow: inset 0 0 16px rgba(87, 231, 255, .24), 0 0 11px rgba(25, 195, 238, .24); }.nova-campaign-deploy .nova-icon { font-size: 1.35rem; }.nova-campaign-deploy small { color: #65c1d5; font: .42rem var(--font-mono); }.nova-campaign-deploy:disabled { border-color: rgba(89, 125, 135, .36); background: rgba(28, 47, 57, .7); color: #67828a; box-shadow: none; }
+.nova-campaign-status { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(53, 199, 239, .42); background: rgba(0, 15, 29, .92); clip-path: polygon(.65rem 0, 100% 0, 100% calc(100% - .65rem), calc(100% - .65rem) 100%, 0 100%, 0 .65rem); }.nova-campaign-status > div { display: grid; grid-template-columns: 2.2rem 1fr auto; align-items: center; gap: .55rem; padding: .55rem .85rem; border-right: 1px solid rgba(53, 184, 222, .2); color: #61e6ff; }.nova-campaign-status > div:last-child { border-right: 0; }.nova-campaign-status .nova-icon { width: 1.65rem; height: 1.65rem; }.nova-campaign-status span { display: grid; color: #ddf8ff; font-size: .64rem; }.nova-campaign-status small { color: #4ea7bb; font: .42rem var(--font-mono); }.nova-campaign-status b { color: #5ceab1; font: .62rem var(--font-mono); }
+
+@media (max-width: 1180px) {
+  .nova-campaign-workspace { grid-template-columns: 17rem minmax(30rem, 1fr) 19rem; }.nova-campaign-page { overflow: auto; }.nova-campaign-title h2 { font-size: 1.55rem; }.nova-campaign-metrics { grid-template-columns: 1fr; }.nova-campaign-enemy-preview > span { height: 6rem; }
+}
+@media (max-width: 820px) {
+  .nova-campaign-page { height: auto; min-height: 0; overflow: visible; }.nova-campaign-workspace { display: flex; min-height: 0; flex-direction: column; padding: 0 .45rem 5rem; overflow: visible; background-attachment: fixed; }.nova-campaign-title { min-height: 6rem; margin-inline: -.45rem; }.nova-campaign-map { order: 1; min-height: 36rem; }.nova-campaign-left { order: 2; overflow: visible; }.nova-campaign-right { order: 3; overflow: visible; }.nova-campaign-status { order: 4; grid-template-columns: 1fr 1fr; min-height: 8rem; }.nova-campaign-route-field > button { width: 5rem; }.nova-campaign-route-field > button b { display: none; }
+}
+.nova-atlas-thumb {
+  background-color: #03111f;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 18px rgba(13, 145, 190, .16), 0 0 9px rgba(18, 179, 224, .12);
+  filter: saturate(.94) contrast(1.06);
+}
+.nova-atlas-thumb::after { pointer-events: none; }
+.nova-thread-product__thumb.nova-atlas-thumb { background-repeat: no-repeat; }
+.nova-selected-blueprint > .nova-atlas-thumb { background-repeat: no-repeat; color: transparent; }
+.nova-blueprint-core > .nova-blueprint-core__asset {
+  display: block;
+  width: 9.5rem;
+  height: 4.9rem;
+  margin: -.35rem auto .12rem;
+  border: 1px solid rgba(87, 225, 255, .36);
+  color: transparent;
+  filter: saturate(1.06) contrast(1.08);
+  box-shadow: inset 0 0 18px rgba(20, 174, 218, .22), 0 0 15px rgba(27, 199, 240, .18);
+}
+.nova-blueprint-list button > .nova-atlas-thumb {
+  width: 2.35rem;
+  height: 2.35rem;
+  border: 1px solid rgba(54, 196, 233, .32);
+  background-repeat: no-repeat;
+}
+.nova-blueprint-list button[data-active] > .nova-atlas-thumb,
+.nova-building-selector > button[data-active] .nova-atlas-thumb { border-color: #66eaff; box-shadow: inset 0 0 14px rgba(29, 206, 248, .24), 0 0 9px rgba(32, 216, 255, .36); }
+.nova-build-queue__item { grid-template-columns: 1.7rem 3.1rem 1fr auto; }
+.nova-build-queue__item > .nova-build-queue__thumb {
+  width: 3rem;
+  height: 2.55rem;
+  border: 1px solid rgba(61, 209, 246, .34);
+  border-radius: 0;
+  color: transparent;
+}
+.nova-building-hotspots button > .nova-hotspot-asset {
+  position: relative;
+  display: block;
+  width: 4.2rem;
+  height: 3.2rem;
+  border: 1px solid rgba(74, 220, 251, .68);
+  border-radius: .15rem;
+  color: transparent;
+  box-shadow: inset 0 0 12px rgba(26, 209, 255, .22), 0 0 15px rgba(0, 199, 255, .28);
+}
+.nova-building-hotspots button > .nova-hotspot-asset em {
+  position: absolute;
+  right: .12rem;
+  bottom: .1rem;
+  padding: .06rem .18rem;
+  background: rgba(0, 18, 31, .92);
+  color: #dffbff;
+  font: normal .42rem var(--font-mono);
+}
+.nova-building-hotspots button[data-active] > .nova-hotspot-asset {
+  border-color: #ecfdff;
+  background-color: #06283b;
+  color: transparent;
+  transform: scale(1.08);
+  box-shadow: inset 0 0 18px rgba(47, 221, 255, .3), 0 0 22px #1bd8ff;
+}
+.nova-detail-asset {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  align-items: center;
+  gap: .85rem;
+  margin-bottom: .85rem;
+  padding: .55rem;
+  border: 1px solid rgba(57, 201, 239, .32);
+  background: linear-gradient(90deg, rgba(1, 28, 48, .86), rgba(1, 13, 27, .65));
+}
+.nova-detail-asset > span { display: block; width: 11rem; height: 6.4rem; border: 1px solid rgba(70, 218, 251, .38); }
+.nova-detail-asset > div { display: grid; gap: .18rem; }
+.nova-detail-asset b { color: #ecfcff; font-size: 1rem; }
+.nova-detail-asset small { color: #57b8ce; font: .52rem var(--font-mono); letter-spacing: .06em; }
+.nova-codex-name { display: inline-flex; align-items: center; gap: .5rem; min-width: 9rem; }
+.nova-codex-thumb { display: inline-block; flex: 0 0 auto; width: 3.2rem; height: 2.5rem; border: 1px solid rgba(58, 198, 235, .32); }
+
+/* The codex is a blueprint archive workspace, not a documentation table. */
+.nova-codex-page { height: calc(100dvh - 8.4rem); min-height: 42rem; overflow: hidden; }
+.nova-codex-workspace {
+  display: grid;
+  height: 100%;
+  min-width: 0;
+  grid-template-columns: 16rem minmax(34rem, 1fr) 21rem;
+  grid-template-rows: 7rem minmax(0, 1fr) 4.6rem;
+  gap: .65rem;
+  padding: .75rem;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 36%, rgba(12, 84, 120, .18), transparent 36%), linear-gradient(180deg, rgba(1, 12, 25, .93), rgba(0, 7, 17, .98)), url('/nova/research-scene-v1.png') center / cover no-repeat;
+}
+.nova-codex-title {
+  position: relative;
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: .8rem 1.25rem;
+  border: 1px solid rgba(55, 207, 246, .45);
+  background: linear-gradient(90deg, rgba(0, 18, 36, .97) 0 36%, rgba(1, 23, 42, .48) 72%, rgba(0, 14, 29, .95)), url('/nova/research-scene-v1.png') center 48% / cover no-repeat;
+  clip-path: polygon(.7rem 0, 100% 0, 100% calc(100% - .7rem), calc(100% - .7rem) 100%, 0 100%, 0 .7rem);
+}
+.nova-codex-title::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, transparent 52%, rgba(64, 220, 255, .12) 52.2%, transparent 53%); }
+.nova-codex-title > div:first-child { position: relative; z-index: 1; display: grid; }
+.nova-codex-title h2 { color: #f0fdff; font-size: 1.75rem; font-weight: 900; letter-spacing: .06em; text-shadow: 0 0 14px rgba(59, 215, 255, .55); }
+.nova-codex-title b { color: #5cddf8; font: .7rem var(--font-mono); letter-spacing: .12em; }
+.nova-codex-title span { margin-top: .24rem; color: #a8dbe6; font-size: .68rem; }
+.nova-codex-title small { color: #4c99aa; font: .42rem var(--font-mono); letter-spacing: .1em; }
+.nova-codex-title__seal { z-index: 1; display: flex; align-items: center; gap: .55rem; padding: .5rem .8rem; border: 1px solid rgba(71, 214, 249, .36); background: rgba(0, 19, 35, .82); color: #5de8ff; }
+.nova-codex-title__seal .nova-icon { width: 2.4rem; height: 2.4rem; }
+.nova-codex-title__seal span { margin: 0; color: #7de6f8; font: .52rem/1.35 var(--font-mono); text-align: right; }
+.nova-archive-panel { min-width: 0; min-height: 0; overflow: hidden; border: 1px solid rgba(49, 190, 229, .4); background: linear-gradient(180deg, rgba(1, 23, 41, .95), rgba(0, 12, 25, .96)); box-shadow: inset 0 0 26px rgba(18, 137, 180, .08); clip-path: polygon(.6rem 0, 100% 0, 100% calc(100% - .6rem), calc(100% - .6rem) 100%, 0 100%, 0 .6rem); }
+.nova-archive-panel__title { display: grid; min-height: 3rem; grid-template-columns: 1.7rem 1fr auto; align-items: center; gap: .5rem; padding: .48rem .65rem; border-bottom: 1px solid rgba(56, 196, 234, .3); background: rgba(2, 35, 57, .82); color: #62e6ff; }
+.nova-archive-panel__title > .nova-icon { width: 1.25rem; height: 1.25rem; }
+.nova-archive-panel__title b { display: grid; color: #e5fbff; font-size: .72rem; }
+.nova-archive-panel__title small { color: #56aabe; font: .43rem var(--font-mono); letter-spacing: .06em; }
+.nova-archive-panel__title em { color: #64ddf6; font: normal .55rem var(--font-mono); }
+.nova-codex-left { grid-column: 1; grid-row: 2; overflow-y: auto; }
+.nova-codex-categories { display: grid; gap: .35rem; padding: .65rem; }
+.nova-codex-categories button { display: grid; min-height: 4.35rem; grid-template-columns: 2.35rem 1fr auto; align-items: center; gap: .55rem; padding: .55rem; border: 1px solid rgba(47, 180, 219, .22); background: rgba(0, 13, 27, .66); color: #5dddf6; text-align: left; }
+.nova-codex-categories button > .nova-icon { width: 1.55rem; height: 1.55rem; justify-self: center; }
+.nova-codex-categories button span { display: grid; color: #d8f5fb; font-size: .68rem; }
+.nova-codex-categories button small { color: #4f9daf; font: .42rem var(--font-mono); }
+.nova-codex-categories button b { color: #7beaff; font: .72rem var(--font-mono); }
+.nova-codex-categories button[data-active] { border-color: #55ddfa; background: linear-gradient(90deg, rgba(5, 120, 165, .62), rgba(0, 37, 62, .78)); box-shadow: inset 3px 0 0 #66eaff, inset 0 0 18px rgba(35, 205, 246, .18); }
+.nova-codex-integrity, .nova-codex-legend { margin: .2rem .65rem .65rem; padding: .7rem; border: 1px solid rgba(46, 178, 216, .2); background: rgba(0, 13, 26, .64); }
+.nova-codex-integrity { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .45rem; }
+.nova-codex-integrity b, .nova-codex-legend > b { display: grid; color: #dff9ff; font-size: .65rem; }
+.nova-codex-integrity small, .nova-codex-legend > b small { color: #4d9caf; font: .4rem var(--font-mono); }
+.nova-codex-integrity > span { grid-column: 1 / -1; height: .3rem; overflow: hidden; background: #041724; }
+.nova-codex-integrity i { display: block; width: 100%; height: 100%; background: linear-gradient(90deg, #068bd0, #4cf1ff); box-shadow: 0 0 8px #38dfff; }
+.nova-codex-integrity em { color: #60eab1; font: normal .6rem var(--font-mono); }
+.nova-codex-legend p { margin-top: .45rem; color: #6da8b5; font-size: .55rem; line-height: 1.55; }
+.nova-codex-legend div { display: flex; align-items: center; gap: .35rem; margin-top: .42rem; color: #5bdba8; font-size: .52rem; }
+.nova-codex-browser { display: flex; grid-column: 2; grid-row: 2; flex-direction: column; }
+.nova-codex-grid { display: grid; min-height: 0; flex: 1; grid-template-columns: repeat(4, minmax(8rem, 1fr)); gap: .5rem; padding: .65rem; overflow-y: auto; scrollbar-color: #168cb3 #04131f; }
+.nova-codex-grid > button { position: relative; display: grid; min-height: 10.5rem; align-content: start; justify-items: stretch; overflow: hidden; padding: .42rem; border: 1px solid rgba(47, 178, 216, .24); background: linear-gradient(180deg, rgba(4, 38, 61, .78), rgba(0, 13, 27, .9)); color: #dff9ff; text-align: left; clip-path: polygon(.45rem 0, 100% 0, 100% calc(100% - .45rem), calc(100% - .45rem) 100%, 0 100%, 0 .45rem); }
+.nova-codex-grid > button:hover { border-color: rgba(85, 219, 249, .62); background: linear-gradient(180deg, rgba(5, 69, 101, .82), rgba(0, 21, 38, .92)); }
+.nova-codex-grid > button[data-active] { border-color: #63e6ff; box-shadow: inset 0 0 22px rgba(32, 204, 244, .22), 0 0 10px rgba(33, 202, 241, .16); }
+.nova-codex-card__asset { display: block; width: 100%; height: 6.1rem; border: 1px solid rgba(54, 195, 232, .22); background-color: rgba(0, 10, 21, .78); }
+.nova-codex-tech-asset { display: grid; place-items: center; color: #60e8ff; background: radial-gradient(circle, rgba(22, 174, 219, .34), rgba(0, 11, 24, .9) 68%); }
+.nova-codex-tech-asset .nova-icon { width: 3.5rem; height: 3.5rem; filter: drop-shadow(0 0 10px rgba(69, 224, 255, .55)); }
+.nova-codex-card__code { position: absolute; top: .58rem; right: .55rem; padding: .12rem .24rem; background: rgba(0, 13, 25, .86); color: #4fa8ba; font: .38rem var(--font-mono); }
+.nova-codex-grid button > b { margin-top: .38rem; overflow: hidden; font-size: .68rem; text-overflow: ellipsis; white-space: nowrap; }
+.nova-codex-grid button > small { color: #57a8ba; font: .45rem var(--font-mono); }
+.nova-codex-grid button > em { display: flex; align-items: center; gap: .22rem; margin-top: .25rem; color: #9bcbd5; font: normal .45rem var(--font-mono); }
+.nova-codex-grid button > em .nova-icon { width: .72rem; height: .72rem; color: #57def7; }
+.nova-codex-detail { grid-column: 3; grid-row: 2; overflow-y: auto; }
+.nova-codex-detail__asset { margin: .65rem; padding: .4rem; border: 1px solid rgba(53, 192, 230, .25); background: rgba(0, 10, 22, .74); }
+.nova-codex-detail__visual { display: block; width: 100%; height: 10.2rem; }
+.nova-codex-detail__name { display: grid; grid-template-columns: 2rem 1fr; align-items: center; gap: .55rem; margin: 0 .65rem; padding: 0 0 .65rem; border-bottom: 1px solid rgba(50, 180, 218, .22); color: #5de5ff; }
+.nova-codex-detail__name > .nova-icon { width: 1.65rem; height: 1.65rem; }
+.nova-codex-detail__name span { display: grid; }
+.nova-codex-detail__name b { color: #f0fdff; font-size: .92rem; }
+.nova-codex-detail__name small { color: #55a9bc; font: .43rem var(--font-mono); }
+.nova-codex-detail__copy { margin: .55rem .65rem; color: #77afbb; font-size: .55rem; line-height: 1.55; }
+.nova-codex-detail__stats { display: grid; grid-template-columns: 1fr 1fr; margin: 0 .65rem; border-top: 1px solid rgba(47, 176, 214, .2); }
+.nova-codex-detail__stats div { display: flex; justify-content: space-between; gap: .35rem; padding: .38rem .2rem; border-bottom: 1px solid rgba(47, 176, 214, .16); color: #80becb; font-size: .54rem; }
+.nova-codex-detail__stats b { color: #e8fbff; font-family: var(--font-mono); }
+.nova-codex-detail__cost, .nova-codex-detail__requires { margin: .58rem .65rem 0; }
+.nova-codex-detail__cost > b, .nova-codex-detail__requires > b { display: flex; align-items: baseline; gap: .4rem; color: #e5fbff; font-size: .68rem; }
+.nova-codex-detail__cost > b small, .nova-codex-detail__requires > b small { color: #4fa4b7; font: .4rem var(--font-mono); }
+.nova-codex-detail__cost > div { display: grid; grid-template-columns: repeat(3, 1fr); gap: .25rem; margin-top: .4rem; }
+.nova-codex-detail__cost span { display: grid; justify-items: center; padding: .4rem .15rem; border: 1px solid rgba(48, 180, 218, .2); color: #7dbbc8; font-size: .46rem; }
+.nova-codex-detail__cost .nova-icon { width: 1rem; height: 1rem; color: #5ce2fb; }
+.nova-codex-detail__cost em { color: #f0fcff; font: normal .52rem var(--font-mono); }
+.nova-codex-detail__requires div { display: flex; justify-content: space-between; padding: .36rem .1rem; border-bottom: 1px solid rgba(47, 176, 214, .16); color: #86c3cf; font-size: .54rem; }
+.nova-codex-detail__requires em { color: #ff987d; font: normal .54rem var(--font-mono); }
+.nova-codex-detail__requires p { display: flex; align-items: center; gap: .35rem; margin-top: .4rem; color: #57dda9; font-size: .55rem; }
+.nova-codex-status { display: grid; grid-column: 1 / -1; grid-row: 3; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(53, 199, 239, .42); background: rgba(0, 15, 29, .94); clip-path: polygon(.6rem 0, 100% 0, 100% calc(100% - .6rem), calc(100% - .6rem) 100%, 0 100%, 0 .6rem); }
+.nova-codex-status > div { display: grid; grid-template-columns: 2rem 1fr auto; align-items: center; gap: .48rem; padding: .5rem .75rem; border-right: 1px solid rgba(53, 184, 222, .2); color: #61e6ff; }
+.nova-codex-status > div:last-child { border-right: 0; }
+.nova-codex-status .nova-icon { width: 1.45rem; height: 1.45rem; }
+.nova-codex-status span { display: grid; color: #dcf8ff; font-size: .6rem; }
+.nova-codex-status small { color: #4fa4b7; font: .4rem var(--font-mono); }
+.nova-codex-status b { color: #5ceab1; font: .58rem var(--font-mono); }
+
+@media (max-width: 1250px) {
+  .nova-codex-workspace { grid-template-columns: 14rem minmax(30rem, 1fr) 19rem; }
+  .nova-codex-grid { grid-template-columns: repeat(3, minmax(8rem, 1fr)); }
+}
+@media (max-width: 820px) {
+  .nova-codex-page { height: auto; min-height: 0; overflow: visible; }
+  .nova-codex-workspace { display: flex; min-height: 0; flex-direction: column; padding: .45rem .45rem 5rem; overflow: visible; }
+  .nova-codex-title { min-height: 7rem; }
+  .nova-codex-title__seal { display: none; }
+  .nova-codex-left, .nova-codex-browser, .nova-codex-detail { overflow: visible; }
+  .nova-codex-grid { max-height: none; grid-template-columns: repeat(2, minmax(8rem, 1fr)); }
+  .nova-codex-status { grid-template-columns: 1fr 1fr; min-height: 8rem; }
+}
+.nova-upgrade-cost > div b,
+.nova-selected-cost b,
+.nova-blueprint-cost span,
+.nova-research-cost > div span { grid-template-columns: 1.05rem 1fr; align-items: center; column-gap: .2rem; }
+.nova-upgrade-cost > div b > .nova-icon,
+.nova-selected-cost b > .nova-icon,
+.nova-blueprint-cost span > .nova-icon,
+.nova-research-cost > div span > .nova-icon { width: .95rem; height: .95rem; justify-self: center; }
+.nova-upgrade-cost > div b > em,
+.nova-selected-cost b > em,
+.nova-blueprint-cost span > em,
+.nova-research-cost > div span > em { grid-column: 1 / -1; }
+.nova-blueprint-cost span[data-short],
+.nova-research-cost > div span[data-short],
+.nova-selected-cost b[data-short],
+.nova-upgrade-cost b[data-short] { border-color: rgba(255, 108, 79, .55); background: rgba(108, 28, 20, .2); color: #ff997f; }
+
+/* 教程全局引导条（P1-① 2026-09-27）：所有页面常驻，悬于底栏上方 */
+.nova-tutorial-bar {
+  position: fixed;
+  z-index: 45;
+  right: 1rem;
+  bottom: 5rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  max-width: min(30rem, 86vw);
+  padding: .55rem .75rem;
+  border: 1px solid rgba(64, 218, 255, .6);
+  background: linear-gradient(145deg, rgba(3, 30, 52, .96), rgba(1, 14, 28, .94));
+  clip-path: polygon(.55rem 0, 100% 0, 100% calc(100% - .55rem), calc(100% - .55rem) 100%, 0 100%, 0 .55rem);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .45), inset 0 0 18px rgba(26, 209, 255, .12);
+}
+/* 教程条与母星切换器的避让（2026-09-28 实机发现重叠）
+ *
+ * 母星切换器 .nova-base-switcher 是 fixed left:1rem / bottom:4.65rem 的窄卡片，
+ * 教程条是 fixed right:1rem / bottom:5rem、max-width:30rem 的宽条。两者贴同一
+ * 底边，窄视口（实测 1028px）下横向相撞——母星卡片直接盖住教程条的「前往/跳过」，
+ * 引导流程被挡死。
+ *
+ * 窄屏把教程条上移一行与其分层；宽屏两者相距足够，保持原位。
+ */
+@media (max-width: 1180px) {
+  .nova-tutorial-bar { bottom: calc(4.65rem + 3.6rem); }
+}
+.nova-tutorial-bar__title { display: grid; min-width: 0; color: #bfe9f5; font-size: .68rem; }
+.nova-tutorial-bar__title b { color: #effdff; }
+.nova-tutorial-bar__title small { margin-top: .12rem; color: #6fc6dd; font-size: .6rem; line-height: 1.4; }
+.nova-tutorial-bar button { min-height: 2rem; padding: .15rem .7rem; border: 1px solid rgba(60, 222, 250, .55); background: rgba(4, 102, 142, .5); color: #e7fdff; font-size: .66rem; }
+.nova-tutorial-bar button[data-current] { border-color: #4be8ff; background: rgba(10, 158, 211, .66); box-shadow: 0 0 10px rgba(43, 213, 251, .35); }
+.nova-tutorial-bar__skip { border-color: rgba(120, 150, 165, .4) !important; color: #8fb9c8 !important; background: transparent !important; }
+@media (max-width: 720px) {
+  /* 移动端下母星切换器是 left:.45rem / width:11rem（见 L586 的 ≤900px 断点），
+     教程条是全宽 left/right .6rem —— 同处底边必然重叠。教程条上移一行与切换器分层。
+     这条必须在本断点内再写一次：同等特异性下，靠后的 .6rem 全宽规则会覆盖前面的
+     1180px 避让（见 css-breakpoint.test.ts 的回归断言）。 */
+  .nova-tutorial-bar { left: .6rem; right: .6rem; bottom: calc(4.4rem + 3.4rem); max-width: none; }
+}
+
+/* 等待队列项（批次③）：满槽预约，琥珀色调与正式队列区分 */
+.nova-construction-queue__item[data-waiting] { border-color: rgba(255, 191, 87, .4); background: rgba(30, 22, 4, .55); }
+.nova-construction-queue__item[data-waiting] .nova-construction-queue__pct { color: #ffcf7a; }
+.nova-construction-queue__item[data-waiting] .nova-construction-queue__main small { color: #b99b62; }
+
+/* 矿脉储量条（CR-2026-09-27-ORE 决策 A）：施工预览 AFTER 侧矿行内嵌 */
+.nova-ore-bar {
+  grid-column: 1 / 3;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: .3rem;
+  height: .34rem;
+  margin-top: .18rem;
+}
+.nova-ore-bar u {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #0a7a4d, #37e8a0);
+  box-shadow: 0 0 6px rgba(55, 232, 160, .4);
+}
+.nova-ore-bar[data-low] u { background: linear-gradient(90deg, #8a3d1d, #ff9b6c); box-shadow: 0 0 6px rgba(255, 120, 60, .45); }
+.nova-ore-bar small { color: #7fc6d4; font: .5rem var(--font-mono); }
+.nova-ore-bar[data-low] small { color: #ffb08c; }

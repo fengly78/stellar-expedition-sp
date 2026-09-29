@@ -1,0 +1,14 @@
+{
+  /* 测试专用项目：locale-contract.test.ts 需要 node:fs/node:path 扫描源码目录。
+     不能靠 `/// <reference types="node" />` 解决——类型 reference 是程序级的，
+     会把 node 全局注入整个编译单元，浏览器端写 process.env 也能过类型检查、
+     只在运行时炸。所以测试单独成一个项目，app 项目不包含它。 */
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.test.tsbuildinfo",
+    "noEmit": true,
+    "types": ["vite/client", "node"]
+  },
+  "include": ["src"]
+}

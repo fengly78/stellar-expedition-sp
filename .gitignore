@@ -1,0 +1,72 @@
+# ===== 外部参照与无关工程（本地保留，不入库；出处见 doc/governance/SOURCE-*.md）=====
+/upstream-ogamex/
+/upstream-ogamespec/
+/RmlUiUnreal/
+
+# ===== 工具与会话目录 =====
+/.codegraph/
+/.omo/
+/.opencode/
+/.workbuddy/
+/web/src/graphify-out/
+
+# ===== 依赖与构建产物 =====
+node_modules/
+web/dist/
+game-server/vendor/
+game-server/combat/target/
+
+# ===== 运行时与密钥 =====
+.env
+*.sqlite
+*.log
+game-server/storage/logs/
+game-server/storage/framework/cache/
+game-server/storage/framework/sessions/
+game-server/storage/framework/views/
+
+# ===== 大体积设计参考图（本地保留；如需版本化请走 git-lfs）=====
+/doc/ao-xin-ui/
+
+# ===== 通用 =====
+Thumbs.db
+Desktop.ini
+/ogame-vue-ts-main/
+
+# ===== 运行产物（时间戳快照，不入库；基线在 sim/reports/baseline/）=====
+/sim/reports/*.json
+
+# ===== GUI 测试证据（本地留存）=====
+/gui-test-screenshots/
+
+# ===== 工具临时输出（不入库；正式报告留在 tools/reports/）=====
+/tools/reports/ore-deposit-sim.json
+# 根目录一次性分析与扫描产物（临时清单、转储、一次性脚本），统一挡在仓库外
+/_*.py
+/_*.json
+/_*.txt
+# CR 执行前的规则集安全备份：cr_batch_apply 每次 apply 自动重建，
+# 本地留作回滚底稿，但不入库——仓库里那份是陈旧副本，且会随每次 CR 漂移
+/config/rulesets/*.json.bak
+
+# dev/preview 服务器日志（本地临时，不入库）
+web/.devserver.*
+web/.preview.*
+
+# Python 门禁运行产物（跑 check_all.py / 对账脚本时生成，纯缓存）
+__pycache__/
+*.pyc
+
+# phpunit 运行缓存（测试副产物，每次跑测试都会变；被跟踪会让工作树反复变脏）
+game-server/.phpunit.result.cache
+# 误建的字面量目录：某次 PowerShell 里 $env:PHPDIR 未设置导致路径被当字面量创建。
+# 内容是一整份 PHP Windows 发行版、全仓零引用，已于 2026-09-29 移出。
+/%PHPDIR%/
+
+# i18n 画廊报告：测试每次运行都会重新生成（i18n-gallery-report.test.ts 自述）
+# 跟踪它只会让每次 i18n 改动都脏工作树，产物需要时跑一次测试即可
+web/test/gallery/
+
+# AI 会话连续性笔记：含本机绝对路径与内部 session id，属隐私，不随开源仓库公开。
+# 已在 2026-09-29 移出跟踪（注意：历史提交里仍在，推送前若要彻底清除需重写历史）。
+/thoughts/

@@ -1,0 +1,316 @@
+{
+  "source": "rules/formulas.py upgrade_cost（ceil(base*g^(L-1))）",
+  "vectors": [
+    {
+      "base_name": "metal_mine",
+      "base": {
+        "M": 60,
+        "C": 15,
+        "D": 0,
+        "g": 1.5
+      },
+      "level": 1,
+      "expected": {
+        "M": 60,
+        "C": 15,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "metal_mine",
+      "base": {
+        "M": 60,
+        "C": 15,
+        "D": 0,
+        "g": 1.5
+      },
+      "level": 2,
+      "expected": {
+        "M": 90,
+        "C": 23,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "metal_mine",
+      "base": {
+        "M": 60,
+        "C": 15,
+        "D": 0,
+        "g": 1.5
+      },
+      "level": 3,
+      "expected": {
+        "M": 135,
+        "C": 34,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "metal_mine",
+      "base": {
+        "M": 60,
+        "C": 15,
+        "D": 0,
+        "g": 1.5
+      },
+      "level": 5,
+      "expected": {
+        "M": 304,
+        "C": 76,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "metal_mine",
+      "base": {
+        "M": 60,
+        "C": 15,
+        "D": 0,
+        "g": 1.5
+      },
+      "level": 10,
+      "expected": {
+        "M": 2307,
+        "C": 577,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "solar",
+      "base": {
+        "M": 75,
+        "C": 30,
+        "D": 0,
+        "g": 1.5
+      },
+      "level": 1,
+      "expected": {
+        "M": 75,
+        "C": 30,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "solar",
+      "base": {
+        "M": 75,
+        "C": 30,
+        "D": 0,
+        "g": 1.5
+      },
+      "level": 2,
+      "expected": {
+        "M": 113,
+        "C": 45,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "solar",
+      "base": {
+        "M": 75,
+        "C": 30,
+        "D": 0,
+        "g": 1.5
+      },
+      "level": 3,
+      "expected": {
+        "M": 169,
+        "C": 68,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "solar",
+      "base": {
+        "M": 75,
+        "C": 30,
+        "D": 0,
+        "g": 1.5
+      },
+      "level": 5,
+      "expected": {
+        "M": 380,
+        "C": 152,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "solar",
+      "base": {
+        "M": 75,
+        "C": 30,
+        "D": 0,
+        "g": 1.5
+      },
+      "level": 10,
+      "expected": {
+        "M": 2884,
+        "C": 1154,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "fusion_candidate",
+      "base": {
+        "M": 150,
+        "C": 60,
+        "D": 30,
+        "g": 1.5
+      },
+      "level": 1,
+      "expected": {
+        "M": 150,
+        "C": 60,
+        "D": 30
+      }
+    },
+    {
+      "base_name": "fusion_candidate",
+      "base": {
+        "M": 150,
+        "C": 60,
+        "D": 30,
+        "g": 1.5
+      },
+      "level": 2,
+      "expected": {
+        "M": 225,
+        "C": 90,
+        "D": 45
+      }
+    },
+    {
+      "base_name": "fusion_candidate",
+      "base": {
+        "M": 150,
+        "C": 60,
+        "D": 30,
+        "g": 1.5
+      },
+      "level": 3,
+      "expected": {
+        "M": 338,
+        "C": 135,
+        "D": 68
+      }
+    },
+    {
+      "base_name": "fusion_candidate",
+      "base": {
+        "M": 150,
+        "C": 60,
+        "D": 30,
+        "g": 1.5
+      },
+      "level": 5,
+      "expected": {
+        "M": 760,
+        "C": 304,
+        "D": 152
+      }
+    },
+    {
+      "base_name": "fusion_candidate",
+      "base": {
+        "M": 150,
+        "C": 60,
+        "D": 30,
+        "g": 1.5
+      },
+      "level": 10,
+      "expected": {
+        "M": 5767,
+        "C": 2307,
+        "D": 1154
+      }
+    },
+    {
+      "base_name": "light_fighter_per_unit",
+      "base": {
+        "M": 3000,
+        "C": 1000,
+        "D": 0,
+        "g": 1.0
+      },
+      "level": 1,
+      "expected": {
+        "M": 3000,
+        "C": 1000,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "light_fighter_per_unit",
+      "base": {
+        "M": 3000,
+        "C": 1000,
+        "D": 0,
+        "g": 1.0
+      },
+      "level": 2,
+      "expected": {
+        "M": 3000,
+        "C": 1000,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "light_fighter_per_unit",
+      "base": {
+        "M": 3000,
+        "C": 1000,
+        "D": 0,
+        "g": 1.0
+      },
+      "level": 3,
+      "expected": {
+        "M": 3000,
+        "C": 1000,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "light_fighter_per_unit",
+      "base": {
+        "M": 3000,
+        "C": 1000,
+        "D": 0,
+        "g": 1.0
+      },
+      "level": 5,
+      "expected": {
+        "M": 3000,
+        "C": 1000,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "light_fighter_per_unit",
+      "base": {
+        "M": 3000,
+        "C": 1000,
+        "D": 0,
+        "g": 1.0
+      },
+      "level": 10,
+      "expected": {
+        "M": 3000,
+        "C": 1000,
+        "D": 0
+      }
+    },
+    {
+      "base_name": "military_tech_tbd",
+      "base": {
+        "M": 800,
+        "C": 400,
+        "D": 0,
+        "g": null
+      },
+      "level": 1,
+      "expect_error": "TBD"
+    }
+  ]
+}

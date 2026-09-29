@@ -1,0 +1,84 @@
+{
+  "corpus_version": "1.0",
+  "generated_by": "sim/combat.py（与 battle.ts 逐位等价验证：G-000 node 实测一致）",
+  "ruleset_ref": "balance_rc1.json SHIP.* A/S/H（Candidate）",
+  "cases": [
+    {
+      "case": "G-000-ts-cross-check",
+      "seed": null,
+      "rounds": 6,
+      "attacker_survivors": 3,
+      "defender_survivors": 24
+    },
+    {
+      "case": "G-001-bounce",
+      "seed": 1001,
+      "rounds": 6,
+      "attacker_survivors": 23,
+      "defender_survivors": 5
+    },
+    {
+      "case": "G-002-explosion",
+      "seed": 1002,
+      "rounds": 6,
+      "attacker_survivors": 10,
+      "defender_survivors": 7
+    },
+    {
+      "case": "G-003-annihilation",
+      "seed": 1003,
+      "rounds": 1,
+      "attacker_survivors": 30,
+      "defender_survivors": 0
+    },
+    {
+      "case": "G-004-six-round-draw",
+      "seed": 1004,
+      "rounds": 6,
+      "attacker_survivors": 12,
+      "defender_survivors": 38
+    },
+    {
+      "case": "G-005-empty-defender",
+      "seed": 1005,
+      "rounds": 0,
+      "attacker_survivors": 10,
+      "defender_survivors": 0
+    },
+    {
+      "case": "G-006-mixed-fleets",
+      "seed": 1006,
+      "rounds": 6,
+      "attacker_survivors": 21,
+      "defender_survivors": 3
+    },
+    {
+      "case": "G-007-stress",
+      "seed": 1007,
+      "rounds": 5,
+      "attacker_survivors": 0,
+      "defender_survivors": 148
+    },
+    {
+      "case": "G-008-seed-a",
+      "seed": 20260921,
+      "rounds": 6,
+      "attacker_survivors": 28,
+      "defender_survivors": 0
+    },
+    {
+      "case": "G-009-seed-b",
+      "seed": 424242,
+      "rounds": 3,
+      "attacker_survivors": 0,
+      "defender_survivors": 77
+    },
+    {
+      "case": "G-010-seed-c",
+      "seed": 777,
+      "rounds": 6,
+      "attacker_survivors": 9,
+      "defender_survivors": 3
+    }
+  ]
+}

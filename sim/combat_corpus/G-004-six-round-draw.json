@@ -1,0 +1,143 @@
+{
+  "case": "G-004-six-round-draw",
+  "description": "六回合互残平局（双方都未全灭）",
+  "seed": 1004,
+  "input": {
+    "attacker_fleets": [
+      {
+        "fleet_mission_id": 1,
+        "owner_id": 7,
+        "units": {
+          "1": {
+            "spec": {
+              "unit_id": 1,
+              "attack": 50,
+              "shield": 10,
+              "hull": 400,
+              "rapidfire": {}
+            },
+            "amount": 100
+          }
+        }
+      }
+    ],
+    "defender_fleets": [
+      {
+        "fleet_mission_id": 2,
+        "owner_id": 9,
+        "units": {
+          "1": {
+            "spec": {
+              "unit_id": 1,
+              "attack": 50,
+              "shield": 10,
+              "hull": 400,
+              "rapidfire": {}
+            },
+            "amount": 100
+          }
+        }
+      }
+    ]
+  },
+  "expected": {
+    "rounds": [
+      {
+        "attacker_ships": {
+          "1": 97
+        },
+        "defender_ships": {
+          "1": 98
+        },
+        "hits_attacker": 100,
+        "hits_defender": 100,
+        "full_strength_attacker": 5000.0,
+        "full_strength_defender": 5000.0,
+        "absorbed_damage_attacker": 610.0,
+        "absorbed_damage_defender": 610.0
+      },
+      {
+        "attacker_ships": {
+          "1": 84
+        },
+        "defender_ships": {
+          "1": 83
+        },
+        "hits_attacker": 97,
+        "hits_defender": 98,
+        "full_strength_attacker": 4850.0,
+        "full_strength_defender": 4900.0,
+        "absorbed_damage_attacker": 630.0,
+        "absorbed_damage_defender": 560.0
+      },
+      {
+        "attacker_ships": {
+          "1": 64
+        },
+        "defender_ships": {
+          "1": 69
+        },
+        "hits_attacker": 84,
+        "hits_defender": 83,
+        "full_strength_attacker": 4200.0,
+        "full_strength_defender": 4150.0,
+        "absorbed_damage_attacker": 510.0,
+        "absorbed_damage_defender": 520.0
+      },
+      {
+        "attacker_ships": {
+          "1": 44
+        },
+        "defender_ships": {
+          "1": 54
+        },
+        "hits_attacker": 64,
+        "hits_defender": 69,
+        "full_strength_attacker": 3200.0,
+        "full_strength_defender": 3450.0,
+        "absorbed_damage_attacker": 420.0,
+        "absorbed_damage_defender": 440.0
+      },
+      {
+        "attacker_ships": {
+          "1": 26
+        },
+        "defender_ships": {
+          "1": 46
+        },
+        "hits_attacker": 44,
+        "hits_defender": 54,
+        "full_strength_attacker": 2200.0,
+        "full_strength_defender": 2700.0,
+        "absorbed_damage_attacker": 300.0,
+        "absorbed_damage_defender": 320.0
+      },
+      {
+        "attacker_ships": {
+          "1": 12
+        },
+        "defender_ships": {
+          "1": 38
+        },
+        "hits_attacker": 26,
+        "hits_defender": 46,
+        "full_strength_attacker": 1300.0,
+        "full_strength_defender": 2300.0,
+        "absorbed_damage_attacker": 220.0,
+        "absorbed_damage_defender": 190.0
+      }
+    ],
+    "attacker_losses": {
+      "1": 88
+    },
+    "defender_losses": {
+      "1": 62
+    },
+    "attacker_survivors": {
+      "1": 12
+    },
+    "defender_survivors": {
+      "1": 38
+    }
+  }
+}

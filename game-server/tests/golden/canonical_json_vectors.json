@@ -1,0 +1,63 @@
+{
+  "source": "tools/config_validate.py json.dumps(ensure_ascii=False, sort_keys=True)",
+  "vectors": [
+    {
+      "name": "empty_object",
+      "data": {},
+      "canonical": "{}",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    {
+      "name": "flat_mixed",
+      "data": {
+        "b": 1,
+        "a": "金属",
+        "c": 2.5,
+        "d": true,
+        "e": null
+      },
+      "canonical": "{\"a\": \"金属\", \"b\": 1, \"c\": 2.5, \"d\": true, \"e\": null}",
+      "sha256": "a01a33867b8ab7c8846f00b51c168bfd06cdab728bc34d4500f0e76dfe86d0b9"
+    },
+    {
+      "name": "nested_and_list",
+      "data": {
+        "z": [
+          {
+            "y": 2,
+            "x": 1
+          },
+          [
+            3,
+            "甲"
+          ]
+        ],
+        "a": {
+          "b": {
+            "c": 0.0
+          }
+        }
+      },
+      "canonical": "{\"a\": {\"b\": {\"c\": 0.0}}, \"z\": [{\"x\": 1, \"y\": 2}, [3, \"甲\"]]}",
+      "sha256": "5c46b4871bfe57c7fcd6af9438a7923ddcba72c95d14e22c7cbd9c868c9ec047"
+    },
+    {
+      "name": "unicode_and_slash",
+      "data": {
+        "path": "a/b",
+        "name": "新OGame 晶体×2"
+      },
+      "canonical": "{\"name\": \"新OGame 晶体×2\", \"path\": \"a/b\"}",
+      "sha256": "cb40781ec0e14694a11de213b740b437dc09d5dc550c48bebb445e627af8240b"
+    },
+    {
+      "name": "float_zero_fraction",
+      "data": {
+        "v": 1.0,
+        "w": -0.5
+      },
+      "canonical": "{\"v\": 1.0, \"w\": -0.5}",
+      "sha256": "1c25ae6be8108cbd5282e67c034b76110ffcfa4f3d6e6819577cdfe8466c110d"
+    }
+  ]
+}

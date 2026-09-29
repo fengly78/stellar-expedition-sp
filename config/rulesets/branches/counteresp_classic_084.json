@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "name": "counteresp_classic_084",
+    "description": "CR-20260923-004 B 备选（SOURCE-02 登记的两源分歧项）：经典 0.84 反侦察公式与揭示阈值。与 branches/intel_mechanism_ogamex.json（OGameX 现代式）二选一，由所有者裁决。",
+    "base_ruleset": "balance_rc1",
+    "status": "Candidate",
+    "created_at": "2026-09-23",
+    "source": "doc/governance/SOURCE-02-ogamespec-classic-audit.md §二⑥；upstream-ogamespec game/core/fleet.php:1070-1079"
+  },
+  "parameters": [
+    {
+      "key": "INTEL.COUNTER_ESP",
+      "value": {"model": "classic_084", "scale": 80, "cap_percent": 200},
+      "unit": "参数组",
+      "type": "object",
+      "status": "Candidate",
+      "notes": "P = 2^(−(侦级差)²/2) × 探针数 × √(目标舰队+防御总数) / scale，百分比封顶 cap。模型切换需 ScoutArrivalService 支持 classic_084 分支（当前实现为 ogamex 现代式）。"
+    },
+    {
+      "key": "INTEL.REVEAL",
+      "value": {"model": "classic_084", "report_levels": {"ships": 0, "defense": 1, "buildings": 3, "research": 5}},
+      "unit": "参数组",
+      "type": "object",
+      "status": "Candidate",
+      "notes": "经典口径：变形 level = (侦级差)²−1+探针数，舰队在 level>0 揭示、防御 >1、建筑 >3、研究 >5。与现代式（探针阈值 2/3/5/7 + 级差线性抵扣）形状不同。"
+    }
+  ]
+}

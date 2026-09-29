@@ -1,0 +1,81 @@
+name: ci
+on:
+  push: { branches: [main] }
+  pull_request:
+
+jobs:
+  backend-sqlite:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: game-server } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release --manifest-path combat/Cargo.toml
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: curl,ffi,mbstring,openssl,pdo_sqlite,sqlite3,intl,zip
+          coverage: none
+      - run: composer install --no-interaction --no-progress
+      - run: php -d memory_limit=1G vendor/phpunit/phpunit/phpunit
+
+  backend-mariadb:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: game-server } }
+    services:
+      mariadb:
+        image: mariadb:10.11
+        env:
+          MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 'yes'
+          MARIADB_DATABASE: ogame_test
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=10s --health-timeout=5s --health-retries=5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release --manifest-path combat/Cargo.toml
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo_mysql
+          coverage: none
+      - run: composer install --no-interaction --no-progress
+      - run: php -d memory_limit=1G vendor/phpunit/phpunit/phpunit -c phpunit-mariadb.xml
+        env:
+          DB_HOST: '127.0.0.1'
+          DB_PORT: '3306'
+
+  web:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: web } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: node node_modules/typescript/bin/tsc -b
+      - run: node node_modules/vitest/vitest.mjs run
+      - run: node node_modules/vite/bin/vite.js build
+
+  rust-combat:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: game-server/combat } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo test --quiet
+      - run: cargo run --quiet --release --bin corpus-check ../../../sim/combat_corpus
+
+  go-server:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - run: go test ./...
