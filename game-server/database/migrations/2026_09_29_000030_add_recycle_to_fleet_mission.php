@@ -51,9 +51,7 @@ return new class extends Migration
         // 所以必须先删掉旧索引，否则下面建新表时同名索引会直接撞车。
         // （实测踩过：index uq_task_id already exists，整库 104 个用例全挂。）
         // 数据已随表改名保留在临时表里，删索引不影响数据。
-        foreach (['uq_task_id', 'uq_task_phase', 'idx_fleet_due'] as $idx) {
-            DB::statement('DROP INDEX IF EXISTS "'.$idx.'"');
-        }
+        $this->dropIndexes('fleet_tasks_mission_migration_tmp');
 
         Schema::create('fleet_tasks', function (Blueprint $table) {
             $table->id();
@@ -104,9 +102,7 @@ return new class extends Migration
 
         Schema::disableForeignKeyConstraints();
         Schema::rename('fleet_tasks', 'fleet_tasks_mission_rollback_tmp');
-        foreach (['uq_task_id', 'uq_task_phase', 'idx_fleet_due'] as $idx) {
-            DB::statement('DROP INDEX IF EXISTS "'.$idx.'"');
-        }
+        $this->dropIndexes('fleet_tasks_mission_rollback_tmp');
         Schema::create('fleet_tasks', function (Blueprint $table) {
             $table->id();
             $table->char('task_id', 36);
@@ -140,5 +136,17 @@ return new class extends Migration
         );
         Schema::drop('fleet_tasks_mission_rollback_tmp');
         Schema::enableForeignKeyConstraints();
+    }
+
+    private function dropIndexes(string $table): void
+    {
+        $driver = DB::connection()->getDriverName();
+        foreach (['uq_task_id', 'uq_task_phase', 'idx_fleet_due'] as $index) {
+            if ($driver === 'mysql') {
+                DB::statement("DROP INDEX IF EXISTS `{$index}` ON `{$table}`");
+            } else {
+                DB::statement('DROP INDEX IF EXISTS "'.$index.'"');
+            }
+        }
     }
 };
