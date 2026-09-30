@@ -391,3 +391,37 @@ Beta1 市场：
 **Art assets / visual production：Implementation backlog**
 
 从这一点开始，继续大量写玩法文档会降低效率。新需求必须先判断是否阻塞 Vertical Slice；不阻塞则进入 Backlog。
+
+## 15. 最终补充审计：Timing / Effects
+
+总审计完成后又发现一个实现层缺口：entity fragment 有成本和基础时间，但没有为所有实体提供完整效果与制造时间语义。
+
+已关闭：
+
+- 新增 `timing_rc2_candidate.json`
+- 新增 `effects_rc2_candidate.json`
+- Building/Research 的 level time growth 有统一解析规则
+- 5 种 legacy 舰保留 RC1 制造时间锚点
+- 新舰船有统一候选制造时间推导
+- Defense 有统一候选制造时间推导
+- 34 个 Building 与 31 个 Technology 均有 effect overlay
+- manifest 明确两者是权威源
+
+因此 Compiler 不再需要硬编码隐藏 gameplay default。
+
+### 45 分钟 Scout 复核
+
+低端教学路线：
+
+- Metal L2
+- Crystal L1
+- Solar L2
+- Robotics L2
+- Lab L2
+- Shipyard L1
+- Sensor T025 L1
+
+考虑 Robotics 对后续建筑速度和 Lab 对研究速度的加速，目标在约 42 分钟级别可达。
+
+如果玩家先升更高矿场等级，则可能超过 45 分钟，这是允许的；45 分钟是 onboarding calibration target，不是强制 SLA。
+
