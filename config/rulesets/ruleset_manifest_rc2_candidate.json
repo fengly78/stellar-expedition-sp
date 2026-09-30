@@ -19,7 +19,9 @@
     "config/rulesets/legacy_mapping_rc2_candidate.json",
     "config/rulesets/universe_pve_rc2_candidate.json",
     "config/rulesets/market_alliance_rc2_candidate.json",
-    "config/rulesets/release_gates_rc2_candidate.json"
+    "config/rulesets/release_gates_rc2_candidate.json",
+    "config/rulesets/timing_rc2_candidate.json",
+    "config/rulesets/entities/effects_rc2_candidate.json"
   ],
   "authority": {
     "entity identity, base costs, max levels": "entities/*_rc2_candidate.json",
@@ -32,7 +34,9 @@
     "legacy migration mapping": "legacy_mapping_rc2_candidate.json",
     "universe topology and PvE encounter templates": "universe_pve_rc2_candidate.json",
     "market and alliance beta1 state machines": "market_alliance_rc2_candidate.json",
-    "release acceptance contract": "release_gates_rc2_candidate.json"
+    "release acceptance contract": "release_gates_rc2_candidate.json",
+    "entity gameplay effects": "entities/effects_rc2_candidate.json",
+    "build research ship defense timing": "timing_rc2_candidate.json"
   },
   "conflict_rules": [
     "RC1 Frozen values cannot be overwritten without an approved change record.",
@@ -44,6 +48,8 @@
     "RC1",
     "entity fragments",
     "prerequisite verification",
+    "timing resolution",
+    "entity effects",
     "layout overlay",
     "tactical stats",
     "balance policies",
@@ -67,6 +73,8 @@
     "autopilot",
     "legacy_mapping",
     "market",
-    "alliance"
+    "alliance",
+    "resolved_effects",
+    "resolved_timing"
   ]
 }
