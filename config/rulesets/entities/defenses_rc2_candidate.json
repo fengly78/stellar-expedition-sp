@@ -1,0 +1,248 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "entity": "defenses"
+  },
+  "items": [
+    {
+      "id": "D001",
+      "key": "LIGHT_TURRET",
+      "base_cost": {
+        "metal": 2000,
+        "crystal": 0,
+        "deuterium": 0
+      },
+      "combat": {
+        "attack": 80,
+        "shield": 20,
+        "hull": 200
+      },
+      "role_tags": [
+        "cheap_screen"
+      ],
+      "max_count": null,
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "D002",
+      "key": "LASER_ARRAY",
+      "base_cost": {
+        "metal": 1500,
+        "crystal": 500,
+        "deuterium": 0
+      },
+      "combat": {
+        "attack": 100,
+        "shield": 25,
+        "hull": 200
+      },
+      "role_tags": [
+        "anti_small"
+      ],
+      "max_count": null,
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "D003",
+      "key": "HEAVY_TURRET",
+      "base_cost": {
+        "metal": 6000,
+        "crystal": 2000,
+        "deuterium": 0
+      },
+      "combat": {
+        "attack": 250,
+        "shield": 100,
+        "hull": 800
+      },
+      "role_tags": [
+        "general"
+      ],
+      "max_count": null,
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "D004",
+      "key": "MISSILE_ARRAY",
+      "base_cost": {
+        "metal": 8000,
+        "crystal": 4000,
+        "deuterium": 1000
+      },
+      "combat": {
+        "attack": 420,
+        "shield": 60,
+        "hull": 1000
+      },
+      "role_tags": [
+        "alpha"
+      ],
+      "max_count": null,
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "D005",
+      "key": "ORBITAL_GUN",
+      "base_cost": {
+        "metal": 20000,
+        "crystal": 15000,
+        "deuterium": 2000
+      },
+      "combat": {
+        "attack": 1100,
+        "shield": 200,
+        "hull": 3500
+      },
+      "role_tags": [
+        "anti_capital"
+      ],
+      "max_count": null,
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "D006",
+      "key": "ION_JAMMER",
+      "base_cost": {
+        "metal": 2000,
+        "crystal": 6000,
+        "deuterium": 0
+      },
+      "combat": {
+        "attack": 150,
+        "shield": 500,
+        "hull": 800
+      },
+      "role_tags": [
+        "ew"
+      ],
+      "max_count": null,
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "D007",
+      "key": "PLASMA_CANNON",
+      "base_cost": {
+        "metal": 50000,
+        "crystal": 50000,
+        "deuterium": 30000
+      },
+      "combat": {
+        "attack": 3000,
+        "shield": 300,
+        "hull": 10000
+      },
+      "role_tags": [
+        "heavy"
+      ],
+      "max_count": null,
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "D008",
+      "key": "SMALL_SHIELD",
+      "base_cost": {
+        "metal": 10000,
+        "crystal": 10000,
+        "deuterium": 0
+      },
+      "combat": {
+        "attack": 1,
+        "shield": 2000,
+        "hull": 2000
+      },
+      "role_tags": [
+        "shield"
+      ],
+      "max_count": 1,
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "D009",
+      "key": "LARGE_SHIELD",
+      "base_cost": {
+        "metal": 50000,
+        "crystal": 50000,
+        "deuterium": 0
+      },
+      "combat": {
+        "attack": 1,
+        "shield": 10000,
+        "hull": 10000
+      },
+      "role_tags": [
+        "shield"
+      ],
+      "max_count": 1,
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "D010",
+      "key": "COUNTER_INTEL_NET",
+      "base_cost": {
+        "metal": 12000,
+        "crystal": 22000,
+        "deuterium": 6000
+      },
+      "combat": {
+        "attack": 20,
+        "shield": 500,
+        "hull": 4000
+      },
+      "role_tags": [
+        "counter_intel"
+      ],
+      "max_count": 5,
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "D011",
+      "key": "UNDERGROUND_FLEET_SHELTER",
+      "base_cost": {
+        "metal": 50000,
+        "crystal": 20000,
+        "deuterium": 10000
+      },
+      "combat": {
+        "attack": 0,
+        "shield": 0,
+        "hull": 25000
+      },
+      "role_tags": [
+        "shelter"
+      ],
+      "max_count": 3,
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "D012",
+      "key": "PLANETARY_DEFENSE_CORE",
+      "base_cost": {
+        "metal": 150000,
+        "crystal": 180000,
+        "deuterium": 80000
+      },
+      "combat": {
+        "attack": 4500,
+        "shield": 15000,
+        "hull": 60000
+      },
+      "role_tags": [
+        "strategic"
+      ],
+      "max_count": 1,
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    }
+  ]
+}
