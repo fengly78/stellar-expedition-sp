@@ -260,3 +260,45 @@ Docker Compose 作为开源项目的本地开发和演示入口，可启动 Mari
 ## 12. 结论
 
 项目可以稳定地收敛到 **React/TypeScript 图形界面 + TypeScript API/Worker + Rust 战斗核心 + MariaDB + 单 VPS**。Docker Compose 只作为开发和演示便利，不作为生产前提。该方案满足全图形界面目标，同时保留现有 Rust 战斗资产和 MariaDB 事务能力。
+
+## 13. 2026-09-30 收尾裁决：新旧服务端边界
+
+本设计现进入 implementation baseline。
+
+仓库中的 `game-server/` PHP/Laravel 仅作为旧实现、迁移与规则交叉验证来源；**不得**成为新生产链路的依赖。
+
+新生产主链路固定为：
+
+```text
+web/
+→ TypeScript API
+→ TypeScript Domain Services
+→ MariaDB Tasks / Ledger
+→ TypeScript Worker
+→ Rust CombatPort
+```
+
+`server/` 当前仍是待初始化的新 TypeScript 服务目录。实施时第一批模块不是业务页面，而是：
+
+1. Ruleset Compiler
+2. Ruleset Semantic Validator
+3. Legacy Mapping Validator
+4. Ledger / Idempotency primitives
+5. Task Worker state machine
+
+RC2 的配置入口固定为：
+
+`config/rulesets/ruleset_manifest_rc2_candidate.json`
+
+任何新服务代码不得绕过 manifest 自行拼接规则源。
+
+### 架构状态
+
+- 技术路线：冻结进入实现
+- 单 VPS：Beta1 继续成立
+- MariaDB Task Queue：继续成立
+- Rust CombatPort：继续成立
+- PHP 双写：禁止
+- Go 主链路：禁止
+- Redis/RabbitMQ：Beta1 不引入，除非有实测瓶颈和变更记录
+
