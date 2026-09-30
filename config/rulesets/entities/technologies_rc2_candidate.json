@@ -1,0 +1,473 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "entity": "technologies"
+  },
+  "items": [
+    {
+      "id": "T001",
+      "key": "AUTOMATION_ENGINEERING",
+      "base_cost": {
+        "metal": 400,
+        "crystal": 800,
+        "deuterium": 200
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 600,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T002",
+      "key": "NANITE_ASSEMBLY",
+      "base_cost": {
+        "metal": 8000,
+        "crystal": 16000,
+        "deuterium": 8000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 3600,
+      "max_level": 10,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T003",
+      "key": "MATERIAL_SCIENCE",
+      "base_cost": {
+        "metal": 1000,
+        "crystal": 1000,
+        "deuterium": 200
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 900,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T004",
+      "key": "STRUCTURAL_ENGINEERING",
+      "base_cost": {
+        "metal": 2000,
+        "crystal": 3000,
+        "deuterium": 500
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 1200,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T005",
+      "key": "LOGISTICS_OPTIMIZATION",
+      "base_cost": {
+        "metal": 1500,
+        "crystal": 2500,
+        "deuterium": 1000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 1200,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T006",
+      "key": "HIGH_ENERGY_PHYSICS",
+      "base_cost": {
+        "metal": 0,
+        "crystal": 800,
+        "deuterium": 400
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 720,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T007",
+      "key": "FUSION_CONTROL",
+      "base_cost": {
+        "metal": 2000,
+        "crystal": 4000,
+        "deuterium": 2000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 1800,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T008",
+      "key": "ENERGY_TRANSMISSION",
+      "base_cost": {
+        "metal": 1500,
+        "crystal": 3500,
+        "deuterium": 1200
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 1500,
+      "max_level": 12,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T009",
+      "key": "ENERGY_STORAGE_TECH",
+      "base_cost": {
+        "metal": 3000,
+        "crystal": 6000,
+        "deuterium": 2000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 2400,
+      "max_level": 12,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T010",
+      "key": "COMBUSTION_DRIVE",
+      "base_cost": {
+        "metal": 400,
+        "crystal": 0,
+        "deuterium": 600
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 600,
+      "max_level": 20,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T011",
+      "key": "IMPULSE_DRIVE",
+      "base_cost": {
+        "metal": 1000,
+        "crystal": 2000,
+        "deuterium": 300
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 1200,
+      "max_level": 20,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T012",
+      "key": "ION_DRIVE",
+      "base_cost": {
+        "metal": 4000,
+        "crystal": 8000,
+        "deuterium": 4000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 2700,
+      "max_level": 20,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T013",
+      "key": "ORBITAL_ENGINEERING",
+      "base_cost": {
+        "metal": 3000,
+        "crystal": 5000,
+        "deuterium": 2000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 1800,
+      "max_level": 12,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T014",
+      "key": "ASTROPHYSICS",
+      "base_cost": {
+        "metal": 4000,
+        "crystal": 8000,
+        "deuterium": 4000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 3600,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T015",
+      "key": "FLEET_MAINTENANCE",
+      "base_cost": {
+        "metal": 2500,
+        "crystal": 3000,
+        "deuterium": 1500
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 1500,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T016",
+      "key": "MILITARY_ENGINEERING",
+      "base_cost": {
+        "metal": 3000,
+        "crystal": 2000,
+        "deuterium": 1000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 1800,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T017",
+      "key": "KINETIC_WEAPONS",
+      "base_cost": {
+        "metal": 800,
+        "crystal": 200,
+        "deuterium": 0
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 900,
+      "max_level": 20,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T018",
+      "key": "LASER_WEAPONS",
+      "base_cost": {
+        "metal": 200,
+        "crystal": 600,
+        "deuterium": 0
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 1080,
+      "max_level": 20,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T019",
+      "key": "PLASMA_WEAPONS",
+      "base_cost": {
+        "metal": 2000,
+        "crystal": 4000,
+        "deuterium": 2000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 2400,
+      "max_level": 20,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T020",
+      "key": "ARMOR_TECH",
+      "base_cost": {
+        "metal": 1000,
+        "crystal": 0,
+        "deuterium": 0
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 900,
+      "max_level": 20,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T021",
+      "key": "SHIELD_TECH",
+      "base_cost": {
+        "metal": 200,
+        "crystal": 600,
+        "deuterium": 0
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 900,
+      "max_level": 20,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T022",
+      "key": "ELECTRONIC_WARFARE",
+      "base_cost": {
+        "metal": 1500,
+        "crystal": 4000,
+        "deuterium": 1500
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 1800,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T023",
+      "key": "COMPUTER_TECH",
+      "base_cost": {
+        "metal": 0,
+        "crystal": 400,
+        "deuterium": 600
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 720,
+      "max_level": 20,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T024",
+      "key": "TACTICAL_COMPUTING",
+      "base_cost": {
+        "metal": 3000,
+        "crystal": 6000,
+        "deuterium": 2500
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 2400,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T025",
+      "key": "SENSOR_ARRAYS",
+      "base_cost": {
+        "metal": 200,
+        "crystal": 1000,
+        "deuterium": 200
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 900,
+      "max_level": 20,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T026",
+      "key": "DEEP_SPACE_SCANNING",
+      "base_cost": {
+        "metal": 2500,
+        "crystal": 5000,
+        "deuterium": 2000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 1800,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T027",
+      "key": "STEALTH_TECH",
+      "base_cost": {
+        "metal": 4000,
+        "crystal": 8000,
+        "deuterium": 4000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 2700,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T028",
+      "key": "COUNTER_ESPIONAGE",
+      "base_cost": {
+        "metal": 3000,
+        "crystal": 6000,
+        "deuterium": 2500
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 2100,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T029",
+      "key": "AUTONOMOUS_DECISION",
+      "base_cost": {
+        "metal": 5000,
+        "crystal": 10000,
+        "deuterium": 5000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 3600,
+      "max_level": 12,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T030",
+      "key": "TACTICAL_AI",
+      "base_cost": {
+        "metal": 10000,
+        "crystal": 20000,
+        "deuterium": 10000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 5400,
+      "max_level": 12,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "T031",
+      "key": "JUMP_STABILIZATION",
+      "base_cost": {
+        "metal": 50000,
+        "crystal": 100000,
+        "deuterium": 50000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 14400,
+      "max_level": 10,
+      "prerequisites": [],
+      "tags": [],
+      "balance_version": "RC2-Candidate"
+    }
+  ]
+}
