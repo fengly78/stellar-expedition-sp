@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "status": "Candidate",
+    "purpose": "resolve timing fields absent from authoring entity fragments"
+  },
+  "buildings": {
+    "level_time_growth_default": "entity.cost_growth",
+    "formula": "max(30, base_time_seconds * time_growth^(level-1) / (1 + 0.08*robotics_level) / pow(1.35,nanite_level) / server_build_speed)",
+    "note": "RC1 Frozen tasks preserve their existing finish_at during migration; this formula applies to new RC2 tasks."
+  },
+  "research": {
+    "level_time_growth_default": "entity.cost_growth",
+    "formula": "max(30, base_time_seconds * time_growth^(level-1) / (1 + 0.10*lab_level + 0.06*quantum_level) / server_research_speed)"
+  },
+  "ships": {
+    "legacy_build_time_seconds": {
+      "S001": 3600,
+      "S003": 5760,
+      "S006": 5760,
+      "S007": 14400,
+      "S017": 43200
+    },
+    "new_ship_base_time_formula": "round_up_60(max(60, resource_value_V * 0.90))",
+    "formula": "max(30, base_build_time_seconds / (1 + 0.10*ground_shipyard_level + 0.08*orbital_shipyard_level + 0.08*military_assembly_level) / pow(1.35,nanite_level) / server_ship_speed)"
+  },
+  "defenses": {
+    "base_time_formula": "round_up_30(max(30, resource_value_V * 0.45))",
+    "formula": "max(30, base_build_time_seconds / (1 + 0.10*ground_shipyard_level + 0.08*defense_control_level) / pow(1.35,nanite_level) / server_defense_speed)"
+  },
+  "rounding": {
+    "resources": "ceil_each_resource",
+    "time_seconds": "ceil_after_all_modifiers"
+  }
+}
