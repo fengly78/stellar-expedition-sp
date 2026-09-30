@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "engine": "combat-v2",
+    "status": "Candidate"
+  },
+  "rounds": {
+    "max": 6
+  },
+  "hit": {
+    "min_probability": 0.15,
+    "max_probability": 0.95,
+    "evasion_weight": 0.6,
+    "signature_weight": 0.4,
+    "random_target_jitter_min": 0.95,
+    "random_target_jitter_max": 1.05
+  },
+  "tech": {
+    "weapon_gain_per_level": 0.05,
+    "shield_gain_per_level": 0.05,
+    "hull_gain_per_level": 0.05
+  },
+  "ew": {
+    "stacking": "sqrt_count",
+    "accuracy_reduction_cap": 0.25,
+    "sensor_reduction_cap": 0.35
+  },
+  "escort": {
+    "protected_target_score_multiplier": 0.75,
+    "active_until_escort_survival_ratio": 0.30
+  },
+  "carrier": {
+    "wing_points_per_carrier": 6,
+    "wing_role_tags": ["fighter","anti_small"],
+    "wing_creates_debris": false
+  },
+  "command": {
+    "accuracy_bonus_base": 0.06,
+    "retreat_bonus_base": 0.10,
+    "ew_resistance_base": 0.10,
+    "stack_decay": [1.0,0.5,0.25,0.125],
+    "total_bonus_cap": 0.15
+  },
+  "retreat": {
+    "base_escape_probability": 0.55,
+    "min_escape_probability": 0.20,
+    "max_escape_probability": 0.95
+  },
+  "role_multipliers": {
+    "cruiser->fighter": 1.25,
+    "interceptor->bomber": 1.30,
+    "interceptor->cargo": 1.30,
+    "bomber->defense": 1.40,
+    "battlecruiser->capital": 1.20,
+    "destroyer->capital": 1.12,
+    "dreadnought->structure": 1.35,
+    "point_defense->fighter": 1.25
+  },
+  "determinism": {
+    "fixed_prng_required": true,
+    "snapshot_is_self_contained": true,
+    "engine_version_in_result": true
+  }
+}
