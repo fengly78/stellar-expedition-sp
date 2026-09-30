@@ -1,0 +1,501 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "status": "Candidate",
+    "purpose": "authoritative entity effect overlay; values are candidates until simulation evidence"
+  },
+  "buildings": {
+    "B001": [
+      {
+        "type": "production",
+        "resource": "metal",
+        "base": 30,
+        "growth": 1.12
+      },
+      {
+        "type": "energy_demand",
+        "base": 10,
+        "growth": 1.1
+      }
+    ],
+    "B002": [
+      {
+        "type": "production",
+        "resource": "crystal",
+        "base": 20,
+        "growth": 1.12
+      },
+      {
+        "type": "energy_demand",
+        "base": 10,
+        "growth": 1.1
+      }
+    ],
+    "B003": [
+      {
+        "type": "production",
+        "resource": "deuterium",
+        "base": 10,
+        "growth": 1.1,
+        "temperature_modifier": "RC1 RESOURCE.D.TEMPERATURE"
+      },
+      {
+        "type": "energy_demand",
+        "base": 15,
+        "growth": 1.1
+      }
+    ],
+    "B004": [
+      {
+        "type": "energy_production",
+        "base": 25,
+        "growth": 1.1
+      }
+    ],
+    "B005": [
+      {
+        "type": "storage_components",
+        "curve": "RC1 STORAGE.CURVE"
+      }
+    ],
+    "B006": [
+      {
+        "type": "logistics_time_reduction_per_level",
+        "value": 0.03,
+        "cap": 0.3
+      }
+    ],
+    "B007": [
+      {
+        "type": "fusion_energy",
+        "source": "RC1 ENERGY.FUSION"
+      },
+      {
+        "type": "fusion_deuterium_demand",
+        "source": "RC1 ENERGY.FUSION_DEMAND"
+      }
+    ],
+    "B008": [
+      {
+        "type": "energy_efficiency_per_level",
+        "value": 0.02,
+        "cap": 0.2
+      }
+    ],
+    "B009": [
+      {
+        "type": "energy_buffer_seconds_per_level",
+        "value": 60
+      }
+    ],
+    "B010": [
+      {
+        "type": "build_speed_bonus_per_level",
+        "value": 0.08
+      }
+    ],
+    "B011": [
+      {
+        "type": "build_and_manufacture_speed_multiplier_per_level",
+        "value": 1.35
+      }
+    ],
+    "B012": [
+      {
+        "type": "shipyard_speed_bonus_per_level",
+        "value": 0.1
+      }
+    ],
+    "B013": [
+      {
+        "type": "orbital_shipyard_speed_bonus_per_level",
+        "value": 0.08
+      }
+    ],
+    "B014": [
+      {
+        "type": "repair_speed_bonus_per_level",
+        "value": 0.1
+      },
+      {
+        "type": "repair_cost_reduction_per_level",
+        "value": 0.02,
+        "cap": 0.2
+      }
+    ],
+    "B015": [
+      {
+        "type": "military_manufacture_speed_bonus_per_level",
+        "value": 0.08
+      }
+    ],
+    "B016": [
+      {
+        "type": "research_speed_bonus_per_level",
+        "value": 0.1
+      }
+    ],
+    "B017": [
+      {
+        "type": "research_speed_bonus_per_level",
+        "value": 0.06
+      }
+    ],
+    "B018": [
+      {
+        "type": "scan_strength_per_level",
+        "value": 4
+      },
+      {
+        "type": "scan_range_step",
+        "levels_per_step": 3,
+        "value": 1
+      }
+    ],
+    "B019": [
+      {
+        "type": "advanced_engineering_capacity_per_level",
+        "value": 1
+      }
+    ],
+    "B020": [
+      {
+        "type": "defense_build_speed_bonus_per_level",
+        "value": 0.08
+      }
+    ],
+    "B021": [
+      {
+        "type": "incoming_detection_strength_per_level",
+        "value": 5
+      }
+    ],
+    "B022": [
+      {
+        "type": "counter_intel_strength_per_level",
+        "value": 5
+      }
+    ],
+    "B023": [
+      {
+        "type": "fleet_preset_slots",
+        "base": 1,
+        "levels_per_extra_slot": 3
+      },
+      {
+        "type": "command_capacity_per_level",
+        "value": 1
+      }
+    ],
+    "B024": [
+      {
+        "type": "protected_resource_ratio_per_level",
+        "value": 0.02,
+        "cap": 0.2
+      },
+      {
+        "type": "shelter_capacity_V_per_level",
+        "value": 25000
+      }
+    ],
+    "B025": [
+      {
+        "type": "new_colony_bootstrap_build_speed_per_level",
+        "value": 0.03,
+        "cap": 0.24,
+        "duration_hours": 24
+      }
+    ],
+    "B026": [
+      {
+        "type": "trade_logistics_time_reduction_per_level",
+        "value": 0.03,
+        "cap": 0.3
+      }
+    ],
+    "B027": [
+      {
+        "type": "market_tax_relative_reduction_per_level",
+        "value": 0.01,
+        "cap": 0.2
+      }
+    ],
+    "B028": [
+      {
+        "type": "automated_transfer_slots",
+        "base": 1,
+        "per_level": 1
+      }
+    ],
+    "B029": [
+      {
+        "type": "merchant_spread_reduction_per_level",
+        "value": 0.015,
+        "cap": 0.2
+      }
+    ],
+    "B030": [
+      {
+        "type": "planetary_shield_pool_per_level",
+        "value": 25000
+      }
+    ],
+    "B031": [
+      {
+        "type": "orbital_defense_capacity_per_level",
+        "value": 2
+      }
+    ],
+    "B032": [
+      {
+        "type": "stargate_enabled",
+        "value": true
+      },
+      {
+        "type": "gate_cooldown_reduction_per_level",
+        "value": 0.05,
+        "cap": 0.2
+      }
+    ],
+    "B033": [
+      {
+        "type": "autopilot_policy_slots",
+        "base": 1,
+        "per_level": 1
+      }
+    ],
+    "B034": [
+      {
+        "type": "alliance_project_contribution_speed_per_level",
+        "value": 0.05,
+        "cap": 0.3
+      }
+    ]
+  },
+  "technologies": {
+    "T001": [
+      {
+        "type": "automation_efficiency_per_level",
+        "value": 0.02,
+        "cap": 0.2
+      }
+    ],
+    "T002": [
+      {
+        "type": "nanite_efficiency_per_level",
+        "value": 0.03,
+        "cap": 0.24
+      }
+    ],
+    "T003": [
+      {
+        "type": "repair_cost_reduction_per_level",
+        "value": 0.01,
+        "cap": 0.15
+      }
+    ],
+    "T004": [
+      {
+        "type": "heavy_structure_unlock_tier",
+        "levels_per_tier": 2
+      }
+    ],
+    "T005": [
+      {
+        "type": "logistics_fuel_reduction_per_level",
+        "value": 0.015,
+        "cap": 0.2
+      }
+    ],
+    "T006": [
+      {
+        "type": "energy_system_efficiency_per_level",
+        "value": 0.01,
+        "cap": 0.15
+      }
+    ],
+    "T007": [
+      {
+        "type": "fusion_output_bonus_per_level",
+        "value": 0.03
+      },
+      {
+        "type": "fusion_fuel_reduction_per_level",
+        "value": 0.01,
+        "cap": 0.15
+      }
+    ],
+    "T008": [
+      {
+        "type": "energy_transfer_loss_reduction_per_level",
+        "value": 0.02,
+        "cap": 0.2
+      }
+    ],
+    "T009": [
+      {
+        "type": "energy_buffer_bonus_per_level",
+        "value": 0.05,
+        "cap": 0.5
+      }
+    ],
+    "T010": [
+      {
+        "type": "drive_speed_bonus_per_level",
+        "drive": "combustion",
+        "value": 0.1
+      }
+    ],
+    "T011": [
+      {
+        "type": "drive_speed_bonus_per_level",
+        "drive": "impulse",
+        "value": 0.2
+      }
+    ],
+    "T012": [
+      {
+        "type": "drive_speed_bonus_per_level",
+        "drive": "ion",
+        "value": 0.15
+      }
+    ],
+    "T013": [
+      {
+        "type": "orbital_construction_speed_per_level",
+        "value": 0.03,
+        "cap": 0.3
+      }
+    ],
+    "T014": [
+      {
+        "type": "planet_capacity",
+        "formula": "1+ceil(level/2)"
+      },
+      {
+        "type": "expedition_slots_step",
+        "levels_per_step": 2,
+        "value": 1
+      }
+    ],
+    "T015": [
+      {
+        "type": "repair_time_reduction_per_level",
+        "value": 0.02,
+        "cap": 0.2
+      }
+    ],
+    "T016": [
+      {
+        "type": "military_build_speed_per_level",
+        "value": 0.02,
+        "cap": 0.2
+      }
+    ],
+    "T017": [
+      {
+        "type": "combat_stat_per_level",
+        "stat": "kinetic_attack",
+        "value": 0.05
+      }
+    ],
+    "T018": [
+      {
+        "type": "combat_stat_per_level",
+        "stat": "laser_attack",
+        "value": 0.05
+      }
+    ],
+    "T019": [
+      {
+        "type": "combat_stat_per_level",
+        "stat": "plasma_attack",
+        "value": 0.05
+      }
+    ],
+    "T020": [
+      {
+        "type": "combat_stat_per_level",
+        "stat": "hull",
+        "value": 0.05
+      }
+    ],
+    "T021": [
+      {
+        "type": "combat_stat_per_level",
+        "stat": "shield",
+        "value": 0.05
+      }
+    ],
+    "T022": [
+      {
+        "type": "ew_strength_per_level",
+        "value": 0.03
+      },
+      {
+        "type": "ew_resistance_per_level",
+        "value": 0.02,
+        "cap": 0.25
+      }
+    ],
+    "T023": [
+      {
+        "type": "fleet_slots",
+        "base": 2,
+        "per_level": 1
+      }
+    ],
+    "T024": [
+      {
+        "type": "command_efficiency_per_level",
+        "value": 0.02,
+        "cap": 0.2
+      }
+    ],
+    "T025": [
+      {
+        "type": "intel_strength_per_level",
+        "value": 5
+      }
+    ],
+    "T026": [
+      {
+        "type": "scan_range_step",
+        "levels_per_step": 2,
+        "value": 1
+      }
+    ],
+    "T027": [
+      {
+        "type": "fleet_signature_reduction_per_level",
+        "value": 0.02,
+        "cap": 0.25
+      }
+    ],
+    "T028": [
+      {
+        "type": "counter_intel_strength_per_level",
+        "value": 5
+      }
+    ],
+    "T029": [
+      {
+        "type": "autopilot_action_budget_per_level",
+        "value": 1
+      }
+    ],
+    "T030": [
+      {
+        "type": "autopilot_defense_tier",
+        "levels_per_tier": 2
+      }
+    ],
+    "T031": [
+      {
+        "type": "stargate_range_step",
+        "levels_per_step": 2,
+        "value": 1
+      }
+    ]
+  }
+}
