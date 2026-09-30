@@ -288,3 +288,29 @@ Autopilot 与 NPC 可共用 Decision/Action 日志，但权限上下文不同。
 - AI 战斗使用与玩家相同的 Rust 战斗核心。
 - AI 资源变化进入同一账本审计体系。
 - 玩家上线后 30 秒内能理解离线期间发生的主要事件。
+
+## 20. RC2 收尾裁决：命令仲裁与并发
+
+Autopilot 不拥有独立写数据库通道。最终动作都转换成普通 Command。
+
+同一玩家资源/队列存在竞争时，优先级固定：
+
+```text
+PLAYER_MANUAL
+> AUTOPILOT_DEFENSIVE_EMERGENCY
+> AUTOPILOT_MAINTENANCE
+```
+
+规则：
+
+1. 玩家手动命令永远可以覆盖之后尚未执行的 Autopilot 计划。
+2. Autopilot 不取消已经开始的玩家手动 Build/Research/Manufacture。
+3. Autopilot 只在空闲执行槽或玩家授权的 pending slot 中补任务。
+4. 防御紧急动作（撤舰/分散）只有 Policy 明确授权才能执行。
+5. 每个 AI Command 必须带 `source=AUTOPILOT`、`policy_version`、`decision_id`。
+6. Policy 更新只影响尚未执行的新动作，不追溯修改已完成结算。
+7. 默认 `allow_pvp=false`；结构化 Policy 没有开启 PvP 时，自然语言提示不能绕过它。
+8. AI 的预算、reserve floor 和 risk limit 在 Command 提交时与真正执行时都要重新校验。
+
+NPC AI 仍是独立 owner，但同样经过 Command/Domain/Worker，不允许直写资源。
+
