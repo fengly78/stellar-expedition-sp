@@ -1,0 +1,1169 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "purpose": "authoritative prerequisite graph overlay"
+  },
+  "buildings": {
+    "B003": [
+      {
+        "type": "building",
+        "id": "B004",
+        "level": 2
+      }
+    ],
+    "B005": [
+      {
+        "type": "building",
+        "id": "B010",
+        "level": 1
+      }
+    ],
+    "B006": [
+      {
+        "type": "building",
+        "id": "B010",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T005",
+        "level": 2
+      }
+    ],
+    "B007": [
+      {
+        "type": "technology",
+        "id": "T006",
+        "level": 3
+      }
+    ],
+    "B008": [
+      {
+        "type": "building",
+        "id": "B004",
+        "level": 8
+      },
+      {
+        "type": "technology",
+        "id": "T008",
+        "level": 2
+      }
+    ],
+    "B009": [
+      {
+        "type": "building",
+        "id": "B008",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T009",
+        "level": 2
+      }
+    ],
+    "B011": [
+      {
+        "type": "building",
+        "id": "B010",
+        "level": 10
+      },
+      {
+        "type": "technology",
+        "id": "T002",
+        "level": 6
+      }
+    ],
+    "B012": [
+      {
+        "type": "building",
+        "id": "B010",
+        "level": 2
+      }
+    ],
+    "B013": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 6
+      },
+      {
+        "type": "technology",
+        "id": "T013",
+        "level": 2
+      }
+    ],
+    "B014": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 2
+      },
+      {
+        "type": "technology",
+        "id": "T015",
+        "level": 2
+      }
+    ],
+    "B015": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T016",
+        "level": 3
+      }
+    ],
+    "B016": [
+      {
+        "type": "building",
+        "id": "B010",
+        "level": 1
+      }
+    ],
+    "B017": [
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 6
+      },
+      {
+        "type": "technology",
+        "id": "T004",
+        "level": 4
+      }
+    ],
+    "B018": [
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T025",
+        "level": 3
+      }
+    ],
+    "B019": [
+      {
+        "type": "building",
+        "id": "B017",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T003",
+        "level": 5
+      }
+    ],
+    "B020": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T020",
+        "level": 2
+      }
+    ],
+    "B021": [
+      {
+        "type": "building",
+        "id": "B018",
+        "level": 1
+      },
+      {
+        "type": "technology",
+        "id": "T025",
+        "level": 2
+      }
+    ],
+    "B022": [
+      {
+        "type": "building",
+        "id": "B021",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T028",
+        "level": 2
+      }
+    ],
+    "B023": [
+      {
+        "type": "technology",
+        "id": "T023",
+        "level": 2
+      }
+    ],
+    "B024": [
+      {
+        "type": "building",
+        "id": "B020",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T003",
+        "level": 2
+      }
+    ],
+    "B025": [
+      {
+        "type": "technology",
+        "id": "T014",
+        "level": 1
+      },
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 5
+      }
+    ],
+    "B026": [
+      {
+        "type": "building",
+        "id": "B006",
+        "level": 2
+      }
+    ],
+    "B027": [
+      {
+        "type": "building",
+        "id": "B026",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T005",
+        "level": 3
+      }
+    ],
+    "B028": [
+      {
+        "type": "building",
+        "id": "B006",
+        "level": 6
+      },
+      {
+        "type": "building",
+        "id": "B023",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T005",
+        "level": 5
+      }
+    ],
+    "B029": [
+      {
+        "type": "building",
+        "id": "B027",
+        "level": 3
+      }
+    ],
+    "B030": [
+      {
+        "type": "building",
+        "id": "B020",
+        "level": 8
+      },
+      {
+        "type": "building",
+        "id": "B009",
+        "level": 5
+      },
+      {
+        "type": "technology",
+        "id": "T021",
+        "level": 6
+      }
+    ],
+    "B031": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 8
+      },
+      {
+        "type": "building",
+        "id": "B020",
+        "level": 8
+      },
+      {
+        "type": "technology",
+        "id": "T013",
+        "level": 5
+      }
+    ],
+    "B032": [
+      {
+        "type": "building",
+        "id": "B019",
+        "level": 6
+      },
+      {
+        "type": "technology",
+        "id": "T012",
+        "level": 4
+      }
+    ],
+    "B033": [
+      {
+        "type": "building",
+        "id": "B017",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T029",
+        "level": 3
+      }
+    ],
+    "B034": [
+      {
+        "type": "building",
+        "id": "B026",
+        "level": 5
+      },
+      {
+        "type": "building",
+        "id": "B023",
+        "level": 5
+      }
+    ]
+  },
+  "technologies": {
+    "T001": [
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 1
+      }
+    ],
+    "T002": [
+      {
+        "type": "technology",
+        "id": "T001",
+        "level": 5
+      },
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 5
+      }
+    ],
+    "T003": [
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 2
+      }
+    ],
+    "T004": [
+      {
+        "type": "technology",
+        "id": "T003",
+        "level": 3
+      }
+    ],
+    "T005": [
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 2
+      }
+    ],
+    "T006": [
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 1
+      }
+    ],
+    "T007": [
+      {
+        "type": "technology",
+        "id": "T006",
+        "level": 3
+      }
+    ],
+    "T008": [
+      {
+        "type": "technology",
+        "id": "T006",
+        "level": 2
+      }
+    ],
+    "T009": [
+      {
+        "type": "technology",
+        "id": "T008",
+        "level": 2
+      }
+    ],
+    "T010": [
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 1
+      }
+    ],
+    "T011": [
+      {
+        "type": "technology",
+        "id": "T010",
+        "level": 4
+      }
+    ],
+    "T012": [
+      {
+        "type": "technology",
+        "id": "T011",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T006",
+        "level": 4
+      }
+    ],
+    "T013": [
+      {
+        "type": "technology",
+        "id": "T004",
+        "level": 2
+      }
+    ],
+    "T014": [
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T025",
+        "level": 2
+      }
+    ],
+    "T015": [
+      {
+        "type": "technology",
+        "id": "T003",
+        "level": 2
+      }
+    ],
+    "T016": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 3
+      }
+    ],
+    "T017": [
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 2
+      }
+    ],
+    "T018": [
+      {
+        "type": "technology",
+        "id": "T006",
+        "level": 2
+      }
+    ],
+    "T019": [
+      {
+        "type": "technology",
+        "id": "T018",
+        "level": 6
+      },
+      {
+        "type": "technology",
+        "id": "T006",
+        "level": 6
+      }
+    ],
+    "T020": [
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 2
+      }
+    ],
+    "T021": [
+      {
+        "type": "technology",
+        "id": "T006",
+        "level": 2
+      }
+    ],
+    "T022": [
+      {
+        "type": "technology",
+        "id": "T025",
+        "level": 2
+      }
+    ],
+    "T023": [
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 1
+      }
+    ],
+    "T024": [
+      {
+        "type": "technology",
+        "id": "T023",
+        "level": 4
+      }
+    ],
+    "T025": [
+      {
+        "type": "building",
+        "id": "B016",
+        "level": 2
+      }
+    ],
+    "T026": [
+      {
+        "type": "technology",
+        "id": "T025",
+        "level": 4
+      }
+    ],
+    "T027": [
+      {
+        "type": "technology",
+        "id": "T022",
+        "level": 2
+      },
+      {
+        "type": "technology",
+        "id": "T025",
+        "level": 4
+      }
+    ],
+    "T028": [
+      {
+        "type": "technology",
+        "id": "T025",
+        "level": 3
+      }
+    ],
+    "T029": [
+      {
+        "type": "technology",
+        "id": "T023",
+        "level": 5
+      }
+    ],
+    "T030": [
+      {
+        "type": "technology",
+        "id": "T029",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T024",
+        "level": 3
+      }
+    ],
+    "T031": [
+      {
+        "type": "technology",
+        "id": "T012",
+        "level": 8
+      },
+      {
+        "type": "technology",
+        "id": "T013",
+        "level": 6
+      }
+    ]
+  },
+  "ships": {
+    "S001": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 1
+      },
+      {
+        "type": "technology",
+        "id": "T025",
+        "level": 1
+      }
+    ],
+    "S002": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 5
+      },
+      {
+        "type": "technology",
+        "id": "T025",
+        "level": 5
+      },
+      {
+        "type": "technology",
+        "id": "T027",
+        "level": 3
+      }
+    ],
+    "S003": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 2
+      },
+      {
+        "type": "technology",
+        "id": "T010",
+        "level": 2
+      }
+    ],
+    "S004": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T010",
+        "level": 6
+      }
+    ],
+    "S005": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 6
+      },
+      {
+        "type": "technology",
+        "id": "T011",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T020",
+        "level": 4
+      }
+    ],
+    "S006": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 2
+      },
+      {
+        "type": "technology",
+        "id": "T010",
+        "level": 1
+      },
+      {
+        "type": "technology",
+        "id": "T017",
+        "level": 1
+      }
+    ],
+    "S007": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T011",
+        "level": 2
+      },
+      {
+        "type": "technology",
+        "id": "T017",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T020",
+        "level": 2
+      }
+    ],
+    "S008": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 1
+      },
+      {
+        "type": "technology",
+        "id": "T011",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T021",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T024",
+        "level": 2
+      }
+    ],
+    "S009": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T012",
+        "level": 2
+      },
+      {
+        "type": "technology",
+        "id": "T017",
+        "level": 5
+      },
+      {
+        "type": "technology",
+        "id": "T020",
+        "level": 5
+      }
+    ],
+    "S010": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 2
+      },
+      {
+        "type": "technology",
+        "id": "T011",
+        "level": 6
+      },
+      {
+        "type": "technology",
+        "id": "T018",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T024",
+        "level": 2
+      }
+    ],
+    "S011": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 5
+      },
+      {
+        "type": "technology",
+        "id": "T012",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T017",
+        "level": 7
+      },
+      {
+        "type": "technology",
+        "id": "T020",
+        "level": 6
+      }
+    ],
+    "S012": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 6
+      },
+      {
+        "type": "technology",
+        "id": "T012",
+        "level": 5
+      },
+      {
+        "type": "technology",
+        "id": "T019",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T024",
+        "level": 5
+      }
+    ],
+    "S013": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 6
+      },
+      {
+        "type": "technology",
+        "id": "T012",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T019",
+        "level": 5
+      },
+      {
+        "type": "technology",
+        "id": "T016",
+        "level": 5
+      }
+    ],
+    "S014": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T012",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T024",
+        "level": 4
+      }
+    ],
+    "S015": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T012",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T022",
+        "level": 5
+      },
+      {
+        "type": "technology",
+        "id": "T025",
+        "level": 6
+      }
+    ],
+    "S016": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T011",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T005",
+        "level": 2
+      }
+    ],
+    "S017": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T011",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T014",
+        "level": 1
+      }
+    ],
+    "S018": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 2
+      },
+      {
+        "type": "technology",
+        "id": "T011",
+        "level": 5
+      },
+      {
+        "type": "technology",
+        "id": "T015",
+        "level": 3
+      }
+    ],
+    "S019": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T013",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T015",
+        "level": 4
+      }
+    ],
+    "S020": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 8
+      },
+      {
+        "type": "building",
+        "id": "B019",
+        "level": 5
+      },
+      {
+        "type": "technology",
+        "id": "T013",
+        "level": 6
+      },
+      {
+        "type": "technology",
+        "id": "T024",
+        "level": 6
+      }
+    ],
+    "S021": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 10
+      },
+      {
+        "type": "building",
+        "id": "B019",
+        "level": 7
+      },
+      {
+        "type": "technology",
+        "id": "T019",
+        "level": 8
+      },
+      {
+        "type": "technology",
+        "id": "T020",
+        "level": 10
+      },
+      {
+        "type": "technology",
+        "id": "T021",
+        "level": 8
+      }
+    ],
+    "S022": [
+      {
+        "type": "building",
+        "id": "B013",
+        "level": 10
+      },
+      {
+        "type": "building",
+        "id": "B019",
+        "level": 8
+      },
+      {
+        "type": "technology",
+        "id": "T024",
+        "level": 8
+      },
+      {
+        "type": "technology",
+        "id": "T030",
+        "level": 6
+      }
+    ]
+  },
+  "defenses": {
+    "D001": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 1
+      }
+    ],
+    "D002": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 2
+      },
+      {
+        "type": "technology",
+        "id": "T018",
+        "level": 1
+      }
+    ],
+    "D003": [
+      {
+        "type": "building",
+        "id": "B012",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T018",
+        "level": 3
+      }
+    ],
+    "D004": [
+      {
+        "type": "building",
+        "id": "B020",
+        "level": 2
+      },
+      {
+        "type": "technology",
+        "id": "T017",
+        "level": 3
+      }
+    ],
+    "D005": [
+      {
+        "type": "building",
+        "id": "B020",
+        "level": 5
+      },
+      {
+        "type": "technology",
+        "id": "T017",
+        "level": 6
+      },
+      {
+        "type": "technology",
+        "id": "T003",
+        "level": 4
+      }
+    ],
+    "D006": [
+      {
+        "type": "building",
+        "id": "B020",
+        "level": 4
+      },
+      {
+        "type": "technology",
+        "id": "T022",
+        "level": 3
+      }
+    ],
+    "D007": [
+      {
+        "type": "building",
+        "id": "B020",
+        "level": 7
+      },
+      {
+        "type": "technology",
+        "id": "T019",
+        "level": 6
+      }
+    ],
+    "D008": [
+      {
+        "type": "building",
+        "id": "B020",
+        "level": 3
+      },
+      {
+        "type": "technology",
+        "id": "T021",
+        "level": 2
+      }
+    ],
+    "D009": [
+      {
+        "type": "building",
+        "id": "B020",
+        "level": 6
+      },
+      {
+        "type": "technology",
+        "id": "T021",
+        "level": 6
+      }
+    ],
+    "D010": [
+      {
+        "type": "building",
+        "id": "B022",
+        "level": 2
+      },
+      {
+        "type": "technology",
+        "id": "T028",
+        "level": 3
+      }
+    ],
+    "D011": [
+      {
+        "type": "building",
+        "id": "B024",
+        "level": 5
+      },
+      {
+        "type": "technology",
+        "id": "T003",
+        "level": 5
+      }
+    ],
+    "D012": [
+      {
+        "type": "building",
+        "id": "B030",
+        "level": 1
+      },
+      {
+        "type": "technology",
+        "id": "T021",
+        "level": 8
+      },
+      {
+        "type": "technology",
+        "id": "T020",
+        "level": 8
+      }
+    ]
+  }
+}
