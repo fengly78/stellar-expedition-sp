@@ -15,7 +15,13 @@
       "cost_growth": 2,
       "base_time_seconds": 600,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 1
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -30,7 +36,18 @@
       "cost_growth": 2,
       "base_time_seconds": 3600,
       "max_level": 10,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T001",
+          "level": 5
+        },
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 5
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -45,7 +62,13 @@
       "cost_growth": 2,
       "base_time_seconds": 900,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -60,7 +83,13 @@
       "cost_growth": 2,
       "base_time_seconds": 1200,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T003",
+          "level": 3
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -75,7 +104,13 @@
       "cost_growth": 2,
       "base_time_seconds": 1200,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -90,7 +125,13 @@
       "cost_growth": 2,
       "base_time_seconds": 720,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 1
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -105,7 +146,13 @@
       "cost_growth": 2,
       "base_time_seconds": 1800,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T006",
+          "level": 3
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -120,7 +167,13 @@
       "cost_growth": 2,
       "base_time_seconds": 1500,
       "max_level": 12,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T006",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -135,7 +188,13 @@
       "cost_growth": 2,
       "base_time_seconds": 2400,
       "max_level": 12,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T008",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -150,7 +209,13 @@
       "cost_growth": 2,
       "base_time_seconds": 600,
       "max_level": 20,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 1
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -165,7 +230,13 @@
       "cost_growth": 2,
       "base_time_seconds": 1200,
       "max_level": 20,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T010",
+          "level": 4
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -180,7 +251,18 @@
       "cost_growth": 2,
       "base_time_seconds": 2700,
       "max_level": 20,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T011",
+          "level": 4
+        },
+        {
+          "type": "technology",
+          "id": "T006",
+          "level": 4
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -195,7 +277,13 @@
       "cost_growth": 2,
       "base_time_seconds": 1800,
       "max_level": 12,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T004",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -210,7 +298,18 @@
       "cost_growth": 2,
       "base_time_seconds": 3600,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 4
+        },
+        {
+          "type": "technology",
+          "id": "T025",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -225,7 +324,13 @@
       "cost_growth": 2,
       "base_time_seconds": 1500,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T003",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -240,7 +345,13 @@
       "cost_growth": 2,
       "base_time_seconds": 1800,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B012",
+          "level": 3
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -255,7 +366,13 @@
       "cost_growth": 2,
       "base_time_seconds": 900,
       "max_level": 20,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -270,7 +387,13 @@
       "cost_growth": 2,
       "base_time_seconds": 1080,
       "max_level": 20,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T006",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -285,7 +408,18 @@
       "cost_growth": 2,
       "base_time_seconds": 2400,
       "max_level": 20,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T018",
+          "level": 6
+        },
+        {
+          "type": "technology",
+          "id": "T006",
+          "level": 6
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -300,7 +434,13 @@
       "cost_growth": 2,
       "base_time_seconds": 900,
       "max_level": 20,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -315,7 +455,13 @@
       "cost_growth": 2,
       "base_time_seconds": 900,
       "max_level": 20,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T006",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -330,7 +476,13 @@
       "cost_growth": 2,
       "base_time_seconds": 1800,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T025",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -345,7 +497,13 @@
       "cost_growth": 2,
       "base_time_seconds": 720,
       "max_level": 20,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 1
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -360,7 +518,13 @@
       "cost_growth": 2,
       "base_time_seconds": 2400,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T023",
+          "level": 4
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -375,7 +539,13 @@
       "cost_growth": 2,
       "base_time_seconds": 900,
       "max_level": 20,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 2
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -390,7 +560,13 @@
       "cost_growth": 2,
       "base_time_seconds": 1800,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T025",
+          "level": 4
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -405,7 +581,18 @@
       "cost_growth": 2,
       "base_time_seconds": 2700,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T022",
+          "level": 2
+        },
+        {
+          "type": "technology",
+          "id": "T025",
+          "level": 4
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -420,7 +607,13 @@
       "cost_growth": 2,
       "base_time_seconds": 2100,
       "max_level": 15,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T025",
+          "level": 3
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -435,7 +628,13 @@
       "cost_growth": 2,
       "base_time_seconds": 3600,
       "max_level": 12,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T023",
+          "level": 5
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -450,7 +649,18 @@
       "cost_growth": 2,
       "base_time_seconds": 5400,
       "max_level": 12,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T029",
+          "level": 4
+        },
+        {
+          "type": "technology",
+          "id": "T024",
+          "level": 3
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     },
@@ -465,7 +675,18 @@
       "cost_growth": 2,
       "base_time_seconds": 14400,
       "max_level": 10,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "technology",
+          "id": "T012",
+          "level": 8
+        },
+        {
+          "type": "technology",
+          "id": "T013",
+          "level": 6
+        }
+      ],
       "tags": [],
       "balance_version": "RC2-Candidate"
     }
