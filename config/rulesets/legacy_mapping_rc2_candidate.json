@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "purpose": "one-time migration compatibility"
+  },
+  "buildings": {
+    "BUILD.METAL_MINE": {
+      "target": "B001"
+    },
+    "BUILD.CRYSTAL_MINE": {
+      "target": "B002"
+    },
+    "BUILD.DEUT_SYNTH": {
+      "target": "B003"
+    },
+    "BUILD.SOLAR": {
+      "target": "B004"
+    },
+    "BUILD.FUSION": {
+      "target": "B007"
+    },
+    "BUILD.ROBOTICS": {
+      "target": "B010"
+    },
+    "BUILD.NANITE": {
+      "target": "B011"
+    },
+    "BUILD.SHIPYARD": {
+      "target": "B012"
+    },
+    "BUILD.LAB": {
+      "target": "B016"
+    },
+    "BUILD.M_STORAGE": {
+      "target": "B005",
+      "component": "METAL_STORAGE"
+    },
+    "BUILD.C_STORAGE": {
+      "target": "B005",
+      "component": "CRYSTAL_STORAGE"
+    },
+    "BUILD.D_STORAGE": {
+      "target": "B005",
+      "component": "DEUTERIUM_STORAGE"
+    }
+  },
+  "technologies": {
+    "TECH.ENERGY": {
+      "target": "T006"
+    },
+    "TECH.COMBUSTION": {
+      "target": "T010"
+    },
+    "TECH.IMPULSE": {
+      "target": "T011"
+    },
+    "TECH.COMPUTER": {
+      "target": "T023"
+    },
+    "TECH.ESPIONAGE": {
+      "target": "T025"
+    },
+    "TECH.ASTRO": {
+      "target": "T014"
+    },
+    "TECH.WEAPONS": {
+      "target": "T017"
+    },
+    "TECH.SHIELD": {
+      "target": "T021"
+    },
+    "TECH.ARMOUR": {
+      "target": "T020"
+    }
+  },
+  "ships": {
+    "202": {
+      "target": "S003"
+    },
+    "204": {
+      "target": "S006"
+    },
+    "205": {
+      "target": "S007"
+    },
+    "208": {
+      "target": "S017"
+    },
+    "210": {
+      "target": "S001"
+    }
+  },
+  "defenses": {
+    "401": {
+      "target": "D001"
+    },
+    "402": {
+      "target": "D002"
+    },
+    "403": {
+      "target": "D003"
+    },
+    "404": {
+      "target": "D005"
+    },
+    "405": {
+      "target": "D006"
+    },
+    "406": {
+      "target": "D007"
+    },
+    "407": {
+      "target": "D008"
+    },
+    "408": {
+      "target": "D009"
+    }
+  },
+  "migration_rules": {
+    "preserve_exact_resource_balances": true,
+    "preserve_storage_component_levels": true,
+    "preserve_active_task_finish_times": true,
+    "preserve_fleet_ship_counts": true,
+    "unmapped_content": "reject and report; never silently drop",
+    "combat_history": "keep legacy battle report immutable; do not reinterpret using combat-v2"
+  }
+}
