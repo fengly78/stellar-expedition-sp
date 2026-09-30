@@ -347,3 +347,70 @@ UI 回放只消费这些事件，不重新算战斗。
 - 没有单一舰种因公式漏洞长期统治。
 - 撤退结果可解释。
 - Rust 不接触数据库。
+
+## 21. RC2 收尾裁决：精确命中公式
+
+此前的 `signature_inverse_norm` 候选表达不再作为实现依据。RC2 Candidate 固定使用 0–100 属性尺度：
+
+```text
+tracking =
+  accuracy
+  + 0.35 × sensor
+  - 0.35 × target_stealth
+
+difficulty =
+  target_evasion
+  + 0.25 × (100 - target_signature)
+
+P_hit =
+  clamp(
+    0.15,
+    0.95,
+    0.65 + (tracking - difficulty) / 200
+  )
+```
+
+执行顺序固定：
+
+```text
+base tactical stats
+→ technology
+→ stance
+→ command aura
+→ EW suppression
+→ hit formula
+```
+
+舰船 tactical attributes 与 engine 由
+`config/rulesets/entities/tactical_stats_rc2_candidate.json`
+提供。
+
+Defense 默认 tactical attributes 也在该文件中定义。
+
+`bomber -> defense` 的标签现在要求所有防御单位包含通用 `defense` tag；
+`dreadnought -> structure` 目前只作用于明确带 `structure` 的战略防御/目标，不默认作用于全部炮台。
+
+### 航速和燃料修正顺序
+
+航速：
+
+```text
+base ship speed
+→ drive technology
+→ planet specialization
+→ fleet stance
+→ server fleet speed
+```
+
+燃料：
+
+```text
+RC1 base fuel formula
+→ engine/switch
+→ planet specialization
+→ stance
+→ server fuel factor
+```
+
+相同 snapshot 中必须保存最终使用的所有倍率。
+
