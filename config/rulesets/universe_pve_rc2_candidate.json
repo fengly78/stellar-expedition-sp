@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "status": "Candidate"
+  },
+  "topology": {
+    "galaxies": 5,
+    "systems_per_galaxy": 250,
+    "orbit_slots_per_system": 15,
+    "coordinate_base": 1
+  },
+  "homeworld_distribution": {
+    "max_new_player_homeworlds_per_system": 8,
+    "avoid_system_edge_percent": 5
+  },
+  "deep_space_nodes": {
+    "enabled": true,
+    "do_not_consume_colony_slots": true
+  },
+  "pve": {
+    "encounter_respawn_minutes": [
+      20,
+      60
+    ],
+    "same_target_reward_decay": [
+      1,
+      0.7,
+      0.4,
+      0.2
+    ],
+    "templates": {
+      "PIRATE_SCOUT": {
+        "recommended_stage": "Day0-1",
+        "fleet": {
+          "S006": 3
+        },
+        "reward": {
+          "metal": 500,
+          "crystal": 250,
+          "deuterium": 50
+        }
+      },
+      "PIRATE_RAIDER": {
+        "recommended_stage": "Day1-3",
+        "fleet": {
+          "S006": 8,
+          "S007": 2
+        },
+        "reward": {
+          "metal": 1800,
+          "crystal": 900,
+          "deuterium": 250
+        }
+      },
+      "PIRATE_PATROL": {
+        "recommended_stage": "Day3-7",
+        "fleet": {
+          "S006": 15,
+          "S007": 5,
+          "S008": 2
+        },
+        "reward": {
+          "metal": 6000,
+          "crystal": 3000,
+          "deuterium": 800
+        }
+      }
+    },
+    "reward_rules": {
+      "ledger_source": "SYSTEM_PVE_REWARD",
+      "debris_uses_combat_rule": true,
+      "no_reward_if_no_meaningful_combat": true
+    }
+  }
+}
