@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "id": "RC2-Candidate",
+    "status": "Candidate",
+    "base_ruleset": "config/rulesets/balance_rc1.json",
+    "compiler_contract": "merge-v1"
+  },
+  "fragments": [
+    "config/rulesets/entities/buildings_rc2_candidate.json",
+    "config/rulesets/entities/technologies_rc2_candidate.json",
+    "config/rulesets/entities/ships_rc2_candidate.json",
+    "config/rulesets/entities/defenses_rc2_candidate.json",
+    "config/rulesets/entities/prerequisites_rc2_candidate.json",
+    "config/rulesets/entities/tactical_stats_rc2_candidate.json",
+    "config/rulesets/planet_layout_rc2_candidate.json",
+    "config/rulesets/balance_rc2_candidate.json",
+    "config/rulesets/combat_rc2_candidate.json",
+    "config/rulesets/economy_milestones_rc2_candidate.json",
+    "config/rulesets/legacy_mapping_rc2_candidate.json"
+  ],
+  "authority": {
+    "entity identity, base costs, max levels": "entities/*_rc2_candidate.json",
+    "prerequisite graph": "entities/prerequisites_rc2_candidate.json (mirrored into entity files; mismatch is validation failure)",
+    "planet placement, capacity, archetype, specialization": "planet_layout_rc2_candidate.json",
+    "tactical ship stats and engine selection": "entities/tactical_stats_rc2_candidate.json",
+    "combat formulas and role multipliers": "combat_rc2_candidate.json",
+    "protection, stances, autopilot defaults": "balance_rc2_candidate.json",
+    "calibration targets and tutorial sources": "economy_milestones_rc2_candidate.json",
+    "legacy migration mapping": "legacy_mapping_rc2_candidate.json"
+  },
+  "conflict_rules": [
+    "RC1 Frozen values cannot be overwritten without an approved change record.",
+    "combat_rc2_candidate.json is the only authority for combat role multipliers.",
+    "prerequisite overlay must byte-equivalently match prerequisites embedded in entity fragments.",
+    "compiled ruleset must contain no unresolved references and no implicit defaults for combat-v2 tactical attributes."
+  ],
+  "compile_order": [
+    "RC1",
+    "entity fragments",
+    "prerequisite verification",
+    "layout overlay",
+    "tactical stats",
+    "balance policies",
+    "combat rules",
+    "milestones",
+    "legacy mapping",
+    "semantic validation",
+    "content hash"
+  ],
+  "required_compiled_output": [
+    "ruleset_version",
+    "content_hash",
+    "entity_registry",
+    "resolved_prerequisites",
+    "resolved_tactical_stats",
+    "resolved_layout",
+    "protection",
+    "combat",
+    "autopilot",
+    "legacy_mapping"
+  ]
+}
