@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "status": "Candidate"
+  },
+  "capacity": {
+    "surface": {"initial": 14, "max": 24},
+    "underground": {"initial": 3, "max": 8},
+    "orbit": {"initial": 4, "max": 10}
+  },
+  "visual_stages": [
+    {"min_level": 0, "max_level": 0, "stage": 0},
+    {"min_level": 1, "max_level": 3, "stage": 1},
+    {"min_level": 4, "max_level": 7, "stage": 2},
+    {"min_level": 8, "max_level": 12, "stage": 3},
+    {"min_level": 13, "max_level": 20, "stage": 4},
+    {"min_level": 21, "max_level": 999, "stage": 5}
+  ],
+  "zones": {
+    "surface": ["Z-S01","Z-S02","Z-S03","Z-S04","Z-S05","Z-S06"],
+    "underground": ["Z-U01","Z-U02","Z-U03","Z-U04"],
+    "orbit": ["Z-O01","Z-O02","Z-O03","Z-O04","Z-O05"]
+  },
+  "building_placement": {
+    "B001":{"space":"surface","zone":"Z-S01","slot_cost":1},
+    "B002":{"space":"surface","zone":"Z-S01","slot_cost":1},
+    "B003":{"space":"surface","zone":"Z-S01","slot_cost":1},
+    "B004":{"space":"surface","zone":"Z-S02","slot_cost":1},
+    "B005":{"space":"surface","zone":"Z-S01","slot_cost":1},
+    "B006":{"space":"surface","zone":"Z-S03","slot_cost":1},
+    "B007":{"space":"surface","zone":"Z-S02","slot_cost":1},
+    "B008":{"space":"surface","zone":"Z-S02","slot_cost":1},
+    "B009":{"space":"underground","zone":"Z-U02","slot_cost":1},
+    "B010":{"space":"surface","zone":"Z-S03","slot_cost":1},
+    "B011":{"space":"surface","zone":"Z-S03","slot_cost":2},
+    "B012":{"space":"surface","zone":"Z-S03","slot_cost":2},
+    "B013":{"space":"orbit","zone":"Z-O01","slot_cost":2},
+    "B014":{"space":"underground","zone":"Z-U03","slot_cost":1},
+    "B015":{"space":"surface","zone":"Z-S03","slot_cost":2},
+    "B016":{"space":"surface","zone":"Z-S04","slot_cost":1},
+    "B017":{"space":"surface","zone":"Z-S04","slot_cost":2},
+    "B018":{"space":"orbit","zone":"Z-O02","slot_cost":1},
+    "B019":{"space":"surface","zone":"Z-S04","slot_cost":2},
+    "B020":{"space":"surface","zone":"Z-S06","slot_cost":1},
+    "B021":{"space":"orbit","zone":"Z-O02","slot_cost":1},
+    "B022":{"space":"orbit","zone":"Z-O02","slot_cost":1},
+    "B023":{"space":"surface","zone":"Z-S05","slot_cost":1},
+    "B024":{"space":"underground","zone":"Z-U01","slot_cost":1},
+    "B025":{"space":"surface","zone":"Z-S05","slot_cost":1},
+    "B026":{"space":"surface","zone":"Z-S05","slot_cost":1},
+    "B027":{"space":"surface","zone":"Z-S05","slot_cost":1},
+    "B028":{"space":"orbit","zone":"Z-O04","slot_cost":2},
+    "B029":{"space":"surface","zone":"Z-S05","slot_cost":1},
+    "B030":{"space":"underground","zone":"Z-U04","slot_cost":3},
+    "B031":{"space":"orbit","zone":"Z-O03","slot_cost":3},
+    "B032":{"space":"orbit","zone":"Z-O04","slot_cost":4},
+    "B033":{"space":"surface","zone":"Z-S05","slot_cost":2},
+    "B034":{"space":"orbit","zone":"Z-O05","slot_cost":2}
+  },
+  "archetypes": {
+    "TEMPERATE":{"surface_delta":1},
+    "MINERAL_RICH":{"metal_mult":1.08,"crystal_mult":1.03,"energy_demand_mult":1.03},
+    "CRYSTAL_WORLD":{"crystal_mult":1.10,"surface_delta":-1},
+    "COLD_WORLD":{"deuterium_mult":1.12,"solar_mult":0.92},
+    "HOT_WORLD":{"solar_mult":1.10,"deuterium_mult":0.90},
+    "MASSIVE_WORLD":{"surface_delta":3,"underground_delta":1,"build_time_mult":1.05}
+  },
+  "specializations": {
+    "INDUSTRIAL":{"manufacture_time_mult":0.88,"metal_mult":1.05,"research_time_mult":1.05},
+    "RESEARCH":{"research_time_mult":0.88,"ship_time_mult":1.05},
+    "ENERGY":{"energy_mult":1.15,"deuterium_mult":1.05,"surface_delta":-1},
+    "MILITARY":{"ship_time_mult":0.90,"defense_time_mult":0.85,"civilian_production_mult":0.95},
+    "TRADE":{"market_tax_mult":0.80,"logistics_fuel_mult":0.90,"defense_cost_mult":1.05},
+    "FRONTIER":{"scan_range_delta":1,"colonize_time_mult":0.92,"expedition_time_mult":0.92,"production_mult":0.95}
+  }
+}
