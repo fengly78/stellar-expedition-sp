@@ -301,3 +301,25 @@ Compiled Ruleset 中的 ShipDefinition 必须已经具有 combat-v2 所需的完
 
 任何 fragment 与 manifest 声明的权威源不一致时，服务拒绝启动。
 
+## 17. RC2 收尾裁决：Effect 与 Timing Overlay
+
+Authoring entity fragment 中允许不重复写完整 `effects` 和最终 `build_time_seconds`。
+
+权威源：
+
+- Entity Effects：`config/rulesets/entities/effects_rc2_candidate.json`
+- Timing：`config/rulesets/timing_rc2_candidate.json`
+
+Compiled Ruleset 必须把这些 overlay 合并到最终定义。
+
+因此：
+
+- BuildingDefinition 编译后必须有 resolved effects 和 time policy；
+- TechnologyDefinition 编译后必须有 resolved effects 和 time policy；
+- ShipDefinition 编译后必须有 resolved build time、engine 与 tactical stats；
+- DefenseDefinition 编译后必须有 resolved build time 和 tactical defaults。
+
+服务代码不能因为 fragment 缺字段而自行发明默认值。
+
+RC1 已经存在的 5 种 legacy 舰船制造时间继续作为迁移锚点；新舰种使用 Timing 配置中的候选推导公式，直到模拟后 Frozen。
+
