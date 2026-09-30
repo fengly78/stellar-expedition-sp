@@ -123,3 +123,24 @@
 - Autopilot 默认不能主动 PvP。
 - 24h 经济不出现硬卡点。
 - RC2 配置修改无需重编译客户端。
+
+## 收尾补充：Vertical Slice 不再扩大范围
+
+本 Vertical Slice 是 Beta1 的最小真实证明，不再加入新的舰种、建筑、科技、模块、实时战术或原生移动 App。
+
+正式执行顺序：
+
+1. Ruleset Compiler / Validator
+2. Domain primitives / Ledger / Idempotency
+3. Planet + Economy
+4. 2.5D UI
+5. Galaxy + Scout
+6. Combat v2
+7. PvE
+8. Autopilot
+9. Evidence / Gate
+
+若某项新需求不能阻塞上述主线，则进入 post-Beta backlog。
+
+Release Gate 以 `2026-09-30-scope-freeze-release-gates.md` 为准。
+
