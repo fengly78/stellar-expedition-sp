@@ -172,32 +172,33 @@
         "id": "TG1_CORE_INDUSTRY",
         "trigger": "complete initial metal/crystal/solar objectives",
         "reward": {
-          "metal": 500,
-          "crystal": 250,
-          "deuterium": 250
+          "metal": 1000,
+          "crystal": 750,
+          "deuterium": 600
         }
       },
       {
         "id": "TG2_RESEARCH",
         "trigger": "complete B010 L1 and B016 L1 objectives",
         "reward": {
-          "metal": 800,
-          "crystal": 900,
-          "deuterium": 500
+          "metal": 1500,
+          "crystal": 1600,
+          "deuterium": 900
         }
       },
       {
         "id": "TG3_FIRST_FLEET",
-        "trigger": "complete first sensor research",
+        "trigger": "complete T025 L1",
         "reward": {
-          "metal": 1200,
+          "metal": 800,
           "crystal": 800,
-          "deuterium": 300
+          "deuterium": 200
         }
       }
     ],
     "repeatable": false,
-    "ledger_source": "SYSTEM_TUTORIAL_GRANT"
+    "ledger_source": "SYSTEM_TUTORIAL_GRANT",
+    "design_note": "TG1/TG2 are part of onboarding calibration so B010/B016/B012/T025/S001 can be reached inside the 45m target; grants are one-time, ledgered, and included in source/sink simulation."
   },
   "checkpoint_semantics": "Targets include one-time tutorial grants; simulation must account for them as explicit sources."
 }
