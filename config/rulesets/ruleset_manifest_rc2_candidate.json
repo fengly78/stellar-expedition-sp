@@ -16,7 +16,8 @@
     "config/rulesets/balance_rc2_candidate.json",
     "config/rulesets/combat_rc2_candidate.json",
     "config/rulesets/economy_milestones_rc2_candidate.json",
-    "config/rulesets/legacy_mapping_rc2_candidate.json"
+    "config/rulesets/legacy_mapping_rc2_candidate.json",
+    "config/rulesets/universe_pve_rc2_candidate.json"
   ],
   "authority": {
     "entity identity, base costs, max levels": "entities/*_rc2_candidate.json",
@@ -26,7 +27,8 @@
     "combat formulas and role multipliers": "combat_rc2_candidate.json",
     "protection, stances, autopilot defaults": "balance_rc2_candidate.json",
     "calibration targets and tutorial sources": "economy_milestones_rc2_candidate.json",
-    "legacy migration mapping": "legacy_mapping_rc2_candidate.json"
+    "legacy migration mapping": "legacy_mapping_rc2_candidate.json",
+    "universe topology and PvE encounter templates": "universe_pve_rc2_candidate.json"
   },
   "conflict_rules": [
     "RC1 Frozen values cannot be overwritten without an approved change record.",
@@ -42,6 +44,7 @@
     "tactical stats",
     "balance policies",
     "combat rules",
+    "universe and PvE",
     "milestones",
     "legacy mapping",
     "semantic validation",
