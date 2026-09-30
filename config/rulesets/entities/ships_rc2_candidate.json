@@ -1,0 +1,508 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "entity": "ships"
+  },
+  "items": [
+    {
+      "id": "S001",
+      "key": "SCOUT_PROBE",
+      "base_cost": {
+        "metal": 1000,
+        "crystal": 1500,
+        "deuterium": 0
+      },
+      "cargo": 100,
+      "combat": {
+        "attack": 1,
+        "shield": 1,
+        "hull": 100
+      },
+      "speed": 100000000,
+      "fuel": 1,
+      "role_tags": [
+        "scout"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S002",
+      "key": "STEALTH_SCOUT",
+      "base_cost": {
+        "metal": 5000,
+        "crystal": 8000,
+        "deuterium": 3000
+      },
+      "cargo": 250,
+      "combat": {
+        "attack": 20,
+        "shield": 40,
+        "hull": 600
+      },
+      "speed": 50000,
+      "fuel": 35,
+      "role_tags": [
+        "scout",
+        "stealth"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S003",
+      "key": "SMALL_CARGO",
+      "base_cost": {
+        "metal": 2000,
+        "crystal": 2000,
+        "deuterium": 0
+      },
+      "cargo": 5000,
+      "combat": {
+        "attack": 5,
+        "shield": 10,
+        "hull": 500
+      },
+      "speed": 5000,
+      "fuel": 10,
+      "role_tags": [
+        "cargo"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S004",
+      "key": "LARGE_CARGO",
+      "base_cost": {
+        "metal": 6000,
+        "crystal": 6000,
+        "deuterium": 0
+      },
+      "cargo": 25000,
+      "combat": {
+        "attack": 5,
+        "shield": 25,
+        "hull": 1200
+      },
+      "speed": 7500,
+      "fuel": 50,
+      "role_tags": [
+        "cargo"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S005",
+      "key": "ARMORED_CARGO",
+      "base_cost": {
+        "metal": 12000,
+        "crystal": 8000,
+        "deuterium": 3000
+      },
+      "cargo": 18000,
+      "combat": {
+        "attack": 40,
+        "shield": 120,
+        "hull": 4000
+      },
+      "speed": 6500,
+      "fuel": 85,
+      "role_tags": [
+        "cargo",
+        "armored"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S006",
+      "key": "LIGHT_FIGHTER",
+      "base_cost": {
+        "metal": 3000,
+        "crystal": 1000,
+        "deuterium": 0
+      },
+      "cargo": 50,
+      "combat": {
+        "attack": 50,
+        "shield": 10,
+        "hull": 400
+      },
+      "speed": 12500,
+      "fuel": 20,
+      "role_tags": [
+        "fighter",
+        "small"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S007",
+      "key": "HEAVY_FIGHTER",
+      "base_cost": {
+        "metal": 6000,
+        "crystal": 4000,
+        "deuterium": 0
+      },
+      "cargo": 100,
+      "combat": {
+        "attack": 150,
+        "shield": 25,
+        "hull": 1200
+      },
+      "speed": 10000,
+      "fuel": 75,
+      "role_tags": [
+        "fighter"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S008",
+      "key": "FRIGATE",
+      "base_cost": {
+        "metal": 9000,
+        "crystal": 6000,
+        "deuterium": 1500
+      },
+      "cargo": 200,
+      "combat": {
+        "attack": 220,
+        "shield": 80,
+        "hull": 2500
+      },
+      "speed": 12000,
+      "fuel": 90,
+      "role_tags": [
+        "escort",
+        "point_defense"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S009",
+      "key": "DESTROYER",
+      "base_cost": {
+        "metal": 18000,
+        "crystal": 12000,
+        "deuterium": 5000
+      },
+      "cargo": 400,
+      "combat": {
+        "attack": 450,
+        "shield": 150,
+        "hull": 6000
+      },
+      "speed": 10000,
+      "fuel": 160,
+      "role_tags": [
+        "destroyer",
+        "heavy"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S010",
+      "key": "CRUISER",
+      "base_cost": {
+        "metal": 20000,
+        "crystal": 7000,
+        "deuterium": 2000
+      },
+      "cargo": 800,
+      "combat": {
+        "attack": 400,
+        "shield": 150,
+        "hull": 6000
+      },
+      "speed": 15000,
+      "fuel": 300,
+      "role_tags": [
+        "cruiser",
+        "anti_fighter"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S011",
+      "key": "BATTLESHIP",
+      "base_cost": {
+        "metal": 45000,
+        "crystal": 15000,
+        "deuterium": 0
+      },
+      "cargo": 1500,
+      "combat": {
+        "attack": 1000,
+        "shield": 300,
+        "hull": 15000
+      },
+      "speed": 10000,
+      "fuel": 500,
+      "role_tags": [
+        "capital",
+        "heavy"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S012",
+      "key": "BATTLECRUISER",
+      "base_cost": {
+        "metal": 30000,
+        "crystal": 40000,
+        "deuterium": 15000
+      },
+      "cargo": 1000,
+      "combat": {
+        "attack": 900,
+        "shield": 400,
+        "hull": 18000
+      },
+      "speed": 10000,
+      "fuel": 450,
+      "role_tags": [
+        "battlecruiser",
+        "capital",
+        "hunter"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S013",
+      "key": "BOMBER",
+      "base_cost": {
+        "metal": 50000,
+        "crystal": 25000,
+        "deuterium": 15000
+      },
+      "cargo": 500,
+      "combat": {
+        "attack": 1200,
+        "shield": 250,
+        "hull": 12000
+      },
+      "speed": 5000,
+      "fuel": 700,
+      "role_tags": [
+        "bomber",
+        "siege"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S014",
+      "key": "INTERCEPTOR",
+      "base_cost": {
+        "metal": 18000,
+        "crystal": 14000,
+        "deuterium": 5000
+      },
+      "cargo": 150,
+      "combat": {
+        "attack": 350,
+        "shield": 100,
+        "hull": 3500
+      },
+      "speed": 18000,
+      "fuel": 220,
+      "role_tags": [
+        "interceptor"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S015",
+      "key": "EW_SHIP",
+      "base_cost": {
+        "metal": 12000,
+        "crystal": 28000,
+        "deuterium": 12000
+      },
+      "cargo": 400,
+      "combat": {
+        "attack": 120,
+        "shield": 300,
+        "hull": 5000
+      },
+      "speed": 9000,
+      "fuel": 260,
+      "role_tags": [
+        "ew",
+        "sensor"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S016",
+      "key": "RECYCLER",
+      "base_cost": {
+        "metal": 10000,
+        "crystal": 6000,
+        "deuterium": 2000
+      },
+      "cargo": 20000,
+      "combat": {
+        "attack": 1,
+        "shield": 20,
+        "hull": 1600
+      },
+      "speed": 6000,
+      "fuel": 180,
+      "role_tags": [
+        "recycler"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S017",
+      "key": "COLONY_SHIP",
+      "base_cost": {
+        "metal": 10000,
+        "crystal": 17500,
+        "deuterium": 5000
+      },
+      "cargo": 7500,
+      "combat": {
+        "attack": 50,
+        "shield": 100,
+        "hull": 3000
+      },
+      "speed": 2500,
+      "fuel": 1000,
+      "role_tags": [
+        "colony"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S018",
+      "key": "SUPPLY_SHIP",
+      "base_cost": {
+        "metal": 15000,
+        "crystal": 12000,
+        "deuterium": 8000
+      },
+      "cargo": 12000,
+      "combat": {
+        "attack": 30,
+        "shield": 100,
+        "hull": 5000
+      },
+      "speed": 7000,
+      "fuel": 140,
+      "role_tags": [
+        "support"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S019",
+      "key": "ENGINEERING_SHIP",
+      "base_cost": {
+        "metal": 20000,
+        "crystal": 18000,
+        "deuterium": 10000
+      },
+      "cargo": 8000,
+      "combat": {
+        "attack": 20,
+        "shield": 150,
+        "hull": 6500
+      },
+      "speed": 6500,
+      "fuel": 180,
+      "role_tags": [
+        "engineer"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S020",
+      "key": "CARRIER",
+      "base_cost": {
+        "metal": 180000,
+        "crystal": 140000,
+        "deuterium": 80000
+      },
+      "cargo": 6000,
+      "combat": {
+        "attack": 1800,
+        "shield": 1800,
+        "hull": 80000
+      },
+      "speed": 5000,
+      "fuel": 2000,
+      "role_tags": [
+        "carrier",
+        "capital"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S021",
+      "key": "DREADNOUGHT",
+      "base_cost": {
+        "metal": 350000,
+        "crystal": 220000,
+        "deuterium": 120000
+      },
+      "cargo": 4000,
+      "combat": {
+        "attack": 5000,
+        "shield": 2200,
+        "hull": 140000
+      },
+      "speed": 3500,
+      "fuel": 3200,
+      "role_tags": [
+        "dreadnought",
+        "capital",
+        "siege"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "S022",
+      "key": "COMMAND_SHIP",
+      "base_cost": {
+        "metal": 220000,
+        "crystal": 260000,
+        "deuterium": 160000
+      },
+      "cargo": 12000,
+      "combat": {
+        "attack": 1200,
+        "shield": 3000,
+        "hull": 120000
+      },
+      "speed": 4500,
+      "fuel": 2800,
+      "role_tags": [
+        "command",
+        "capital",
+        "support"
+      ],
+      "prerequisites": [],
+      "balance_version": "RC2-Candidate"
+    }
+  ]
+}
