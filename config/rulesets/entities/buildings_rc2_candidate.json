@@ -1,0 +1,799 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "entity": "buildings"
+  },
+  "items": [
+    {
+      "id": "B001",
+      "key": "METAL_MINE",
+      "base_cost": {
+        "metal": 60,
+        "crystal": 15,
+        "deuterium": 0
+      },
+      "cost_growth": 1.5,
+      "base_time_seconds": 45,
+      "max_level": 40,
+      "prerequisites": [],
+      "tags": [
+        "economy",
+        "metal"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B002",
+      "key": "CRYSTAL_MINE",
+      "base_cost": {
+        "metal": 48,
+        "crystal": 24,
+        "deuterium": 0
+      },
+      "cost_growth": 1.6,
+      "base_time_seconds": 50,
+      "max_level": 40,
+      "prerequisites": [],
+      "tags": [
+        "economy",
+        "crystal"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B003",
+      "key": "DEUTERIUM_REFINERY",
+      "base_cost": {
+        "metal": 225,
+        "crystal": 75,
+        "deuterium": 0
+      },
+      "cost_growth": 1.5,
+      "base_time_seconds": 90,
+      "max_level": 35,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B004",
+          "level": 2
+        }
+      ],
+      "tags": [
+        "economy",
+        "deuterium"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B004",
+      "key": "SOLAR_ARRAY",
+      "base_cost": {
+        "metal": 75,
+        "crystal": 30,
+        "deuterium": 0
+      },
+      "cost_growth": 1.5,
+      "base_time_seconds": 45,
+      "max_level": 35,
+      "prerequisites": [],
+      "tags": [
+        "energy"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B005",
+      "key": "RESOURCE_STORAGE",
+      "base_cost": {
+        "metal": 1000,
+        "crystal": 500,
+        "deuterium": 0
+      },
+      "cost_growth": 1.6,
+      "base_time_seconds": 240,
+      "max_level": 20,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B010",
+          "level": 1
+        }
+      ],
+      "tags": [
+        "storage"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B006",
+      "key": "AUTOMATED_LOGISTICS",
+      "base_cost": {
+        "metal": 2500,
+        "crystal": 1500,
+        "deuterium": 400
+      },
+      "cost_growth": 1.7,
+      "base_time_seconds": 600,
+      "max_level": 15,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B010",
+          "level": 3
+        }
+      ],
+      "tags": [
+        "logistics"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B007",
+      "key": "FUSION_REACTOR",
+      "base_cost": {
+        "metal": 150,
+        "crystal": 60,
+        "deuterium": 30
+      },
+      "cost_growth": 1.5,
+      "base_time_seconds": 180,
+      "max_level": 25,
+      "prerequisites": [],
+      "tags": [
+        "energy",
+        "fusion"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B008",
+      "key": "ENERGY_GRID",
+      "base_cost": {
+        "metal": 4000,
+        "crystal": 2500,
+        "deuterium": 800
+      },
+      "cost_growth": 1.7,
+      "base_time_seconds": 900,
+      "max_level": 12,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B004",
+          "level": 8
+        }
+      ],
+      "tags": [
+        "energy",
+        "efficiency"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B009",
+      "key": "ENERGY_STORAGE",
+      "base_cost": {
+        "metal": 6000,
+        "crystal": 5000,
+        "deuterium": 1200
+      },
+      "cost_growth": 1.75,
+      "base_time_seconds": 1500,
+      "max_level": 10,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B008",
+          "level": 3
+        }
+      ],
+      "tags": [
+        "energy",
+        "storage"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B010",
+      "key": "ROBOTICS_FACTORY",
+      "base_cost": {
+        "metal": 400,
+        "crystal": 120,
+        "deuterium": 200
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 240,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [
+        "industry",
+        "build_speed"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B011",
+      "key": "NANITE_FACTORY",
+      "base_cost": {
+        "metal": 1000000,
+        "crystal": 500000,
+        "deuterium": 100000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 86400,
+      "max_level": 8,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B010",
+          "level": 10
+        }
+      ],
+      "tags": [
+        "industry",
+        "build_speed"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B012",
+      "key": "GROUND_SHIPYARD",
+      "base_cost": {
+        "metal": 400,
+        "crystal": 200,
+        "deuterium": 100
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 360,
+      "max_level": 15,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B010",
+          "level": 2
+        }
+      ],
+      "tags": [
+        "shipyard"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B013",
+      "key": "ORBITAL_SHIPYARD",
+      "base_cost": {
+        "metal": 12000,
+        "crystal": 8000,
+        "deuterium": 2500
+      },
+      "cost_growth": 1.85,
+      "base_time_seconds": 3600,
+      "max_level": 12,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B012",
+          "level": 6
+        }
+      ],
+      "tags": [
+        "shipyard",
+        "orbit"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B014",
+      "key": "REPAIR_DOCK",
+      "base_cost": {
+        "metal": 15000,
+        "crystal": 10000,
+        "deuterium": 5000
+      },
+      "cost_growth": 1.8,
+      "base_time_seconds": 5400,
+      "max_level": 12,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B013",
+          "level": 2
+        }
+      ],
+      "tags": [
+        "repair"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B015",
+      "key": "MILITARY_ASSEMBLY",
+      "base_cost": {
+        "metal": 25000,
+        "crystal": 12000,
+        "deuterium": 5000
+      },
+      "cost_growth": 1.85,
+      "base_time_seconds": 7200,
+      "max_level": 10,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B013",
+          "level": 4
+        }
+      ],
+      "tags": [
+        "military",
+        "manufacturing"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B016",
+      "key": "RESEARCH_LAB",
+      "base_cost": {
+        "metal": 200,
+        "crystal": 400,
+        "deuterium": 200
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 300,
+      "max_level": 20,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B010",
+          "level": 1
+        }
+      ],
+      "tags": [
+        "research"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B017",
+      "key": "QUANTUM_COMPUTE_CENTER",
+      "base_cost": {
+        "metal": 12000,
+        "crystal": 30000,
+        "deuterium": 12000
+      },
+      "cost_growth": 1.9,
+      "base_time_seconds": 7200,
+      "max_level": 12,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 6
+        }
+      ],
+      "tags": [
+        "research",
+        "compute"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B018",
+      "key": "DEEP_SPACE_OBSERVATORY",
+      "base_cost": {
+        "metal": 10000,
+        "crystal": 18000,
+        "deuterium": 6000
+      },
+      "cost_growth": 1.8,
+      "base_time_seconds": 5400,
+      "max_level": 12,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 4
+        }
+      ],
+      "tags": [
+        "intel",
+        "sensor"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B019",
+      "key": "EXPERIMENTAL_ENGINEERING",
+      "base_cost": {
+        "metal": 30000,
+        "crystal": 25000,
+        "deuterium": 15000
+      },
+      "cost_growth": 1.9,
+      "base_time_seconds": 10800,
+      "max_level": 10,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B017",
+          "level": 4
+        }
+      ],
+      "tags": [
+        "research",
+        "advanced"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B020",
+      "key": "DEFENSE_CONTROL",
+      "base_cost": {
+        "metal": 6000,
+        "crystal": 4500,
+        "deuterium": 1200
+      },
+      "cost_growth": 1.75,
+      "base_time_seconds": 1800,
+      "max_level": 15,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B012",
+          "level": 3
+        }
+      ],
+      "tags": [
+        "defense"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B021",
+      "key": "RADAR_ARRAY",
+      "base_cost": {
+        "metal": 8000,
+        "crystal": 8000,
+        "deuterium": 2500
+      },
+      "cost_growth": 1.75,
+      "base_time_seconds": 2400,
+      "max_level": 15,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B018",
+          "level": 1
+        }
+      ],
+      "tags": [
+        "intel",
+        "radar"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B022",
+      "key": "COUNTER_INTEL_CENTER",
+      "base_cost": {
+        "metal": 12000,
+        "crystal": 18000,
+        "deuterium": 6000
+      },
+      "cost_growth": 1.8,
+      "base_time_seconds": 3600,
+      "max_level": 12,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B021",
+          "level": 3
+        }
+      ],
+      "tags": [
+        "intel",
+        "counter_intel"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B023",
+      "key": "FLEET_COMMAND",
+      "base_cost": {
+        "metal": 12000,
+        "crystal": 9000,
+        "deuterium": 4000
+      },
+      "cost_growth": 1.8,
+      "base_time_seconds": 3600,
+      "max_level": 15,
+      "prerequisites": [],
+      "tags": [
+        "fleet",
+        "command"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B024",
+      "key": "UNDERGROUND_SHELTER",
+      "base_cost": {
+        "metal": 10000,
+        "crystal": 5000,
+        "deuterium": 1500
+      },
+      "cost_growth": 1.85,
+      "base_time_seconds": 3600,
+      "max_level": 12,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B020",
+          "level": 3
+        }
+      ],
+      "tags": [
+        "defense",
+        "shelter"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B025",
+      "key": "COLONY_ADMIN",
+      "base_cost": {
+        "metal": 20000,
+        "crystal": 30000,
+        "deuterium": 15000
+      },
+      "cost_growth": 1.9,
+      "base_time_seconds": 10800,
+      "max_level": 10,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B016",
+          "level": 5
+        }
+      ],
+      "tags": [
+        "colony"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B026",
+      "key": "TRADE_PORT",
+      "base_cost": {
+        "metal": 8000,
+        "crystal": 6000,
+        "deuterium": 2500
+      },
+      "cost_growth": 1.75,
+      "base_time_seconds": 2400,
+      "max_level": 15,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B006",
+          "level": 2
+        }
+      ],
+      "tags": [
+        "trade"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B027",
+      "key": "MARKET_RELAY",
+      "base_cost": {
+        "metal": 15000,
+        "crystal": 20000,
+        "deuterium": 5000
+      },
+      "cost_growth": 1.8,
+      "base_time_seconds": 5400,
+      "max_level": 12,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B026",
+          "level": 4
+        }
+      ],
+      "tags": [
+        "trade",
+        "market"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B028",
+      "key": "INTERSTELLAR_LOGISTICS_HUB",
+      "base_cost": {
+        "metal": 40000,
+        "crystal": 25000,
+        "deuterium": 12000
+      },
+      "cost_growth": 1.9,
+      "base_time_seconds": 14400,
+      "max_level": 10,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B006",
+          "level": 6
+        },
+        {
+          "type": "building",
+          "id": "B023",
+          "level": 3
+        }
+      ],
+      "tags": [
+        "logistics",
+        "interstellar"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B029",
+      "key": "MERCHANT_LIAISON",
+      "base_cost": {
+        "metal": 25000,
+        "crystal": 30000,
+        "deuterium": 10000
+      },
+      "cost_growth": 1.9,
+      "base_time_seconds": 10800,
+      "max_level": 8,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B027",
+          "level": 3
+        }
+      ],
+      "tags": [
+        "trade",
+        "merchant"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B030",
+      "key": "PLANETARY_SHIELD_CORE",
+      "base_cost": {
+        "metal": 150000,
+        "crystal": 180000,
+        "deuterium": 80000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 43200,
+      "max_level": 6,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B020",
+          "level": 8
+        },
+        {
+          "type": "building",
+          "id": "B009",
+          "level": 5
+        }
+      ],
+      "tags": [
+        "defense",
+        "strategic"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B031",
+      "key": "ORBITAL_DEFENSE_RING",
+      "base_cost": {
+        "metal": 300000,
+        "crystal": 200000,
+        "deuterium": 120000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 64800,
+      "max_level": 6,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B013",
+          "level": 8
+        },
+        {
+          "type": "building",
+          "id": "B020",
+          "level": 8
+        }
+      ],
+      "tags": [
+        "defense",
+        "orbit"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B032",
+      "key": "STARGATE_CONTROL",
+      "base_cost": {
+        "metal": 500000,
+        "crystal": 500000,
+        "deuterium": 300000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 86400,
+      "max_level": 5,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B019",
+          "level": 6
+        }
+      ],
+      "tags": [
+        "logistics",
+        "strategic"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B033",
+      "key": "AI_MANAGEMENT_CENTER",
+      "base_cost": {
+        "metal": 80000,
+        "crystal": 120000,
+        "deuterium": 60000
+      },
+      "cost_growth": 1.9,
+      "base_time_seconds": 28800,
+      "max_level": 10,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B017",
+          "level": 4
+        }
+      ],
+      "tags": [
+        "ai",
+        "autopilot"
+      ],
+      "balance_version": "RC2-Candidate"
+    },
+    {
+      "id": "B034",
+      "key": "ALLIANCE_ENGINEERING_NODE",
+      "base_cost": {
+        "metal": 150000,
+        "crystal": 100000,
+        "deuterium": 50000
+      },
+      "cost_growth": 2,
+      "base_time_seconds": 43200,
+      "max_level": 8,
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B026",
+          "level": 5
+        },
+        {
+          "type": "building",
+          "id": "B023",
+          "level": 5
+        }
+      ],
+      "tags": [
+        "alliance",
+        "strategic"
+      ],
+      "balance_version": "RC2-Candidate"
+    }
+  ]
+}
