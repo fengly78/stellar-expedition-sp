@@ -260,3 +260,44 @@ JSON/YAML
 - 更换 Candidate ruleset 不需要改前端代码。
 - 战报可说明使用哪个 balance_version。
 - 历史战斗可按 snapshot 重放。
+
+## 16. RC2 收尾裁决：Authoring Fragment 与 Compiled Ruleset
+
+本节覆盖前文可能造成“每个实体文件必须单独完整”的理解。
+
+RC2 采用两层模型：
+
+### Authoring Fragment
+
+仓库中的 `config/rulesets/*rc2_candidate.json` 是可审阅的源片段。片段允许只负责一个领域，例如：
+
+- entity 文件：ID、成本、基础属性；
+- prerequisite 文件：完整前置图；
+- planet layout：槽位和专精；
+- tactical stats：combat-v2 的 accuracy/signature/evasion/sensor/stealth/engine；
+- combat：战斗公式；
+- balance：保护、姿态、Autopilot 默认策略；
+- legacy mapping：旧数据迁移。
+
+唯一合并顺序与权威关系由：
+
+`config/rulesets/ruleset_manifest_rc2_candidate.json`
+
+定义。
+
+### Compiled Ruleset
+
+服务端运行时不得直接零散读取 fragment。启动时必须先编译成单一 Compiled Ruleset，并完成：
+
+1. 前置图覆盖与一致性检查；
+2. tactical stats 解析；
+3. layout 合并；
+4. legacy mapping 校验；
+5. RC1 Frozen 冲突检查；
+6. semantic validation；
+7. content hash。
+
+Compiled Ruleset 中的 ShipDefinition 必须已经具有 combat-v2 所需的完整 tactical attributes；不能在战斗时临时猜默认值。
+
+任何 fragment 与 manifest 声明的权威源不一致时，服务拒绝启动。
+
