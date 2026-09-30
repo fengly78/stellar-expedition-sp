@@ -166,3 +166,25 @@ P2：
 ## 最终原则
 
 先做“一个真的能玩、能理解、能持续发展的宇宙”，再扩充内容。任何新系统必须进入资源、时间、风险、情报、空间中的至少一个核心约束，不增加没有决策价值的菜单。
+
+## 设计阶段收尾状态 — 2026-09-30
+
+设计工作已经通过全面审计收口。
+
+从本节开始，本计划的 Phase 0 不再表示“继续补玩法文档”，而表示完成以下工程证据：
+
+- Ruleset Compiler
+- Semantic Validator
+- Legacy Mapping Validator
+- Economy Simulator v2
+- Combat v2 Harness
+- Release Gate evidence store
+
+范围冻结与正式 Gate 见：
+`2026-09-30-scope-freeze-release-gates.md`
+
+总审计结论见：
+`../specs/2026-09-30-design-audit-closure.md`
+
+新的非阻塞玩法需求默认进入 Beta1 后 Backlog。
+
