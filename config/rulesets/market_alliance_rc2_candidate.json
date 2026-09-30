@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "status": "Candidate"
+  },
+  "market": {
+    "tax_rate": 0.02,
+    "listing_expiry_hours": 48,
+    "state_machine": {
+      "states": [
+        "OPEN",
+        "MATCHED",
+        "IN_TRANSIT",
+        "DELIVERED",
+        "CANCELED",
+        "EXPIRED",
+        "FAILED_TECHNICAL"
+      ],
+      "transitions": {
+        "OPEN": [
+          "MATCHED",
+          "CANCELED",
+          "EXPIRED"
+        ],
+        "MATCHED": [
+          "IN_TRANSIT",
+          "FAILED_TECHNICAL"
+        ],
+        "IN_TRANSIT": [
+          "DELIVERED",
+          "FAILED_TECHNICAL"
+        ],
+        "DELIVERED": [],
+        "CANCELED": [],
+        "EXPIRED": [],
+        "FAILED_TECHNICAL": []
+      }
+    },
+    "escrow": {
+      "seller_asset_reserved_on_listing": true,
+      "buyer_asset_reserved_on_match": true,
+      "atomic_delivery": true,
+      "partial_delivery": false
+    },
+    "logistics": {
+      "has_travel_time": true,
+      "interceptable_in_beta1": false,
+      "insured_in_beta1": false
+    },
+    "anti_abuse": {
+      "self_match_forbidden": true,
+      "exact_same_owner_forbidden": true,
+      "suspicious_related_accounts": "audit_only_until_rule_or_moderation_evidence"
+    }
+  },
+  "alliance": {
+    "protected_players": {
+      "P0_forced_war": false,
+      "P1_forced_war": false,
+      "P2_requires_explicit_opt_in": true,
+      "P3_normal_war_rules": true
+    },
+    "audited_actions": [
+      "ROLE_CHANGE",
+      "DECLARE_WAR",
+      "MAKE_PEACE",
+      "STRATEGIC_SPEND",
+      "ALLIANCE_PROJECT_START"
+    ],
+    "first_release_capabilities": [
+      "MEMBERSHIP",
+      "ROLES",
+      "MARKERS",
+      "SHARED_INTEL",
+      "WAR_STATE",
+      "PROJECT_V1"
+    ]
+  }
+}
