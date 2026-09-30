@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "status": "Candidate",
+    "purpose": "design-to-release acceptance contract"
+  },
+  "gates": {
+    "G0_DESIGN": {
+      "required": true,
+      "checks": [
+        "manifest_valid",
+        "no_dangling_refs",
+        "prerequisite_dag",
+        "legacy_mapping_valid",
+        "single_authority_per_rule_domain"
+      ]
+    },
+    "G1_VERTICAL_SLICE": {
+      "required": true,
+      "checks": [
+        "planet_build_research_shipyard",
+        "scout_reachable_45m_target",
+        "galaxy_scout_pve_flow",
+        "battle_replay_deterministic",
+        "autopilot_offline_summary"
+      ]
+    },
+    "G2_ECONOMY": {
+      "required": true,
+      "checks": [
+        "24h_no_hard_lock",
+        "day1_3_7_14_30_calibration",
+        "source_sink_in_band",
+        "strategy_ratio_limits",
+        "autopilot_advantage_limit"
+      ]
+    },
+    "G3_COMBAT": {
+      "required": true,
+      "checks": [
+        "10000_seed_release_matrix",
+        "no_dominant_single_ship",
+        "ew_cap",
+        "command_cap",
+        "retreat_replay",
+        "equal_value_matchup_review"
+      ]
+    },
+    "G4_SAFETY_ABUSE": {
+      "required": true,
+      "checks": [
+        "new_player_protection",
+        "repeat_attack_decay",
+        "ai_policy_enforcement",
+        "market_escrow_idempotency",
+        "multi_account_risk_signals",
+        "no_duplicate_rewards"
+      ]
+    },
+    "G5_MIGRATION": {
+      "required": true,
+      "checks": [
+        "resource_conservation",
+        "storage_component_mapping",
+        "fleet_count_mapping",
+        "active_task_time_preserved",
+        "legacy_battle_immutable",
+        "rollback_snapshot_bootable"
+      ]
+    },
+    "G6_OPERATIONS": {
+      "required": true,
+      "checks": [
+        "worker_restart",
+        "dead_letter",
+        "backup_restore",
+        "health_checks",
+        "log_rotation",
+        "mobile_e2e",
+        "browser_e2e"
+      ]
+    }
+  },
+  "promotion": {
+    "candidate_to_frozen": "G0+G1+G2+G3 pass with stored evidence",
+    "beta_release": "G0..G6 pass; no P0 blocker; all P1 risks accepted or fixed",
+    "production": "beta telemetry reviewed; migration rehearsal successful; rollback rehearsal successful"
+  },
+  "evidence_required": true
+}
