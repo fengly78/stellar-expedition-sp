@@ -1,0 +1,283 @@
+{
+  "meta": {
+    "version": "RC2-Candidate",
+    "status": "Candidate",
+    "scale": "0..100",
+    "notes": "Explicit tactical stats consumed by combat-v2; avoids undefined normalization."
+  },
+  "ships": {
+    "S001": {
+      "accuracy": 30,
+      "signature": 5,
+      "evasion": 95,
+      "sensor": 100,
+      "stealth": 70,
+      "engine": {
+        "drive": "T010",
+        "switch": null
+      }
+    },
+    "S002": {
+      "accuracy": 40,
+      "signature": 10,
+      "evasion": 85,
+      "sensor": 90,
+      "stealth": 90,
+      "engine": {
+        "drive": "T012",
+        "switch": null
+      }
+    },
+    "S003": {
+      "accuracy": 35,
+      "signature": 30,
+      "evasion": 30,
+      "sensor": 25,
+      "stealth": 10,
+      "engine": {
+        "drive": "T010",
+        "switch": {
+          "technology": "T011",
+          "level": 5,
+          "speed_base_multiplier": 2,
+          "fuel_multiplier": 2
+        }
+      }
+    },
+    "S004": {
+      "accuracy": 35,
+      "signature": 50,
+      "evasion": 20,
+      "sensor": 25,
+      "stealth": 5,
+      "engine": {
+        "drive": "T010",
+        "switch": null
+      }
+    },
+    "S005": {
+      "accuracy": 45,
+      "signature": 55,
+      "evasion": 25,
+      "sensor": 35,
+      "stealth": 10,
+      "engine": {
+        "drive": "T011",
+        "switch": null
+      }
+    },
+    "S006": {
+      "accuracy": 70,
+      "signature": 20,
+      "evasion": 80,
+      "sensor": 35,
+      "stealth": 20,
+      "engine": {
+        "drive": "T010",
+        "switch": null
+      }
+    },
+    "S007": {
+      "accuracy": 72,
+      "signature": 30,
+      "evasion": 65,
+      "sensor": 35,
+      "stealth": 15,
+      "engine": {
+        "drive": "T011",
+        "switch": null
+      }
+    },
+    "S008": {
+      "accuracy": 75,
+      "signature": 45,
+      "evasion": 50,
+      "sensor": 50,
+      "stealth": 15,
+      "engine": {
+        "drive": "T011",
+        "switch": null
+      }
+    },
+    "S009": {
+      "accuracy": 78,
+      "signature": 60,
+      "evasion": 35,
+      "sensor": 50,
+      "stealth": 10,
+      "engine": {
+        "drive": "T012",
+        "switch": null
+      }
+    },
+    "S010": {
+      "accuracy": 80,
+      "signature": 55,
+      "evasion": 45,
+      "sensor": 55,
+      "stealth": 10,
+      "engine": {
+        "drive": "T011",
+        "switch": null
+      }
+    },
+    "S011": {
+      "accuracy": 82,
+      "signature": 80,
+      "evasion": 25,
+      "sensor": 60,
+      "stealth": 5,
+      "engine": {
+        "drive": "T012",
+        "switch": null
+      }
+    },
+    "S012": {
+      "accuracy": 84,
+      "signature": 75,
+      "evasion": 30,
+      "sensor": 65,
+      "stealth": 10,
+      "engine": {
+        "drive": "T012",
+        "switch": null
+      }
+    },
+    "S013": {
+      "accuracy": 75,
+      "signature": 75,
+      "evasion": 20,
+      "sensor": 45,
+      "stealth": 5,
+      "engine": {
+        "drive": "T012",
+        "switch": null
+      }
+    },
+    "S014": {
+      "accuracy": 85,
+      "signature": 30,
+      "evasion": 75,
+      "sensor": 60,
+      "stealth": 20,
+      "engine": {
+        "drive": "T012",
+        "switch": null
+      }
+    },
+    "S015": {
+      "accuracy": 60,
+      "signature": 50,
+      "evasion": 45,
+      "sensor": 90,
+      "stealth": 30,
+      "ew_strength": 8,
+      "engine": {
+        "drive": "T012",
+        "switch": null
+      }
+    },
+    "S016": {
+      "accuracy": 30,
+      "signature": 50,
+      "evasion": 15,
+      "sensor": 25,
+      "stealth": 5,
+      "engine": {
+        "drive": "T011",
+        "switch": null
+      }
+    },
+    "S017": {
+      "accuracy": 30,
+      "signature": 85,
+      "evasion": 10,
+      "sensor": 30,
+      "stealth": 5,
+      "engine": {
+        "drive": "T011",
+        "switch": null
+      }
+    },
+    "S018": {
+      "accuracy": 40,
+      "signature": 55,
+      "evasion": 25,
+      "sensor": 40,
+      "stealth": 10,
+      "engine": {
+        "drive": "T011",
+        "switch": null
+      }
+    },
+    "S019": {
+      "accuracy": 35,
+      "signature": 60,
+      "evasion": 20,
+      "sensor": 45,
+      "stealth": 10,
+      "engine": {
+        "drive": "T012",
+        "switch": null
+      }
+    },
+    "S020": {
+      "accuracy": 80,
+      "signature": 95,
+      "evasion": 15,
+      "sensor": 80,
+      "stealth": 10,
+      "wing_points": 6,
+      "engine": {
+        "drive": "T012",
+        "switch": null
+      }
+    },
+    "S021": {
+      "accuracy": 88,
+      "signature": 100,
+      "evasion": 8,
+      "sensor": 70,
+      "stealth": 0,
+      "engine": {
+        "drive": "T012",
+        "switch": null
+      }
+    },
+    "S022": {
+      "accuracy": 75,
+      "signature": 100,
+      "evasion": 20,
+      "sensor": 95,
+      "stealth": 20,
+      "command_aura": true,
+      "engine": {
+        "drive": "T012",
+        "switch": null
+      }
+    }
+  },
+  "defense_defaults": {
+    "accuracy": 70,
+    "signature": 100,
+    "evasion": 0,
+    "sensor": 40,
+    "stealth": 0
+  },
+  "defense_overrides": {
+    "D006": {
+      "accuracy": 55,
+      "sensor": 85,
+      "ew_strength": 5
+    },
+    "D010": {
+      "accuracy": 20,
+      "sensor": 95,
+      "stealth": 20
+    },
+    "D012": {
+      "accuracy": 85,
+      "sensor": 90
+    }
+  }
+}
