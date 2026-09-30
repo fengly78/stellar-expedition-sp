@@ -102,7 +102,42 @@
       "tags": [
         "storage"
       ],
-      "balance_version": "RC2-Candidate"
+      "balance_version": "RC2-Candidate",
+      "facility_type": "composite",
+      "components": {
+        "METAL_STORAGE": {
+          "legacy_key": "BUILD.M_STORAGE",
+          "base_cost": {
+            "metal": 1000,
+            "crystal": 0,
+            "deuterium": 0
+          },
+          "cost_growth": 1.6,
+          "max_level": 20
+        },
+        "CRYSTAL_STORAGE": {
+          "legacy_key": "BUILD.C_STORAGE",
+          "base_cost": {
+            "metal": 1000,
+            "crystal": 500,
+            "deuterium": 0
+          },
+          "cost_growth": 1.6,
+          "max_level": 20
+        },
+        "DEUTERIUM_STORAGE": {
+          "legacy_key": "BUILD.D_STORAGE",
+          "base_cost": {
+            "metal": 1000,
+            "crystal": 1000,
+            "deuterium": 0
+          },
+          "cost_growth": 1.6,
+          "max_level": 20
+        }
+      },
+      "level_semantics": "component_levels_are_authoritative",
+      "visual_level_rule": "max(component_levels)"
     },
     {
       "id": "B006",
