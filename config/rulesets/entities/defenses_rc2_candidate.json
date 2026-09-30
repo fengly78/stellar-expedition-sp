@@ -18,10 +18,17 @@
         "hull": 200
       },
       "role_tags": [
+        "defense",
         "cheap_screen"
       ],
       "max_count": null,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B012",
+          "level": 1
+        }
+      ],
       "balance_version": "RC2-Candidate"
     },
     {
@@ -38,10 +45,22 @@
         "hull": 200
       },
       "role_tags": [
+        "defense",
         "anti_small"
       ],
       "max_count": null,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B012",
+          "level": 2
+        },
+        {
+          "type": "technology",
+          "id": "T018",
+          "level": 1
+        }
+      ],
       "balance_version": "RC2-Candidate"
     },
     {
@@ -58,10 +77,22 @@
         "hull": 800
       },
       "role_tags": [
+        "defense",
         "general"
       ],
       "max_count": null,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B012",
+          "level": 4
+        },
+        {
+          "type": "technology",
+          "id": "T018",
+          "level": 3
+        }
+      ],
       "balance_version": "RC2-Candidate"
     },
     {
@@ -78,10 +109,22 @@
         "hull": 1000
       },
       "role_tags": [
+        "defense",
         "alpha"
       ],
       "max_count": null,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B020",
+          "level": 2
+        },
+        {
+          "type": "technology",
+          "id": "T017",
+          "level": 3
+        }
+      ],
       "balance_version": "RC2-Candidate"
     },
     {
@@ -98,10 +141,27 @@
         "hull": 3500
       },
       "role_tags": [
+        "defense",
         "anti_capital"
       ],
       "max_count": null,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B020",
+          "level": 5
+        },
+        {
+          "type": "technology",
+          "id": "T017",
+          "level": 6
+        },
+        {
+          "type": "technology",
+          "id": "T003",
+          "level": 4
+        }
+      ],
       "balance_version": "RC2-Candidate"
     },
     {
@@ -118,10 +178,22 @@
         "hull": 800
       },
       "role_tags": [
+        "defense",
         "ew"
       ],
       "max_count": null,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B020",
+          "level": 4
+        },
+        {
+          "type": "technology",
+          "id": "T022",
+          "level": 3
+        }
+      ],
       "balance_version": "RC2-Candidate"
     },
     {
@@ -138,10 +210,22 @@
         "hull": 10000
       },
       "role_tags": [
+        "defense",
         "heavy"
       ],
       "max_count": null,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B020",
+          "level": 7
+        },
+        {
+          "type": "technology",
+          "id": "T019",
+          "level": 6
+        }
+      ],
       "balance_version": "RC2-Candidate"
     },
     {
@@ -158,10 +242,22 @@
         "hull": 2000
       },
       "role_tags": [
+        "defense",
         "shield"
       ],
       "max_count": 1,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B020",
+          "level": 3
+        },
+        {
+          "type": "technology",
+          "id": "T021",
+          "level": 2
+        }
+      ],
       "balance_version": "RC2-Candidate"
     },
     {
@@ -178,10 +274,22 @@
         "hull": 10000
       },
       "role_tags": [
+        "defense",
         "shield"
       ],
       "max_count": 1,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B020",
+          "level": 6
+        },
+        {
+          "type": "technology",
+          "id": "T021",
+          "level": 6
+        }
+      ],
       "balance_version": "RC2-Candidate"
     },
     {
@@ -198,10 +306,22 @@
         "hull": 4000
       },
       "role_tags": [
+        "defense",
         "counter_intel"
       ],
       "max_count": 5,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B022",
+          "level": 2
+        },
+        {
+          "type": "technology",
+          "id": "T028",
+          "level": 3
+        }
+      ],
       "balance_version": "RC2-Candidate"
     },
     {
@@ -218,10 +338,22 @@
         "hull": 25000
       },
       "role_tags": [
+        "defense",
         "shelter"
       ],
       "max_count": 3,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B024",
+          "level": 5
+        },
+        {
+          "type": "technology",
+          "id": "T003",
+          "level": 5
+        }
+      ],
       "balance_version": "RC2-Candidate"
     },
     {
@@ -238,10 +370,28 @@
         "hull": 60000
       },
       "role_tags": [
-        "strategic"
+        "defense",
+        "strategic",
+        "structure"
       ],
       "max_count": 1,
-      "prerequisites": [],
+      "prerequisites": [
+        {
+          "type": "building",
+          "id": "B030",
+          "level": 1
+        },
+        {
+          "type": "technology",
+          "id": "T021",
+          "level": 8
+        },
+        {
+          "type": "technology",
+          "id": "T020",
+          "level": 8
+        }
+      ],
       "balance_version": "RC2-Candidate"
     }
   ]
