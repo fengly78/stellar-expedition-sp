@@ -344,3 +344,42 @@ Tier 影响：
 - 移动端能完成全部建造操作。
 - Base Tier 与建筑视觉阶段可由服务端状态纯函数计算。
 - 星球专精不改变历史战报，只影响未来结算。
+
+## 16. RC2 收尾裁决：槽位扩容
+
+此前只定义初始与上限、没有扩容来源的问题已关闭。
+
+槽位容量由 Base Tier 决定：
+
+| Tier | Surface | Underground | Orbit |
+|---|---:|---:|---:|
+| T0 | 14 | 3 | 4 |
+| T1 | 16 | 3 | 4 |
+| T2 | 18 | 4 | 5 |
+| T3 | 20 | 5 | 7 |
+| T4 | 24 | 8 | 10 |
+
+进入条件以 `planet_layout_rc2_candidate.json` 为准。
+
+最终容量：
+
+```text
+base_tier_capacity
++ planet_archetype_delta
++ specialization_delta
+```
+
+并 clamp 到服务器配置上限。
+
+全部 34 个设施的总 slot_cost 大于单星球最大容量是**有意设计**，不是缺陷：单颗星球不应同时容纳所有民用、科研、军事、贸易和战略设施，从而强制形成多星球分工。
+
+### B005 仓储迁移
+
+B005 在 2.5D 场景中是一个 Storage Complex，但逻辑上保留三个独立 component level：
+
+- METAL_STORAGE
+- CRYSTAL_STORAGE
+- DEUTERIUM_STORAGE
+
+这样可以无损迁移 RC1 三种仓库等级，同时只占一个视觉设施位置。
+
