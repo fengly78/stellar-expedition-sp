@@ -8,24 +8,45 @@
     {
       "time_hours": 0.25,
       "targets": {
-        "metal_mine_level": [2,3],
-        "crystal_mine_level": [1,2],
-        "solar_level": [2,3],
-        "robotics_level": [1,1]
+        "metal_mine_level": [
+          2,
+          3
+        ],
+        "crystal_mine_level": [
+          1,
+          2
+        ],
+        "solar_level": [
+          2,
+          3
+        ],
+        "robotics_level": [
+          1,
+          1
+        ]
       }
     },
     {
       "time_hours": 0.75,
       "targets": {
-        "lab_level": [1,1],
-        "shipyard_level": [1,1],
+        "lab_level": [
+          1,
+          1
+        ],
+        "shipyard_level": [
+          1,
+          1
+        ],
         "scout_reachable": true
       }
     },
     {
       "time_hours": 4,
       "targets": {
-        "shipyard_level": [2,3],
+        "shipyard_level": [
+          2,
+          3
+        ],
         "basic_combat_fleet": true,
         "first_pve_completed": true
       }
@@ -33,8 +54,14 @@
     {
       "time_hours": 24,
       "targets": {
-        "asset_value": [50000,150000],
-        "main_resource_building_level": [5,8],
+        "asset_value": [
+          50000,
+          150000
+        ],
+        "main_resource_building_level": [
+          5,
+          8
+        ],
         "robotics_level_min": 3,
         "lab_level_min": 3,
         "shipyard_level_min": 3
@@ -43,25 +70,46 @@
     {
       "time_hours": 72,
       "targets": {
-        "asset_value": [250000,800000],
-        "main_resource_building_level": [8,12],
+        "asset_value": [
+          250000,
+          800000
+        ],
+        "main_resource_building_level": [
+          8,
+          12
+        ],
         "colony_ship_reachable": true,
-        "planet_count": [1,2]
+        "planet_count": [
+          1,
+          2
+        ]
       }
     },
     {
       "time_hours": 168,
       "targets": {
-        "asset_value": [1500000,5000000],
-        "planet_count": [2,3],
+        "asset_value": [
+          1500000,
+          5000000
+        ],
+        "planet_count": [
+          2,
+          3
+        ],
         "orbital_shipyard_path_started": true
       }
     },
     {
       "time_hours": 336,
       "targets": {
-        "asset_value": [6000000,20000000],
-        "planet_count": [3,4],
+        "asset_value": [
+          6000000,
+          20000000
+        ],
+        "planet_count": [
+          3,
+          4
+        ],
         "orbital_shipyard_unlocked": true,
         "autopilot_reachable": true
       }
@@ -69,24 +117,87 @@
     {
       "time_hours": 720,
       "targets": {
-        "asset_value": [25000000,80000000],
-        "planet_count": [4,6],
+        "asset_value": [
+          25000000,
+          80000000
+        ],
+        "planet_count": [
+          4,
+          6
+        ],
         "multi_planet_specialization": true,
         "strategic_facility_reachable": true
       }
     }
   ],
   "global_health_targets": {
-    "early_source_sink_ratio": [1.05,1.25],
-    "mid_source_sink_ratio": [0.95,1.15],
-    "late_source_sink_ratio": [0.90,1.10],
-    "p90_to_median_asset_ratio_max": 3.0,
-    "single_strategy_to_balanced_ratio_max": 2.0,
+    "early_source_sink_ratio": [
+      1.05,
+      1.25
+    ],
+    "mid_source_sink_ratio": [
+      0.95,
+      1.15
+    ],
+    "late_source_sink_ratio": [
+      0.9,
+      1.1
+    ],
+    "p90_to_median_asset_ratio_max": 3,
+    "single_strategy_to_balanced_ratio_max": 2,
     "autopilot_7d_asset_advantage_max": 0.12
   },
   "queue_utilization": {
-    "build": [0.55,0.85],
-    "research": [0.45,0.80],
-    "shipyard": [0.30,0.75]
-  }
+    "build": [
+      0.55,
+      0.85
+    ],
+    "research": [
+      0.45,
+      0.8
+    ],
+    "shipyard": [
+      0.3,
+      0.75
+    ]
+  },
+  "new_account": {
+    "starting_inventory": {
+      "metal": 500,
+      "crystal": 500,
+      "deuterium": 0
+    },
+    "tutorial_grants": [
+      {
+        "id": "TG1_CORE_INDUSTRY",
+        "trigger": "complete initial metal/crystal/solar objectives",
+        "reward": {
+          "metal": 500,
+          "crystal": 250,
+          "deuterium": 250
+        }
+      },
+      {
+        "id": "TG2_RESEARCH",
+        "trigger": "complete B010 L1 and B016 L1 objectives",
+        "reward": {
+          "metal": 800,
+          "crystal": 900,
+          "deuterium": 500
+        }
+      },
+      {
+        "id": "TG3_FIRST_FLEET",
+        "trigger": "complete first sensor research",
+        "reward": {
+          "metal": 1200,
+          "crystal": 800,
+          "deuterium": 300
+        }
+      }
+    ],
+    "repeatable": false,
+    "ledger_source": "SYSTEM_TUTORIAL_GRANT"
+  },
+  "checkpoint_semantics": "Targets include one-time tutorial grants; simulation must account for them as explicit sources."
 }
