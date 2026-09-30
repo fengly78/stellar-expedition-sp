@@ -11,7 +11,7 @@ Implementation should read in this order:
 2. `specs/2026-09-29-graphical-vps-architecture-design.md`
 3. `specs/2026-09-30-game-core-spec.md`
 4. `specs/2026-09-30-game-config-schema-spec.md`
-5. `../.. /config/rulesets/ruleset_manifest_rc2_candidate.json` (repository root relative: `config/rulesets/...`)
+5. `config/rulesets/ruleset_manifest_rc2_candidate.json` (repository-root path)
 6. `plans/2026-09-30-scope-freeze-release-gates.md`
 7. `plans/2026-09-30-vertical-slice-implementation-plan.md`
 
