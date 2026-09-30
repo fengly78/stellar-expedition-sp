@@ -17,7 +17,9 @@
     "config/rulesets/combat_rc2_candidate.json",
     "config/rulesets/economy_milestones_rc2_candidate.json",
     "config/rulesets/legacy_mapping_rc2_candidate.json",
-    "config/rulesets/universe_pve_rc2_candidate.json"
+    "config/rulesets/universe_pve_rc2_candidate.json",
+    "config/rulesets/market_alliance_rc2_candidate.json",
+    "config/rulesets/release_gates_rc2_candidate.json"
   ],
   "authority": {
     "entity identity, base costs, max levels": "entities/*_rc2_candidate.json",
@@ -28,7 +30,9 @@
     "protection, stances, autopilot defaults": "balance_rc2_candidate.json",
     "calibration targets and tutorial sources": "economy_milestones_rc2_candidate.json",
     "legacy migration mapping": "legacy_mapping_rc2_candidate.json",
-    "universe topology and PvE encounter templates": "universe_pve_rc2_candidate.json"
+    "universe topology and PvE encounter templates": "universe_pve_rc2_candidate.json",
+    "market and alliance beta1 state machines": "market_alliance_rc2_candidate.json",
+    "release acceptance contract": "release_gates_rc2_candidate.json"
   },
   "conflict_rules": [
     "RC1 Frozen values cannot be overwritten without an approved change record.",
@@ -46,6 +50,7 @@
     "combat rules",
     "universe and PvE",
     "milestones",
+    "market and alliance",
     "legacy mapping",
     "semantic validation",
     "content hash"
@@ -60,6 +65,8 @@
     "protection",
     "combat",
     "autopilot",
-    "legacy_mapping"
+    "legacy_mapping",
+    "market",
+    "alliance"
   ]
 }
